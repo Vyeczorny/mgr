@@ -5,5 +5,6 @@
 *.log
 *.out
 *.toc
+*.synctex.gz
 *.sublime-project
 *.sublime-workspace
