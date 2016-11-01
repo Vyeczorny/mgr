@@ -9,6 +9,7 @@
 
 1. Podobieństwa do innych języków:
   - podstawy, np. obiektowość, polimorfizm etc (podobieństwa do Javy, C#, krótko)
+  - kompilowany ale ma REPLa
   - generics (TODO: doczytać o implementacji)
   - value types and reference types (jak w C#)
   - język "bardzo silnie" typowany
