@@ -8,9 +8,9 @@
   - plan pracy
 
 1. Podobieństwa do innych języków:
-  - podstawy, np. obiektowość, polimorfizm etc (podobieństwa do Javy, C#, krótko)
-  - generics (TODO: doczytać o implementacji)
-  - value types and reference types (jak w C#)
+  + podstawy, np. obiektowość, polimorfizm etc (podobieństwa do Javy, C#, krótko)
+  + generics (TODO: doczytać o implementacji)
+  + value types and reference types (jak w C#)
   - język "bardzo silnie" typowany
   - domknięcia jako first-class citizens
   - możliwość wymuszenia leniwości obliczeń (implementacja podobna jak w C# za pomocą sekwencji)

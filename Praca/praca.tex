@@ -107,6 +107,17 @@ Typy wartościowe to typy, które tworzą nowe instancje obiektów podczas przyp
 
 Typy referencyjne to typy, których obiekty dzielą pomiędzy sobą te same dane, a podczas przypisywania lub przekazywania do funkcji tworzona jest tylko nowa referencja do tych samych danych. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do zmiennej mogą być bez dowolnie zmieniane. Typami referencyjnymi w Swifcie są tylko klasy.
 
+\section{Domknięcia jako typy pierwszoklasowe}
+
+Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków programowania obiektowego, domknięcia w Swifcie są typem pierwszoklasowym (\ang{first-class citizen}), tzn:
+
+\begin{itemize}
+    \item mogą być przechowywane w zmiennych i stanowić elementu struktur danych
+    \item mogą być podawane jako parametry wywołania funkcji i metod
+    \item mogą byc zwracane przez funkcje i metody
+\end{enumerate}
+
+
 % Listingi
 
 \newpage
@@ -129,7 +140,11 @@ Typy referencyjne to typy, których obiekty dzielą pomiędzy sobą te same dane
   \label{l:2_1_generics_and_inheritance}
 \end{listing}
 
-
+\begin{listing}
+  \swiftcode{src/2_1_closures.swift}
+  \caption{Przykład użycia domknięcia w Swift}
+  \label{l:2_1_closures}
+\end{listing}
 
 %%%%% BIBLIOGRAFIA
 
