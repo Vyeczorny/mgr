@@ -8,3 +8,4 @@
 *.synctex.gz
 *.sublime-project
 *.sublime-workspace
+_minted-*

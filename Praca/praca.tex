@@ -2,6 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{minted}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
 \polishtitle    {Wymagający złamania wierszy\fmlinebreak tytuł pracy w~języku polskim}
@@ -37,6 +38,16 @@
 % ...
 %%%%%
 
+\newmintedfile[swiftcode]{swift}{
+  fontsize=\footnotesize
+}
+
+\newcommand{\todo}[1]{
+  \textit{\textbf{TODO: }#1}
+}
+
+\newcommand{\ang}[1]{ang. \textit{#1}}
+
 \begin{document}
 
 %%%%% POCZĄTEK ZASADNICZEGO TEKSTU PRACY
@@ -49,9 +60,74 @@
 \chapter{Podobieństwa do innych języków programowania}
 \label{ch:podobienstwa_do_innych}
 
-% Kiedy w 2014 roku na konferencji WWDC Craig Federighi poraz pierwszy zaprezentował język Swift, przedstawił go jako jeden z najbezpieczniejszych i najbardziej nowoczesnych języków programowania. Głównym powodem było oczywiste porównanie do Objective-C i pozbycie się dużej ilości jego wad (temat zostanie rozwinięty w rozdziale \ref{ch:podobienstwa_do_objc}). Z drugiej jednak strony Chris Lattner, główny projektant Swifta, przyznał, że podczas prac nad nim zespół często inspirował się innymi językami, takimi jak: Rust, Haskell, Ruby, Python, C\# czy CLU, co w dużym stopniu przyczyniło się do \textit{nowoczesności} nowo powstałego języka. W tym rozdziale zostaną zaprezentowane najważniejsze cechy Swifta zaczerpnięte w całości z innych języków programowania lub wzorowane na właściwościach spotykanych w innych językach programowania.
+\section{Podstawowe cechy}
+\label{s:podstawowe_cechy}
 
+Swift to wieloparadygmatowy język programowania łączący pomysły znane z innych popularnych języków, takich jak: Objective-C, C\#, Rust, Haskell czy Ruby. Podobnie jak C\#, pozwala na tworzenie struktur (value type/typów wartościowych?), klas (reference type/typów referencyjnych?) i typów wyliczeniowych. Wspiera również dziedziczenie (ale nie wielokrotne), definiowanie protokołów (odpowiednik interfejsów z C\# czy Java) oraz polimorfizm parametryczny (typy generyczne), nie pozwala natomiast na definiowanie klas abstrakcyjnych, zachęcając tym samym programistów do szerokiego stosowania interfejsów.
 
+\todo{Tu przydałby się jeszcze jeden akapit o mniej znaczących feature'ach}
+
+\section{Typy generyczne}
+\label{s:typy_generyczne}
+
+Swift wspiera dwie podstawowe koncepcje generyczności:
+\begin{itemize}
+  \item klasy, struktury, typy wyliczeniowe oraz funkcje z parametrami typu (ang. \textit{generics})
+  \item protokoły z powiązanymi typami (ang. \textit{associated types})
+\end{itemize}
+
+Klasy (struktury, funkcje) ze zmiennymi typu to pomysł dobrze znany z większości popularnych języków pozwalających na programowania obiektowe, takich jak C\# czy Java. W momencie definiowania klasy programista ma możliwość zdefiniowania zmiennych przebiegających przestrzeń typów używanych w definiowanej klasie. Dodatkowo Swift oferuje kilka bardziej zaawansowanych mechnizmów związanych ze zmiennymi typu:
+
+\todo{Ujednolicić nazewnictwo}
+\begin{itemize}
+  \item możliwość dodania ograniczeń na typy, po których przebiega zmienna, np. zmienna może być tylko typem implementującym dany protokół lub dziedziczącym po danej klasie
+  \item automatyczna inferencja typów paremetrów generycznych
+  \item możliwość nadawania aliasów funkcjom i typom generycznym
+\end{itemize}
+\todo{Coś o implementacji?}
+
+W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną typu przed programistą używającym klasy implementującej dany protokół - typ podstawiony pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenie obiektu implementującego protokół.
+
+\section{Typy wartościowe i referencyjne}
+
+Podobnie jak w jęzuku C#, typy w Swifcie można podzielić na dwie grupy:
+
+\begin{itemize}
+    \item typy wartościowe (\ang{value types})
+    \item typy referencyjne (\ang{reference types})
+\end{itemize}
+
+Typy wartościowe to typy, które tworzą nowe instancje obiektów podczas przypisywania do zmiennej lub przekazywania do funkcji. Innymi słowy, każda instancja posiada swoją własną kopię danych, obiekty takie nie dzielą ze sobą stanu, przez co są łatwiejsze w zrozumieniu i bezpieczniejsze przy pracy z wieloma wątkami. Jeśli zmienna typu wartościowego zostanie zadeklarowana jako stała, cały obiekt, łącznie ze wszystkimi polami nie może zostać zmieniony. Typami wartościowymi w Swifcie są:
+
+\begin{itemize}
+    \item struktury
+    \item typy wyliczeniowe
+    \item krotki
+\end{itemize}
+
+Typy referencyjne to typy, których obiekty dzielą pomiędzy sobą te same dane, a podczas przypisywania lub przekazywania do funkcji tworzona jest tylko nowa referencja do tych samych danych. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do zmiennej mogą być bez dowolnie zmieniane. Typami referencyjnymi w Swifcie są tylko klasy.
+
+% Listingi
+
+\newpage
+
+\begin{listing}
+  \swiftcode{src/2_1_class_struct_protocol_enum.swift}
+  \caption{Przykładowe definicje podstwowych obiektów w Swift: struktury, klasy, protokołu i typu wyliczeniowego}
+  \label{l:2_1_class_struct_protocol_enum}
+\end{listing}
+
+\begin{listing}
+  \swiftcode{src/2_1_generics_and_inheritance.swift}
+  \caption{Przykład klasy generycznej i klasy pochodnej w Swift}
+  \label{l:2_1_generics_and_inheritance}
+\end{listing}
+
+\begin{listing}
+  \swiftcode{src/2_1_associated_types.swift}
+  \caption{Przykład protokołu z typem powiązanym w Swift}
+  \label{l:2_1_generics_and_inheritance}
+\end{listing}
 
 
 

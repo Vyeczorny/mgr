@@ -9,7 +9,6 @@
 
 1. Podobieństwa do innych języków:
   - podstawy, np. obiektowość, polimorfizm etc (podobieństwa do Javy, C#, krótko)
-  - kompilowany ale ma REPLa
   - generics (TODO: doczytać o implementacji)
   - value types and reference types (jak w C#)
   - język "bardzo silnie" typowany
@@ -18,9 +17,13 @@
   - funkcyjne elementy podobne do Haskella (?):
     - Optional / Maybe
     - parametryczne enumy (podobne do Haskellowych typów)
+  - bezpieczeństwo (let instead of var, classes closed for inheritance)
+  - zwięzłość (jak w Rubym/Pythonie)
+  - extension (mixiny w Rubym)
+  - kompilowany ale ma REPLa // ale REPL jest ubogi, nie działa tak dobrze jak w Ruby
 
 2. Podobieństwa i różnice względem Obj-C:
-  - wymienienie najważniejszych podobieństw
+  - wymienienie najważniejszych podobieństw (zarządzanie pamięcią!)
   - wymienienie najważniejszych różnic (type safety etc)
 
 3. Porównania:
