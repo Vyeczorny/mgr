@@ -117,6 +117,10 @@ Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków pro
     \item mogą byc zwracane przez funkcje i metody
 \end{enumerate}
 
+\section{Leniwość}
+
+Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - istnieje do tego słowo kluczowe $lazy$.Drugim rozwiązaniem są leniwe struktury danych, których implementacja opera się na znanych również z języka C# czy Java generatorach.
+
 
 % Listingi
 
@@ -144,6 +148,12 @@ Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków pro
   \swiftcode{src/2_1_closures.swift}
   \caption{Przykład użycia domknięcia w Swift}
   \label{l:2_1_closures}
+\end{listing}
+
+\begin{listing}
+  \swiftcode{src/2_1_laziness.swift}
+  \caption{Przykład deklaracji leniwej zmiennej i leniwej sekwencji w Swift}
+  \label{l:2_1_laziness}
 \end{listing}
 
 %%%%% BIBLIOGRAFIA
