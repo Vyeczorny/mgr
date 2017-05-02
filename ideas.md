@@ -13,7 +13,7 @@
   + value types and reference types (jak w C#)
   - język "bardzo silnie" typowany
   + domknięcia jako first-class citizens
-  - możliwość wymuszenia leniwości obliczeń (implementacja podobna jak w C# za pomocą sekwencji)
+  + możliwość wymuszenia leniwości obliczeń (implementacja podobna jak w C# za pomocą sekwencji)
   - funkcyjne elementy podobne do Haskella (?):
     - Optional / Maybe
     - parametryczne enumy (podobne do Haskellowych typów)

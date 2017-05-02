@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{minted}
+\usepackage{listings}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
 \polishtitle    {Wymagający złamania wierszy\fmlinebreak tytuł pracy w~języku polskim}
@@ -90,7 +91,7 @@ W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generyczn
 
 \section{Typy wartościowe i referencyjne}
 
-Podobnie jak w jęzuku C#, typy w Swifcie można podzielić na dwie grupy:
+Podobnie jak w jęzuku C\#, typy w Swifcie można podzielić na dwie grupy:
 
 \begin{itemize}
     \item typy wartościowe (\ang{value types})
@@ -115,11 +116,27 @@ Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków pro
     \item mogą być przechowywane w zmiennych i stanowić elementu struktur danych
     \item mogą być podawane jako parametry wywołania funkcji i metod
     \item mogą byc zwracane przez funkcje i metody
-\end{enumerate}
+\end{itemize}
 
 \section{Leniwość}
 
-Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - istnieje do tego słowo kluczowe $lazy$.Drugim rozwiązaniem są leniwe struktury danych, których implementacja opera się na znanych również z języka C# czy Java generatorach.
+Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$.Drugim rozwiązaniem są leniwe struktury danych, których implementacja opera się na znanych również z języka C\# czy Java generatorach.
+
+\section{Elementy zaczerpnięte z języków funkcyjnych}
+
+Pomimo tego, że Swift był projektowany głównie jako język programowanie obiektowego, jego twórcy skupili dużą część swojej uwagi na elementach powiązanych z programowaniem funkcyjnym, które mogłyby pomóc programistom pisać bezpieczniejszy i bardziej czytelny kod obiektowy. Najważniejsze z nich to:
+
+\begin{itemize}
+    \item Typy wyliczeniowe z typami powiązanymi (\ang{associated types}), które wprowadzają do Swifta koncept podobny do konstruktorów typów z Haskella. Dzięki tym strukturom danych, programista może w funkcyjny deklarować nowe typy.
+
+    \item Dzięki zwięzłej i eleganckiej składni oraz potraktowaniu domknięć na równi klasami i stukturami, Swift oferuje bardzo dobre wsparcie dla funkcji wyższego rzędu. Najbardziej jest to widoczne w implementacji kolekcji danych, które już w bibliotece standardowej posiadają najczęściej używane funkcje służące do manipulowania nimi, takie jak \texttt{filter}, \texttt{map}, \texttt{reduce} czy \texttt{flatMap}.
+
+    \item Autorzy Swifta postawili bardzo duży nacisk na niemutowalność \todo{lepsze słowo?} danych, co przejawia się w całej składni języka, np. dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do deklarowania stałych, parametry przekazywane do funkcji są domyślnie stałymi, użycie typów wartościowych jest preferowane nad użyciem klas (również w bibliotece standardowej) itp.
+
+    \item Swift posiada zaawansowany mechanizm \textit{pattern matchingu}, który można wykorzystać do dopasowywania typów wyliczeniowych, krotek i wyrażeń. Tak jak w wielu językach funkcyjnych, \textit{pattern matching} w Swifcie jest wyczerpujący (\ang{exhaustive}), co oznacza, że każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
+
+\end{itemize}
+
 
 
 % Listingi
@@ -141,7 +158,7 @@ Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali 
 \begin{listing}
   \swiftcode{src/2_1_associated_types.swift}
   \caption{Przykład protokołu z typem powiązanym w Swift}
-  \label{l:2_1_generics_and_inheritance}
+  \label{l:2_1_associated_types}
 \end{listing}
 
 \begin{listing}
@@ -154,6 +171,16 @@ Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali 
   \swiftcode{src/2_1_laziness.swift}
   \caption{Przykład deklaracji leniwej zmiennej i leniwej sekwencji w Swift}
   \label{l:2_1_laziness}
+\end{listing}
+
+\begin{listing}
+  \swiftcode{src/2_1_enum_with_associated_type.swift}
+  \caption{Implementacja drzewa binarnego w Swift}
+  \label{l:2_1_enum_with_associated_type}
+\end{listing}\begin{listing}
+  \swiftcode{src/2_1_enum_with_associated_type.swift}
+  \caption{Implementacja drzewa binarnego w Swift}
+  \label{l:2_1_enum_with_associated_type}
 \end{listing}
 
 %%%%% BIBLIOGRAFIA
