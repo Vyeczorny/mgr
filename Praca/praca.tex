@@ -50,6 +50,14 @@
 
 \newcommand{\ang}[1]{ang. \textit{#1}}
 
+\newcommand{\swiftlisting}[2]{
+    \swiftcode{src/#1.swift}
+    \begin{listing}[ht]
+      \caption{#2}
+      \label{l:#1}
+    \end{listing}
+}
+
 \begin{document}
 
 %%%%% POCZĄTEK ZASADNICZEGO TEKSTU PRACY
@@ -65,9 +73,7 @@
 \section{Podstawowe cechy}
 \label{s:podstawowe_cechy}
 
-Swift to wieloparadygmatowy język programowania łączący pomysły znane z innych popularnych języków, takich jak: Objective-C, C\#, Rust, Haskell czy Ruby. Podobnie jak C\#, pozwala na tworzenie struktur (value type/typów wartościowych?), klas (reference type/typów referencyjnych?) i typów wyliczeniowych. Wspiera również dziedziczenie (ale nie wielokrotne), definiowanie protokołów (odpowiednik interfejsów z C\# czy Java) oraz polimorfizm parametryczny (typy generyczne), nie pozwala natomiast na definiowanie klas abstrakcyjnych, zachęcając tym samym programistów do szerokiego stosowania interfejsów.
-
-\todo{Tu przydałby się jeszcze jeden akapit o mniej znaczących feature'ach}
+Swift to wieloparadygmatowy język programowania łączący pomysły znane z innych popularnych języków, takich jak: Objective-C, C\#, Rust, Haskell czy Ruby. Podobnie jak C\#, pozwala na tworzenie struktur (typów wartościowych), klas (typów referencyjnych) i typów wyliczeniowych. Wspiera również dziedziczenie (ale nie wielokrotne), definiowanie protokołów (odpowiednik interfejsów z C\# czy Java) oraz polimorfizm parametryczny (typy generyczne), nie pozwala natomiast na definiowanie klas abstrakcyjnych, zachęcając tym samym programistów do szerokiego stosowania interfejsów.
 
 \section{Typy generyczne}
 \label{s:typy_generyczne}
@@ -78,21 +84,30 @@ Swift wspiera dwie podstawowe koncepcje generyczności:
   \item protokoły z powiązanymi typami (ang. \textit{associated types})
 \end{itemize}
 
-Klasy (struktury, funkcje) ze zmiennymi typu to pomysł dobrze znany z większości popularnych języków pozwalających na programowania obiektowe, takich jak C\# czy Java. W momencie definiowania klasy programista ma możliwość zdefiniowania zmiennych przebiegających przestrzeń typów używanych w definiowanej klasie. Dodatkowo Swift oferuje kilka bardziej zaawansowanych mechnizmów związanych ze zmiennymi typu:
+Klasy (struktury, funkcje) ze zmiennymi typu to pomysł dobrze znany z większości popularnych języków programowania obiektowego, takich jak C\# czy Java. W momencie definiowania klasy programista ma możliwość zdefiniowania zmiennych przebiegających przestrzeń typów używanych w definiowanej klasie. Dodatkowo Swift oferuje kilka bardziej zaawansowanych mechanizmów związanych ze zmiennymi typu:
 
-\todo{Ujednolicić nazewnictwo}
 \begin{itemize}
   \item możliwość dodania ograniczeń na typy, po których przebiega zmienna, np. zmienna może być tylko typem implementującym dany protokół lub dziedziczącym po danej klasie
   \item automatyczna inferencja typów paremetrów generycznych
   \item możliwość nadawania aliasów funkcjom i typom generycznym
 \end{itemize}
-\todo{Coś o implementacji?}
 
-W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną typu przed programistą używającym klasy implementującej dany protokół - typ podstawiony pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenie obiektu implementującego protokół.
+Przykład użycia typów generycznych ilustruje Listing \ref{l:2_generics_and_inheritance}.
+
+\swiftlisting
+    {2_generics_and_inheritance}
+    {Przykład klasy generycznej i klasy pochodnej w Swift}
+
+W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną typu przed programistą używającym klasy implementującej dany protokół - typ podstawiony pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenie obiektu implementującego protokół. Przykład użycia protokołu z parametrami typu prezentuje Listing \ref{l:2_associated_types}.
+
+\swiftlisting
+    {2_associated_types}
+    {Przykład protokołu z typem powiązanym w Swift}
 
 \section{Typy wartościowe i referencyjne}
+\label{s:typy_wartosciowe_i_refrencyjne}
 
-Podobnie jak w jęzuku C\#, typy w Swifcie można podzielić na dwie grupy:
+Podobnie jak w języku C\#, typy w Swifcie można podzielić na dwie grupy:
 
 \begin{itemize}
     \item typy wartościowe (\ang{value types})
@@ -109,48 +124,71 @@ Typy wartościowe to typy, które tworzą nowe instancje obiektów podczas przyp
 
 Typy referencyjne to typy, których obiekty dzielą pomiędzy sobą te same dane, a podczas przypisywania lub przekazywania do funkcji tworzona jest tylko nowa referencja do tych samych danych. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do zmiennej mogą być bez dowolnie zmieniane. Typami referencyjnymi w Swifcie są tylko klasy.
 
+\swiftlisting
+    {2_class_struct_protocol_enum}
+    {Przykładowe definicje podstwowych obiektów w Swift: struktury, klasy, protokołu i typu wyliczeniowego}
+
 \section{Domknięcia jako typy pierwszoklasowe}
+\label{s:domkniecia_jako_typy_pierwszoklasowe}
 
 Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków programowania obiektowego, domknięcia w Swifcie są typem pierwszoklasowym (\ang{first-class citizen}), tzn:
 
 \begin{itemize}
-    \item mogą być przechowywane w zmiennych i stanowić elementu struktur danych
+    \item mogą być przechowywane w zmiennych i stanowić elementy struktur danych
     \item mogą być podawane jako parametry wywołania funkcji i metod
     \item mogą byc zwracane przez funkcje i metody
 \end{itemize}
 
-\section{Leniwość}
+\swiftlisting{2_closures}{Przykład użycia domknięcia w Swift}
 
-Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$.Drugim rozwiązaniem są leniwe struktury danych, których implementacja opera się na znanych również z języka C\# czy Java generatorach.
+\section{Leniwość}
+\label{s:leniwosc}
+
+Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opera się na znanych również z języka C\# czy Java generatorach.
+
+\swiftlisting
+    {2_laziness}
+    {Przykład deklaracji leniwej zmiennej i leniwej sekwencji w Swift}
 
 \section{Elementy zaczerpnięte z języków funkcyjnych}
+\label{s:element_zaczerpniete_z_jezykow_funkcyjnych}
 
-Pomimo tego, że Swift był projektowany głównie jako język programowanie obiektowego, jego twórcy skupili dużą część swojej uwagi na elementach powiązanych z programowaniem funkcyjnym, które mogłyby pomóc programistom pisać bezpieczniejszy i bardziej czytelny kod obiektowy. Najważniejsze z nich to:
+Pomimo tego, że Swift był projektowany głównie jako język programowania obiektowego, jego twórcy skupili dużą część swojej uwagi na elementach powiązanych z programowaniem funkcyjnym, które mogłyby pomóc programistom pisać bezpieczniejszy i bardziej czytelny kod obiektowy. Najważniejsze z nich to:
 
 \begin{itemize}
-    \item Typy wyliczeniowe z typami powiązanymi (\ang{associated types}), które wprowadzają do Swifta koncept podobny do konstruktorów typów z Haskella. Dzięki tym strukturom danych, programista może w funkcyjny deklarować nowe typy.
+    \item Typy wyliczeniowe z wartościami powiązanymi (\ang{associated values}), które wprowadzają do Swifta koncept podobny do konstruktorów typów z Haskella. Dzięki tym strukturom danych, programista może w funkcyjny deklarować nowe typy (zob. Listing \ref{l:2_enum_with_associated_value}).
 
-    \item Dzięki zwięzłej i eleganckiej składni oraz potraktowaniu domknięć na równi klasami i stukturami, Swift oferuje bardzo dobre wsparcie dla funkcji wyższego rzędu. Najbardziej jest to widoczne w implementacji kolekcji danych, które już w bibliotece standardowej posiadają najczęściej używane funkcje służące do manipulowania nimi, takie jak \texttt{filter}, \texttt{map}, \texttt{reduce} czy \texttt{flatMap}.
+    \swiftlisting
+        {2_enum_with_associated_value}
+        {Implementacja drzewa binarnego w Swift}
+
+    \item Dzięki zwięzłej i eleganckiej składni oraz potraktowaniu domknięć na równi klasami i stukturami, Swift oferuje bardzo dobre wsparcie dla funkcji wyższego rzędu. Funkcje wyższego rzędu są też często używane w bibliotece standardowej, np. kolekcje danych posiadają najczęściej używane funkcje służące do manipulowania nimi, takie jak \texttt{filter}, \texttt{map}, \texttt{reduce} czy \texttt{flatMap}.
 
     \item Autorzy Swifta postawili bardzo duży nacisk na niemutowalność (\todo{lepsze słowo?}) danych, co przejawia się w całej składni języka, np. dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do deklarowania stałych, parametry przekazywane do funkcji są domyślnie stałymi, użycie typów wartościowych jest preferowane nad użyciem klas (również w bibliotece standardowej) itp.
 
     \item Swift posiada zaawansowany mechanizm \textit{pattern matchingu}, który można wykorzystać do dopasowywania typów wyliczeniowych, krotek i wyrażeń. Tak jak w wielu językach funkcyjnych, \textit{pattern matching} w Swifcie jest wyczerpujący (\ang{exhaustive}), co oznacza, że każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
 
-    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicializowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować \texttt{nil} jako wartość, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaning}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
+    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicializowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaning}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
+
+    \swiftlisting
+        {2_optional}
+        {Typ \texttt{Optional} i mechanizm \textit{optional chaining}}
 
 \end{itemize}
 
 \section{Zwięzłość składni}
+\label{s:zwiezlosc_skladni}
 
-Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta jego autorzy bardzo mocno wzorowali się na językach bardzo zwięzłych i łatwych do czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a takim samym kodem w Swift.
+Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta iżynierowie Apple mocno wzorowali się na językach znanych ze swojej zwięzłości i łatwości czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a takim samym kodem w Swift.
 
 \begin{figure}[ht]
-\includegraphics[width=0.99\textwidth]{images/Keynote.png}
+\makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{images/Keynote.png}}
 \caption{Craig Federighi wskazuje różnice pomiędzy czytelnością kodu Objective-C (na górze) i Swift (na dole). \textit{WWDC Keynote 2014}}
 \label{f:keynote}
 \end{figure}
 
 \section{Rozszerzenia typów}
+\label{s:rozszerzenia_typow}
 
 Jedną z rzadziej spotykanych w językach statycznie typowanych językach programowania funkcjonalności jest możliwość rozszerzania istniejących już typów. Co prawda już w Objective-C programista miał moliwość stworzenia kategorii (\ang{category}), ale pozwalała ona tylko na dodawanie nowych funkcji, nie można było natomiast definiować nowych właściwości, konstruktorów ani typów zagnieżdżonych. Dlatego w Swifcie zotały zaimplementowane rozszerzenia (\ang{extensions}), które pozwalają na:
 
@@ -162,51 +200,7 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
     \item implementowanie metod protokołów
 \end{itemize}
 
-% Listingi
-
-\newpage
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_class_struct_protocol_enum.swift}
-  \caption{Przykładowe definicje podstwowych obiektów w Swift: struktury, klasy, protokołu i typu wyliczeniowego}
-  \label{l:2_1_class_struct_protocol_enum}
-\end{listing}
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_generics_and_inheritance.swift}
-  \caption{Przykład klasy generycznej i klasy pochodnej w Swift}
-  \label{l:2_1_generics_and_inheritance}
-\end{listing}
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_associated_types.swift}
-  \caption{Przykład protokołu z typem powiązanym w Swift}
-  \label{l:2_1_associated_types}
-\end{listing}
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_closures.swift}
-  \caption{Przykład użycia domknięcia w Swift}
-  \label{l:2_1_closures}
-\end{listing}
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_laziness.swift}
-  \caption{Przykład deklaracji leniwej zmiennej i leniwej sekwencji w Swift}
-  \label{l:2_1_laziness}
-\end{listing}
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_enum_with_associated_type.swift}
-  \caption{Implementacja drzewa binarnego w Swift}
-  \label{l:2_1_enum_with_associated_type}
-\end{listing}
-
-\begin{listing}[ht]
-  \swiftcode{src/2_1_optional.swift}
-  \caption{Typ \texttt{Optional} i mechanizm \textit{optional chaining}}
-  \label{l:2_1_optional}
-\end{listing}
+\swiftlisting{2_extension}{Przykład rozszerzenia w Swift}
 
 %%%%% BIBLIOGRAFIA
 
