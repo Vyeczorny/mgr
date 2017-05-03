@@ -214,62 +214,62 @@
 \AtBeginDocument{
   \if@pol{\selectlanguage{polish}\old@title{\bfseries\@polishtitle\mdseries}}
          {\selectlanguage{english}\old@title{\bfseries\@englishtitle\mdseries}}
-  \let\old@nd\and
-  \renewcommand \and {, }
-  \hypersetup{pdfauthor={\@author},pdftitle={\@title} }
-  \renewcommand \and \old@nd
-  \renewcommand \fmlinebreak {\\}
-  \maketitle
-  \renewcommand \maketitle {\ClassWarningNoLine{iithesis}{\noexpand\maketitle ignored}}
-  \renewcommand \fmlinebreak {, }
-  \renewcommand \and {, }
-  \ifthenelse{\boolean{Decl@ration}}{
-    \selectlanguage{polish}
-    \begin{titlepage}\null\vfil
-    \begin{tabular}{@{}lll}
-    \multicolumn{3}{@{}l}{\@author}\\
-    \tw@col{\dotfill\str@t}\\
-    \tw@col{\dotfill\str@t}\\
-    \multicolumn{2}{c}{\footnotesize{(adres zameldowania)}}\\
-    \tw@col{\dotfill\str@t}\\
-    \tw@col{\dotfill\str@t}\\
-    \multicolumn{2}{c}{\footnotesize{(adres korespondencyjny)}}\\
-    PESEL:  & \dotfill\str@t\\
-    e-mail: & \dotfill\str@t\\
-    \tw@col{Wydzia\l{} Matematyki i~Informatyki\str@t}\\
-    \tw@col{stacjonarne studia \@studydegree{} stopnia}\\
-    kierunek:  & informatyka\\
-    nr albumu: & \@transcriptnum\end{tabular}\vskip 4.5em\par
-    \begin{center}\bfseries O\'swiadczenie\\
-    o autorskim wykonaniu pracy dyplomowej\end{center}\par
-    \frenchspacing Niniejszym o\'swiadczam, \.ze z\l{}o\.zon\k{a} do oceny
-    prac\k{e} zatytu\l{}owan\k{a}
-    \renewcommand \fmlinebreak { }%
-    \emph{\if@pol{\@polishtitle}
-      {\selectlanguage{english}\@englishtitle\selectlanguage{polish}}}
-    \renewcommand \fmlinebreak {, }%
-    wykona\l{}\@gendersuffix{} samodzielnie pod kierunkiem promotor%
-    \if@many{\'ow:}{a,} \@advisorgen. O\'swiadczam, \.ze powy\.zsze dane s\k{a}
-    zgodne ze stanem faktycznym i~znane mi s\k{a} przepisy ustawy z~dn. 4~lutego
-    1994~r. o~prawie autorskim i~prawach pokrewnych (tekst jednolity: Dz.~U.
-    z~2006~r. nr 90, poz. 637, z~p\'o\'zniejszymi zmianami) oraz \.ze tre\'s\'c
-    pracy dyplomowej przedstawionej do obrony, zawarta na przekazanym no\'sniku
-    elektronicznym, jest identyczna z~jej wersj\k{a} drukowan\k{a}.
-    \vskip 1.5em\par Wroc\l{}aw, \@date
-    \vskip 3em\par\hfill\footnotesize{(czytelny podpis)}\hskip 6em\null
-    \par\vfil\null\end{titlepage}
-  }{}
-  \if@pol {\selectlanguage{polish}}{\selectlanguage{english}}
-  \cleardoublepage\begin{abstract}
-  \renewcommand \fmlinebreak {\\}\par
-  \if@pol {\frenchspacing\@polishabstract}{\noindent\@englishabstract}
-  \if@long{\end{abstract}}{\begin{center}\rule[3pt]{300pt}{1pt}\end{center}\par}
-  \if@pol {\selectlanguage{english}}{\selectlanguage{polish}}
-  \if@long{\clearpage\begin{abstract}\par}{}
-  \if@pol {\noindent\@englishabstract\selectlanguage{polish}}
-          {\frenchspacing\@polishabstract\selectlanguage{english}}
-  \end{abstract}
-  \if@long{\if@pol{\selectlanguage{polish}}{\selectlanguage{english}}}{}
+  % \let\old@nd\and
+  % \renewcommand \and {, }
+  % \hypersetup{pdfauthor={\@author},pdftitle={\@title} }
+  % \renewcommand \and \old@nd
+  % \renewcommand \fmlinebreak {\\}
+  % \maketitle
+  % \renewcommand \maketitle {\ClassWarningNoLine{iithesis}{\noexpand\maketitle ignored}}
+  % \renewcommand \fmlinebreak {, }
+  % \renewcommand \and {, }
+  % \ifthenelse{\boolean{Decl@ration}}{
+  %   \selectlanguage{polish}
+  %   \begin{titlepage}\null\vfil
+  %   \begin{tabular}{@{}lll}
+  %   \multicolumn{3}{@{}l}{\@author}\\
+  %   \tw@col{\dotfill\str@t}\\
+  %   \tw@col{\dotfill\str@t}\\
+  %   \multicolumn{2}{c}{\footnotesize{(adres zameldowania)}}\\
+  %   \tw@col{\dotfill\str@t}\\
+  %   \tw@col{\dotfill\str@t}\\
+  %   \multicolumn{2}{c}{\footnotesize{(adres korespondencyjny)}}\\
+  %   PESEL:  & \dotfill\str@t\\
+  %   e-mail: & \dotfill\str@t\\
+  %   \tw@col{Wydzia\l{} Matematyki i~Informatyki\str@t}\\
+  %   \tw@col{stacjonarne studia \@studydegree{} stopnia}\\
+  %   kierunek:  & informatyka\\
+  %   nr albumu: & \@transcriptnum\end{tabular}\vskip 4.5em\par
+  %   \begin{center}\bfseries O\'swiadczenie\\
+  %   o autorskim wykonaniu pracy dyplomowej\end{center}\par
+  %   \frenchspacing Niniejszym o\'swiadczam, \.ze z\l{}o\.zon\k{a} do oceny
+  %   prac\k{e} zatytu\l{}owan\k{a}
+  %   \renewcommand \fmlinebreak { }%
+  %   \emph{\if@pol{\@polishtitle}
+  %     {\selectlanguage{english}\@englishtitle\selectlanguage{polish}}}
+  %   \renewcommand \fmlinebreak {, }%
+  %   wykona\l{}\@gendersuffix{} samodzielnie pod kierunkiem promotor%
+  %   \if@many{\'ow:}{a,} \@advisorgen. O\'swiadczam, \.ze powy\.zsze dane s\k{a}
+  %   zgodne ze stanem faktycznym i~znane mi s\k{a} przepisy ustawy z~dn. 4~lutego
+  %   1994~r. o~prawie autorskim i~prawach pokrewnych (tekst jednolity: Dz.~U.
+  %   z~2006~r. nr 90, poz. 637, z~p\'o\'zniejszymi zmianami) oraz \.ze tre\'s\'c
+  %   pracy dyplomowej przedstawionej do obrony, zawarta na przekazanym no\'sniku
+  %   elektronicznym, jest identyczna z~jej wersj\k{a} drukowan\k{a}.
+  %   \vskip 1.5em\par Wroc\l{}aw, \@date
+  %   \vskip 3em\par\hfill\footnotesize{(czytelny podpis)}\hskip 6em\null
+  %   \par\vfil\null\end{titlepage}
+  % }{}
+  % \if@pol {\selectlanguage{polish}}{\selectlanguage{english}}
+  % \cleardoublepage\begin{abstract}
+  % \renewcommand \fmlinebreak {\\}\par
+  % \if@pol {\frenchspacing\@polishabstract}{\noindent\@englishabstract}
+  % \if@long{\end{abstract}}{\begin{center}\rule[3pt]{300pt}{1pt}\end{center}\par}
+  % \if@pol {\selectlanguage{english}}{\selectlanguage{polish}}
+  % \if@long{\clearpage\begin{abstract}\par}{}
+  % \if@pol {\noindent\@englishabstract\selectlanguage{polish}}
+  %         {\frenchspacing\@polishabstract\selectlanguage{english}}
+  % \end{abstract}
+  % \if@long{\if@pol{\selectlanguage{polish}}{\selectlanguage{english}}}{}
   \tableofcontents
 }
 

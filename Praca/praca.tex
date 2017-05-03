@@ -7,7 +7,7 @@
 \usepackage{graphicx}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
-\polishtitle    {Wymagający złamania wierszy\fmlinebreak tytuł pracy w~języku polskim}
+\polishtitle    {Polski tytuł}
 \englishtitle   {English title}
 %\polishabstract {\ldots}
 %\englishabstract{\ldots}
@@ -144,9 +144,9 @@ Pomimo tego, że Swift był projektowany głównie jako język programowanie obi
 
 Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta jego autorzy bardzo mocno wzorowali się na językach bardzo zwięzłych i łatwych do czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a takim samym kodem w Swift.
 
-\begin{figure}[h!]
-\includegraphics[width=\textwidth]{images/Keynote.png}
-\caption{Craig Federighi pokazuje różnice pomiędzy czytelnością kodu Objectie-C (na górze) i Swift (na dole). \textit{WWDC Keynote 2014}}
+\begin{figure}[ht]
+\includegraphics[width=0.99\textwidth]{images/Keynote.png}
+\caption{Craig Federighi wskazuje różnice pomiędzy czytelnością kodu Objective-C (na górze) i Swift (na dole). \textit{WWDC Keynote 2014}}
 \label{f:keynote}
 \end{figure}
 
@@ -162,56 +162,49 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
     \item implementowanie metod protokołów
 \end{itemize}
 
-
 % Listingi
 
 \newpage
 
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_class_struct_protocol_enum.swift}
   \caption{Przykładowe definicje podstwowych obiektów w Swift: struktury, klasy, protokołu i typu wyliczeniowego}
   \label{l:2_1_class_struct_protocol_enum}
 \end{listing}
 
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_generics_and_inheritance.swift}
   \caption{Przykład klasy generycznej i klasy pochodnej w Swift}
   \label{l:2_1_generics_and_inheritance}
 \end{listing}
 
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_associated_types.swift}
   \caption{Przykład protokołu z typem powiązanym w Swift}
   \label{l:2_1_associated_types}
 \end{listing}
 
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_closures.swift}
   \caption{Przykład użycia domknięcia w Swift}
   \label{l:2_1_closures}
 \end{listing}
 
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_laziness.swift}
   \caption{Przykład deklaracji leniwej zmiennej i leniwej sekwencji w Swift}
   \label{l:2_1_laziness}
 \end{listing}
 
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_enum_with_associated_type.swift}
   \caption{Implementacja drzewa binarnego w Swift}
   \label{l:2_1_enum_with_associated_type}
 \end{listing}
 
-\begin{listing}
-  \swiftcode{src/2_1_enum_with_associated_type.swift}
-  \caption{Implementacja drzewa binarnego w Swift}
-  \label{l:2_1_enum_with_associated_type}
-\end{listing}
-
-\begin{listing}
+\begin{listing}[ht]
   \swiftcode{src/2_1_optional.swift}
-  \caption{Typ Optional i mechanizm optional chaining}
+  \caption{Typ \texttt{Optional} i mechanizm \textit{optional chaining}}
   \label{l:2_1_optional}
 \end{listing}
 
