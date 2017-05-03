@@ -14,12 +14,12 @@
   - język "bardzo silnie" typowany
   + domknięcia jako first-class citizens
   + możliwość wymuszenia leniwości obliczeń (implementacja podobna jak w C# za pomocą sekwencji)
-  - funkcyjne elementy podobne do Haskella (?):
-    - Optional / Maybe
-    - parametryczne enumy (podobne do Haskellowych typów)
+  + funkcyjne elementy podobne do Haskella (?):
+    + Optional / Maybe
+    + parametryczne enumy (podobne do Haskellowych typów)
   - bezpieczeństwo (let instead of var, classes closed for inheritance)
-  - zwięzłość (jak w Rubym/Pythonie)
-  - extension (mixiny w Rubym)
+  + zwięzłość (jak w Rubym/Pythonie)
+  + extension (mixiny w Rubym)
   - kompilowany ale ma REPLa // ale REPL jest ubogi, nie działa tak dobrze jak w Ruby
 
 2. Podobieństwa i różnice względem Obj-C:

@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{minted}
 \usepackage{listings}
+\usepackage{graphicx}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
 \polishtitle    {Wymagający złamania wierszy\fmlinebreak tytuł pracy w~języku polskim}
@@ -131,12 +132,35 @@ Pomimo tego, że Swift był projektowany głównie jako język programowanie obi
 
     \item Dzięki zwięzłej i eleganckiej składni oraz potraktowaniu domknięć na równi klasami i stukturami, Swift oferuje bardzo dobre wsparcie dla funkcji wyższego rzędu. Najbardziej jest to widoczne w implementacji kolekcji danych, które już w bibliotece standardowej posiadają najczęściej używane funkcje służące do manipulowania nimi, takie jak \texttt{filter}, \texttt{map}, \texttt{reduce} czy \texttt{flatMap}.
 
-    \item Autorzy Swifta postawili bardzo duży nacisk na niemutowalność \todo{lepsze słowo?} danych, co przejawia się w całej składni języka, np. dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do deklarowania stałych, parametry przekazywane do funkcji są domyślnie stałymi, użycie typów wartościowych jest preferowane nad użyciem klas (również w bibliotece standardowej) itp.
+    \item Autorzy Swifta postawili bardzo duży nacisk na niemutowalność (\todo{lepsze słowo?}) danych, co przejawia się w całej składni języka, np. dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do deklarowania stałych, parametry przekazywane do funkcji są domyślnie stałymi, użycie typów wartościowych jest preferowane nad użyciem klas (również w bibliotece standardowej) itp.
 
     \item Swift posiada zaawansowany mechanizm \textit{pattern matchingu}, który można wykorzystać do dopasowywania typów wyliczeniowych, krotek i wyrażeń. Tak jak w wielu językach funkcyjnych, \textit{pattern matching} w Swifcie jest wyczerpujący (\ang{exhaustive}), co oznacza, że każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
 
+    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicializowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować \texttt{nil} jako wartość, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaning}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
+
 \end{itemize}
 
+\section{Zwięzłość składni}
+
+Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta jego autorzy bardzo mocno wzorowali się na językach bardzo zwięzłych i łatwych do czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a takim samym kodem w Swift.
+
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{images/Keynote.png}
+\caption{Craig Federighi pokazuje różnice pomiędzy czytelnością kodu Objectie-C (na górze) i Swift (na dole). \textit{WWDC Keynote 2014}}
+\label{f:keynote}
+\end{figure}
+
+\section{Rozszerzenia typów}
+
+Jedną z rzadziej spotykanych w językach statycznie typowanych językach programowania funkcjonalności jest możliwość rozszerzania istniejących już typów. Co prawda już w Objective-C programista miał moliwość stworzenia kategorii (\ang{category}), ale pozwalała ona tylko na dodawanie nowych funkcji, nie można było natomiast definiować nowych właściwości, konstruktorów ani typów zagnieżdżonych. Dlatego w Swifcie zotały zaimplementowane rozszerzenia (\ang{extensions}), które pozwalają na:
+
+\begin{itemize}
+    \item dodawanie nowych właściwości obliczanych (\ang{computed properties})
+    \item definiowanie nowych metod instancji i metdo typu
+    \item definiowanie nowych inicializatorów
+    \item definiowanie i używanie typów zagnieżdżonych
+    \item implementowanie metod protokołów
+\end{itemize}
 
 
 % Listingi
@@ -177,10 +201,18 @@ Pomimo tego, że Swift był projektowany głównie jako język programowanie obi
   \swiftcode{src/2_1_enum_with_associated_type.swift}
   \caption{Implementacja drzewa binarnego w Swift}
   \label{l:2_1_enum_with_associated_type}
-\end{listing}\begin{listing}
+\end{listing}
+
+\begin{listing}
   \swiftcode{src/2_1_enum_with_associated_type.swift}
   \caption{Implementacja drzewa binarnego w Swift}
   \label{l:2_1_enum_with_associated_type}
+\end{listing}
+
+\begin{listing}
+  \swiftcode{src/2_1_optional.swift}
+  \caption{Typ Optional i mechanizm optional chaining}
+  \label{l:2_1_optional}
 \end{listing}
 
 %%%%% BIBLIOGRAFIA
