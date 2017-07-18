@@ -44,6 +44,10 @@
   fontsize=\footnotesize
 }
 
+\newmintedfile[objccode]{objc}{
+  fontsize=\footnotesize
+}
+
 \newcommand{\todo}[1]{
   \textit{\textbf{TODO: }#1}
 }
@@ -52,6 +56,14 @@
 
 \newcommand{\swiftlisting}[2]{
     \swiftcode{src/#1.swift}
+    \begin{listing}[ht]
+      \caption{#2}
+      \label{l:#1}
+    \end{listing}
+}
+
+\newcommand{\objclisting}[2]{
+    \objccode{src/#1.m}
     \begin{listing}[ht]
       \caption{#2}
       \label{l:#1}
@@ -201,6 +213,18 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 \end{itemize}
 
 \swiftlisting{2_extension}{Przykład rozszerzenia w Swift}
+
+\chapter{Podobieństwa i różnice pomiędzy Swiftem i Objective-C}
+
+\section{Podobieństwa}
+
+\subsection{Swift i Objective-C jako języki programowania obiektowego}
+
+Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowo. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i polimorfizm. Dzięki modyfikatorom dostępu umożliwiają również enkapsulację implmentacji i opisywania zachowań za pomocą abstrakcyjnych typów danych (protokoły w Objective-C, interfejsy w Swifcie).
+
+\objclisting{3_objective_c_example}{Przykład kodu obiektowego w Objective-C}
+
+\swiftlisting{3_swift_example}{Analogiczny kod napisany w Swifcie}
 
 %%%%% BIBLIOGRAFIA
 

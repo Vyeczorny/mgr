@@ -23,8 +23,32 @@
   - kompilowany ale ma REPLa // ale REPL jest ubogi, nie działa tak dobrze jak w Ruby
 
 2. Podobieństwa i różnice względem Obj-C:
-  - wymienienie najważniejszych podobieństw (zarządzanie pamięcią!)
-  - wymienienie najważniejszych różnic (type safety etc)
+  - podobieństwa:
+    - obiektowość
+    - ARC
+    - stdlib
+    - używane wzorce projektowe
+  - różnice:
+    - składnia i wygoda
+        - inferencja typów
+        - brak plików nagłówkowych
+        - Obj-C było prekompilowane do C, Swift ma własny build system
+        - generics
+        - duuuużo przyjemniejsza składnia
+        - zwięzłość
+    - zarządzanie pamięcią
+        - ARC zaszyty w języku
+    - bezpieczeństwo
+        - mocne statyczne typowanie
+        - optionale
+        - explicit używanie pointerów
+        - silnie typowane enumy
+        - proste, ale ważne poprawki składni, jak np obowiązkowe nawiasy
+        - zabronione niezainicjalizowane zmienne
+        - namespaces
+    - mniejsze rzeczy
+        - lepsze wsparcie dla programowania funkcyjnego (domknięcia jako first class citizens)
+        - składnia
 
 3. Porównania:
   - wydajność
