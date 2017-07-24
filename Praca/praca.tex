@@ -216,15 +216,26 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 
 \chapter{Podobieństwa i różnice pomiędzy Swiftem i Objective-C}
 
+\todo{Dwa słowa o samym Objective-C?}
+
 \section{Podobieństwa}
 
 \subsection{Swift i Objective-C jako języki programowania obiektowego}
 
-Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowo. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i polimorfizm. Dzięki modyfikatorom dostępu umożliwiają również enkapsulację implmentacji i opisywania zachowań za pomocą abstrakcyjnych typów danych (protokoły w Objective-C, interfejsy w Swifcie).
+Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i polimorfizm. Dzięki modyfikatorom dostępu umożliwiają również enkapsulację implementacji i opisywanie zachowań za pomocą abstrakcyjnych typów danych (protokoły w Objective-C, interfejsy w Swifcie).
 
 \objclisting{3_objective_c_example}{Przykład kodu obiektowego w Objective-C}
 
 \swiftlisting{3_swift_example}{Analogiczny kod napisany w Swifcie}
+
+\subsection{Zarządzanie pamięcią}
+
+W początkowych wersjach systemu OSX i iOS zarządzanie pamięcią było w pełni manualne - co prawda obiekty (a raczej wskaźniki do nich) posiadały liczniki referencji, jednak programista musiał sam zadbać o zarządzanie tymi licznikami. Przełom nastąpił w roku 2011, kiedy to do Objective-C zostało dodane automatyczne zliczanie referencji (\ang{automatic reference counting}, w skrócie: ARC).
+
+Automatyczne zliczanie referencji to jedna z najprostszych metod zarządzania pamięcią, odciążajaca programistę z obowiązku jawnego inkrementowania i dekrementowania liczników referencji. Użycie ARC w Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w momencie, gdy nowa referencja do obiektu zostaje utworzona (np. inicjalizacja, przypisanie, przekazania obiektu w parametrze) oraz zmniejsza go, w momencie usunięcia referencji. Dzięki temu programista nie musi manualnie używać funkcji \texttt{retain} i \texttt{release}, jak to miało miejsce w poprzednich wersjach Objective-C. Pozwala to na wyłapanie wielu błędów, takich jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy odwoływanie się do wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie wprowadza niedeterminizmu, co ma miejsce w przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma znikomy wpływ na wydajność działania aplikacji.
+
+ARC jest również metodą zarządzania pamięcią zaimplementowaną w Swifcie. Główną różnicą jest jednak sposób implementacji. W Objective-C, ARC jest rozszerzeniem języka, operającym się głównie na preprocesorze i generowaniu kodu odpowiedzialnego za zliczanie referencji. W Swifcie natomiast, ARC jest jego podstawową cechą, posiadającą odrębną składnię i wparcie ze strony środowiska uruchomieniowego.
+
 
 %%%%% BIBLIOGRAFIA
 
