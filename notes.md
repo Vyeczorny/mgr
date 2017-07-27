@@ -11,3 +11,6 @@ https://developer.apple.com/videos/play/wwdc2011/323/
 https://developer.apple.com/videos/play/wwdc2011/322/
 - ARC in clang 5:
 https://clang.llvm.org/docs/AutomaticReferenceCounting.html
+- Swift repository
+https://github.com/apple/swift
+https://github.com/apple/swift-corelibs-foundation

@@ -38,6 +38,7 @@
         - zwięzłość
     - zarządzanie pamięcią
         - ARC zaszyty w języku
+    - system typów
     - bezpieczeństwo
         - mocne statyczne typowanie
         - optionale
