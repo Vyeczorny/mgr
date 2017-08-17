@@ -14,3 +14,9 @@ https://clang.llvm.org/docs/AutomaticReferenceCounting.html
 - Swift repository
 https://github.com/apple/swift
 https://github.com/apple/swift-corelibs-foundation
+- messaging in Objective-C:
+https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html
+
+# Pytania
+
+- co z tłumaczeniami angielskich nazw

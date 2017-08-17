@@ -240,8 +240,38 @@ ARC jest również metodą zarządzania pamięcią zaimplementowaną w Swifcie. 
 
 Jedną z cech, dla której Swifta tak szybko zdobywa popularność jest możliwość wywoływania kodu Objective-C z poziomu kodu swiftowego i na odwrót (\ang{interoperability}). Z tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i są dostępne w obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w języku C, dlatego też wiele z bardziej zaawansowanych bibliotek, jak np. CoreAudio czy GLKit (\todo{źródło}).
 
+\section{Różnice}
 
+\subsection{Składnia}
 
+Objective-C to język, którego początki sięgają pierwszej połowy lat 80. Z tego powodu, niektóre jego cechy są w tym momencie uważane w środowisku developerów systemów iOS i OSX, za przestarzałe i niewygodne. Mając te cechy na uwadze, inżynierowie Apple opracowali nowy język z uproszczoną składnią i wieloma udogodnieniami pozwalającymi programistom w krótszym czasie pisać kod, który będzie czytelniejszy i łatwiejszy w utrzymaniu.
+
+Pierwszym z udogodnień zaimplementowanych Swifta jest inferencja typów. W Objective-C każdy typ zmiennej musiał zostać jawnie napisany, co szczególnie w przypadku długich, złożonych typów (np. zawierających parametry generyczne) mogło być mocno uciążliwe. Kompilator Swifta natomiast stara się wywnioskować tak wiele informacji o typach, ile jest w stanie.
+
+Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. w Swifcie usunięto konieczność pisania nawiasów przy warunkach intrukcji warunkowych i pętli, dodano możliwość oddzielania kolejnych intrukcji poprzez znak nowej linii (nie ma potrzeby pisania znaku średnika na końcu linii), zaimplementowano dużo prosztszą obsługą stringów, dodano dużo czytelniejszą składnię dla funkcji wyższego rzędu, zrezygnowano z plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w Javie czy C\#). Dodatkowo, najczęściej używane struktury składniowe otrzymały prostsze formy w postaci cukru syntaktycznego, np:
+
+\begin{itemize}
+    \item definicja zmiennej \mintinline{swift}{var x: Int?} jest tożsama z \mintinline{swift}{var x: Optional<Int>}
+    \item konstrukcja \texttt{if let} jest cukrem syntaktycznym dla sprawdzania, czy wartość typu \mintinline{swift}{Optional<T>} nie jest nilem
+    \item Swift 2.2 wprowadził cukier syntaktyczny dla selektorów (obiektów zawierających informacje pozwalające wywoływać na obiektach funkcje w runtime)
+    \item pattern matching dla typów wyliczeniowych i krotek to bardzo mocno rozwinięty cukier syntaktyczny dla instrukcji warunkowych dla tych typów
+\end{itemize}
+
+\subsection{Zarządzanie pamięcią}
+
+Pomimo, że zarówno Objective-C, jak i Swift korzystają z automatycznego zliczania referencji, jego implementacja jest diametralnie różna. W Objective-C ARC został dodany jako jedno z rozszerzeń języka C, jego implementacja bazuje głównie na wykorzystaniu makr i preprocesora, który automatycznie wstawia kod odpowiedzialny za zarządzanie licznikiem referencji. W Swifcie natomiast, ARC jest podstawowym elementem języka posiadającym odrębną składnię i słowa kluczowe.
+
+\subsection{System typów}
+
+Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy nimi kilka istotnych różnic:
+
+\begin{itemize}
+
+    \item w Swifcie w zasadzie nie występuje niejawne rzutowanie typów. Każde (nawet najprostsze, jak rzutowanie z typu całkowitoliczbowego na zmiennoprzeciknowy) musi być jawnie napisane przez programistę. W Objective-C zasady rzutowania zostały odziedziczone z języka C i są w zasadzie takie same.
+    \item sposób wywoływania metod został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy obiektami. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend} w trakcie działania programu.
+    \item w Objective-C istnieje klasa \mintinline{objc}{NSObject}, która jest superklasą dla wszystkich innych klas. Swift nie posiada takiej superklasy, została ona zastąpiona protokołem \mintinline{swift}{AnyObject}.
+
+\end{itemize}
 
 
 

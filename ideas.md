@@ -24,21 +24,21 @@
 
 2. Podobieństwa i różnice względem Obj-C:
   - podobieństwa:
-    - obiektowość
-    - ARC
-    - stdlib
+    + obiektowość
+    + ARC
+    + stdlib
     - używane wzorce projektowe
   - różnice:
-    - składnia i wygoda
-        - inferencja typów
-        - brak plików nagłówkowych
+    + składnia i wygoda
+        + inferencja typów
+        + brak plików nagłówkowych
         - Obj-C było prekompilowane do C, Swift ma własny build system
-        - generics
-        - duuuużo przyjemniejsza składnia
-        - zwięzłość
-    - zarządzanie pamięcią
-        - ARC zaszyty w języku
-    - system typów
+        + duuuużo przyjemniejsza składnia
+        + zwięzłość
+        + cukier syntaktyczny
+    + zarządzanie pamięcią
+        + ARC zaszyty w języku
+    + system typów
     - bezpieczeństwo
         - mocne statyczne typowanie
         - optionale
@@ -50,6 +50,7 @@
     - mniejsze rzeczy
         - lepsze wsparcie dla programowania funkcyjnego (domknięcia jako first class citizens)
         - składnia
+        - generics
 
 3. Porównania:
   - wydajność
