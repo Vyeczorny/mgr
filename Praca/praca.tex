@@ -273,6 +273,19 @@ Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy n
 
 \end{itemize}
 
+\subsection{Bezpieczeństwo}
+
+Jednym z podstawowych założeń przyjętych przy tworzeniu Swifta było stworzenie języka, który będzie chronił programistę przed najczęstszymi błędami popełnianymi podczas pisania kodu. Najważniejsze mechanizmy służące temu celowi to:
+
+\begin{itemize}
+    \item typ \mintinline{swift}{Optional<T>} - typ ten chroni przed wszelkimi błędami związanymi z wartością \texttt{null}
+    \item konieczność inicjalizacji obiektu - każdy obiekt musi zostać zainicjalizowany w trakcie zadeklarowania referencji, co zapobiega problemom z dostępem do jeszcze nie zainicjalizowanej pamięci
+    \item generyczne struktury danych - Objective-C nie posiadało typów generycznych, przez co struktury danych mogły przechowywać wartości różnych typów, co z kolei powodowało konieczność sprawdzania typów. W Swifcie struktury są silnie typowane i homogeniczne
+    \item domyślna niemutowalność - w Swifcie istnieje wiele miejsc, gdzie obiekty są domyślnie niemutowalne, np przy przekazywaniu do funkcji
+    \item preferowanie typów wartościowych nad referencyjne - typy wartościowe zapobiegają zmianom jednego obiektu z wielu miejsc, przez co czytelność i łatwość zrozumienia kodu jest dużo większa
+    \item automatyczne sprawdzanie przekroczenia zakresu liczb całkowitych
+    \item zmiany w składni, takie jak: obowiązkowe nawiasy \texttt{\{...\}} dla ciał funkcji warunkowych i pętl, obsługa wszystkich możliwych wartości dla typów wyliczeniowych, konieczność zwrócenia wartości w fukcjach, które deklarują zwracany typ, brak instrukcji \texttt{goto} itp.
+\end{itemize}
 
 
 %%%%% BIBLIOGRAFIA
