@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F96F3D6F1F4AA685005D1E97 /* ArrayInsertionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3D6E1F4AA685005D1E97 /* ArrayInsertionTest.swift */; };
+		F96F3D731F4AA793005D1E97 /* ArrayInsertionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F96F3D721F4AA793005D1E97 /* ArrayInsertionTest.m */; };
 		F9801CFF1F46C37E001D97AC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9801CFE1F46C37E001D97AC /* main.swift */; };
+		F9801D071F46C55A001D97AC /* TestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9801D061F46C55A001D97AC /* TestRunner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +26,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F96F3D6E1F4AA685005D1E97 /* ArrayInsertionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayInsertionTest.swift; sourceTree = "<group>"; };
+		F96F3D701F4AA793005D1E97 /* Benchmarks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Benchmarks-Bridging-Header.h"; sourceTree = "<group>"; };
+		F96F3D711F4AA793005D1E97 /* ArrayInsertionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayInsertionTest.h; sourceTree = "<group>"; };
+		F96F3D721F4AA793005D1E97 /* ArrayInsertionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayInsertionTest.m; sourceTree = "<group>"; };
 		F9801CFB1F46C37E001D97AC /* Benchmarks */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Benchmarks; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9801CFE1F46C37E001D97AC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F9801D061F46C55A001D97AC /* TestRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +46,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F96F3D6C1F4AA63B005D1E97 /* Objective-C Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F96F3D711F4AA793005D1E97 /* ArrayInsertionTest.h */,
+				F96F3D721F4AA793005D1E97 /* ArrayInsertionTest.m */,
+				F96F3D701F4AA793005D1E97 /* Benchmarks-Bridging-Header.h */,
+			);
+			path = "Objective-C Tests";
+			sourceTree = "<group>";
+		};
+		F96F3D6D1F4AA63B005D1E97 /* Swift Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F96F3D6E1F4AA685005D1E97 /* ArrayInsertionTest.swift */,
+			);
+			path = "Swift Tests";
+			sourceTree = "<group>";
+		};
 		F9801CF21F46C37E001D97AC = {
 			isa = PBXGroup;
 			children = (
@@ -58,8 +84,19 @@
 			isa = PBXGroup;
 			children = (
 				F9801CFE1F46C37E001D97AC /* main.swift */,
+				F9801D051F46C53D001D97AC /* Framework */,
+				F96F3D6C1F4AA63B005D1E97 /* Objective-C Tests */,
+				F96F3D6D1F4AA63B005D1E97 /* Swift Tests */,
 			);
 			path = Benchmarks;
+			sourceTree = "<group>";
+		};
+		F9801D051F46C53D001D97AC /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				F9801D061F46C55A001D97AC /* TestRunner.swift */,
+			);
+			path = Framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +131,7 @@
 				TargetAttributes = {
 					F9801CFA1F46C37E001D97AC = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -120,7 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96F3D6F1F4AA685005D1E97 /* ArrayInsertionTest.swift in Sources */,
+				F96F3D731F4AA793005D1E97 /* ArrayInsertionTest.m in Sources */,
 				F9801CFF1F46C37E001D97AC /* main.swift in Sources */,
+				F9801D071F46C55A001D97AC /* TestRunner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +261,11 @@
 		F9801D031F46C37E001D97AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Benchmarks/Objective-C Tests/Benchmarks-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -228,7 +273,10 @@
 		F9801D041F46C37E001D97AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Benchmarks/Objective-C Tests/Benchmarks-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -252,6 +300,7 @@
 				F9801D041F46C37E001D97AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
