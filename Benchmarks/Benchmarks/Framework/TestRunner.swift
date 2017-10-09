@@ -12,30 +12,31 @@ import Foundation
     func run()
 }
 
-struct TestResults {
+struct TestResult {
     let allTimes: [Double]
-    let averageTime: Double
+
+    var averageTime: Double {
+        return allTimes.reduce(0, +) / Double(allTimes.count)
+    }
 }
 
 class TestRunner {
 
-    private let numberOfRepeats: Int
+    private let numberOfRepetitions: Int
 
-    init(numberOfRepeats: Int) {
-        self.numberOfRepeats = numberOfRepeats
+    init(numberOfRepetitions: Int) {
+        self.numberOfRepetitions = numberOfRepetitions
     }
 
-    func run(test: Test) -> TestResults {
+    func run(test: Test) -> TestResult {
         var allTimes = [Double]()
 
-        for _ in 0..<numberOfRepeats {
+        for _ in 0..<numberOfRepetitions {
             let time = runSingleTest(test: test)
             allTimes.append(time)
         }
 
-        let averageTime = allTimes.reduce(0, +) / Double(allTimes.count)
-
-        return TestResults(allTimes: allTimes, averageTime: averageTime)
+        return TestResult(allTimes: allTimes)
     }
 
     private func runSingleTest(test: Test) -> Double {

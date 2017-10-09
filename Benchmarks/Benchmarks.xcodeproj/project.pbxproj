@@ -11,6 +11,8 @@
 		F96F3D731F4AA793005D1E97 /* ArrayInsertionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F96F3D721F4AA793005D1E97 /* ArrayInsertionTest.m */; };
 		F9801CFF1F46C37E001D97AC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9801CFE1F46C37E001D97AC /* main.swift */; };
 		F9801D071F46C55A001D97AC /* TestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9801D061F46C55A001D97AC /* TestRunner.swift */; };
+		F9956B4C1F69093100BB21B3 /* TestSuiteRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9956B4B1F69093100BB21B3 /* TestSuiteRunner.swift */; };
+		F9C331141F67B70B0007F16B /* ArgumentsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C331131F67B70B0007F16B /* ArgumentsParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +35,8 @@
 		F9801CFB1F46C37E001D97AC /* Benchmarks */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Benchmarks; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9801CFE1F46C37E001D97AC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F9801D061F46C55A001D97AC /* TestRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunner.swift; sourceTree = "<group>"; };
+		F9956B4B1F69093100BB21B3 /* TestSuiteRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSuiteRunner.swift; sourceTree = "<group>"; };
+		F9C331131F67B70B0007F16B /* ArgumentsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				F9801D061F46C55A001D97AC /* TestRunner.swift */,
+				F9C331131F67B70B0007F16B /* ArgumentsParser.swift */,
+				F9956B4B1F69093100BB21B3 /* TestSuiteRunner.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -159,6 +165,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F96F3D6F1F4AA685005D1E97 /* ArrayInsertionTest.swift in Sources */,
+				F9C331141F67B70B0007F16B /* ArgumentsParser.swift in Sources */,
+				F9956B4C1F69093100BB21B3 /* TestSuiteRunner.swift in Sources */,
 				F96F3D731F4AA793005D1E97 /* ArrayInsertionTest.m in Sources */,
 				F9801CFF1F46C37E001D97AC /* main.swift in Sources */,
 				F9801D071F46C55A001D97AC /* TestRunner.swift in Sources */,

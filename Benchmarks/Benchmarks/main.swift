@@ -8,45 +8,21 @@
 
 import Foundation
 
-private struct AvailableTest {
-    let swiftTest: Test
-    let objcTest: Test
-}
-
-private let availableTests = [
-    "array_insertion": AvailableTest(
-        swiftTest: ArrayInsertionTestSwift(numberOfInsertions: 100000),
-        objcTest: ArrayInsertionTestObjC(numberOfInsertions: 100000)
-    )
-]
-
 // App
 
-if CommandLine.arguments.count <= 1 {
-    print("Brak argumentów")
-    exit(-1)
-}
+let argumentsParser = ArgumentsParser()
 
-let command = CommandLine.arguments[1]
+let command = argumentsParser.parse(arguments: CommandLine.arguments)
 
-if command == "run" {
-    if CommandLine.arguments.count <= 2 {
-        print("Brak nazwy testu")
+print("Command = \(command)")
+
+switch command {
+    case .error(let text):
+        print("BŁĄD: \(text)")
+    case .list:
         exit(-1)
-    }
-
-    let testName = CommandLine.arguments[2]
-
-    guard let test = availableTests[testName] else {
-        print("Test o nazwie \(testName) nie został znaleziony")
-        exit(-1)
-    }
-
-    test.objcTest.run()
-}
-
-if command == "list" {
-    for name in availableTests.keys {
-        print(name)
-    }
+    case .run(let options):
+        let testSuiteRunner = TestSuiteRunner()
+        let result = testSuiteRunner.runTestSuite(withOptions: options)
+        print("RESULT: \(result)")
 }
