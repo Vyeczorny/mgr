@@ -230,8 +230,6 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 
 \chapter{Podobieństwa i różnice pomiędzy Swiftem i Objective-C}
 
-\todo{Dwa słowa o samym Objective-C?}
-
 \section{Podobieństwa}
 
 \subsection{Swift i Objective-C jako języki programowania obiektowego}
@@ -244,29 +242,29 @@ Zarówno Swift, jak i Objective-C są głównie językami programowania  obiekto
 
 \subsection{Zarządzanie pamięcią}
 
-W początkowych wersjach systemu OSX i iOS zarządzanie pamięcią było w pełni manualne - co prawda obiekty (a raczej wskaźniki do nich) posiadały liczniki referencji, jednak programista musiał sam zadbać o zarządzanie tymi licznikami. Przełom nastąpił w roku 2011, kiedy to do Objective-C zostało dodane automatyczne zliczanie referencji (\ang{automatic reference counting}, w skrócie: ARC).
+W początkowych wersjach systemu Mac OS i iOS zarządzanie pamięcią było w pełni manualne - co prawda obiekty (a właściwie wskaźniki do nich) posiadały liczniki referencji, jednak programista musiał sam zadbać o zarządzanie nimi. Przełom nastąpił w roku 2011, kiedy to do Objective-C zostało dodane automatyczne zliczanie referencji (\ang{automatic reference counting}, w skrócie: ARC).
 
-Automatyczne zliczanie referencji to jedna z najprostszych metod zarządzania pamięcią, odciążajaca programistę z obowiązku jawnego inkrementowania i dekrementowania liczników referencji. Użycie ARC w Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w momencie, gdy nowa referencja do obiektu zostaje utworzona (np. inicjalizacja, przypisanie, przekazania obiektu w parametrze) oraz zmniejsza go, w momencie usunięcia referencji. Dzięki temu programista nie musi manualnie używać funkcji \texttt{retain} i \texttt{release}, jak to miało miejsce w poprzednich wersjach Objective-C. Pozwala to na wyłapanie wielu błędów, takich jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy odwoływanie się do wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie wprowadza niedeterminizmu, co ma miejsce w przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma znikomy wpływ na wydajność działania aplikacji.
+Automatyczne zliczanie referencji to jedna z najprostszych metod zarządzania pamięcią, odciążajaca programistę z obowiązku jawnego inkrementowania i dekrementowania liczników referencji. Użycie ARC w Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w momencie, gdy nowa referencja do obiektu zostaje utworzona (np. inicjalizacja, przypisanie, przekazania obiektu w parametrze) oraz zmniejsza go, w momencie usunięcia referencji. Dzięki temu programista nie musi manualnie używać funkcji \texttt{retain} i \texttt{release}, jak to miało miejsce w poprzednich wersjach Objective-C. Pozwala to na zapobiegnięcie wielu błędom, takim jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy odwoływanie się do wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie wprowadza niedeterminizmu, co ma miejsce w przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma znikomy wpływ na wydajność działania aplikacji.
 
-ARC jest również metodą zarządzania pamięcią zaimplementowaną w Swifcie. Główną różnicą jest jednak sposób implementacji. W Objective-C, ARC jest rozszerzeniem języka, operającym się głównie na preprocesorze i generowaniu kodu odpowiedzialnego za zliczanie referencji. W Swifcie natomiast, ARC jest jego podstawową cechą, posiadającą odrębną składnię i wparcie ze strony środowiska uruchomieniowego.
+ARC jest również metodą zarządzania pamięcią zaimplementowaną w Swifcie. Główną różnicą jest jednak sposób implementacji. W Objective-C, ARC jest rozszerzeniem języka, operającym się głównie na preprocesorze i generowaniu kodu odpowiedzialnego za zliczanie referencji. W Swifcie natomiast, ARC jest jego podstawową cechą, posiadającą odrębną składnię i wparcie ze strony środowiska uruchomieniowego i kompilatora.
 
 \subsection{Biblioteki}
 
-Jedną z cech, dla której Swifta tak szybko zdobywa popularność jest możliwość wywoływania kodu Objective-C z poziomu kodu swiftowego i na odwrót (\ang{interoperability}). Z tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i są dostępne w obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w języku C, dlatego też wiele z bardziej zaawansowanych bibliotek, jak np. CoreAudio czy GLKit (\todo{źródło}).
+Jedną z cech, dla której Swifta tak szybko zdobywa popularność jest możliwość wywoływania kodu Objective-C z poziomu kodu swiftowego i na odwrót (\ang{interoperability}). Z tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i są dostępne w obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w języku C, dlatego też wiele z zaawansowanych bibliotek, jak np. CoreAudio czy GLKit (\todo{źródło}) było dostępnych dla Swifta już od dnia jego prezentacji.
 
 \section{Różnice}
 
 \subsection{Składnia}
 
-Objective-C to język, którego początki sięgają pierwszej połowy lat 80. Z tego powodu, niektóre jego cechy są w tym momencie uważane w środowisku developerów systemów iOS i OSX, za przestarzałe i niewygodne. Mając te cechy na uwadze, inżynierowie Apple opracowali nowy język z uproszczoną składnią i wieloma udogodnieniami pozwalającymi programistom w krótszym czasie pisać kod, który będzie czytelniejszy i łatwiejszy w utrzymaniu.
+Objective-C to język, którego początki sięgają pierwszej połowy lat 80. Z tego powodu, niektóre jego cechy są w tym momencie uważane w środowisku developerów, za przestarzałe i niewygodne. Mając te cechy na uwadze, inżynierowie Apple opracowali nowy język z uproszczoną składnią i wieloma udogodnieniami pozwalającymi programistom w krótszym czasie pisać kod, który będzie czytelniejszy i łatwiejszy w utrzymaniu.
 
 Pierwszym z udogodnień zaimplementowanych Swifta jest inferencja typów. W Objective-C każdy typ zmiennej musiał zostać jawnie napisany, co szczególnie w przypadku długich, złożonych typów (np. zawierających parametry generyczne) mogło być mocno uciążliwe. Kompilator Swifta natomiast stara się wywnioskować tak wiele informacji o typach, ile jest w stanie.
 
-Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. w Swifcie usunięto konieczność pisania nawiasów przy warunkach intrukcji warunkowych i pętli, dodano możliwość oddzielania kolejnych intrukcji poprzez znak nowej linii (nie ma potrzeby pisania znaku średnika na końcu linii), zaimplementowano dużo prosztszą obsługą stringów, dodano dużo czytelniejszą składnię dla funkcji wyższego rzędu, zrezygnowano z plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w Javie czy C\#). Dodatkowo, najczęściej używane struktury składniowe otrzymały prostsze formy w postaci cukru syntaktycznego, np:
+Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. W Swifcie usunięto konieczność pisania nawiasów przy warunkach intrukcji warunkowych i pętli, dodano możliwość oddzielania kolejnych intrukcji poprzez znak nowej linii (nie ma potrzeby pisania znaku średnika na końcu linii), zaimplementowano dużo prostszą obsługę stringów, dodano dużo czytelniejszą składnię dla funkcji wyższego rzędu, zrezygnowano z plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w Javie czy C\#). Dodatkowo, najczęściej używane struktury składniowe otrzymały prostsze formy w postaci cukru syntaktycznego, np:
 
 \begin{itemize}
     \item definicja zmiennej \mintinline{swift}{var x: Int?} jest tożsama z \mintinline{swift}{var x: Optional<Int>}
-    \item konstrukcja \texttt{if let} jest cukrem syntaktycznym dla sprawdzania, czy wartość typu \mintinline{swift}{Optional<T>} nie jest nilem
+    \item konstrukcja \texttt{if let} jest cukrem syntaktycznym dla wyrażenia \mintinline{swift}{switch}, wywołanego na obiekcie typu \mintinline{swift}{Optional<T>}
     \item Swift 2.2 wprowadził cukier syntaktyczny dla selektorów (obiektów zawierających informacje pozwalające wywoływać na obiektach funkcje w runtime)
     \item pattern matching dla typów wyliczeniowych i krotek to bardzo mocno rozwinięty cukier syntaktyczny dla instrukcji warunkowych dla tych typów
 \end{itemize}
@@ -281,8 +279,8 @@ Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy n
 
 \begin{itemize}
 
-    \item w Swifcie w zasadzie nie występuje niejawne rzutowanie typów. Każde (nawet najprostsze, jak rzutowanie z typu całkowitoliczbowego na zmiennoprzeciknowy) musi być jawnie napisane przez programistę. W Objective-C zasady rzutowania zostały odziedziczone z języka C i są w zasadzie takie same.
-    \item sposób wywoływania metod został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy obiektami. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend} w trakcie działania programu.
+    \item w Swifcie w zasadzie nie występuje niejawne rzutowanie typów. Każde (nawet najprostsze, jak rzutowanie z typu całkowitoliczbowego na zmiennoprzeciknowy) musi być jawnie wywołane przez programistę. W Objective-C zasady rzutowania zostały odziedziczone z języka C i są w zasadzie takie same.
+    \item sposób wywoływania metod w Objective-C został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy obiektami. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend} w trakcie działania programu. W Swifcie natomiast wywołania metod opierają się na wskaźnikach do metod oraz \textit{Protocol Witness Table} (odpowiednik \textit{vtable} z C++).
     \item w Objective-C istnieje klasa \mintinline{objc}{NSObject}, która jest superklasą dla wszystkich innych klas. Swift nie posiada takiej superklasy, została ona zastąpiona protokołem \mintinline{swift}{AnyObject}.
 
 \end{itemize}
