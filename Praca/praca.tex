@@ -5,6 +5,7 @@
 \usepackage{minted}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{lmodern}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
 \polishtitle    {Polski tytuł}
@@ -193,11 +194,24 @@ Pomimo tego, że Swift był projektowany głównie jako język programowania obi
 
 Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta iżynierowie Apple mocno wzorowali się na językach znanych ze swojej zwięzłości i łatwości czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a takim samym kodem w Swift.
 
-\begin{figure}[ht]
-\makebox[\textwidth][c]{\includegraphics[width=1.2\textwidth]{images/Keynote.png}}
-\caption{Craig Federighi wskazuje różnice pomiędzy czytelnością kodu Objective-C (na górze) i Swift (na dole). \textit{WWDC Keynote 2014}}
+\begin{listing}[ht]
+\begin{minted}{objc}
+// Objective-C
+if (myDelegate != nil) {
+    if ([myDelegate respondsToSelector:
+        @selector(scrollViewDidScroll:)]) {
+            [myDelegate scrollViewDidScroll:myScrollView];
+    }
+}
+\end{minted}
+
+\begin{minted}{swift}
+// Swift
+myDelegate?.scrollViewDidScroll?(myScrollView)
+\end{minted}
+\caption{Przykładowy kod ilustrujący różnice w zwięzłości i czytelności Objective-C (na górze) i Swift (na dole). \textit{WWDC Keynote 2014}}
 \label{f:keynote}
-\end{figure}
+\end{listing}
 
 \section{Rozszerzenia typów}
 \label{s:rozszerzenia_typow}

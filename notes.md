@@ -16,6 +16,7 @@ https://github.com/apple/swift
 https://github.com/apple/swift-corelibs-foundation
 - messaging in Objective-C:
 https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html
+- prezentacja Craiga Federighi o zwięzłości Swifta - https://www.youtube.com/watch?v=w87fOAG8fjk - 1:46:19
 
 # Pytania
 
