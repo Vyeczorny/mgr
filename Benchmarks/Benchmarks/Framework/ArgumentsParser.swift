@@ -82,25 +82,6 @@ class ArgumentsParser {
             )
         }
 
-        //
-        //if command == "run" {
-        //    if CommandLine.arguments.count <= 2 {
-        //        print("Brak nazwy testu")
-        //        exit(-1)
-        //    }
-        //
-        //    let testName = CommandLine.arguments[2]
-        //
-        //    guard let test = availableTests[testName] else {
-        //        print("Test o nazwie \(testName) nie został znaleziony")
-        //        exit(-1)
-        //    }
-        //
-        //    test.objcTest.run()
-        //}
-        //
-
-
         return .error("Unknown error")
     }
 }

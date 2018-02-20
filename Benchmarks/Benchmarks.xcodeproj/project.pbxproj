@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		611A48EACCDA508349CD8F94 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A433AF5F06E74BD43FA99 /* TestFactory.swift */; };
 		F96F3D6F1F4AA685005D1E97 /* ArrayInsertionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3D6E1F4AA685005D1E97 /* ArrayInsertionTest.swift */; };
 		F96F3D731F4AA793005D1E97 /* ArrayInsertionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = F96F3D721F4AA793005D1E97 /* ArrayInsertionTest.m */; };
 		F9801CFF1F46C37E001D97AC /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9801CFE1F46C37E001D97AC /* main.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		611A433AF5F06E74BD43FA99 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		F96F3D6E1F4AA685005D1E97 /* ArrayInsertionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayInsertionTest.swift; sourceTree = "<group>"; };
 		F96F3D701F4AA793005D1E97 /* Benchmarks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Benchmarks-Bridging-Header.h"; sourceTree = "<group>"; };
 		F96F3D711F4AA793005D1E97 /* ArrayInsertionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayInsertionTest.h; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				F9801D061F46C55A001D97AC /* TestRunner.swift */,
 				F9C331131F67B70B0007F16B /* ArgumentsParser.swift */,
 				F9956B4B1F69093100BB21B3 /* TestSuiteRunner.swift */,
+				611A433AF5F06E74BD43FA99 /* TestFactory.swift */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				F96F3D731F4AA793005D1E97 /* ArrayInsertionTest.m in Sources */,
 				F9801CFF1F46C37E001D97AC /* main.swift in Sources */,
 				F9801D071F46C55A001D97AC /* TestRunner.swift in Sources */,
+				611A48EACCDA508349CD8F94 /* TestFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

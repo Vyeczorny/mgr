@@ -10,17 +10,17 @@ import Foundation
 
 // App
 
+
 let argumentsParser = ArgumentsParser()
-
 let command = argumentsParser.parse(arguments: CommandLine.arguments)
-
-print("Command = \(command)")
 
 switch command {
     case .error(let text):
         print("BŁĄD: \(text)")
     case .list:
-        exit(-1)
+        let factory = TestFactory()
+        let message = "Dostępne testy:\n\n" + factory.availableTests.joined(separator: "\n")
+        print(message)
     case .run(let options):
         let testSuiteRunner = TestSuiteRunner()
         let result = testSuiteRunner.runTestSuite(withOptions: options)

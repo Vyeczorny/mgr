@@ -18,12 +18,14 @@ struct TestSuiteResult {
 
 class TestSuiteRunner {
 
+    let factory = TestFactory()
+
     func runTestSuite(withOptions options: RunningOptions) -> TestSuiteResult {
         var results = [TestResult]()
 
         for n in options.n...(options.n + options.range) {
             let runner = TestRunner(numberOfRepetitions: options.repetitions)
-            let test = getTest(withName: options.tests[0], n: n)!
+            let test = factory.buildTest(forName: options.tests[0], n: n)
             results.append(runner.run(test: test))
         }
 
