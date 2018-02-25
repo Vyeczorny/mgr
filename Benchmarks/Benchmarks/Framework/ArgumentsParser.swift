@@ -8,15 +8,17 @@
 
 import Foundation
 
-enum ExportOutput {
+enum ExportOption: String {
+    case terminal
     case gnuplot
 }
 
 struct RunningOptions {
     let tests: [String]
-    let n: Int
-    let range: Int
+    let from: Int
+    let to: Int
     let repetitions: Int
+    let export: ExportOption
 }
 
 enum Command {
@@ -29,7 +31,7 @@ class ArgumentsParser {
 
     func parse(arguments: [String]) -> Command {
 
-        if arguments.count == 0 {
+        if arguments.count  < 2 {
             return .error("Brak argumentów")
         }
 
@@ -42,9 +44,10 @@ class ArgumentsParser {
         if command == "run" {
             var index = 2
             var testNames = [String]()
-            var n = 1
-            var range = 0
-            var repetitions = 1
+            var from: Int?
+            var to: Int?
+            var repetitions: Int?
+            var export: ExportOption?
 
             while index < arguments.count, !arguments[index].hasPrefix("-") {
                 testNames.append(arguments[index])
@@ -54,12 +57,19 @@ class ArgumentsParser {
             while index < arguments.count {
                 let option = arguments[index]
                 if option == "-n" {
-                    n = Int(arguments[index + 1])!
+                    let n = Int(arguments[index + 1])!
+                    from = n
+                    to = n
                     index += 2
                     continue
                 }
-                if option == "-range" {
-                    range = Int(arguments[index + 1])!
+                if option == "-from" {
+                    from = Int(arguments[index + 1])!
+                    index += 2
+                    continue
+                }
+                if option == "-to" {
+                    to = Int(arguments[index + 1])!
                     index += 2
                     continue
                 }
@@ -68,16 +78,30 @@ class ArgumentsParser {
                     index += 2
                     continue
                 }
+                if option == "-export" {
+                    export = ExportOption(rawValue: arguments[index + 1])
+                    index += 2
+                    continue
+                }
 
                 return .error("Nieznana opcja: \(arguments[index])")
+            }
+
+            if testNames.count == 0 {
+                return .error("Brak nazwy testu/testów do uruchoienia")
+            }
+
+            if from == nil || to == nil {
+                return .error("Brak zakresu danych")
             }
 
             return .run(
                 RunningOptions(
                     tests: testNames,
-                    n: n,
-                    range: range,
-                    repetitions: repetitions
+                    from: from!,
+                    to: to!,
+                    repetitions: repetitions ?? 1,
+                    export: export ?? .terminal
                 )
             )
         }

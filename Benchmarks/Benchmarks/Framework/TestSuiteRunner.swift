@@ -23,7 +23,7 @@ class TestSuiteRunner {
     func runTestSuite(withOptions options: RunningOptions) -> TestSuiteResult {
         var results = [TestResult]()
 
-        for n in options.n...(options.n + options.range) {
+        for n in options.from...options.to {
             let runner = TestRunner(numberOfRepetitions: options.repetitions)
             let test = factory.buildTest(forName: options.tests[0], n: n)
             results.append(runner.run(test: test))
