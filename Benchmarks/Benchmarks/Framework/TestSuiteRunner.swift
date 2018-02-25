@@ -1,46 +1,21 @@
 //
-//  TestSuiteRunner.swift
-//  Benchmarks
-//
-//  Created by Karol Wieczorek on 13.09.2017.
-//  Copyright © 2017 Karol Wieczorek. All rights reserved.
+// Created by Karol on 25.02.2018.
+// Copyright (c) 2018 Karol Wieczorek. All rights reserved.
 //
 
 import Foundation
 
 struct TestSuiteResult {
     let testResults: [TestResult]
-
-    var averageTimes: Double {
-        return testResults.map{ $0.averageTime }.reduce(0, +) / Double(testResults.count)
-    }
 }
 
 class TestSuiteRunner {
 
-    let factory = TestFactory()
+    private let testRunner = TestRunner()
 
-    func runTestSuite(withOptions options: RunningOptions) -> TestSuiteResult {
-        var results = [TestResult]()
-
-        for n in options.from...options.to {
-            let runner = TestRunner(numberOfRepetitions: options.repetitions)
-            let test = factory.buildTest(forName: options.tests[0], n: n)
-            results.append(runner.run(test: test))
-        }
-
-        return TestSuiteResult(testResults: results)
+    func runTests(_ tests: [String], from: Int, to: Int, numberOfRepetitions: Int) -> TestSuiteResult {
+        return TestSuiteResult(testResults: tests.map {
+            testRunner.runTest(withName: $0, from: from, to: to, numberOfRepetitions: numberOfRepetitions)
+        })
     }
-
-    private func getTest(withName name: String, n: Int) -> Test? {
-        switch name {
-            case "array_insertion_objc":
-                return ArrayInsertionTestObjC(numberOfInsertions: Int32(n))
-            case "array_insertion_swift":
-                return ArrayInsertionTestSwift(numberOfInsertions: n)
-            default:
-                return nil
-        }
-    }
-
 }

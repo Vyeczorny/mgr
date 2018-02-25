@@ -10,13 +10,14 @@ import Foundation
 
 class TerminalExporter {
     func export(testSuiteResult: TestSuiteResult) {
-        print("Wyniki testów:")
+        print("Wyniki testów:\n")
+
         for testResult in testSuiteResult.testResults {
-            print("Test:")
-            for result in testResult.allTimes {
-                print("\(result)")
+            print("Test: \(testResult.name)")
+            for testInstanceResult in testResult.testResults {
+                print("\(testInstanceResult.n) -> \(String(format: "%.5f", testInstanceResult.averageTime)) s")
             }
-            print("Średnia: \(testResult.averageTime)")
+            print("\n")
         }
 
     }
@@ -47,6 +48,11 @@ switch command {
         print(message)
     case .run(let options):
         let testSuiteRunner = TestSuiteRunner()
-        let result = testSuiteRunner.runTestSuite(withOptions: options)
+        let result = testSuiteRunner.runTests(
+                options.tests,
+                from: options.from,
+                to: options.to,
+                numberOfRepetitions: options.repetitions
+        )
         ResultExporter().export(testSuiteResult: result, exportOption: options.export)
 }

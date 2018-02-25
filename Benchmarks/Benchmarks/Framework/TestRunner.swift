@@ -2,47 +2,34 @@
 //  TestRunner.swift
 //  Benchmarks
 //
-//  Created by Karol Wieczorek on 18.08.2017.
+//  Created by Karol Wieczorek on 13.09.2017.
 //  Copyright © 2017 Karol Wieczorek. All rights reserved.
 //
 
 import Foundation
 
-@objc protocol Test {
-    func run()
-}
-
 struct TestResult {
-    let allTimes: [Double]
+    let name: String
+    let from: Int
+    let to: Int
+    let testResults: [TestInstanceResult]
 
-    var averageTime: Double {
-        return allTimes.reduce(0, +) / Double(allTimes.count)
+    var averageTimes: Double {
+        return testResults.map{ $0.averageTime }.reduce(0, +) / Double(testResults.count)
     }
 }
 
 class TestRunner {
 
-    private let numberOfRepetitions: Int
+    private let testInstanceRunner = TestInstanceRunner()
 
-    init(numberOfRepetitions: Int) {
-        self.numberOfRepetitions = numberOfRepetitions
-    }
-
-    func run(test: Test) -> TestResult {
-        var allTimes = [Double]()
-
-        for _ in 0..<numberOfRepetitions {
-            let time = runSingleTest(test: test)
-            allTimes.append(time)
-        }
-
-        return TestResult(allTimes: allTimes)
-    }
-
-    private func runSingleTest(test: Test) -> Double {
-        let startTime = Date().timeIntervalSince1970
-        test.run()
-        let endTime = Date().timeIntervalSince1970
-        return endTime - startTime
+    func runTest(withName name: String, from: Int, to: Int, numberOfRepetitions: Int) -> TestResult {
+        return TestResult(name: name, from: from, to: to, testResults: Array(from...to).map {
+            testInstanceRunner.runTest(
+                    withName: name,
+                    n: $0,
+                    numberOfRepetitions: numberOfRepetitions
+            )
+        })
     }
 }
