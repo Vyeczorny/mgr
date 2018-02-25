@@ -23,8 +23,8 @@ class TestRunner {
 
     private let testInstanceRunner = TestInstanceRunner()
 
-    func runTest(withName name: String, from: Int, to: Int, numberOfRepetitions: Int) -> TestResult {
-        return TestResult(name: name, from: from, to: to, testResults: Array(from...to).map {
+    func runTest(withName name: String, from: Int, to: Int, step: Int, numberOfRepetitions: Int) -> TestResult {
+        return TestResult(name: name, from: from, to: to, testResults: stride(from: from, through: to, by: step).map {
             testInstanceRunner.runTest(
                     withName: name,
                     n: $0,

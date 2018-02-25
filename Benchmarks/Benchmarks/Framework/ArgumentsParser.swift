@@ -18,6 +18,7 @@ struct RunningOptions {
     let from: Int
     let to: Int
     let repetitions: Int
+    let step: Int
     let export: ExportOption
 }
 
@@ -47,6 +48,7 @@ class ArgumentsParser {
             var from: Int?
             var to: Int?
             var repetitions: Int?
+            var step: Int?
             var export: ExportOption?
 
             while index < arguments.count, !arguments[index].hasPrefix("-") {
@@ -84,6 +86,12 @@ class ArgumentsParser {
                     continue
                 }
 
+                if option == "-step" {
+                    step = Int(arguments[index + 1])!
+                    index += 2
+                    continue
+                }
+
                 return .error("Nieznana opcja: \(arguments[index])")
             }
 
@@ -101,6 +109,7 @@ class ArgumentsParser {
                     from: from!,
                     to: to!,
                     repetitions: repetitions ?? 1,
+                    step: step ?? 1,
                     export: export ?? .terminal
                 )
             )

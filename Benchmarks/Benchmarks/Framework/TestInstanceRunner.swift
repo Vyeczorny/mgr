@@ -27,8 +27,8 @@ class TestInstanceRunner {
     private let testFactory = TestFactory()
 
     func runTest(withName testName: String, n: Int, numberOfRepetitions: Int) -> TestInstanceResult {
-        return TestInstanceResult(name: testName, n: n, allTimes: Array(0..<numberOfRepetitions).map {
-            runSingleTest(test: testFactory.buildTest(forName: testName, n: $0))
+        return TestInstanceResult(name: testName, n: n, allTimes: Array(0..<numberOfRepetitions).map { (i: Int) in
+            runSingleTest(test: testFactory.buildTest(forName: testName, n: n))
         })
     }
 

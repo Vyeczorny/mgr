@@ -52,6 +52,7 @@ switch command {
                 options.tests,
                 from: options.from,
                 to: options.to,
+                step: options.step,
                 numberOfRepetitions: options.repetitions
         )
         ResultExporter().export(testSuiteResult: result, exportOption: options.export)
