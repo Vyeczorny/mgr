@@ -23,13 +23,50 @@ class TerminalExporter {
     }
 }
 
+class GnuplotExporter {
+    func export(testSuiteResult: TestSuiteResult) {
+        let dataFile = "data.txt"
+        let scriptFile = "script.gpl"
+        let outputFile = "output.eps"
+        write(testSuiteResult: testSuiteResult, toFile: dataFile)
+
+        var content = """
+            set terminal postscript eps enhanced color
+            set output '\(outputFile)'
+            plot '\(dataFile)'
+        """
+
+        FileManager.default.createFile(atPath: scriptFile, contents: content.data(using: .utf8))
+
+        let task = Process()
+        task.launchPath = "/usr/local/bin/gnuplot"
+        task.arguments = [scriptFile]
+        task.launch()
+        task.waitUntilExit()
+    }
+
+    private func write(testSuiteResult: TestSuiteResult, toFile file: String) {
+        let testResults = testSuiteResult.testResults
+        let content = Array(0..<testResults[0].testResults.count)
+            .map { i in String(format: "%d\t%@", arguments: [
+                    testResults[0].testResults[i].n,
+                    testResults.map {
+                        String($0.testResults[i].averageTime)
+                    }.joined(separator: "\t")
+                ])
+            }.joined(separator: "\n")
+
+        FileManager.default.createFile(atPath: file, contents: content.data(using: .utf8))
+    }
+}
+
 class ResultExporter {
     func export(testSuiteResult: TestSuiteResult, exportOption: ExportOption) {
         switch exportOption {
             case .terminal:
                 TerminalExporter().export(testSuiteResult: testSuiteResult)
             case .gnuplot:
-                 fatalError("Not implemented")
+                GnuplotExporter().export(testSuiteResult: testSuiteResult)
         }
     }
 }
