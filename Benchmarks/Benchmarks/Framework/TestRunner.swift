@@ -25,11 +25,13 @@ class TestRunner {
 
     func runTest(withName name: String, from: Int, to: Int, step: Int, numberOfRepetitions: Int) -> TestResult {
         return TestResult(name: name, from: from, to: to, testResults: stride(from: from, through: to, by: step).map {
-            testInstanceRunner.runTest(
-                    withName: name,
-                    n: $0,
-                    numberOfRepetitions: numberOfRepetitions
+            let result = testInstanceRunner.runTest(
+                withName: name,
+                n: $0,
+                numberOfRepetitions: numberOfRepetitions
             )
+            print("\($0) -> \(String(format: "%.5f", result.averageTime)) s")
+            return result
         })
     }
 }

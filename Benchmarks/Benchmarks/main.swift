@@ -33,8 +33,12 @@ class GnuplotExporter {
         var content = """
             set terminal postscript eps enhanced color
             set output '\(outputFile)'
-            plot '\(dataFile)'
+            plot
         """
+
+        for i in 0..<testSuiteResult.testResults.count {
+            content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)',"
+        }
 
         FileManager.default.createFile(atPath: scriptFile, contents: content.data(using: .utf8))
 

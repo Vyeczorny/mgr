@@ -15,7 +15,8 @@ class TestSuiteRunner {
 
     func runTests(_ tests: [String], from: Int, to: Int, step: Int, numberOfRepetitions: Int) -> TestSuiteResult {
         return TestSuiteResult(testResults: tests.map {
-            testRunner.runTest(withName: $0, from: from, to: to, step: step, numberOfRepetitions: numberOfRepetitions)
+            print("RUNNING TEST: \($0)")
+            return testRunner.runTest(withName: $0, from: from, to: to, step: step, numberOfRepetitions: numberOfRepetitions)
         })
     }
 }
