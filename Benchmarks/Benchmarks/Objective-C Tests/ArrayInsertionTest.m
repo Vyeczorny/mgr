@@ -29,7 +29,7 @@
     NSMutableArray *array = [NSMutableArray new];
 
     for (int i = 0; i < self.numberOfInsertions; ++i) {
-        [array addObject:[NSNumber numberWithInteger:i]];
+        [array addObject:@(i)];
     }
 }
 

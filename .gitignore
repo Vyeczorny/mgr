@@ -45,7 +45,8 @@ playground.xcworkspace
 # Package.pins
 .build/
 
-#AppCode
+#IDEs
 .idea
+.vscode
 
 .DS_Store

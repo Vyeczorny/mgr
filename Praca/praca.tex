@@ -71,6 +71,14 @@
     \end{listing}
 }
 
+\newcommand{\swiftinline}[1]{
+    \mintinline{swift}{#1}
+}
+
+\newcommand{\objcinline}[1]{
+    \mintinline{objc}{#1}
+}
+
 \begin{document}
 
 %%%%% POCZĄTEK ZASADNICZEGO TEKSTU PRACY
@@ -241,6 +249,7 @@ Zarówno Swift, jak i Objective-C są głównie językami programowania  obiekto
 \swiftlisting{3_swift_example}{Analogiczny kod napisany w Swifcie}
 
 \subsection{Zarządzanie pamięcią}
+\label{s:zarzadzanie_pamiecia}
 
 W początkowych wersjach systemu Mac OS i iOS zarządzanie pamięcią było w pełni manualne - co prawda obiekty (a właściwie wskaźniki do nich) posiadały liczniki referencji, jednak programista musiał sam zadbać o zarządzanie nimi. Przełom nastąpił w roku 2011, kiedy to do Objective-C zostało dodane automatyczne zliczanie referencji (\ang{automatic reference counting}, w skrócie: ARC).
 
@@ -299,11 +308,57 @@ Jednym z podstawowych założeń przyjętych przy tworzeniu Swifta było stworze
     \item zmiany w składni, takie jak: obowiązkowe nawiasy \texttt{\{...\}} dla ciał funkcji warunkowych i pętl, obsługa wszystkich możliwych wartości dla typów wyliczeniowych, konieczność zwrócenia wartości w fukcjach, które deklarują zwracany typ, brak instrukcji \texttt{goto} itp.
 \end{itemize}
 
+\chapter{Testy}
+
+\section{Założenia i platforma testowa}
+
+Wszystkie testy opisane w tej pracy zostały wykonane na komputerze Macbook Pro o następującej specyfikacji:
+
+\begin{itemize}
+    \item procesor: Intel Core I7-7700HQ 2,8 GHz
+    \item pamięć RAM: 16 GB LPDDR3
+    \item system operacyjny macOS High Sierra 10.13.1
+    \item wersja Swift: 4.0.3 (swiftlang-900.0.74.1 clang-900.0.39.2)
+    \item wersja LLVM: 9.0.0 (clang-900.0.39.2)
+\end{itemize}
+
+\todo{Napisać coś o platformie}
+
+\section{Wstawianie elementu do tablicy}
+
+Test polega na stworzeniu pustej tablicy, a następnie dodaniu do niej \swiftinline{n} elementów. Kod testów dla obu omawianych języków znajduje się w plikach \texttt{ArrayInsertionTest.swift} oraz \texttt{ArrayInsertionTest.m}, a wyniki przedastawione zostały na wykresie \ref{p:array_insertion}. Z wykresu tego wyraźnie widać, że w obu językach dodawanie elementów do tablicy jest operacją działającą w czasie asymptotycznie liniowym, w języku Swift jest on jednak o ok. połowę krótszy.
+
+Tak jak większość popularnych języków, zarówno Objective-C, jak i Swift zapewniają ciągłość pamięci tablicy. Z wykresu wynika, że oba języki rezerwują za wczasu większą ilość pamięci niż jest rzeczywiście potrzebna, a w razie przekroczenia już zajętej pamięci zwiększają rozmiar eksponencjalnie (na wykresie widać trzy takie miejsca, przy pamięci na ok 800000, 1600000 oraz 3200000 elementów).
+
+\begin{figure}
+    \includegraphics{plots/ArrayInsertion.eps}
+    \caption{Wykres czasu działania testu ArrayInsertionTest dla obu języków}
+    \label{p:array_insertion}
+\end{figure}
+
+\subsection{Analiza działania}
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/ArrayInsertion.png}}
+    \caption{Tablica profilowania dla testu ArrayInsertion (u góry - Swift, na dole - Objective-C)}
+    \label{i:array_insertion}
+\end{figure}
+
+Rysunek \ref{i:array_insertion} przestawia wyniki profilowania w programie Instruments testu \texttt{ArrayInsertion} dla $n = 500000000$. Zgodnie z wykresem \ref{p:array_insertion}, czas działania testu w języku Objective-C jest około dwukrotnie dłuższy niż takiego samego testu w Swift. Tablica profilowania wskazuje jednak potencjalne powody takiego stanu:
+
+\begin{itemize}
+    \item Kod funkcji \objcinline{run} w teście języka Objective-C składa się z utworzenia modyfikowalnej tablicy (operacja ta ma znikomy czas, nie została wylistowana na tablicy profilowania) oraz zwykłej pętli \texttt{for} przebiegającej od 0 do \objcinline{numberOfInsertions}. W związku z tym można założyć, że czas działania pętli \texttt{for} to czas działania samej funkcji (oznaczony na tablicy profilownia jako \textit{Self Weight}) plus czas dostępu do właściwości \objcinline{numberOfInsertions} (kolor fioletowy na tablicy). Sumarycznie czas ten wynosi 1,05s. Kod testu dla języka Swift jest bardzo podobny, jedyną różnicą jest zastąpienie pętli \texttt{for} pętlą \texttt{for..in}, która w swojej implementacji używa protokołu \swiftinline{Indexable} i jego odpowiednich implementacji. Samo użycie tego protokołu wymaga 359 ms, jednak czas działania samej funkcji \swiftinline{run} to zaledwie 180 ms, co daje łączny czas 539ms, czyli prawie o połowę krótszy niż w przypadku języka Objective-C. Zatem mimo, że pętle w języku Swift wydają się być bardziej skomplikowane, są wydajniejsze niż proste pętle \texttt{for} z Objective-C.
+    \item W Objective-C kod funkcji \objcinline{addObject} został zinline'owany do wywołań metod \objcinline{insertObject:atIndex} oraz \objcinline{addObject} klas wewnętrznych. Łaczny czas wywołań tych dwóch metod to 3,31s. W Swift metoda \swiftinline{append} również została zinline'owana, tym razem do metod prywatnych \swiftinline{_copyToNewBuffer(oldCount:)} oraz \swiftinline{_appendElementAssumeUniqueAndCapacity(_:newElement:)}, łączny czas wywołania tych metod to jedynie 1,35 s. Można więc wyciągnąć wniosek, że sama implementacja tych metod jest mniej wydajna w Objective-C.
+    \item Przenoszenie pamięci (kolor zielony na rysunku) trwa podobny czas w obu językach (4,36s dla Swift i 4,82 dla Objective-C). Jest to dosyć oczywiste, ze względu na fakt, że operacje na pamięci są wykonywane przez systemową bibliotekę \textsf{system\_platform}, zatem w dla obu języków została użyta ta sama implementacja, stąd czas jest podobny.
+    \item Dealokowanie zajętej już pamięci (kolor czerwony na rysunku) zajmuje znacząco więcej czasu w Swift (715 ms) niż w Objective-C (335 ms). Powodem jednak nie jest sama implementacja procedury dealokowania, gdyż ta znajduje się w bibliotece \textsf{system\_malloc} i jest taka sama w obu językach, ale samo wykorzystanie mechanizmu dealokacji w obu językach.
+    \item Jak wspomniano w rozdziale \ref{s:zarzadzanie_pamiecia}, ARC jest rozszerzeniem języka dodanym kilkanaście lat po premierze samego Objective-C, przez co w tablicy profilowania widnieją metody przeznaczone do tego zadania (kolor zółty na rysunku). Jak widać, ich wywołania zajmują około 10\% czasu wykonywania całego programu (1,05s)
+    \item Tablice w Objective-C mogą zawierać tylko obiekty dziedzicące po klasie \objcinline{NSObject}. Typ całkowitoliczbowy, jest typem prostym, należy go zatem schować w obiekcie klasy \objcinline{NSNumber}, który można dodać do tablicy. Taka operacja to jednak dodatkowe 668ms do czasu działania programu (kolor niebieski).
+\end{itemize}
 
 %%%%% BIBLIOGRAFIA
 
 %\begin{thebibliography}{1}
 %\bibitem{example} \ldots
-%\end{thebibliography}
+%\end{thebibliography}                                                                                                                                                          
 
 \end{document}
