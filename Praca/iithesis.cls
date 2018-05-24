@@ -210,6 +210,7 @@
 \newcommand \tw@col [1] {\multicolumn{2}{@{}p{20em}}{#1}}
 
 \RequirePackage[pdftex,unicode=true]{hyperref}
+\RequirePackage{color}
 
 \AtBeginDocument{
   \if@pol{\selectlanguage{polish}\old@title{\bfseries\@polishtitle\mdseries}}

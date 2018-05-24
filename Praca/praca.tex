@@ -283,6 +283,7 @@ Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. W Sw
 Pomimo, że zarówno Objective-C, jak i Swift korzystają z automatycznego zliczania referencji, jego implementacja jest diametralnie różna. W Objective-C ARC został dodany jako jedno z rozszerzeń języka C, jego implementacja bazuje głównie na wykorzystaniu makr i preprocesora, który automatycznie wstawia kod odpowiedzialny za zarządzanie licznikiem referencji. W Swifcie natomiast, ARC jest podstawowym elementem języka posiadającym odrębną składnię i słowa kluczowe.
 
 \subsection{System typów}
+\label{s:system_typow}
 
 Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy nimi kilka istotnych różnic:
 
@@ -354,6 +355,30 @@ Rysunek \ref{i:array_insertion} przestawia wyniki profilowania w programie Instr
     \item Jak wspomniano w rozdziale \ref{s:zarzadzanie_pamiecia}, ARC jest rozszerzeniem języka dodanym kilkanaście lat po premierze samego Objective-C, przez co w tablicy profilowania widnieją metody przeznaczone do tego zadania (kolor zółty na rysunku). Jak widać, ich wywołania zajmują około 10\% czasu wykonywania całego programu (1,05s)
     \item Tablice w Objective-C mogą zawierać tylko obiekty dziedzicące po klasie \objcinline{NSObject}. Typ całkowitoliczbowy, jest typem prostym, należy go zatem schować w obiekcie klasy \objcinline{NSNumber}, który można dodać do tablicy. Taka operacja to jednak dodatkowe 668ms do czasu działania programu (kolor niebieski).
 \end{itemize}
+
+\section{Rekurencyjne obliczanie liczby Fibonacciego}
+
+Test polega na obliczeniu $n$-tej liczby Fibonacciego za pomocą naiwnego algorytmu rekurencyjnego. Kod obu testów znajduje się w plikach \texttt{FibonacciTest.m} oraz \texttt{FibonacciTest.swift}. Wyniki obu testów dla wartości $n \in <5, 40>$ zostały zwizualizowane na wykresie \ref{p:fibonacci}. Czas działania obu programów rośnie oczywiście wykładniczo, z wykresu wynika jednak, że program napisany w Swift jest około 40\% szybszy niż jego odpowiednik napisany w języku Objective-C.
+
+\begin{figure}
+    \includegraphics{plots/Fibonacci.eps}
+    \caption{Wykres czasu działania testu FibonacciTest dla obu języków}
+    \label{p:fibonacci}
+\end{figure}
+
+\subsection{Analiza działania}
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/Fibonacci.png}}
+    \caption{Tablica profilowania dla testu ArrayInsertion (u góry - Swift, na dole - Objective-C)}
+    \label{i:fibonacci}
+\end{figure}
+
+Tablica profilowania \ref{i:fibonacci} obu programów pozwala znaleźć powody różnicy prędkości pomiędzy dwoma językami. Główną różnicą jest wywołanie funkcji \objcinline{objc_msgSend } w teście napisanym w Objective-C. Wywołania te są odpowiedzialne za ponad 5 sekund czasu działania testu, co daje prawie 37\% całego czasu działania testu. Więcej o wywoływaniu metod w Objective-C napisano w sekcji \ref{s:system_typow}. Przykład ten dobrze obrazuje problemy z wydajnością języka Objective-C przy bardzo dużej ilości wywołań metod klas.
+
+Drugim powodem, dla którego kod napisany w Objective-C jest wolniejszy jest samo działanie ciała metody \objcinline{[fibonacciForN:]}, które jest o ponad 2 sekundy wolniejsze od analogicznego kodu napisanego w Swift.
+
+
 
 %%%%% BIBLIOGRAFIA
 

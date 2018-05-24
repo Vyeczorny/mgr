@@ -70,7 +70,7 @@
 
   - do dokładniejszej analizy można użyć *Instruments*
   - wydaność można podzielić na dwa obszary: wydajność języka i wydajność stdlib (do sprawdzenie wydajności samego języka najlepiej użyć jakichś prostych testów - funkcji Ackermana, Fibbonacciego etc, patrz: http://dada.perl.it/shootout/)
-
+      
 
 # Tytuł
 Porównanie cech i wydajności języka Swift względem Objective-C
