@@ -13,6 +13,11 @@ enum ExportOption: String {
     case gnuplot
 }
 
+enum PlotScale: String {
+    case linear
+    case log
+}
+
 struct RunningOptions {
     let tests: [String]
     let from: Int
@@ -20,6 +25,7 @@ struct RunningOptions {
     let repetitions: Int
     let step: Int
     let export: ExportOption
+    let plotScale: PlotScale
 }
 
 enum Command {
@@ -50,6 +56,7 @@ class ArgumentsParser {
             var repetitions: Int?
             var step: Int?
             var export: ExportOption?
+            var plotScale: PlotScale?
 
             while index < arguments.count, !arguments[index].hasPrefix("-") {
                 testNames.append(arguments[index])
@@ -92,6 +99,12 @@ class ArgumentsParser {
                     continue
                 }
 
+                if option == "-scale" {
+                    plotScale = PlotScale(rawValue: arguments[index + 1])
+                    index += 2
+                    continue
+                }
+
                 return .error("Nieznana opcja: \(arguments[index])")
             }
 
@@ -110,7 +123,8 @@ class ArgumentsParser {
                     to: to!,
                     repetitions: repetitions ?? 1,
                     step: step ?? 1,
-                    export: export ?? .terminal
+                    export: export ?? .terminal,
+                    plotScale: plotScale ?? .linear
                 )
             )
         }

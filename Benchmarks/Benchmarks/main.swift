@@ -10,7 +10,8 @@ import Foundation
 
 class TerminalExporter {
     func export(testSuiteResult: TestSuiteResult) {
-        print("Wyniki testów:\n")
+        print("-----------------------------------------------------------------------------------------------\n")
+        print("WYNIKI TESTÓW:\n")
 
         for testResult in testSuiteResult.testResults {
             print("Test: \(testResult.name)")
@@ -19,11 +20,18 @@ class TerminalExporter {
             }
             print("\n")
         }
-
+        print("-----------------------------------------------------------------------------------------------\n")
     }
 }
 
 class GnuplotExporter {
+
+    private let runningOptions: RunningOptions
+
+    init(runningOptions: RunningOptions) {
+        self.runningOptions = runningOptions
+    }
+
     func export(testSuiteResult: TestSuiteResult) {
         let dataFile = "data.txt"
         let scriptFile = "script.gpl"
@@ -33,8 +41,14 @@ class GnuplotExporter {
         var content = """
             set terminal postscript eps enhanced color
             set output '\(outputFile)'
-            plot
+
         """
+
+        if runningOptions.plotScale == .log {
+            content += "set log y\n"
+        }
+
+        content += "plot "
 
         for i in 0..<testSuiteResult.testResults.count {
             content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' pt 7 ps 0.5,"
@@ -65,12 +79,12 @@ class GnuplotExporter {
 }
 
 class ResultExporter {
-    func export(testSuiteResult: TestSuiteResult, exportOption: ExportOption) {
-        switch exportOption {
+    func export(testSuiteResult: TestSuiteResult, runningOptions: RunningOptions) {
+        switch runningOptions.export {
             case .terminal:
                 TerminalExporter().export(testSuiteResult: testSuiteResult)
             case .gnuplot:
-                GnuplotExporter().export(testSuiteResult: testSuiteResult)
+                GnuplotExporter(runningOptions: runningOptions).export(testSuiteResult: testSuiteResult)
         }
     }
 }
@@ -96,5 +110,5 @@ switch command {
                 step: options.step,
                 numberOfRepetitions: options.repetitions
         )
-        ResultExporter().export(testSuiteResult: result, exportOption: options.export)
+        ResultExporter().export(testSuiteResult: result, runningOptions: options)
 }
