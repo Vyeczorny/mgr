@@ -1,6 +1,6 @@
 // Rozszerzenie dla typu String z biblioteki standardowej
 extension String {
-    func isEmpty() ->Bool {
+    func isEmpty() -> Bool {
         return self != ""
     }
 }

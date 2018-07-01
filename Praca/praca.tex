@@ -119,7 +119,7 @@ Przykład użycia typów generycznych ilustruje Listing \ref{l:2_generics_and_in
     {2_generics_and_inheritance}
     {Przykład klasy generycznej i klasy pochodnej w Swift}
 
-W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną typu przed programistą używającym klasy implementującej dany protokół - typ podstawiony pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenie obiektu implementującego protokół. Przykład użycia protokołu z parametrami typu prezentuje Listing \ref{l:2_associated_types}.
+W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną typu przed programistą używającym klasy implementującej dany protokół - typ podstawiony pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenia obiektu implementującego protokół. Przykład użycia protokołu z parametrami typu prezentuje Listing \ref{l:2_associated_types}.
 
 \swiftlisting
     {2_associated_types}
@@ -165,7 +165,7 @@ Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków pro
 \section{Leniwość}
 \label{s:leniwosc}
 
-Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opera się na znanych również z języka C\# czy Java generatorach.
+Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opiera się na znanych również z języka C\# czy Java generatorach.
 
 \swiftlisting
     {2_laziness}
@@ -177,7 +177,7 @@ Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali 
 Pomimo tego, że Swift był projektowany głównie jako język programowania obiektowego, jego twórcy skupili dużą część swojej uwagi na elementach powiązanych z programowaniem funkcyjnym, które mogłyby pomóc programistom pisać bezpieczniejszy i bardziej czytelny kod obiektowy. Najważniejsze z nich to:
 
 \begin{itemize}
-    \item Typy wyliczeniowe z wartościami powiązanymi (\ang{associated values}), które wprowadzają do Swifta koncept podobny do konstruktorów typów z Haskella. Dzięki tym strukturom danych, programista może w funkcyjny deklarować nowe typy (zob. Listing \ref{l:2_enum_with_associated_value}).
+    \item Typy wyliczeniowe z wartościami powiązanymi (\ang{associated values}), które pozwalanją na definiowanie typów podobnych do algebraicznych typów danych (\ang{Algrebraic data types} znanych z programowania funkcyjnego (zob. Listing \ref{l:2_enum_with_associated_value}).
 
     \swiftlisting
         {2_enum_with_associated_value}
@@ -189,7 +189,7 @@ Pomimo tego, że Swift był projektowany głównie jako język programowania obi
 
     \item Swift posiada zaawansowany mechanizm \textit{pattern matchingu}, który można wykorzystać do dopasowywania typów wyliczeniowych, krotek i wyrażeń. Tak jak w wielu językach funkcyjnych, \textit{pattern matching} w Swifcie jest wyczerpujący (\ang{exhaustive}), co oznacza, że każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
 
-    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicializowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaning}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
+    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicjalizowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaning}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
 
     \swiftlisting
         {2_optional}
@@ -200,7 +200,7 @@ Pomimo tego, że Swift był projektowany głównie jako język programowania obi
 \section{Zwięzłość składni}
 \label{s:zwiezlosc_skladni}
 
-Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta iżynierowie Apple mocno wzorowali się na językach znanych ze swojej zwięzłości i łatwości czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a takim samym kodem w Swift.
+Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta inżynierowie Apple mocno wzorowali się na językach znanych ze swojej zwięzłości i łatwości czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a równoważnym kodem w Swift.
 
 \begin{listing}[ht]
 \begin{minted}{objc}
@@ -228,8 +228,8 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 
 \begin{itemize}
     \item dodawanie nowych właściwości obliczanych (\ang{computed properties})
-    \item definiowanie nowych metod instancji i metdo typu
-    \item definiowanie nowych inicializatorów
+    \item definiowanie nowych metod instancji i metod typu
+    \item definiowanie nowych inicjalizatorów
     \item definiowanie i używanie typów zagnieżdżonych
     \item implementowanie metod protokołów
 \end{itemize}
@@ -242,7 +242,7 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 
 \subsection{Swift i Objective-C jako języki programowania obiektowego}
 
-Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i polimorfizm. Dzięki modyfikatorom dostępu umożliwiają również enkapsulację implementacji i opisywanie zachowań za pomocą abstrakcyjnych typów danych (protokoły w Objective-C, interfejsy w Swifcie).
+Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i polimorfizm. Dzięki modyfikatorom dostępu oraz protokołom umożliwiają również enkapsulację implementacji i opisywanie zachowań za pomocą abstrakcyjnych typów danych.
 
 \objclisting{3_objective_c_example}{Przykład kodu obiektowego w Objective-C}
 
@@ -251,6 +251,7 @@ Zarówno Swift, jak i Objective-C są głównie językami programowania  obiekto
 \subsection{Zarządzanie pamięcią}
 \label{s:zarzadzanie_pamiecia}
 
+\todo{Może warto dodać, że ARC został wprowadzony ze względu na Swifta?}
 W początkowych wersjach systemu Mac OS i iOS zarządzanie pamięcią było w pełni manualne - co prawda obiekty (a właściwie wskaźniki do nich) posiadały liczniki referencji, jednak programista musiał sam zadbać o zarządzanie nimi. Przełom nastąpił w roku 2011, kiedy to do Objective-C zostało dodane automatyczne zliczanie referencji (\ang{automatic reference counting}, w skrócie: ARC).
 
 Automatyczne zliczanie referencji to jedna z najprostszych metod zarządzania pamięcią, odciążajaca programistę z obowiązku jawnego inkrementowania i dekrementowania liczników referencji. Użycie ARC w Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w momencie, gdy nowa referencja do obiektu zostaje utworzona (np. inicjalizacja, przypisanie, przekazania obiektu w parametrze) oraz zmniejsza go, w momencie usunięcia referencji. Dzięki temu programista nie musi manualnie używać funkcji \texttt{retain} i \texttt{release}, jak to miało miejsce w poprzednich wersjach Objective-C. Pozwala to na zapobiegnięcie wielu błędom, takim jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy odwoływanie się do wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie wprowadza niedeterminizmu, co ma miejsce w przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma znikomy wpływ na wydajność działania aplikacji.
@@ -290,7 +291,7 @@ Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy n
 \begin{itemize}
 
     \item w Swifcie w zasadzie nie występuje niejawne rzutowanie typów. Każde (nawet najprostsze, jak rzutowanie z typu całkowitoliczbowego na zmiennoprzeciknowy) musi być jawnie wywołane przez programistę. W Objective-C zasady rzutowania zostały odziedziczone z języka C i są w zasadzie takie same.
-    \item sposób wywoływania metod w Objective-C został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy obiektami. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend} w trakcie działania programu. W Swifcie natomiast wywołania metod opierają się na wskaźnikach do metod oraz \textit{Protocol Witness Table} (odpowiednik \textit{vtable} z C++).
+    \item sposób wywoływania metod w Objective-C został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy obiektami. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend } w trakcie działania programu. W Swifcie natomiast wywołania metod opierają się na wskaźnikach do metod oraz \textit{Protocol Witness Table} (odpowiednik \textit{vtable} z C++).
     \item w Objective-C istnieje klasa \mintinline{objc}{NSObject}, która jest superklasą dla wszystkich innych klas. Swift nie posiada takiej superklasy, została ona zastąpiona protokołem \mintinline{swift}{AnyObject}.
 
 \end{itemize}
@@ -327,7 +328,7 @@ Wszystkie testy opisane w tej pracy zostały wykonane na komputerze Macbook Pro 
 
 \section{Wstawianie elementu do tablicy}
 
-Test polega na stworzeniu pustej tablicy, a następnie dodaniu do niej \swiftinline{n} elementów. Kod testów dla obu omawianych języków znajduje się w plikach \texttt{ArrayInsertionTest.swift} oraz \texttt{ArrayInsertionTest.m}, a wyniki przedastawione zostały na wykresie \ref{p:array_insertion}. Z wykresu tego wyraźnie widać, że w obu językach dodawanie elementów do tablicy jest operacją działającą w czasie asymptotycznie liniowym, w języku Swift jest on jednak o ok. połowę krótszy.
+Test polega na stworzeniu pustej tablicy, a następnie dodaniu do niej \swiftinline{n} elementów. Kod testów dla obu omawianych języków znajduje się w plikach \texttt{ArrayInsertionTest.swift} oraz \texttt{ArrayInsertionTest.m}, a wyniki przedstawione zostały na wykresie \ref{p:array_insertion}. Z wykresu tego wyraźnie widać, że w obu językach dodawanie elementów do tablicy jest operacją działającą w czasie asymptotycznie liniowym, w języku Swift jest on jednak o ok. połowę krótszy.
 
 Tak jak większość popularnych języków, zarówno Objective-C, jak i Swift zapewniają ciągłość pamięci tablicy. Z wykresu wynika, że oba języki rezerwują za wczasu większą ilość pamięci niż jest rzeczywiście potrzebna, a w razie przekroczenia już zajętej pamięci zwiększają rozmiar eksponencjalnie (na wykresie widać trzy takie miejsca, przy pamięci na ok 800000, 1600000 oraz 3200000 elementów).
 
@@ -348,12 +349,12 @@ Tak jak większość popularnych języków, zarówno Objective-C, jak i Swift za
 Rysunek \ref{i:array_insertion} przestawia wyniki profilowania w programie Instruments testu \texttt{ArrayInsertion} dla $n = 500000000$. Zgodnie z wykresem \ref{p:array_insertion}, czas działania testu w języku Objective-C jest około dwukrotnie dłuższy niż takiego samego testu w Swift. Tablica profilowania wskazuje jednak potencjalne powody takiego stanu:
 
 \begin{itemize}
-    \item Kod funkcji \objcinline{run} w teście języka Objective-C składa się z utworzenia modyfikowalnej tablicy (operacja ta ma znikomy czas, nie została wylistowana na tablicy profilowania) oraz zwykłej pętli \texttt{for} przebiegającej od 0 do \objcinline{numberOfInsertions}. W związku z tym można założyć, że czas działania pętli \texttt{for} to czas działania samej funkcji (oznaczony na tablicy profilownia jako \textit{Self Weight}) plus czas dostępu do właściwości \objcinline{numberOfInsertions} (kolor fioletowy na tablicy). Sumarycznie czas ten wynosi 1,05s. Kod testu dla języka Swift jest bardzo podobny, jedyną różnicą jest zastąpienie pętli \texttt{for} pętlą \texttt{for..in}, która w swojej implementacji używa protokołu \swiftinline{Indexable} i jego odpowiednich implementacji. Samo użycie tego protokołu wymaga 359 ms, jednak czas działania samej funkcji \swiftinline{run} to zaledwie 180 ms, co daje łączny czas 539ms, czyli prawie o połowę krótszy niż w przypadku języka Objective-C. Zatem mimo, że pętle w języku Swift wydają się być bardziej skomplikowane, są wydajniejsze niż proste pętle \texttt{for} z Objective-C.
+    \item Kod funkcji \objcinline{run} w teście języka Objective-C składa się z utworzenia modyfikowalnej tablicy (operacja ta ma znikomy czas, nie została wylistowana na tablicy profilowania) oraz zwykłej pętli \texttt{for} przebiegającej od 0 do \objcinline{numberOfInsertions}. W związku z tym można założyć, że czas działania pętli \texttt{for} to czas działania samej funkcji (oznaczony na tablicy profilownia jako \textit{Self Weight}) plus czas dostępu do właściwości \objcinline{numberOfInsertions} (kolor fioletowy na tablicy). Sumarycznie czas ten wynosi 1,05s. Kod testu dla języka Swift jest bardzo podobny, jedyną różnicą jest zastąpienie pętli \texttt{for} pętlą \texttt{for..in}, która w swojej implementacji używa protokołu \swiftinline{Indexable} i jego odpowiednich implementacji. Samo użycie tego protokołu wymaga 359 ms (instrukcje oznaczone kolorem fioletowym na tablicy profilowania), jednak czas działania samej funkcji \swiftinline{run} to zaledwie 180 ms, co daje łączny czas 539ms, czyli prawie o połowę krótszy niż w przypadku języka Objective-C. Zatem mimo, że pętle w języku Swift wydają się być bardziej skomplikowane, są wydajniejsze niż proste pętle \texttt{for} z Objective-C.
     \item W Objective-C kod funkcji \objcinline{addObject} został zinline'owany do wywołań metod \objcinline{insertObject:atIndex} oraz \objcinline{addObject} klas wewnętrznych. Łaczny czas wywołań tych dwóch metod to 3,31s. W Swift metoda \swiftinline{append} również została zinline'owana, tym razem do metod prywatnych \swiftinline{_copyToNewBuffer(oldCount:)} oraz \swiftinline{_appendElementAssumeUniqueAndCapacity(_:newElement:)}, łączny czas wywołania tych metod to jedynie 1,35 s. Można więc wyciągnąć wniosek, że sama implementacja tych metod jest mniej wydajna w Objective-C.
     \item Przenoszenie pamięci (kolor zielony na rysunku) trwa podobny czas w obu językach (4,36s dla Swift i 4,82 dla Objective-C). Jest to dosyć oczywiste, ze względu na fakt, że operacje na pamięci są wykonywane przez systemową bibliotekę \textsf{system\_platform}, zatem w dla obu języków została użyta ta sama implementacja, stąd czas jest podobny.
     \item Dealokowanie zajętej już pamięci (kolor czerwony na rysunku) zajmuje znacząco więcej czasu w Swift (715 ms) niż w Objective-C (335 ms). Powodem jednak nie jest sama implementacja procedury dealokowania, gdyż ta znajduje się w bibliotece \textsf{system\_malloc} i jest taka sama w obu językach, ale samo wykorzystanie mechanizmu dealokacji w obu językach.
     \item Jak wspomniano w rozdziale \ref{s:zarzadzanie_pamiecia}, ARC jest rozszerzeniem języka dodanym kilkanaście lat po premierze samego Objective-C, przez co w tablicy profilowania widnieją metody przeznaczone do tego zadania (kolor zółty na rysunku). Jak widać, ich wywołania zajmują około 10\% czasu wykonywania całego programu (1,05s)
-    \item Tablice w Objective-C mogą zawierać tylko obiekty dziedzicące po klasie \objcinline{NSObject}. Typ całkowitoliczbowy, jest typem prostym, należy go zatem schować w obiekcie klasy \objcinline{NSNumber}, który można dodać do tablicy. Taka operacja to jednak dodatkowe 668ms do czasu działania programu (kolor niebieski).
+    \item Tablice w Objective-C mogą zawierać tylko obiekty dziedziczące po klasie \objcinline{NSObject}. Typ całkowitoliczbowy, jest typem prostym, należy go zatem schować w obiekcie klasy \objcinline{NSNumber}, który można dodać do tablicy. Taka operacja to jednak dodatkowe 668ms do czasu działania programu (kolor niebieski).
 \end{itemize}
 
 \section{Rekurencyjne obliczanie liczby Fibonacciego}

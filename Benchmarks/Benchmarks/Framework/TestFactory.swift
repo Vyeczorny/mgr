@@ -11,11 +11,13 @@ class TestFactory {
         String(describing: ArrayInsertionTestObjC.self),
         String(describing: FibonacciTestObjC.self),
         String(describing: PlaygroundTestObjC.self),
+        String(describing: BubbleSortTestObjC.self),
 
         String(describing: ArrayInsertionTestSwift.self),
         String(describing: AckermannTestSwift.self),
         String(describing: FibonacciTestSwift.self),
         String(describing: PlaygroundTestSwift.self),
+        String(describing: BubbleSortTestSwift.self)
     ]
 
     func buildTest(forName name: String, n: Int) -> Test {
@@ -26,6 +28,8 @@ class TestFactory {
                 return FibonacciTestObjC(n: Int32(n))
             case String(describing: PlaygroundTestObjC.self):
                 return PlaygroundTestObjC(n: Int32(n))
+            case String(describing: BubbleSortTestObjC.self):
+                return BubbleSortTestObjC(n: Int32(n))
 
             case String(describing: ArrayInsertionTestSwift.self):
                 return ArrayInsertionTestSwift(numberOfInsertions: n)
@@ -35,6 +39,8 @@ class TestFactory {
                 return FibonacciTestSwift(n: n)
             case String(describing: PlaygroundTestSwift.self):
                 return PlaygroundTestSwift(n: n)
+            case String(describing: BubbleSortTestSwift.self):
+                return BubbleSortTestSwift(n: n)
             default:
                 fatalError("Unknown test: \(name)")
         }

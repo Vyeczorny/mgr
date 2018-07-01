@@ -18,7 +18,7 @@ class ImageViewDecorator: ViewDecorator {
 class LabelDecorator: ViewDecorator {
     typealias ViewType = UILabel
 
-    internal func decorate(view: UILabel) {
+    func decorate(view: UILabel) {
         view.font = UIFont.systemFont(ofSize: 20.0)
         // ...
     }

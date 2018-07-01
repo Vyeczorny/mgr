@@ -91,6 +91,10 @@ class ResultExporter {
 
 // App
 
+let test: Test = BubbleSortTestObjC(n: 10)
+test.run()
+exit(0)
+
 let argumentsParser = ArgumentsParser()
 let command = argumentsParser.parse(arguments: CommandLine.arguments)
 

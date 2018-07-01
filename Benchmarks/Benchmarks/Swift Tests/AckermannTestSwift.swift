@@ -16,7 +16,7 @@ class AckermannTestSwift: Test {
     }
 
     func run() {
-        ackermann(m: m, n: n)
+        _ = ackermann(m: m, n: n)
     }
 
     private func ackermann(m: Int64, n: Int64) -> Int64 {
