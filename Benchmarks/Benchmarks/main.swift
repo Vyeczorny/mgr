@@ -91,10 +91,6 @@ class ResultExporter {
 
 // App
 
-let test: Test = BubbleSortTestObjC(n: 10)
-test.run()
-exit(0)
-
 let argumentsParser = ArgumentsParser()
 let command = argumentsParser.parse(arguments: CommandLine.arguments)
 
@@ -104,7 +100,7 @@ switch command {
     case .list:
         let factory = TestFactory()
         let message = "Dostępne testy:\n\n" + factory.availableTests.joined(separator: "\n")
-        print(message)
+         print(message)
     case .run(let options):
         let testSuiteRunner = TestSuiteRunner()
         let result = testSuiteRunner.runTests(

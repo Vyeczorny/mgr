@@ -32,7 +32,6 @@
 }
 
 - (NSArray *)bubbleSortWithArray:(NSMutableArray *)array {
-    NSLog(@"Input array: %@", array);
     for (NSUInteger i = 0; i < self.n - 1; ++i) {
         for (NSUInteger j = 1; j < self.n - i; ++j) {
             if (array[j] < array[j-1]) {
@@ -42,7 +41,6 @@
             }
         }
     }
-    NSLog(@"Output array: %@", array);
     return array;
 }
 
