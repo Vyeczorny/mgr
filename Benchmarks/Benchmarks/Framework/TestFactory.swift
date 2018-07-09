@@ -12,6 +12,7 @@ class TestFactory {
         String(describing: FibonacciTestObjC.self),
         String(describing: PlaygroundTestObjC.self),
         String(describing: BubbleSortTestObjC.self),
+        String(describing: BubbleSortOptimizedTestObjC.self),
 
         String(describing: ArrayInsertionTestSwift.self),
         String(describing: AckermannTestSwift.self),
@@ -30,6 +31,8 @@ class TestFactory {
                 return PlaygroundTestObjC(n: Int32(n))
             case String(describing: BubbleSortTestObjC.self):
                 return BubbleSortTestObjC(n: Int32(n))
+        case String(describing: BubbleSortOptimizedTestObjC.self):
+            return BubbleSortOptimizedTestObjC(n: Int32(n))
 
             case String(describing: ArrayInsertionTestSwift.self):
                 return ArrayInsertionTestSwift(numberOfInsertions: n)

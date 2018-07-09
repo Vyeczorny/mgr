@@ -39,12 +39,12 @@ class GnuplotExporter {
         write(testSuiteResult: testSuiteResult, toFile: dataFile)
 
         var content = """
-            set terminal postscript eps enhanced color
-            set output '\(outputFile)'
-
+        set terminal postscript eps enhanced color
+        set output '\(outputFile)'
+        set key reverse left top Left
         """
 
-        if runningOptions.plotScale == .log {
+        if runningOptions.plotScale  == .log {
             content += "set log y\n"
         }
 

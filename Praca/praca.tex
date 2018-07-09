@@ -379,7 +379,15 @@ Tablica profilowania \ref{i:fibonacci} obu programów pozwala znaleźć powody r
 
 Drugim powodem, dla którego kod napisany w Objective-C jest wolniejszy jest samo działanie ciała metody \objcinline{[fibonacciForN:]}, które jest o ponad 2 sekundy wolniejsze od analogicznego kodu napisanego w Swift.
 
+\section{Sortowanie bąbelkowe}
 
+% Wykres z danymi: ./Benchmarks run BubbleSortTestSwift BubbleSortTestObjC -from 1000 -to 15000 -step 250 -repetitions 10 -export gnuplot
+
+\begin{figure}
+    \includegraphics{plots/BubbleSort.eps}
+    \caption{Wykres czasu działania testu BubbleSortTest dla obu języków}
+    \label{p:fibonacci}
+\end{figure}
 
 %%%%% BIBLIOGRAFIA
 
