@@ -58,6 +58,7 @@
     - operacje na kontenerach
     - sortowanie  (http://i.stack.imgur.com/wcdXk.jpg)
     - coś na sprawdzenie wydajności przy dużej ilości wywołań rekurencyjnych (problemy z reference counting)
+    - liczby całkowite i zmiennoprzecinkowe (dodawanie?)
     - testy z użyciem nowych feature'ów (względem bliźniaczej implementacji z Swifcie "w starym stylu", wzdlędem Obj-C i ewentualnie innych języków:
       - algorytmy na drzewach (w Swifcie możemy je zaimplementować w mocno funkcyjnym stylu)
       - operacje mapowania/filtrowania w porównaniu do zwykłych pętli for w Obj-C (lub innych językach)

@@ -380,14 +380,68 @@ Tablica profilowania \ref{i:fibonacci} obu programów pozwala znaleźć powody r
 Drugim powodem, dla którego kod napisany w Objective-C jest wolniejszy jest samo działanie ciała metody \objcinline{[fibonacciForN:]}, które jest o ponad 2 sekundy wolniejsze od analogicznego kodu napisanego w Swift.
 
 \section{Sortowanie bąbelkowe}
+Sortowanie bąbelkowe to jeden z najprostszych algorytmów sortowania. Jego największą zaletą jest bardzo prosta i intuicyjna implementacja. Test opisany w tym rozdziale polega na zaimplementowaniu algorytmu sortowania bąbelkowego i uruchomieniu go na tablicy o wielkości $n \in <1000, 15000>$ wypełnionej losowymi 32-bitowymi liczbami całkowitymi.
 
-% Wykres z danymi: ./Benchmarks run BubbleSortTestSwift BubbleSortTestObjC -from 1000 -to 15000 -step 250 -repetitions 10 -export gnuplot
+Jak wynika z wykresu, implementacja w Swift jest ponad 10-krotnie szybsza niż najprostsza implementacja w Objective-C. Posortowanie tablicy $15000$ elementów zajmuje tylko $288 ms$ w przypadku kodu w Swift i $3,2 s$ dla Objective-C.
+
+\subsection{Analiza działania}
+
+Rysunek \ref{i:bubble_sort} przedstawia tablicę profilowania testu \texttt{BubbleSort} zaimplementowanego w języku Swifta (na górze) oraz w Objective-C (po środku) dla tablicy z 30000 elementów.
 
 \begin{figure}
     \includegraphics{plots/BubbleSort.eps}
     \caption{Wykres czasu działania testu BubbleSortTest dla obu języków}
-    \label{p:fibonacci}
+    \label{p:bubble_sort}
 \end{figure}
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/BubbleSort.png}}
+    \caption{Tablica profilowania dla testu BubbleSort (u góry - Swift, po środku - Objective-C, na dole - Objective-C po optymalizacjach)}
+    \label{i:bubble_sort}
+\end{figure}
+
+Tablica profilowania testu napisanego w języku Swift jest bardzo krótka - aż 93\% czasu wykonywania testu zajęły dwie operacje:
+
+\begin{itemize}
+    \item około $0,5s$ zajęło porównywanie elementów w tablicy (oznaczone kolorem czerwonym)
+    \item wywołanie operacji zdefiniowanych w samej metodzie \swiftinline{BubbleSort(:_)} zajęło około $800 ms$. Te operacje to obługa pętli \texttt{for} operacje arytmetyczne związane z przesuwaniem indeksów oraz zamiana elementów w tablicy.
+\end{itemize}
+
+Analiza implementacji w Objective-C jest nieco bardziej skomplikowana. Najwięcej czasu zajęło wysyłanie wiadomości do obiektów za pomocą metody \objcinline{objc_msgSend } (oznaczonej kolorem żółtym na tablicy profilowania). Czas wszystkich wywołań tej metody wyniósł $4,58s$.
+
+Drugą najbardziej czasochłonną grupą opeacji były operacje odczytu i zapisu do/z tablicy (kolorem zielony na tablicy profilowania). Metody \objcinline{objectAtIndexedSubscript:} i \objcinline{setObject:atIndexedSubscript} są wywoływane po użyciu operatora indeksowania na tablicy \objcinline{NSArray} i łącznie czas ich wywołania zajmuje $4,31s$.
+
+Wykonanie operacji z ciała metody \objcinline{run} (kolor czerwony), trwało łącznie $2,5s$. Operacje te to głównie obliczenia arytmetyczne oraz obsługa pętli \texttt{for}. Wywołania funkcji oznaczone kolorem niebieskim na tablicy profilowania dotyczą zarządzania licznikami referencji i łącznie również prawie $2,5s$.
+
+Ciekawym przypadkiem pokazującym kosztowność systemu wysyłania wiadomości jest sprawdzanie wartości zapisanej do własciwości \objcinline{n}. W Objective-C dla każdej właściwości o nazwie \objcinline{x} kompilator generuje:
+
+\begin{itemize}
+    \item zmienną o nazwie \objcinline{_x}
+    \item getter o nazwie \objcinline{x}
+    \item setter \objcinline{setX:}
+\end{itemize}
+
+Z tego powodu, odczytanie wartości z właściwości  \objcinline{n} jest tak naprawdę wywołaniem metody \objcinline{n} i odczytanie wartości zmiennej ukrytej za właściwością. Z punktu widzenia kompilatora, odczyt taki jest zatem niczym innym niż wywołaniem metody, czyli wysłaniem wiadomości, stąd też samo odczytanie zmiennej zajmuje $172ms$ (kolor szary na tablicy profilowania).
+
+Z powyższej analizy można łatwo wyznaczyć fragmenty kodu, które powinny zostać zoptymalizowane:
+
+\begin{itemize}
+    \item wywoływanie operatora indeksowania - zamiast zamieniać miejscami elementy za pomocą czterech wywołań operatora indeksowania, można użyć metody \objcinline{exchangeObjectAtIndex:withObjectAtIndex:} klasy \objcinline{NSArray}
+    \item wysyłanie wiadomości do obiektów za pomocą \objcinline{objc_msgSend } - metoda \objcinline{exchangeObjectAtIndex:withObjectAtIndex:} jest za każdym razem wywoływana na tym samym obiekcie, dlatego też można już wcześniej wziąć wskaźnik na tą metodę (w nomenklaturze Objective-C - selektor), zachować referencję do niego i bezpośrednio wywoływać
+    \item użycie właściwości \objcinline{n} - zamiast przy każdym sprawdzeniu warunku pętli odwoływać się do właściwości \objcinline{n}, można ją zachować na stosie jako zmienną lokalną funkcji i odwoływać się do niej bezpośrednio
+\end{itemize}
+
+Klasa \objcinline{BubbleSortOptimizedTestObjC} zawiera implementację wyżej wymienionych optymalizacji, wyniki działania zostały zawarte również na wykresie \ref{p:bubble_sort} oraz tablicy profilowania \ref{i:bubble_sort}. Jak widać, zaproponowane optymalizacje znacznie przyspieszyły działanie algorytmu o około $40\%$ względem kodu bez optymalizacji.
+
+Największy przyrost wydajności zaobserwowano dla wywołań funkcji \objcinline{objc_msgSend }, czas $4,58s$ udało się zmniejszyć do $1,83s$ (spadek o $60\%$). Główne powody to zastąpienie kilku wywołań operatorów indeksowania jednym wywołaniem metody zamieniającej elementy miejscami oraz trzymanie referencji na tą metodę w zmiennej lokalnej. Spadł również czas wywołania metod związanych z operatorem indeksowania - pozbyto się zupełnie użycia metody ustawiającej wartość, a czas zużywany na metodę pobierającą wartość spadł z $2,51s$ do $1,61$. Łącznie czas operacji na tablicy spadł z $4,31s$ do $3,18s$ (spadek o $25\%$). Czas obsługi liczników referencji spadł z $2,4s$ do $1,6s$, co oznacza spadek o około $35\%$, a czas poświęcony wcześniej na odczyt właściwości \objcinline{n} spadła do wartości niezauważalnej podczas profilowania.
+
+Pomimo tak znacznego przyspieszenia, kod ten nadal jest około 6-krotnie wolniejszy od implementacji w Swift.
+
+
+
+
+
+% Wykres z danymi: ./Benchmarks run BubbleSortTestSwift BubbleSortTestObjC -from 1000 -to 15000 -step 250 -repetitions 10 -export gnuplot
 
 %%%%% BIBLIOGRAFIA
 
