@@ -10,16 +10,16 @@ import Foundation
 
 class ArrayInsertionTestSwift: Test {
 
-    private let numberOfInsertions: Int
+    private let n: Int
 
-    init(numberOfInsertions: Int) {
-        self.numberOfInsertions = numberOfInsertions
+    init(n: Int) {
+        self.n = n
     }
 
     func run() {
         var array = [Int]()
 
-        for i in 0..<numberOfInsertions {
+        for i in 0..<n {
             array.append(i)
         }
     }

@@ -129,6 +129,6 @@ class ArgumentsParser {
             )
         }
 
-        return .error("Unknown error")
+        return .error("Unknown command: \(command)")
     }
 }

@@ -11,16 +11,16 @@
 
 @interface ArrayInsertionTestObjC ()
 
-@property (nonatomic, assign) int numberOfInsertions;
+@property (nonatomic, assign) int n;
 
 @end
 
 @implementation ArrayInsertionTestObjC
 
-- (instancetype)initWithNumberOfInsertions:(int)numberOfInsertions {
+- (instancetype)initWithN:(int)n {
     self = [super init];
     if (self != nil) {
-        self.numberOfInsertions = numberOfInsertions;
+        self.n = n;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (void)run {
     NSMutableArray *array = [NSMutableArray new];
 
-    for (int i = 0; i < self.numberOfInsertions; ++i) {
+    for (int i = 0; i < self.n; ++i) {
         [array addObject:@(i)];
     }
 }

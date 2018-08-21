@@ -12,6 +12,6 @@
 
 @interface ArrayInsertionTestObjC : NSObject <Test>
 
-- (nonnull instancetype)initWithNumberOfInsertions:(int)numberOfInsertions;
+- (nonnull instancetype)initWithN:(int)n;
 
 @end
