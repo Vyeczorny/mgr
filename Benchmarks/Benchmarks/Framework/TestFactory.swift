@@ -13,12 +13,15 @@ class TestFactory {
         String(describing: PlaygroundTestObjC.self),
         String(describing: BubbleSortTestObjC.self),
         String(describing: BubbleSortOptimizedTestObjC.self),
+        String(describing: BinarySearchTreeTestObjC.self),
 
         String(describing: ArrayInsertionTestSwift.self),
         String(describing: AckermannTestSwift.self),
         String(describing: FibonacciTestSwift.self),
         String(describing: PlaygroundTestSwift.self),
-        String(describing: BubbleSortTestSwift.self)
+        String(describing: BubbleSortTestSwift.self),
+        String(describing: BinarySearchTreeClassicTestSwift.self),
+        String(describing: BinarySearchTreeEnumsTestSwift.self)
     ]
 
     func buildTest(forName name: String, n: Int) -> Test {
@@ -31,8 +34,11 @@ class TestFactory {
                 return PlaygroundTestObjC(n: Int32(n))
             case String(describing: BubbleSortTestObjC.self):
                 return BubbleSortTestObjC(n: Int32(n))
-        case String(describing: BubbleSortOptimizedTestObjC.self):
-            return BubbleSortOptimizedTestObjC(n: Int32(n))
+            case String(describing: BubbleSortOptimizedTestObjC.self):
+                return BubbleSortOptimizedTestObjC(n: Int32(n))
+            case String(describing: BinarySearchTreeTestObjC.self):
+                return BinarySearchTreeTestObjC(n: Int32(n))
+
 
             case String(describing: ArrayInsertionTestSwift.self):
                 return ArrayInsertionTestSwift(numberOfInsertions: n)
@@ -44,6 +50,10 @@ class TestFactory {
                 return PlaygroundTestSwift(n: n)
             case String(describing: BubbleSortTestSwift.self):
                 return BubbleSortTestSwift(n: n)
+            case String(describing: BinarySearchTreeClassicTestSwift.self):
+                return BinarySearchTreeClassicTestSwift(n: n)
+            case String(describing: BinarySearchTreeEnumsTestSwift.self):
+                return BinarySearchTreeEnumsTestSwift(n: n)
             default:
                 fatalError("Unknown test: \(name)")
         }

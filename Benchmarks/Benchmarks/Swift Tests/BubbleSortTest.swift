@@ -14,10 +14,7 @@ class BubbleSortTestSwift: Test {
     }
 
     func run() {
-        var array = Array<Int>(repeating: 0, count: n)
-        for i in 0..<n {
-            array[i] = Int(arc4random())
-        }
+        var array = Array<Int>.generate(size: n)
 
         _ = bubbleSort(array)
     }

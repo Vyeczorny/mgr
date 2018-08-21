@@ -3,7 +3,7 @@
 // Copyright (c) 2018 Karol Wieczorek. All rights reserved.
 //
 
-#import "FibonacciTestObjC.h"
+#import "FibonacciTest.h"
 #import "Benchmarks-Swift.h"
 
 @interface FibonacciTestObjC ()

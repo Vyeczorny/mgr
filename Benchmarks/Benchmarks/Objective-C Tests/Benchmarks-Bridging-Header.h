@@ -3,7 +3,8 @@
 //
 
 #import "ArrayInsertionTest.h"
-#import "FibonacciTestObjC.h"
+#import "FibonacciTest.h"
 #import "PlaygroundTest.h"
 #import "BubbleSortTest.h"
 #import "BubbleSortOptimizedTest.h"
+#import "BinarySearchTreeTest.h"
