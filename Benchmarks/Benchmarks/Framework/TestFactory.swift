@@ -64,6 +64,10 @@ class TestFactory {
         TestInformation(
             name: "BinarySearchTreeEnumSwift",
             generatingFunction: BinarySearchTreeEnumsTestSwift.init
+        ),
+        TestInformation(
+            name: "BinarySearchTreeOptimizedClassicSwift",
+            generatingFunction: BinarySearchTreeOptimizedClassicTestSwift.init
         )
     ]
 

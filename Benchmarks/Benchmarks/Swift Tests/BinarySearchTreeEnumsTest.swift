@@ -45,6 +45,7 @@ private indirect enum Tree {
 class BinarySearchTreeEnumsTestSwift: Test {
 
     private let n: Int
+    private var tree: Tree!
 
     init(n: Int) {
         self.n = n
@@ -52,9 +53,6 @@ class BinarySearchTreeEnumsTestSwift: Test {
 
     func run() {
         let array = Array<Int>.generate(size: n)
-
-        let tree = Tree.buildTree(elements: array)
-
-        print(tree)
+        self.tree = Tree.buildTree(elements: array)
     }
 }

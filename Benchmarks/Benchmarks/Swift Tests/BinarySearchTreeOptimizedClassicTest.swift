@@ -1,5 +1,5 @@
 //
-// Created by Karol on 21.08.2018.
+// Created by Karol on 29.08.2018.
 // Copyright (c) 2018 Karol Wieczorek. All rights reserved.
 //
 
@@ -8,8 +8,8 @@ import Foundation
 private class Tree {
 
     let value: Int
-    let left: Tree?
-    let right: Tree?
+    private(set) var left: Tree?
+    private(set) var right: Tree?
 
     private init(left: Tree?, value: Int, right: Tree?) {
         self.left = left
@@ -17,28 +17,28 @@ private class Tree {
         self.right = right
     }
 
-    func add(element: Int) -> Tree {
+    func add(element: Int) {
         if element == value {
-            return self
+            return
         } else if element < value {
             if let left = left {
-                return Tree(left: left.add(element: element), value: value, right: right)
+                left.add(element: element)
             } else {
-                return Tree(left: Tree(left: nil, value: element, right: nil), value: value, right: right)
+                left = Tree(left: nil, value: element, right: nil)
             }
         } else {
             if let right = right {
-                return Tree(left: left, value: value, right: right.add(element: element))
+                right.add(element: element)
             } else {
-                return Tree(left: left, value: value, right: Tree(left: nil, value: element, right: nil))
+                right = Tree(left: nil, value: element, right: nil)
             }
         }
     }
 
     static func buildTree(elements: [Int]) -> Tree {
-        return elements.reduce(Tree(left: nil, value: elements[0], right: nil)) { (tree, element) in
-            return tree.add(element: element)
-        }
+        let tree = Tree(left: nil, value: elements[0], right: nil)
+        elements.forEach(tree.add(element:))
+        return tree
     }
 
     func printDescription() {
@@ -52,9 +52,10 @@ private class Tree {
     }
 }
 
-class BinarySearchTreeClassicTestSwift: Test {
+class BinarySearchTreeOptimizedClassicTestSwift: Test {
 
     private let n: Int
+    private var tree: Tree!
 
     init(n: Int) {
         self.n = n
@@ -62,6 +63,6 @@ class BinarySearchTreeClassicTestSwift: Test {
 
     func run() {
         let array = Array<Int>.generate(size: n)
-        let tree = Tree.buildTree(elements: array)
+        tree = Tree.buildTree(elements: array)
     }
 }

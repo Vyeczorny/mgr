@@ -23,6 +23,7 @@ class GnuplotExporter {
         set terminal postscript eps enhanced color
         set output '\(outputFile)'
         set key reverse left top Left
+        
         """
 
         if runningOptions.plotScale  == .log {

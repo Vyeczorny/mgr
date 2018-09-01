@@ -11,6 +11,7 @@
 @interface BinarySearchTreeTestObjC ()
 
 @property (nonatomic, assign) int n;
+@property (nonatomic, strong) BinarySearchTreeObjC *tree;
 
 @end
 
@@ -27,6 +28,7 @@
 - (void)run {
     NSArray *elements = [NSArray generateArrayOfSize:self.n];
     BinarySearchTreeObjC *tree = [BinarySearchTreeObjC new];
+    self.tree = tree;
 
     for (NSNumber *element in elements) {
         [tree addElement:[element integerValue]];
