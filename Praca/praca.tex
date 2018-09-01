@@ -437,11 +437,49 @@ Największy przyrost wydajności zaobserwowano dla wywołań funkcji \objcinline
 
 Pomimo tak znacznego przyspieszenia, kod ten nadal jest około 6-krotnie wolniejszy od implementacji w Swift.
 
+\section{Budowanie binarnego drzewa poszukiwań}
 
+Test opisany w tym rozdziale polega na utworzeniu binarnego drzewa poszukiwań o \swiftinline{n} elementach. Implementacja w języku Objective-C jest klasyczną implemenacją tego problemu. Zdefiniowana została struktura \objcinline{Node} przechowująca wskaźniki na lewe i prawe pod-węzeł oraz daną wartość.
 
+Nieco ciekawiej wygląda kwestia implementacji algorytmu budowania drzewa w języku Swift. Po pierwsze, programości Swift często przedkładają bezpieczeństwo i niezawodność kodu nad jego wydajność. Przykładowo, zby zapewnić bezpieczeństwo dostępu do danych (np. podczas dostępu z wielu wątków) stosuje się struktury niemutowalne. Po drugie, Swift oferuje dużo więcej narzędzi niż Objective-C, m.in. funkcje wyższego rzędu jako \todo{Przetłumaczyć} \ang{first class citizens} czy algebraiczne typy danych w postaci typów wyliczeniowych z wartościami powiązanymi. Z tych dwóch powodów, poniższy test zawiera dwie implementacje w języku Swift. Obie zapewniają niemutowalność bieżących elementów drzewa - dodanie nowego elementu powoduje utworzenie nowego węzła, a nie zmodyfikowanie już istniejącego. Pierwsza implementacja to implementacja "klasyczna". Dane przechowywane są w klasie \swiftinline{Tree} (odpowiednik klasy \objcinline{Node} z Objective-C), a metoda dodająca element przechodzi po drzewie i tworzy nowy obiekt typu \swiftinline{Tree} w odpowiednim miejscu. Druga implementacja jest oparta na wykorzystaniu typów wyliczeniowych z wartościami powiązanymi i wygląda nieco bardziej jak kod znany z języków funkcyjnych. Dane przechowywane są tutaj w typie wyliczeniowym \swiftinline{Tree}, który definiuje dwa "konstruktory typów": \swiftinline{empty} oraz \swiftinline{node(Tree, Int, Tree)}. Funkcja dodająca element używa pattern matchingu, aby znaleźć odpowiednie miejsce w drzewie i tam dodaje nowy obiekt. Kod opisanych testów znajduje się odpowiednio w plikach \texttt{BinarySearchTreeTest.m}, \texttt{BinarySearchTreeClassicTest.swift} oraz \texttt{BinarySearchTreeEnumsTest.swift}.
 
+\subsection{Analiza działania}
 
-% Wykres z danymi: ./Benchmarks run BubbleSortTestSwift BubbleSortTestObjC -from 1000 -to 15000 -step 250 -repetitions 10 -export gnuplot
+\begin{figure}
+    \includegraphics{plots/BinarySearchTree.eps}
+    \caption{Wykres czasu działania testu BinarySearchTree}
+    \label{p:binary_search}
+\end{figure}
+
+Wykres \ref{p:binary_search} Przedstawia wyniki działania testu tworzącego drzewo binarne o wielkości \swiftinline{n}. Jak widać, jest to pierwszy test, którym implementacja w Objective-C jest szybsza od implementacji w Swift. Kod napisany w starszym z języków wykonuje się około 2 razy szybciej od implementacji napisanej Swift przy pomocy typów wyliczeniowych i ponad dwa razy szybciej od "klasycznej" implementacji w Swift. 
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/BinarySearch.png}}
+    \caption{Tablica profilowania dla testu BinarySearchTree (u góry - Objective-C, po środku - Swift przy użyciu klas, na dole - Swift przy użyciu typów wyliczeniowych)}
+    \label{i:binary_search}
+\end{figure}
+
+Rysunek \ref{i:binary_search} przestawia tabelę profilowania ww. testów dla wejściowego rozmiaru drzewa \swiftinline{n = 5000000}. Dla czytelności pominięte zostały wpisy, których czas wykonywania nie przekraczał $0.1\%$ łącznego czasu wykonywania testu. Podczas tego pojedynczego uruchomienia kod napisany w Objective-C okazał się być aż 2,5 raza szybszy od implementacji w Swift przy użyciu typów wyliczeniowych oraz 3 razy szybszy od klasycznej implementacji w Swift. Głównym powodem takiego stanu rzeczy była wspomniana we wstępie do tego testu niemutowalność struktury drzewa dla implementacji w Swift. 
+
+Największą ilość czasu podczas wykonywania testów w Swift zajęło tworzenie nowych obiektów (kolor niebieski na tablicy profilowania) oraz obsługa ARC (kolor czerwony). Powodem, dla którego tak się działo jest wielokrotne tworzenie obiektów dla tych samych węzłów, co powodowało bardzo częste wywoływania inicjalizatora i deinicjlizatora oraz w późniejszym etapie funkcji odpowiadających za inkrementację i dekrementację licznika referencji. Dla implementacji w Swifta z użyciem typów wyliczeniowych łączny czas wywołań inicjalizatorów i deinicjalizatorów wyniósł 25,04s, a operacje obługi liczników referencji zajęły łącznie 13,33s. Dla kodu napisanego za pomocą klas w Swift wartości te wynosiły odpowiednio 32,63s dla inicjalizacji i deinicjalizacji oraz 12,41s dla obsługi ARC. W Objective-C czas tworzenia nowych obiektów wynosił zaledwie 445ms. Obsługa ARC zajęła łącznie ok 11,64s. Dodatkowo do czasu działania kodu Objective-C należy dodać standardowo czas przesyłania metod za pomocą funkcji \objcinline{objc_msgSend}, który wyniósł 2,01s.
+
+Z powyższej analizy wynika, że choć w Swift można napisać bardzo bezpieczny kod, to ma to jednak swoją cenę w postaci mocno obniżonej wydajności. Analiza nie byłaby jednak pełna, jeśli nie zostałaby przeprowadzona próba napisania kod działającego identycznie jak kod Objective-C, tj. modyfikująca aktualne węzły w drzewie. 
+
+\begin{figure}
+    \includegraphics{plots/BinarySearchTree2.eps}
+    \caption{Wykres czasu zoptymalizowanej wersji w Swift dla BinarySearchTree w porównaniu z wersją w Objective-C}
+    \label{p:binary_search2}
+\end{figure}
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/BinarySearch2.png}}
+    \caption{Tablica profilowania dla zoptymalizowanej wersji testu BinarySearchTree}
+    \label{i:binary_search2}
+\end{figure}
+
+Wykres \ref{p:binary_search2} przedstawia czas działania zoptymalizowanego testu napisanego w języku Swift. Jak widać, test ten jest teraz około 3-krotnie szybszy od testu zaimplementowanego w Objective-C. Tablica profilowania \ref{i:binary_search2} tego testu wskazuje wyraźnie na przyczynę poprawy wydajności. W zoptymalizowanej implementacji pozbyto się tworzenia dużej ilości nowych obiektów podczas dodawania nowego elementu. Wywołania inicjalizatora zajmują teraz jedynie 611ms, co oznacza co oznacza skrócenie czasu potrzebnego na inicjalizację obiektów o 98\% (wcześniej - 32,63s). Czas obsługi ARC również uległ zmniejszeniu - z 11,64s do 7,47s (spadek o 35\%). 
+
+Zatem pomimo początkowych problemów z wydajnością również i w tym teście kod napisany w Swift okazał się szybszy. Należy jednak uważać, z jakich właściwości języka się korzysta. Pisanie kodu w oparciu o idee zaczerpnięte z programowania funkcyjnego może nie być dobrym wyborem pod względem wydajności kodu.
 
 %%%%% BIBLIOGRAFIA
 
