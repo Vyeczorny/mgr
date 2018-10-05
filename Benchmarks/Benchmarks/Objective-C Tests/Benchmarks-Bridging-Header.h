@@ -8,3 +8,4 @@
 #import "BubbleSortTest.h"
 #import "BubbleSortOptimizedTest.h"
 #import "BinarySearchTreeTest.h"
+#import "MessageDispatchTest.h"

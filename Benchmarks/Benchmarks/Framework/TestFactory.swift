@@ -38,6 +38,10 @@ class TestFactory {
             generatingFunction: { BinarySearchTreeTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "MessageDispatchObjC",
+            generatingFunction: { MessageDispatchTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -68,6 +72,14 @@ class TestFactory {
         TestInformation(
             name: "BinarySearchTreeOptimizedClassicSwift",
             generatingFunction: BinarySearchTreeOptimizedClassicTestSwift.init
+        ),
+        TestInformation(
+            name: "StaticDispatchSwift",
+            generatingFunction: StaticDispatchSwift.init
+        ),
+        TestInformation(
+            name: "DynamicDispatchSwift",
+            generatingFunction: DynamicDispatchSwift.init
         )
     ]
 
@@ -76,9 +88,13 @@ class TestFactory {
     }
 
     func buildTest(forName name: String, n: Int) -> Test {
-        guard let test = tests.filter({ $0.name == name }).first?.generatingFunction(n) else {
-        fatalError("Unknown test: \(name)")
+        guard let testInformation = getTestInformation(name: name) else {
+            fatalError("Unknown test: \(name)")
         }
-        return test
+        return testInformation.generatingFunction(n)
+    }
+
+    private func getTestInformation(name: String) -> TestInformation? {
+        return tests.filter({ $0.name == name }).first
     }
 }

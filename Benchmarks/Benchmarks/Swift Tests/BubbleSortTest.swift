@@ -14,7 +14,7 @@ class BubbleSortTestSwift: Test {
     }
 
     func run() {
-        var array = Array<Int>.generate(size: n)
+        let array = Array<Int>.generate(size: n)
 
         _ = bubbleSort(array)
     }

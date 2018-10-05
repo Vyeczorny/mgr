@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		611A4156E180ABD6F126F2B7 /* BinarySearchTreeObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4A32552899F45221E3FA /* BinarySearchTreeObjC.m */; };
+		611A42003B62338DB9D93272 /* StaticDispatchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A42484AD0F43B41227613 /* StaticDispatchTest.swift */; };
+		611A42233518B08E8B2CDAC2 /* DynamicDispatchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A45F91BAAB98BB3B89084 /* DynamicDispatchTest.swift */; };
+		611A434B1CA479CD348BA86A /* MultiplyByTwoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A40C6D4B0CED4A579B992 /* MultiplyByTwoStruct.swift */; };
 		611A436EB5FE6AAF60457EF6 /* BinarySearchTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A46D236631600557A3EDF /* BinarySearchTreeTest.m */; };
 		611A43C1F8044E2A9FC38838 /* TestInstanceRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4EEF2DEF4DF40EF73812 /* TestInstanceRunner.swift */; };
 		611A44CC870D33DAC855ABBC /* PlaygroundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A47CF5767045A392B35F8 /* PlaygroundTest.swift */; };
@@ -20,12 +23,15 @@
 		611A472AF9E33689EA2E0C2D /* TestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4B770FC771CA895206E5 /* TestRunner.swift */; };
 		611A47A104CCBEF250D8BEA4 /* ResultExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4099E61B853D6403AFE9 /* ResultExporter.swift */; };
 		611A484064F327E8FBF34CEF /* GnuplotExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F95191ADFAE3FAE9C92 /* GnuplotExporter.swift */; };
+		611A48E2B6C03143D26F9211 /* MessageDispatchTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4B02BF0FDA1EE2B49E7E /* MessageDispatchTest.m */; };
 		611A48EACCDA508349CD8F94 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A433AF5F06E74BD43FA99 /* TestFactory.swift */; };
 		611A498847783C3CF4127C60 /* NSArray+generate.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4FC2A0E3AD362CA00D0D /* NSArray+generate.m */; };
 		611A4A18C3753A17C4C93F32 /* TerminalExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4DFA80FA0974F0E5FA1D /* TerminalExporter.swift */; };
+		611A4A87BCD27220C06A3C4A /* MultiplyByTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */; };
 		611A4B3A7CF697B8144775EB /* FibonacciTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A43606C4E5DC13D721350 /* FibonacciTest.swift */; };
 		611A4BE3AE36B57CC270FF74 /* AckermannTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F7BB5376F53D38DBCF7 /* AckermannTest.swift */; };
 		611A4C2266EFFE2B67613B0A /* BinarySearchTreeOptimizedClassicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */; };
+		611A4C2803659059EFDEADCE /* MultiplyByTwoClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4322B86E569F48EDF3C9 /* MultiplyByTwoClass.swift */; };
 		611A4EAF4D6848DF2D37136C /* BubbleSortOptimizedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A419DF9A21305AD8BC283 /* BubbleSortOptimizedTest.m */; };
 		611A4F65480E2BA05885F1A9 /* TestSuiteRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4CD70B2758E90AD2FF23 /* TestSuiteRunner.swift */; };
 		611A4FB1C0E4602B2DA0B3EE /* Array+generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A40E0EA8068DE8A672902 /* Array+generate.swift */; };
@@ -52,22 +58,30 @@
 		611A4099E61B853D6403AFE9 /* ResultExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultExporter.swift; sourceTree = "<group>"; };
 		611A40B8DA2D9A25E435A450 /* BubbleSortTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSortTest.h; sourceTree = "<group>"; };
 		611A40BD17C026CDCC491F19 /* BinarySearchTreeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearchTreeTest.h; sourceTree = "<group>"; };
+		611A40C6D4B0CED4A579B992 /* MultiplyByTwoStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplyByTwoStruct.swift; sourceTree = "<group>"; };
 		611A40E0EA8068DE8A672902 /* Array+generate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+generate.swift"; sourceTree = "<group>"; };
 		611A419DF9A21305AD8BC283 /* BubbleSortOptimizedTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleSortOptimizedTest.m; sourceTree = "<group>"; };
 		611A41E4F6B4B46C67B10235 /* BinarySearchTreeEnumsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeEnumsTest.swift; sourceTree = "<group>"; };
+		611A422F8732D6844A3DEC62 /* MessageDispatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDispatchTest.h; sourceTree = "<group>"; };
+		611A42484AD0F43B41227613 /* StaticDispatchTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticDispatchTest.swift; sourceTree = "<group>"; };
+		611A4322B86E569F48EDF3C9 /* MultiplyByTwoClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiplyByTwoClass.swift; sourceTree = "<group>"; };
 		611A433AF5F06E74BD43FA99 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		611A43606C4E5DC13D721350 /* FibonacciTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FibonacciTest.swift; sourceTree = "<group>"; };
 		611A43E8B9835BFDBF8C731B /* BubbleSortOptimizedTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSortOptimizedTest.h; sourceTree = "<group>"; };
+		611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyByTwo.m; sourceTree = "<group>"; };
 		611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeOptimizedClassicTest.swift; sourceTree = "<group>"; };
+		611A45F91BAAB98BB3B89084 /* DynamicDispatchTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicDispatchTest.swift; sourceTree = "<group>"; };
 		611A46671279A93397BFA81F /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		611A46D236631600557A3EDF /* BinarySearchTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearchTreeTest.m; sourceTree = "<group>"; };
 		611A46F6D7C6103B3B071B25 /* FibonacciTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FibonacciTest.m; sourceTree = "<group>"; };
+		611A477AB8205B621067D2B1 /* MultiplyByTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplyByTwo.h; sourceTree = "<group>"; };
 		611A47CF5767045A392B35F8 /* PlaygroundTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundTest.swift; sourceTree = "<group>"; };
 		611A4903337AF2584627DD6F /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
 		611A493EDC9D90F9CF72D9C4 /* BubbleSortTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSortTest.swift; sourceTree = "<group>"; };
 		611A495626D3736348009204 /* PlaygroundTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaygroundTest.m; sourceTree = "<group>"; };
 		611A4A32552899F45221E3FA /* BinarySearchTreeObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearchTreeObjC.m; sourceTree = "<group>"; };
 		611A4AAEF107C3A510BE618D /* BinarySearchTreeClassicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeClassicTest.swift; sourceTree = "<group>"; };
+		611A4B02BF0FDA1EE2B49E7E /* MessageDispatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDispatchTest.m; sourceTree = "<group>"; };
 		611A4B76FE6C2630A077D123 /* PlaygroundTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaygroundTest.h; sourceTree = "<group>"; };
 		611A4B770FC771CA895206E5 /* TestRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunner.swift; sourceTree = "<group>"; };
 		611A4C0022E963FC384DEF3E /* FibonacciTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FibonacciTest.h; sourceTree = "<group>"; };
@@ -119,6 +133,8 @@
 				611A4903337AF2584627DD6F /* Node.m */,
 				611A4FC2A0E3AD362CA00D0D /* NSArray+generate.m */,
 				611A4DBC5F94E56BA9AD8605 /* NSArray+generate.h */,
+				611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */,
+				611A477AB8205B621067D2B1 /* MultiplyByTwo.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -127,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				611A40E0EA8068DE8A672902 /* Array+generate.swift */,
+				611A4322B86E569F48EDF3C9 /* MultiplyByTwoClass.swift */,
+				611A40C6D4B0CED4A579B992 /* MultiplyByTwoStruct.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -158,6 +176,8 @@
 				611A42AAE94CE7A2ADCB1514 /* Helpers */,
 				611A46D236631600557A3EDF /* BinarySearchTreeTest.m */,
 				611A40BD17C026CDCC491F19 /* BinarySearchTreeTest.h */,
+				611A4B02BF0FDA1EE2B49E7E /* MessageDispatchTest.m */,
+				611A422F8732D6844A3DEC62 /* MessageDispatchTest.h */,
 			);
 			path = "Objective-C Tests";
 			sourceTree = "<group>";
@@ -174,6 +194,8 @@
 				611A466BEC3D4895A3BB6846 /* Helpers */,
 				611A4AAEF107C3A510BE618D /* BinarySearchTreeClassicTest.swift */,
 				611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */,
+				611A42484AD0F43B41227613 /* StaticDispatchTest.swift */,
+				611A45F91BAAB98BB3B89084 /* DynamicDispatchTest.swift */,
 			);
 			path = "Swift Tests";
 			sourceTree = "<group>";
@@ -302,6 +324,12 @@
 				611A484064F327E8FBF34CEF /* GnuplotExporter.swift in Sources */,
 				611A47A104CCBEF250D8BEA4 /* ResultExporter.swift in Sources */,
 				611A4C2266EFFE2B67613B0A /* BinarySearchTreeOptimizedClassicTest.swift in Sources */,
+				611A48E2B6C03143D26F9211 /* MessageDispatchTest.m in Sources */,
+				611A4A87BCD27220C06A3C4A /* MultiplyByTwo.m in Sources */,
+				611A4C2803659059EFDEADCE /* MultiplyByTwoClass.swift in Sources */,
+				611A434B1CA479CD348BA86A /* MultiplyByTwoStruct.swift in Sources */,
+				611A42003B62338DB9D93272 /* StaticDispatchTest.swift in Sources */,
+				611A42233518B08E8B2CDAC2 /* DynamicDispatchTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
