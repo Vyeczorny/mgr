@@ -38,6 +38,14 @@ class TestFactory {
             generatingFunction: { BinarySearchTreeTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "DijkstraObjC",
+            generatingFunction: { DijkstraTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
+            name: "DijkstraOptimizedObjC",
+            generatingFunction: { DijkstraOptimizedTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "MessageDispatchObjC",
             generatingFunction: { MessageDispatchTestObjC(n: Int32($0)) }
         ),
@@ -80,6 +88,14 @@ class TestFactory {
         TestInformation(
             name: "DynamicDispatchSwift",
             generatingFunction: DynamicDispatchSwift.init
+        ),
+        TestInformation(
+            name: "DijkstraSwift",
+            generatingFunction: DijkstraTestSwift.init
+        ),
+        TestInformation(
+            name: "DijkstraOptimizedSwift",
+            generatingFunction: DijkstraOptimizedTestSwift.init
         )
     ]
 

@@ -79,6 +79,8 @@
     \mintinline{objc}{#1}
 }
 
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+
 \begin{document}
 
 %%%%% POCZĄTEK ZASADNICZEGO TEKSTU PRACY
@@ -480,6 +482,76 @@ Z powyższej analizy wynika, że choć w Swift można napisać bardzo bezpieczn
 Wykres \ref{p:binary_search2} przedstawia czas działania zoptymalizowanego testu napisanego w języku Swift. Jak widać, test ten jest teraz około 3-krotnie szybszy od testu zaimplementowanego w Objective-C. Tablica profilowania \ref{i:binary_search2} tego testu wskazuje wyraźnie na przyczynę poprawy wydajności. W zoptymalizowanej implementacji pozbyto się tworzenia dużej ilości nowych obiektów podczas dodawania nowego elementu. Wywołania inicjalizatora zajmują teraz jedynie 611ms, co oznacza co oznacza skrócenie czasu potrzebnego na inicjalizację obiektów o 98\% (wcześniej - 32,63s). Czas obsługi ARC również uległ zmniejszeniu - z 11,64s do 7,47s (spadek o 35\%). 
 
 Zatem pomimo początkowych problemów z wydajnością również i w tym teście kod napisany w Swift okazał się szybszy. Należy jednak uważać, z jakich właściwości języka się korzysta. Pisanie kodu w oparciu o idee zaczerpnięte z programowania funkcyjnego może nie być dobrym wyborem pod względem wydajności kodu.
+
+\section{Rodzaje wywołania metod}
+
+Język Swift obsługuje dwa rodzaje wywołań metod: statyczną (\ang{direct dispatch}) i dynamiczną (\ang{table dispatch}). Oprócz tego, ze względu na możliwość użycia kodu Swift w Objective-C, programista może również używać wywoływania poprzez wiadomości (\ang{message dispatch}), które jest domyślnym sposobem wywoływania w starszym z języków.
+
+Wywoływanie statyczne jest uznawane za najszybszy sposób wykonywania metod. Główną cechą jest pełna wiedza o tym, która metoda ma zostać wykonana już w trakcie procesu kompilowania. Z tego powodu, kompilator może stosować dużą ilość optymalizacji, takich jak bezpośrednie odwołania do adresu funkcji czy wywołanie funkcji "w linii" (\ang{inline}). Główną jej wadą jest natomiast bardzo ograniczone wsparcie dla polimorfizmu, przez co większość języków implementuje dodatkowo inny rodzaj wywoływania metod (np. tablice wirtualne w C++). W Swift wywoływanie statyczne jest używane dla struktur oraz rozszerzeń protokołów (\ang{protocol extensions}).
+
+Wywołanie dynamiczne to mechanizm zaimplementowany w większości współczesnych obiektowych języków programowania. Jego działanie opiera się głównie o tablice wirtualne. W Swift istnieją dwa rodzaje tablic wirtualnych:
+
+\begin{itemize}
+    \item \textit{virtual dispatch tables} - tablice wirtualne tworzone dla klas i służące do wywoływania odpowiednich metod klasy. Dzięki nim, możliwe jest dziedziczenie i przeładowywanie metod w klasach dziedziczących.
+    \item \textit{witness tables} - tablice wirtualne tworzone dla każdego typu implementującego protokół. Dzięki nim możliwe jest użycie protokołów.
+\end{itemize}
+
+Zaletą takiego podejścia jest jego elastyczność, która umożliwia zaimplementowanie takich elementów języka, jak dziedziczenie czy protokoły. Wadą natomiast jest dodatkowy czas, potrzebny na wyszukanie adresu funkcji w tablicy wirtualnej. Uniemożliwia też stosowanie niektórych metod optymalizacji kodu. W Swift wywoływanie dynamiczne jest domyślnie używane dla klas oraz protokołów.
+
+Wywołanie przez wiadomości to mechanizm odziedziczony z Objective-C i używany głównie w trakcie wywoływania kodu Objective-C. Jest uważany za najwolniejszy z trzech dostępnych sposobów wywoływania funkcji, wspiera jednak funkcje języka, takie jak selector czy KVO (\ang{Key Value Observers}) bez których prawie niemożliwe byłoby używanie klas i bibliotek napisanych w Objective-C z poziomy kodu swiftowego.
+
+Test opisany w tym rozdziale polega na wykonaniu bardzo prostej funkcji mnożącej liczbę całkowitą przez 2 na kilka sposobów:
+
+\begin{itemize}
+    \item jako metoda struktury - metoda struktury zostanie wywołana statycznie. Kod tego eksperymentu znajduje się w teście \swiftinline{StaticDispatchTest.swift}.
+    \item jako metoda struktury implementującej protokół - ze względu na fakt, że struktura jest schowana za protokołem i kompilator nie ma sposobu na zidentyfikowanie dokładnego typu obiektu, metoda zostanie wywołana dynamicznie. Kod dla tego eksperymentu znajduje się w teście \swiftinline{DynamicDispatchTest.swift}.
+    \item jako metoda klasy z Objective-C - funkcje napisane w Objective-C są wywoływane przez wysłanie wiadomości. Kod dla tego testu znajduje się w pliku \swiftinline{MessageDispatchTest.mm}.
+\end{itemize}
+
+\subsection{Analiza działania}
+
+Wyniki wyżej opisanych testów znajdują się na wykresie \ref{p:dispatch_method}.
+
+\begin{figure}
+    \includegraphics{plots/Dispatch.eps}
+    \caption{Wykres czasu działania trzech metod wywołania funkcji: statycznej, dynamicznej i przez wiadomości}
+    \label{p:dispatch_method}
+\end{figure}
+
+Jak widać na wykresie, czasy działania różnych metod wywołania różnią się od siebie znacznie. Zgodnie z przewidywaniami z opisu tego testu, statyczna metoda wywołania funkcji jest najszybsza. Na drugim miejscu znalazł się mechanizm wywoływania przez wiadomości, który jest ok. 4-krotnie wolniejszy od wywoływania statycznego. Wywołanie dynamiczne okazało sie natomiast niespodziewanie wolne, zajęło ponad 2 razy więcej czasu niż wywołanie przez wiadomości i prawie 9 razy więcej od wywołania statycznego. Tablica profilowania z rysunku \ref{i:dispatch_method} wskazuje na pewne powody takiego stanu.
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/DispatchMethod.png}}
+    \caption{Tablica profilowania dla testów mechanizmów wywołania funkcji: statycznego (u góry), dynamicznego (w środku) i przez wiadomości (na dole)}
+    \label{i:dispatch_method}
+\end{figure}
+
+Tablica profilowania przedstawiona na rysunku \ref{i:dispatch_method} przedstawia czas działania testów dla różnych metod wywołania i parametru wejściowego $n = 20000000$. Na jej podstawie można wysnuć kilka wniosków odnośnie czasu działania testów.
+
+Po pierwsze, na czas działania testu dla wywołania statycznego składa się jedynie obsługa pętli \swiftinline{forEach} (kolor żółty na tablcy profilowania) oraz wywołanie funkcji \swiftinline{multiply}. To właśnie brak dodatkowych kosztownych operacji powoduje, że wywołanie statyczne jest najszybszym z trzech porównywanych mechanizmów.
+
+Przy wywołaniu dynamicznym, implementacja funkcji \swiftinline{multiply} jest schowana za protokołem. Z tego powodu, kompilator musi w trakcie działania programu znaleźć adres do odpowiedniej implementacji, którą należy wywołać. Operacja ta zostanie wykonana w dwóch krokach:
+
+\begin{itemize}
+    \item najpierw kompilator utworzy tablicę wirtualną \ang{Witness table} dla protokołu \swiftinline{MultiplyByTwoProtocol} oraz struktury \swiftinline{MultiplyByTwoStruct}. Tablica ta zawiera odnośniki do adresów funkcji dla typu implementującego dany protokół. W tym przypadku znajdzie się tam adres implentacji dla funkcji \swiftinline{multiply} w strukturze \swiftinline{MultiplybyTwoStruct}.
+    \item następnie kompilator powiąże utworzoną tablicę z danym obiektem struktury tworząć tymczasowy typ egzystencyjny (\ang{existential type}). Taki obiekt zostanie dopiero przekazany do wywołania funkcji.
+\end{itemize}
+
+Z tablicy profilowania wynika, że tworzenie tablicy \textit{Witness table} zajmuje 110ms, a tworzenie i usuwanie typu egzystencjalnego to czas 73ms, co łącznie daje aż 75\% całego czasu wykonania funkcji (kolor czerwony na tablicy profilowania).
+
+Wywołanie przez wiadomości okazało się szybsze niż wywołanie dynamiczne. Zawdzięcza to głównie świetnej optymalizacji oraz użyciu cache do przechowywania informacji o tym, jaka wiadomość powinna zostać wysłana. Jako, że wysyłana jest cały czas taka sama wiadomość do tej samej klasy, to cache jest tutaj bardzo wydajną formą optymalizacji. Nadal jednak narzut czasowy powodowany przez wywołania funkcji \objcinline{objc_msgSend} to 22ms, czyli około 40\% czasu wykonywania całej metody.
+
+
+
+
+
+% \begin{itemize}  
+    % \item wywołanie dynamiczne wymaga sprawdzania w trakcie działania programu, która funkcja powinna zostać wywołana, powoduje to dodatkowy narzut czasowy, który dla powyższego testu wynosił ok. 102ms (kolor czerwony na tablicy profilowania).
+    % \item do zaimplementowania testu do wywołania dynamicznego użyto klasy. Klasy w języku Swift są typem referencyjnym, co oznacza, że pamięć dla nich jest zawsze alkowanay na stercie, a co za tym idzie, wymagają obsługi zliczania referencji. W powyższym teście koszt obługi liczników referencji był największą składową tego testu, łącznie zajął ok. 311ms, czyli 66\% całkowitego czasu działania testu (kolor niebieski na tablicy profilowania).
+% \end{itemize}
+
+
+
 
 %%%%% BIBLIOGRAFIA
 

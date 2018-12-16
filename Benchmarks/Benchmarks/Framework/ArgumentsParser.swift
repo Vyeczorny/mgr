@@ -32,6 +32,8 @@ enum Command {
     case list
     case run(RunningOptions)
     case error(String)
+    // temporary
+    case check
 }
 
 class ArgumentsParser {
@@ -127,6 +129,10 @@ class ArgumentsParser {
                     plotScale: plotScale ?? .linear
                 )
             )
+        }
+
+        if command == "check" {
+            return .check
         }
 
         return .error("Unknown command: \(command)")

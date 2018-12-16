@@ -5,7 +5,11 @@
 
 import Foundation
 
-struct MultiplyByTwoStruct {
+protocol MultiplyByTwoProtocol {
+    func multiply() -> Int
+}
+
+struct MultiplyByTwoStruct: MultiplyByTwoProtocol {
 
     private let n: Int
 

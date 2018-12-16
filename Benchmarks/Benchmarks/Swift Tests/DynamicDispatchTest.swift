@@ -7,15 +7,16 @@ import Foundation
 
 class DynamicDispatchSwift: Test {
 
-    private let inputData: [MultiplyByTwoClass]
+    private let items: [MultiplyByTwoProtocol]
 
     init(n: Int) {
-        self.inputData = Array<Int>.generate(size: n).map(MultiplyByTwoClass.init)
+        self.items = Array<Int>.generate(size: n).map(MultiplyByTwoStruct.init)
     }
 
     func run() {
-        inputData.forEach { input in
-            _ = input.multiply()
+        var output = 0
+        for input in items {
+            output = output &+ input.multiply()
         }
     }
 }

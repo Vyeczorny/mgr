@@ -5,11 +5,12 @@
 
 #import "MessageDispatchTest.h"
 #import "Benchmarks-Swift.h"
+#import "MultiplyByTwoProtocol.h"
 #import "MultiplyByTwo.h"
 
 @interface MessageDispatchTestObjC ()
 
-@property (nonatomic, strong) NSArray<MultiplyByTwo *>* inputData;
+@property (nonatomic, strong) NSArray<id<MultiplyByTwoProtocol>>* inputData;
 
 @end
 
@@ -28,8 +29,9 @@
 }
 
 - (void)run {
-    for (MultiplyByTwo *input in self.inputData) {
-        [input multiply];
+    int output = 0;
+    for (id<MultiplyByTwoProtocol> input in self.inputData) {
+        output += [input multiply];
     }
 }
 

@@ -14,8 +14,9 @@ class StaticDispatchSwift: Test {
     }
 
     func run() {
+        var output = 0
         inputData.forEach { input in
-            _ = input.multiply()
+            output = output &+ input.multiply()
         }
     }
 }

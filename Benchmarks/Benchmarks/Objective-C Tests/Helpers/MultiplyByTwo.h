@@ -4,9 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MultiplyByTwoProtocol.h"
 
 
-@interface MultiplyByTwo : NSObject
+@interface MultiplyByTwo : NSObject <MultiplyByTwoProtocol>
 
 - (nonnull instancetype)initWithN:(int)n;
 - (int)multiply;

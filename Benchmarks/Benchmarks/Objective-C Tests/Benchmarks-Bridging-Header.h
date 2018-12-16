@@ -9,3 +9,7 @@
 #import "BubbleSortOptimizedTest.h"
 #import "BinarySearchTreeTest.h"
 #import "MessageDispatchTest.h"
+#import "DijkstraTestOptimized.h"
+#import "DijkstraTest.h"
+
+#import "PriorityQueueObjC.h"
