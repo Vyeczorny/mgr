@@ -6,6 +6,8 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{lmodern}
+\usepackage{program}
+\usepackage{algorithm}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
 \polishtitle    {Polski tytuł}
@@ -326,7 +328,7 @@ Wszystkie testy opisane w tej pracy zostały wykonane na komputerze Macbook Pro 
     \item wersja LLVM: 9.0.0 (clang-900.0.39.2)
 \end{itemize}
 
-\todo{Napisać coś o platformie}
+\todo{Napisać coś o platformie i metodologii testowania}
 
 \section{Wstawianie elementu do tablicy}
 
@@ -541,17 +543,84 @@ Z tablicy profilowania wynika, że tworzenie tablicy \textit{Witness table} zajm
 
 Wywołanie przez wiadomości okazało się szybsze niż wywołanie dynamiczne. Zawdzięcza to głównie świetnej optymalizacji oraz użyciu cache do przechowywania informacji o tym, jaka wiadomość powinna zostać wysłana. Jako, że wysyłana jest cały czas taka sama wiadomość do tej samej klasy, to cache jest tutaj bardzo wydajną formą optymalizacji. Nadal jednak narzut czasowy powodowany przez wywołania funkcji \objcinline{objc_msgSend} to 22ms, czyli około 40\% czasu wykonywania całej metody.
 
+\section{Złożony algorytm}
 
+Wszystkie testy przedstawione w tej pracy skupiały sie na przetestowaniu wydajności konkretnych aspektów języka Swift. Ostatni test sprawdza natomiast, jak język Swift sprawdza się w bardziej złożonych zadaniach, takich jak np. algorytm Dijkstry.
 
+Algorytm Dijkstry to metoda znajdowania najkrótszych ścieżek w grafie $G$ o wierzchołkach $V$ i macierzy sąsiedztwa $w$ z pojedynczego źródła $s$. Pseudokod dla tego algorytmu wygląda następująco:
 
+\begin{algorithm}
+\begin{program}
+    \PROC |dijkstra|(V, w, s)
+        S = \emptyset \rcomment{zbiór wierzchołków z obliczoną najkrószą ścieżką}
+        Q = V \rcomment{kolejka priorytetowa}
+        s.d = 0
 
-% \begin{itemize}  
-    % \item wywołanie dynamiczne wymaga sprawdzania w trakcie działania programu, która funkcja powinna zostać wywołana, powoduje to dodatkowy narzut czasowy, który dla powyższego testu wynosił ok. 102ms (kolor czerwony na tablicy profilowania).
-    % \item do zaimplementowania testu do wywołania dynamicznego użyto klasy. Klasy w języku Swift są typem referencyjnym, co oznacza, że pamięć dla nich jest zawsze alkowanay na stercie, a co za tym idzie, wymagają obsługi zliczania referencji. W powyższym teście koszt obługi liczników referencji był największą składową tego testu, łącznie zajął ok. 311ms, czyli 66\% całkowitego czasu działania testu (kolor niebieski na tablicy profilowania).
-% \end{itemize}
+        \FOR v \in Q \DO
+            v.d = +\infty
+        \END
 
+        \WHILE Q \neq \emptyset
+            v = |Q.removeMin|()
+            adj = |v.adjacentVertices|()
 
+            \FOR u \in adj \DO
+                \IF v.d + w[v][u] < u.d
+                    \THEN |Q.decreaseKey(|u, v.d + w[v][u]|)|
+                \FI
+            \END
+        \END
+\end{program}
+\end{algorithm}
 
+Ważną częścią algorytmu Dijkstry z punktu widzenia złożoności obliczeniowej jest sposób implementacji kolejki priorytetowej. Ze względu na dużą ilość operacji \swiftinline{removeMin} oraz \swiftinline{decreaseKey}, najwydajniejsze implementacje używają kopców Fibonacciego. Celem tego testu jest jednak porównanie czasu działania jak najbardziej podobnych do siebie implementacji w obu językach, a nie napisanie jak najwydajniejszej implementacji algorytmu, dlatego zdecydowano użyć prostszej struktury danych, czyli zwykłych kopców typu \texttt{min}. Pozwoliło to na prostszą analizę czasu działania kodu bez zbędnego zagłębiania się w szczegóły działania samej struktury.
+
+Algorytm Dijkstry został zaimplementowany dwukrotnie dla każdego z języków. Pierwsze wersje korzystają ze wszystkich dostępnych funkcji danego języka. W przypadku Swift będą to funkcjonalności takie jak protokoły, funkcje wyższego rzędu, takie jak \swiftinline{map} czy \swiftinline{filter} czy funkcje pomocnicze. W wersji dla Objective-C użyto m.in. typów \objcinline{NSArray} zarządzającego automatycznie długością tablicy, typu \objcinline{NSNumber} pozwalającego na przechowywanie liczb w tablicy \objcinline{NSArray} oraz automatycznego zarządzania pamięcią wszędzie tam, gdzie było to możliwe. Kod tych testów znajduje się w plikach (odpowiednio dla Objective-C i Swift) \texttt{DijkstraTest.m} oraz \texttt{DijkstraTest.swift}. Nastepnie przeprowadzono analizę działania wyżej opisanych implementacji i na podstawie jej wyników zoptymalizowano implementacje dla obu języków. Porawiony kod znajduje się w plikach \texttt{DijkstraOptimized.m} oraz \texttt{DijkstraOptimized.swift}.
+
+\subsection{Analiza działania}
+
+\begin{figure}
+    \includegraphics{plots/Dijkstra}
+    \caption{Wykres czasu działania testów dla algorytmu Dijkstry}
+    \label{p:dijkstra}
+\end{figure}
+
+Rezultaty poszczególnych testów zostały przedstawione na wykresie \ref{p:dijkstra}. W przypadku standardowej implementacji przewaga Swifta jest wyraźna, kod napisany w tym języku jest od 3-4 razy szybszy od kodu w Objective-C. W przypadku zoptymializowanych wersji Swifta kod swiftowy nadal jest szybszy, jednak różnica nie jest już aż tak znacząca i wynosi ok. 30\%.
+
+\begin{figure}
+    \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/Dijkstra2.png}}
+    \caption{Tablica profilowania dla testów algorytmu Dijkstry, od góry: standardowy Objective-C, standardowy Swift, zoptymalizowany Objective-C, zoptymalizowany Swift }
+    \label{i:dijkstra}
+\end{figure}
+
+Tablica profilowania przedstawiona na rysunku \ref{i:dijkstra} wskazuje na przyczyny słabej wydajności kodu napisanego w Objective-C. Test, którego wyniki przestawione są na tablicy został uruchomiony dla grafu o 10000 wierzchołków. Dla lepszej czytelności usunięto wpisy zajmujące nie więcej niż 10$ms$. Jak widać, cały test zajął ponad 20 sekund czasu, z czego obliczanie sasiednich wierzchołków zajęło aż $5,72s$ (około 27\% czasu całego testu). Około $s$ zajęło również pobieranie danych z tablic typu \objcinline{NSArray}. Na kolejnym miejscu pod względem zajętego czasu jest wywołanie funkcji \objcinline{objc_msgSend}, które łącznie zajęło $4,04s$ (ok. 0,19\% całkowitego czasu). Ostatnim elementem zajmującym dużą część czasu jest obługa zliczania referencji. Łączny czas wywołania funkcji \objcinline{objc_retain}, \objcinline{objc_release} i ich pochodnych wyniósł łącznie $3,01s$, czyli około $,14\%$ całkowitego czasu wywołania funkcji. Ciekawy jest znikomo mały czas obsługi kolejki priorytetowej (łącznie około $216ms$).
+
+W przypadku implementacji w języku Swfit łączny czas testu wyniósł jedynie $4,45s$. Największą część zajęła obsługa zliczania referencji - łącznie $2,69s$, czyli ponad $60\%$ całkowitego czasu. Obliczanie referencji również okazało się stosunkowo kosztowne i potrzebowało $993ms$ ($22\%$ całkowitego czasu). Obsługa kolejki priorytetowej zajęła $207ms$, a więc czas zbliżony do tego z implementacji w Objective-C.
+
+Na podstawie powyższej analizy wyciągnięto wnioski odnośnie elementów implementacji, które należy ulepszyć i przyspieszyć. W przypadku kodu napisanego w Obiective-C:
+
+\begin{itemize}
+    \item zmniejszono ilość wywołań funkcji \objcinline{objc_msgSend} poprzez:
+    \begin{itemize}
+        \item włączenie kodu metody \objcinline{adjacentNodesToNode:withMatrix:n:} do ciała metody \objcinline{dijkstra}
+        \item użycie primitywnego typu \objcinline{NSUInteger} (typedef na typ \objcinline{unsigned long} z języka C) zamiast \objcinline{NSNumber}.
+        \item użycie prymitywnych tablic z języka C i operacji wskźnikowych zamiast typu \objcinline{NSArray} i operatora indeksowania
+        \item zapamiętanie w zmiennej lokalnej wartości wielkości grafu \objcinline{n}
+    \end{itemize}
+    \item zmniejszono czas obsługi tablicy poprzez użycie typu tablicy znanego z języka C zamiast \objcinline{NSArray}
+    \item usunięto potrzebę zamiany typu \objcinline{NSNumber} na typ całkowitoliczbowy poprzez użycie typu \objcinline{NSUInteger}
+    \item zredukowano czas potrzebny na obsługę liczników referencji poprzez zmniejszenie ilości tymczasowych obiektów (głównie tablic zawierających sąsiednie wierzchołki oraz tymczasowych referencji do liczb opakowanych w typ \objcinline{NSNumber})
+\end{itemize}
+
+W przypadku kodu w Swift optymalizacje skupiają się głównie na zmniejszeniu ilości czasu potrzebnego na obsługę licznika referencji:
+
+\begin{itemize}
+    \item włączenie kodu metody \swiftinline{adjacentNodes(to:from:)} do ciała metody \swiftinline{dijkstra}
+    \item użycie pętli \swiftinline{for} zamiast funkcji wyższych rzędów
+    \item użycie wczesnego wychodzenia z pętli za pomocą słowa kluczowego \swiftinline{continue}
+\end{itemize}
+
+Wyniki testów po optymalizacjach są również przedstawione a wykresie \ref{p:dijkstra} oraz tablicy profilowania \ref{i:dijkstra}. Czas wykonania obu testów zmalał, w przypadku implementacji w Swift o $63\%$, w przypadku Objective-C aż o $0,88\%$. Wydajność kodu w starszym języku znacznie zbliżyła się do wydajności kodu w Swift. Należy jednak zaznaczyć, że w kilku przypadkach użyto elementów języka C, który jest w pełni kompatybilny z Objective-C i jest jednym z najszybszych języków używanych współcześnie. Można więc pisać bardzo wydajny kod w Objective-C używając funkcjonalności z C, tracąc przy tym większość zalet, jakie Objective-C (np. ARC, obiektowość).
 
 %%%%% BIBLIOGRAFIA
 
