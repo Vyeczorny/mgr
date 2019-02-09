@@ -12,5 +12,6 @@
 #import "DijkstraTestOptimized.h"
 #import "DijkstraTest.h"
 #import "SieveOfEratosthenesTest.h"
+#import "RGBHistogramTest.h"
 
 #import "PriorityQueueObjC.h"

@@ -37,19 +37,6 @@
             }
         }
     }
-
-//    NSMutableString *output = [@"" mutableCopy];
-//    for (int i = 0; i < self.n; ++i) {
-//        if (i % 10 == 0) {
-//            NSLog(output);
-//            output = [@"" mutableCopy];
-//        }
-//        if (isPrime[i]) {
-//            [output appendString:[NSString stringWithFormat:@"%5d", i]];
-//        } else {
-//            [output appendString: @"   --"];
-//        }
-//    }
 }
 
 

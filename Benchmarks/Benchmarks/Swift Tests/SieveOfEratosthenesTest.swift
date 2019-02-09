@@ -23,10 +23,5 @@ class SieveOfEratosthenesTestSwift: Test {
                 }
             }
         }
-
-//        for i in 0..<n {
-//            if (i % 10 == 0) { print("\n") }
-//            else { print(isPrime[i] ? " \(i)" : " __", terminator: "") }
-//        }
     }
 }

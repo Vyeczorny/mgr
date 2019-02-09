@@ -54,6 +54,10 @@ class TestFactory {
             generatingFunction: { SieveOfEratosthenesTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "RGBHistogramObjC",
+            generatingFunction: { RGBHistogramTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -104,6 +108,10 @@ class TestFactory {
         TestInformation(
             name: "SieveOfEratosthenesSwift",
             generatingFunction: SieveOfEratosthenesTestSwift.init
+        ),
+        TestInformation(
+            name: "RGBHistogramSwift",
+            generatingFunction: RGBHistogramTestSwift.init
         )
     ]
 
