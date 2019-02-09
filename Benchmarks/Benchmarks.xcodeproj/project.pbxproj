@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		611A4000427CD8E34287E302 /* DijkstraTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A48B830E4C061A78ECBFC /* DijkstraTest.m */; };
+		611A40ABA922FE411B747113 /* SieveOfEratosthenesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A44794739441EF637FB9F /* SieveOfEratosthenesTest.swift */; };
 		611A4156E180ABD6F126F2B7 /* BinarySearchTreeObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4A32552899F45221E3FA /* BinarySearchTreeObjC.m */; };
 		611A41F88EA30CA59CA16FF2 /* GraphElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A475E0C5AE75E683EDBF0 /* GraphElement.m */; };
 		611A42003B62338DB9D93272 /* StaticDispatchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A42484AD0F43B41227613 /* StaticDispatchTest.swift */; };
@@ -40,6 +41,7 @@
 		611A4E2410E4D72A4BC557E4 /* DijkstraTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4BD9ED80B89DC2EF44E3 /* DijkstraTest.swift */; };
 		611A4EAF4D6848DF2D37136C /* BubbleSortOptimizedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A419DF9A21305AD8BC283 /* BubbleSortOptimizedTest.m */; };
 		611A4F65480E2BA05885F1A9 /* TestSuiteRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4CD70B2758E90AD2FF23 /* TestSuiteRunner.swift */; };
+		611A4F7898A204AB70503986 /* SieveOfEratosthenesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A455832DEC4D28F32EEC0 /* SieveOfEratosthenesTest.m */; };
 		611A4FB1C0E4602B2DA0B3EE /* Array+generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A40E0EA8068DE8A672902 /* Array+generate.swift */; };
 		611A4FE9EDF7F54DD7DC02C0 /* FibonacciTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A46F6D7C6103B3B071B25 /* FibonacciTest.m */; };
 		F96F3D6F1F4AA685005D1E97 /* ArrayInsertionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96F3D6E1F4AA685005D1E97 /* ArrayInsertionTest.swift */; };
@@ -74,11 +76,14 @@
 		611A422F8732D6844A3DEC62 /* MessageDispatchTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDispatchTest.h; sourceTree = "<group>"; };
 		611A42484AD0F43B41227613 /* StaticDispatchTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticDispatchTest.swift; sourceTree = "<group>"; };
 		611A433AF5F06E74BD43FA99 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
+		611A435BCFEB7B10DC7CAEF7 /* SieveOfEratosthenesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SieveOfEratosthenesTest.h; sourceTree = "<group>"; };
 		611A43606C4E5DC13D721350 /* FibonacciTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FibonacciTest.swift; sourceTree = "<group>"; };
 		611A4362E436E9022B6D5493 /* GraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphElement.h; sourceTree = "<group>"; };
 		611A43E8B9835BFDBF8C731B /* BubbleSortOptimizedTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSortOptimizedTest.h; sourceTree = "<group>"; };
 		611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyByTwo.m; sourceTree = "<group>"; };
 		611A446CAE52087097F4E561 /* PriorityQueueObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueObjC.m; sourceTree = "<group>"; };
+		611A44794739441EF637FB9F /* SieveOfEratosthenesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SieveOfEratosthenesTest.swift; sourceTree = "<group>"; };
+		611A455832DEC4D28F32EEC0 /* SieveOfEratosthenesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SieveOfEratosthenesTest.m; sourceTree = "<group>"; };
 		611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeOptimizedClassicTest.swift; sourceTree = "<group>"; };
 		611A45F91BAAB98BB3B89084 /* DynamicDispatchTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicDispatchTest.swift; sourceTree = "<group>"; };
 		611A462C7EB9B9191811E334 /* PriorityQueueObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriorityQueueObjC.h; sourceTree = "<group>"; };
@@ -204,6 +209,8 @@
 				611A4BFA39E71B33973B3803 /* DijkstraTestOptimized.h */,
 				611A48B830E4C061A78ECBFC /* DijkstraTest.m */,
 				611A4CFC6BD840EB35F32CEA /* DijkstraTest.h */,
+				611A455832DEC4D28F32EEC0 /* SieveOfEratosthenesTest.m */,
+				611A435BCFEB7B10DC7CAEF7 /* SieveOfEratosthenesTest.h */,
 			);
 			path = "Objective-C Tests";
 			sourceTree = "<group>";
@@ -224,6 +231,7 @@
 				611A45F91BAAB98BB3B89084 /* DynamicDispatchTest.swift */,
 				611A4BD9ED80B89DC2EF44E3 /* DijkstraTest.swift */,
 				611A48898B089D2E2ABE72E9 /* DijkstraOptimizedTest.swift */,
+				611A44794739441EF637FB9F /* SieveOfEratosthenesTest.swift */,
 			);
 			path = "Swift Tests";
 			sourceTree = "<group>";
@@ -364,6 +372,8 @@
 				611A41F88EA30CA59CA16FF2 /* GraphElement.m in Sources */,
 				611A4000427CD8E34287E302 /* DijkstraTest.m in Sources */,
 				611A42EA8B83939776398A5B /* DijkstraOptimizedTest.swift in Sources */,
+				611A4F7898A204AB70503986 /* SieveOfEratosthenesTest.m in Sources */,
+				611A40ABA922FE411B747113 /* SieveOfEratosthenesTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

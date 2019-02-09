@@ -50,6 +50,10 @@ class TestFactory {
             generatingFunction: { MessageDispatchTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "SieveOfEratosthenesObjC",
+            generatingFunction: { SieveOfEratosthenesTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -83,11 +87,11 @@ class TestFactory {
         ),
         TestInformation(
             name: "StaticDispatchSwift",
-            generatingFunction: StaticDispatchSwift.init
+            generatingFunction: StaticDispatchTestSwift.init
         ),
         TestInformation(
             name: "DynamicDispatchSwift",
-            generatingFunction: DynamicDispatchSwift.init
+            generatingFunction: DynamicDispatchTestSwift.init
         ),
         TestInformation(
             name: "DijkstraSwift",
@@ -96,6 +100,10 @@ class TestFactory {
         TestInformation(
             name: "DijkstraOptimizedSwift",
             generatingFunction: DijkstraOptimizedTestSwift.init
+        ),
+        TestInformation(
+            name: "SieveOfEratosthenesSwift",
+            generatingFunction: SieveOfEratosthenesTestSwift.init
         )
     ]
 

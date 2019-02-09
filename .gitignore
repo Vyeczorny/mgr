@@ -15,6 +15,7 @@ _minted-*
 build/
 Build/
 DerivedData/
+Index/
 
 *.pbxuser
 !default.pbxuser

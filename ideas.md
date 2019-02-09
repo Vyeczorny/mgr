@@ -62,8 +62,8 @@
     - testy z użyciem nowych feature'ów (względem bliźniaczej implementacji z Swifcie "w starym stylu", wzdlędem Obj-C i ewentualnie innych języków:
       + algorytmy na drzewach (w Swifcie możemy je zaimplementować w mocno funkcyjnym stylu)
       - operacje mapowania/filtrowania w porównaniu do zwykłych pętli for w Obj-C (lub innych językach)
-      - test na wykorzystanie statycznego typowania (rozbudowana hierarchia typów polimorficznych?)
-      - value types vs reference types vs objc
+      + test na wykorzystanie statycznego typowania (rozbudowana hierarchia typów polimorficznych?)
+      + value types vs reference types vs objc
       - używanie optional type i unwrapping vs zwracanie nili
       - leniwe sekwencje (porównanie z C#(?))
   - implementacja(?)

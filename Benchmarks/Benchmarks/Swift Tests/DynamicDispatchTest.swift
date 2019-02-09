@@ -5,7 +5,7 @@
 
 import Foundation
 
-class DynamicDispatchSwift: Test {
+class DynamicDispatchTestSwift: Test {
 
     private let items: [MultiplyByTwoProtocol]
 

@@ -11,5 +11,6 @@
 #import "MessageDispatchTest.h"
 #import "DijkstraTestOptimized.h"
 #import "DijkstraTest.h"
+#import "SieveOfEratosthenesTest.h"
 
 #import "PriorityQueueObjC.h"

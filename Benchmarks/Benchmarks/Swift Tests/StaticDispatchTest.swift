@@ -5,7 +5,7 @@
 
 import Foundation
 
-class StaticDispatchSwift: Test {
+class StaticDispatchTestSwift: Test {
 
     private let inputData: [MultiplyByTwoStruct]
 
