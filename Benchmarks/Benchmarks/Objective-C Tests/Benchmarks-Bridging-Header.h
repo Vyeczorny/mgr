@@ -13,5 +13,6 @@
 #import "DijkstraTest.h"
 #import "SieveOfEratosthenesTest.h"
 #import "RGBHistogramTest.h"
+#import "CountLinesWordsCharsTest.h"
 
 #import "PriorityQueueObjC.h"

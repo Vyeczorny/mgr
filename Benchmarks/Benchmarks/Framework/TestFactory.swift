@@ -58,6 +58,10 @@ class TestFactory {
             generatingFunction: { RGBHistogramTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "CountLinesWordsCharsObjC",
+            generatingFunction: { CountLinesWordsCharsTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -112,6 +116,10 @@ class TestFactory {
         TestInformation(
             name: "RGBHistogramSwift",
             generatingFunction: RGBHistogramTestSwift.init
+        ),
+        TestInformation(
+            name: "CountLinesWordsCharsSwift",
+            generatingFunction: CountLinesWordsCharsTestSwift.init
         )
     ]
 
