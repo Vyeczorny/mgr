@@ -14,5 +14,6 @@
 #import "SieveOfEratosthenesTest.h"
 #import "RGBHistogramTest.h"
 #import "CountLinesWordsCharsTest.h"
+#import "StringConcatenationTest.h"
 
 #import "PriorityQueueObjC.h"

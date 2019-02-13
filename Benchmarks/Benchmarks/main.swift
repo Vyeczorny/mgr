@@ -8,6 +8,12 @@
 
 import Foundation
 
+//let test: Test = StringConcatenationTestSwift(n: 5)
+//test.run()
+//exit(0)
+
+////
+
 let argumentsParser = ArgumentsParser()
 let command = argumentsParser.parse(arguments: CommandLine.arguments)
 

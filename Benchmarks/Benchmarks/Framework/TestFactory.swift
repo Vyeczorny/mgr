@@ -62,6 +62,10 @@ class TestFactory {
             generatingFunction: { CountLinesWordsCharsTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "StringConcatenationObjC",
+            generatingFunction: { StringConcatenationTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -120,6 +124,10 @@ class TestFactory {
         TestInformation(
             name: "CountLinesWordsCharsSwift",
             generatingFunction: CountLinesWordsCharsTestSwift.init
+        ),
+        TestInformation(
+            name: "StringConcatenationSwift",
+            generatingFunction: StringConcatenationTestSwift.init
         )
     ]
 

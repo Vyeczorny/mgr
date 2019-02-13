@@ -15,7 +15,7 @@
 
 @implementation CountLinesWordsCharsTestObjC
 
-- (nonnull instancetype)initWithN:(int)n{
+- (nonnull instancetype)initWithN:(int)n {
     self = [super init];
     if (self != nil) {
         self.data = [self generateDataWithN:n];
@@ -46,8 +46,6 @@
             isInWord = NO;
         }
     }
-
-//    NSLog(@"Chars: %u, Words: %u, Lines: %u", chars, words, lines);
 }
 
 - (NSString *)generateDataWithN:(int)n {
