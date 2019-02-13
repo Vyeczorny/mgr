@@ -66,6 +66,10 @@ class TestFactory {
             generatingFunction: { StringConcatenationTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "SumOfIntegersObjC",
+            generatingFunction: { SumOfIntegersTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -128,7 +132,10 @@ class TestFactory {
         TestInformation(
             name: "StringConcatenationSwift",
             generatingFunction: StringConcatenationTestSwift.init
-        )
+        ),
+        TestInformation(
+            name: "SumOfIntegersSwift",
+            generatingFunction: SumOfIntegersTestSwift.init)
     ]
 
     var testNames: [String] {

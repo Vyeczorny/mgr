@@ -15,5 +15,6 @@
 #import "RGBHistogramTest.h"
 #import "CountLinesWordsCharsTest.h"
 #import "StringConcatenationTest.h"
+#import "SumOfIntegersTest.h"
 
 #import "PriorityQueueObjC.h"

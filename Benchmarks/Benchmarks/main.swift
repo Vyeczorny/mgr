@@ -8,7 +8,7 @@
 
 import Foundation
 
-//let test: Test = StringConcatenationTestSwift(n: 5)
+//let test: Test = SumOfIntegersTestSwift(n: 3)
 //test.run()
 //exit(0)
 

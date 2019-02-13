@@ -18,6 +18,7 @@
 		611A42352F74ED9F054870AC /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A405D4787B2CBC1889919 /* PriorityQueue.swift */; };
 		611A42DD61DF5129DAA67C25 /* PriorityQueueObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A446CAE52087097F4E561 /* PriorityQueueObjC.m */; };
 		611A42EA8B83939776398A5B /* DijkstraOptimizedTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A48898B089D2E2ABE72E9 /* DijkstraOptimizedTest.swift */; };
+		611A432D24F57E9896354477 /* SumOfIntegersTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A43918A5FFE15E75F3A7D /* SumOfIntegersTest.m */; };
 		611A434B1CA479CD348BA86A /* MultiplyByTwoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A40C6D4B0CED4A579B992 /* MultiplyByTwoStruct.swift */; };
 		611A436EB5FE6AAF60457EF6 /* BinarySearchTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A46D236631600557A3EDF /* BinarySearchTreeTest.m */; };
 		611A43C1F8044E2A9FC38838 /* TestInstanceRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4EEF2DEF4DF40EF73812 /* TestInstanceRunner.swift */; };
@@ -40,6 +41,7 @@
 		611A4A87BCD27220C06A3C4A /* MultiplyByTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */; };
 		611A4B3A7CF697B8144775EB /* FibonacciTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A43606C4E5DC13D721350 /* FibonacciTest.swift */; };
 		611A4BE3AE36B57CC270FF74 /* AckermannTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F7BB5376F53D38DBCF7 /* AckermannTest.swift */; };
+		611A4C030CC06D1DB3D385FD /* SumOfIntegersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F142CCDC01CDC859860 /* SumOfIntegersTest.swift */; };
 		611A4C2266EFFE2B67613B0A /* BinarySearchTreeOptimizedClassicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */; };
 		611A4C53EB23AF94E15407BF /* StringConcatenationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A42EC3CF8C57C528D6902 /* StringConcatenationTest.swift */; };
 		611A4CF4C2ED06161FBB11C9 /* DijkstraTestOptimized.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A414E8D18542242A508A7 /* DijkstraTestOptimized.m */; };
@@ -91,6 +93,7 @@
 		611A435BCFEB7B10DC7CAEF7 /* SieveOfEratosthenesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SieveOfEratosthenesTest.h; sourceTree = "<group>"; };
 		611A43606C4E5DC13D721350 /* FibonacciTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FibonacciTest.swift; sourceTree = "<group>"; };
 		611A4362E436E9022B6D5493 /* GraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphElement.h; sourceTree = "<group>"; };
+		611A43918A5FFE15E75F3A7D /* SumOfIntegersTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SumOfIntegersTest.m; sourceTree = "<group>"; };
 		611A43E8B9835BFDBF8C731B /* BubbleSortOptimizedTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSortOptimizedTest.h; sourceTree = "<group>"; };
 		611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyByTwo.m; sourceTree = "<group>"; };
 		611A446CAE52087097F4E561 /* PriorityQueueObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueObjC.m; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		611A4A32552899F45221E3FA /* BinarySearchTreeObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearchTreeObjC.m; sourceTree = "<group>"; };
 		611A4AAEF107C3A510BE618D /* BinarySearchTreeClassicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeClassicTest.swift; sourceTree = "<group>"; };
 		611A4B02BF0FDA1EE2B49E7E /* MessageDispatchTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDispatchTest.m; sourceTree = "<group>"; };
+		611A4B1DE3D39F21DC7603AC /* SumOfIntegersTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SumOfIntegersTest.h; sourceTree = "<group>"; };
 		611A4B76FE6C2630A077D123 /* PlaygroundTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaygroundTest.h; sourceTree = "<group>"; };
 		611A4B770FC771CA895206E5 /* TestRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRunner.swift; sourceTree = "<group>"; };
 		611A4BD9ED80B89DC2EF44E3 /* DijkstraTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DijkstraTest.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 		611A4DBC5F94E56BA9AD8605 /* NSArray+generate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+generate.h"; sourceTree = "<group>"; };
 		611A4DFA80FA0974F0E5FA1D /* TerminalExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalExporter.swift; sourceTree = "<group>"; };
 		611A4EEF2DEF4DF40EF73812 /* TestInstanceRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInstanceRunner.swift; sourceTree = "<group>"; };
+		611A4F142CCDC01CDC859860 /* SumOfIntegersTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SumOfIntegersTest.swift; sourceTree = "<group>"; };
 		611A4F7BB5376F53D38DBCF7 /* AckermannTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AckermannTest.swift; sourceTree = "<group>"; };
 		611A4F95191ADFAE3FAE9C92 /* GnuplotExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GnuplotExporter.swift; sourceTree = "<group>"; };
 		611A4FC2A0E3AD362CA00D0D /* NSArray+generate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+generate.m"; sourceTree = "<group>"; };
@@ -232,6 +237,8 @@
 				611A40086754B73068E5DC27 /* CountLinesWordsCharsTest.h */,
 				611A48E9A620B3C7FFCCA071 /* StringConcatenationTest.m */,
 				611A47982BF70A409EB6130A /* StringConcatenationTest.h */,
+				611A43918A5FFE15E75F3A7D /* SumOfIntegersTest.m */,
+				611A4B1DE3D39F21DC7603AC /* SumOfIntegersTest.h */,
 			);
 			path = "Objective-C Tests";
 			sourceTree = "<group>";
@@ -256,6 +263,7 @@
 				611A4CAE3F83A19DFFFD25A7 /* RGBHistogram.swift */,
 				611A428B06DA6747BA5ACD50 /* CountLinesWordsCharsTest.swift */,
 				611A42EC3CF8C57C528D6902 /* StringConcatenationTest.swift */,
+				611A4F142CCDC01CDC859860 /* SumOfIntegersTest.swift */,
 			);
 			path = "Swift Tests";
 			sourceTree = "<group>";
@@ -404,6 +412,8 @@
 				611A4F165407382ACD4C370F /* CountLinesWordsCharsTest.swift in Sources */,
 				611A40F0A4823CEC88FD451B /* StringConcatenationTest.m in Sources */,
 				611A4C53EB23AF94E15407BF /* StringConcatenationTest.swift in Sources */,
+				611A432D24F57E9896354477 /* SumOfIntegersTest.m in Sources */,
+				611A4C030CC06D1DB3D385FD /* SumOfIntegersTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
