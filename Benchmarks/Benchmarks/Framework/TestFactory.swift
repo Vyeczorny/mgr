@@ -74,6 +74,10 @@ class TestFactory {
             generatingFunction: { RC4TestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "WordFrequencyObjC",
+            generatingFunction: { WordFrequencyTestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -144,6 +148,10 @@ class TestFactory {
         TestInformation(
             name: "RC4Swift",
             generatingFunction: RC4TestSwift.init
+        ),
+        TestInformation(
+            name: "WordFrequencySwift",
+            generatingFunction: WordFrequencyTestSwift.init
         )
     ]
 

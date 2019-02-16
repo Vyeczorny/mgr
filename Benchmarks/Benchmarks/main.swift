@@ -8,15 +8,6 @@
 
 import Foundation
 
-//let testSwift: Test = RC4TestSwift(n: 20)
-//testSwift.run()
-//
-//let testObjC: Test = RC4TestObjC(n: Int32(20))
-//testObjC.run()
-//exit(0)
-
-////
-
 let argumentsParser = ArgumentsParser()
 let command = argumentsParser.parse(arguments: CommandLine.arguments)
 

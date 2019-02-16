@@ -17,5 +17,6 @@
 #import "StringConcatenationTest.h"
 #import "SumOfIntegersTest.h"
 #import "RC4Test.h"
+#import "WordFrequencyTest.h"
 
 #import "PriorityQueueObjC.h"
