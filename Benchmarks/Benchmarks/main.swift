@@ -8,8 +8,11 @@
 
 import Foundation
 
-//let test: Test = SumOfIntegersTestSwift(n: 3)
-//test.run()
+//let testSwift: Test = RC4TestSwift(n: 20)
+//testSwift.run()
+//
+//let testObjC: Test = RC4TestObjC(n: Int32(20))
+//testObjC.run()
 //exit(0)
 
 ////

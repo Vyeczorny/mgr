@@ -70,6 +70,10 @@ class TestFactory {
             generatingFunction: { SumOfIntegersTestObjC(n: Int32($0)) }
         ),
         TestInformation(
+            name: "RC4ObjC",
+            generatingFunction: { RC4TestObjC(n: Int32($0)) }
+        ),
+        TestInformation(
             name: "ArrayInsertionSwift",
             generatingFunction: ArrayInsertionTestSwift.init
         ),
@@ -135,7 +139,12 @@ class TestFactory {
         ),
         TestInformation(
             name: "SumOfIntegersSwift",
-            generatingFunction: SumOfIntegersTestSwift.init)
+            generatingFunction: SumOfIntegersTestSwift.init
+        ),
+        TestInformation(
+            name: "RC4Swift",
+            generatingFunction: RC4TestSwift.init
+        )
     ]
 
     var testNames: [String] {

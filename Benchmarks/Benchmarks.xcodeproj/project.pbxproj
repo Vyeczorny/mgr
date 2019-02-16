@@ -23,6 +23,7 @@
 		611A436EB5FE6AAF60457EF6 /* BinarySearchTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A46D236631600557A3EDF /* BinarySearchTreeTest.m */; };
 		611A43C1F8044E2A9FC38838 /* TestInstanceRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4EEF2DEF4DF40EF73812 /* TestInstanceRunner.swift */; };
 		611A445052684CEE0FD202CD /* RGBHistogramTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A424942CE032C5E07D852 /* RGBHistogramTest.m */; };
+		611A44AD20E3AAFB201CA43C /* RC4Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A454B58691ADA2F12A808 /* RC4Test.swift */; };
 		611A44CC870D33DAC855ABBC /* PlaygroundTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A47CF5767045A392B35F8 /* PlaygroundTest.swift */; };
 		611A450406FD277DBDA92654 /* PlaygroundTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A495626D3736348009204 /* PlaygroundTest.m */; };
 		611A454657AD4B572D2C7838 /* BinarySearchTreeEnumsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A41E4F6B4B46C67B10235 /* BinarySearchTreeEnumsTest.swift */; };
@@ -44,6 +45,7 @@
 		611A4C030CC06D1DB3D385FD /* SumOfIntegersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F142CCDC01CDC859860 /* SumOfIntegersTest.swift */; };
 		611A4C2266EFFE2B67613B0A /* BinarySearchTreeOptimizedClassicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */; };
 		611A4C53EB23AF94E15407BF /* StringConcatenationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A42EC3CF8C57C528D6902 /* StringConcatenationTest.swift */; };
+		611A4C6880C05725656592E3 /* RC4Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4299231E818E444F672E /* RC4Test.m */; };
 		611A4CF4C2ED06161FBB11C9 /* DijkstraTestOptimized.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A414E8D18542242A508A7 /* DijkstraTestOptimized.m */; };
 		611A4E2410E4D72A4BC557E4 /* DijkstraTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4BD9ED80B89DC2EF44E3 /* DijkstraTest.swift */; };
 		611A4EAF4D6848DF2D37136C /* BubbleSortOptimizedTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A419DF9A21305AD8BC283 /* BubbleSortOptimizedTest.m */; };
@@ -88,6 +90,7 @@
 		611A42484AD0F43B41227613 /* StaticDispatchTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticDispatchTest.swift; sourceTree = "<group>"; };
 		611A424942CE032C5E07D852 /* RGBHistogramTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGBHistogramTest.m; sourceTree = "<group>"; };
 		611A428B06DA6747BA5ACD50 /* CountLinesWordsCharsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountLinesWordsCharsTest.swift; sourceTree = "<group>"; };
+		611A4299231E818E444F672E /* RC4Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RC4Test.m; sourceTree = "<group>"; };
 		611A42EC3CF8C57C528D6902 /* StringConcatenationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConcatenationTest.swift; sourceTree = "<group>"; };
 		611A433AF5F06E74BD43FA99 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		611A435BCFEB7B10DC7CAEF7 /* SieveOfEratosthenesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SieveOfEratosthenesTest.h; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 		611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyByTwo.m; sourceTree = "<group>"; };
 		611A446CAE52087097F4E561 /* PriorityQueueObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueObjC.m; sourceTree = "<group>"; };
 		611A44794739441EF637FB9F /* SieveOfEratosthenesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SieveOfEratosthenesTest.swift; sourceTree = "<group>"; };
+		611A4495E9507F1E544DDB57 /* RC4Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RC4Test.h; sourceTree = "<group>"; };
+		611A454B58691ADA2F12A808 /* RC4Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RC4Test.swift; sourceTree = "<group>"; };
 		611A455832DEC4D28F32EEC0 /* SieveOfEratosthenesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SieveOfEratosthenesTest.m; sourceTree = "<group>"; };
 		611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinarySearchTreeOptimizedClassicTest.swift; sourceTree = "<group>"; };
 		611A45F91BAAB98BB3B89084 /* DynamicDispatchTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicDispatchTest.swift; sourceTree = "<group>"; };
@@ -239,6 +244,8 @@
 				611A47982BF70A409EB6130A /* StringConcatenationTest.h */,
 				611A43918A5FFE15E75F3A7D /* SumOfIntegersTest.m */,
 				611A4B1DE3D39F21DC7603AC /* SumOfIntegersTest.h */,
+				611A4299231E818E444F672E /* RC4Test.m */,
+				611A4495E9507F1E544DDB57 /* RC4Test.h */,
 			);
 			path = "Objective-C Tests";
 			sourceTree = "<group>";
@@ -264,6 +271,7 @@
 				611A428B06DA6747BA5ACD50 /* CountLinesWordsCharsTest.swift */,
 				611A42EC3CF8C57C528D6902 /* StringConcatenationTest.swift */,
 				611A4F142CCDC01CDC859860 /* SumOfIntegersTest.swift */,
+				611A454B58691ADA2F12A808 /* RC4Test.swift */,
 			);
 			path = "Swift Tests";
 			sourceTree = "<group>";
@@ -414,6 +422,8 @@
 				611A4C53EB23AF94E15407BF /* StringConcatenationTest.swift in Sources */,
 				611A432D24F57E9896354477 /* SumOfIntegersTest.m in Sources */,
 				611A4C030CC06D1DB3D385FD /* SumOfIntegersTest.swift in Sources */,
+				611A44AD20E3AAFB201CA43C /* RC4Test.swift in Sources */,
+				611A4C6880C05725656592E3 /* RC4Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,5 +16,6 @@
 #import "CountLinesWordsCharsTest.h"
 #import "StringConcatenationTest.h"
 #import "SumOfIntegersTest.h"
+#import "RC4Test.h"
 
 #import "PriorityQueueObjC.h"
