@@ -11,6 +11,7 @@ import Foundation
 enum ExportOption: String {
     case terminal
     case gnuplot
+    case mGnuplot
 }
 
 enum PlotScale: String {

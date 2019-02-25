@@ -622,6 +622,49 @@ W przypadku kodu w Swift optymalizacje skupiają się głównie na zmniejszeniu
 
 Wyniki testów po optymalizacjach są również przedstawione na wykresie \ref{p:dijkstra} oraz tablicy profilowania \ref{i:dijkstra}. Czas wykonania obu testów zmalał, w przypadku implementacji w Swift o $63\%$, w przypadku Objective-C aż o $0,88\%$. Wydajność kodu w starszym języku znacznie zbliżyła się do wydajności kodu w Swift. Należy jednak zaznaczyć, że w kilku przypadkach użyto elementów języka C, który jest w pełni kompatybilny z Objective-C i jest jednym z najszybszych języków używanych współcześnie. Można więc pisać bardzo wydajny kod w Objective-C używając funkcjonalności z C, traci się przy tym jednak większość zalet, jakie Objective-C daje (np. ARC, obiektowość).
 
+\section{Pozostałe testy}
+
+\subsection{Zliczanie słów}
+
+Test polega na zliczeniu ilości wystąpień słów w tekście składającym się z $n$ słów. Dla każdej instancji testu generowany jest nowy tekst zawierający słowa wylosowany z tablicy około 100 słów. Kod testów dostępny jest w plikach \texttt{WordFrequencyTest.swift} (dla języka Swift) oraz \texttt{WordFrequencyTest.m} (dla Objective-C).
+
+\subsection{Sito Eratostenesa}
+
+Test polega na obliczeniu wszystkich liczb pierwszych z przedziału $\left[2, n\right)$ przy pomocy metody sita Eratostenesa. Kod testów znajduje się w plikach \texttt{SieveOfErathostenesTest.swift} (dla języka Swift) oraz \texttt{SieveOfErathostenesTest.m} (dla języka Objective-C).
+
+\subsection{Zliczanie liter, słów i linii}
+
+Test polega na zliczaniu ilości liter, słów oraz linii w tekście długości $n$ znaków. Na potrzeby tego testu przyjęto, że słowo to ciąg znaków zakończony spacją, tabulatorem lub znakiem nowej linii, a linia to ciąg znaków zakończony znakiem nowej linii. Kod testów został zapisany w plikach \texttt{CountLinesWordsCharsTest.swift} (dla języka Swift) oraz \texttt{CountLinesWordsCharsTest.m} (dla Objective-C).
+
+\subsection{Konkatenacja napisów}
+
+Test polegana $n$-krotnym skonkatenowaniu napisu \textit{Hello world} ze sobą. Kod testów dostępny jest w plikach \texttt{StringConcatenationTest.swift} (dla języka Swift) oraz \texttt{StringConcatenationTest.m} (dla Objective-C).
+
+\subsection{Histogram RGB}
+
+Test polega na wygenerowaniu histogramu RGB dla ciągu pikseli o długości $n$. Każdy piksel zawiera trzy liczby z przedziału $\left[0, 255\right]$, opisujące wartość koloru czerwonego, zielonego i niebieskiego. Histogram to dwuwymiarowa tablica wielokści $3 \times 256$. Element na pozycji $(i, j)$ w histogramie opisuje ilość pikseli, które dla koloru $i$ przyjmują wartość $j$. Kod testów znajduje się w plikach \texttt{RGBHistogramTest.swift} (dla języka Swift) oraz \texttt{RGBHistogramTest.m} (dla Objective-C).
+
+\subsection{Szyfr RC4}
+
+Test polega na zaszyfrowaniu wiadomości o długości $n$ szyfrem RC4 z kluczem \texttt{SecretKey}. Szyfr RC4 to szyfr strumieniowy opracowany w 1987 roku przez Rona Rivesta. Dziś jest uważany za niedostatecznie bezpieczny, jednak przez wiele lat był używany w popularnych protokołach sieciowych, takich jak WEP czy SSL. Kod testów został zapisany w plikach \texttt{RC4Test.swift} (dla języka Swift) oraz \texttt{RC4Text.m} (dla Objective-C)
+
+\subsection{Wyniki pozostałych testów}
+
+Wyniki pozostałych testów zostały przedstawione na rysunku \ref{p:other}. W czterech testach kod Objective-C był znacząco szybszy. Trzy z nich (\texttt{WordFrequency}, \texttt{RC4} oraz \texttt{CountLinesWordsChars}) wykonywały bardzo dużo operacji na napisach, można zatem wysnuć tezę, że napisy kodowane domyślnie za pomocą standardu UTF-8 powodują duży narzut na wydajność ich przetwarzania, nawet jeśli sam napis zawiera jedynie znaki z tablicy ASCII.
+
+W teście \texttt{SieveOfErathostenes} największym obciążeniem były operacje na tablicach. W przypadku implementacji w Objective-C użyto prostych tablic z języka C, stąd tak wysoka wydajność tej implementacji.
+
+Swift okazał się szybszy w dwóch testach. Podobnie jak test \texttt{SieveOfErastothenes}, test \texttt{RGBHistogram} rówież polegał na wykonywaniu dużej ilości operacji na tablicy. W tym wypadku do implementacji w Objective-C użyto klasy \objcinline{NSArray}. Zatem wniosek, jaki nasuwa się na myśl jest następujący: jeśli kod Objective-C ma być szybki, należy użyć struktur danych z C.
+
+Ostatni test \texttt{StringConcatenation} pokazał, że implementacja operacji dodawania napisów jest nieco szybsza w nowszym języku.
+
+\begin{figure}
+    \includegraphics{plots/otherTests}
+    \caption{Wykresy czasu działania pozostałych testów (zielona linia - Objective-C, fioletowa - Swift)}
+    \label{p:other}
+\end{figure}
+
+
 %%%%% BIBLIOGRAFIA
 
 %\begin{thebibliography}{1}

@@ -16,7 +16,7 @@ case .error(let text):
     print("BŁĄD: \(text)")
 case .list:
     let factory = TestFactory()
-    let message = "Dostępne testy:\n\n" + factory.testNames.joined(separator: "\n")
+    let message = "Dostępne testy:\n\n" + factory.testNames.sorted().joined(separator: "\n")
     print(message)
 case .run(let options):
     let testSuiteRunner = TestSuiteRunner()

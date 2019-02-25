@@ -21,6 +21,7 @@ https://www.raizlabs.com/dev/2016/12/swift-method-dispatch/
 http://www.friday.com/bbum/2009/12/18/objc_msgsend-part-1-the-road-map/
 https://developer.apple.com/videos/play/wwdc2015/409/
 https://www.youtube.com/watch?v=9By9KLs51Dc
+https://www.crcpress.com/RC4-Stream-Cipher-and-Its-Variants/Paul-Maitra/p/book/9781439831359
 
 # Pytania
 

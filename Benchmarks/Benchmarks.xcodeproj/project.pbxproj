@@ -29,6 +29,7 @@
 		611A450406FD277DBDA92654 /* PlaygroundTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A495626D3736348009204 /* PlaygroundTest.m */; };
 		611A454657AD4B572D2C7838 /* BinarySearchTreeEnumsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A41E4F6B4B46C67B10235 /* BinarySearchTreeEnumsTest.swift */; };
 		611A45BAB8E70001CCBC96B8 /* BubbleSortTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4D5295C6AD880C03F673 /* BubbleSortTest.m */; };
+		611A45FE81B137EF8071D784 /* MultipleGnuplotExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A488825E3F3AF162F82DE /* MultipleGnuplotExporter.swift */; };
 		611A462BC358C4EBDBA5CE26 /* BinarySearchTreeClassicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4AAEF107C3A510BE618D /* BinarySearchTreeClassicTest.swift */; };
 		611A4664D8D84C8B8646C9A3 /* BubbleSortTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A493EDC9D90F9CF72D9C4 /* BubbleSortTest.swift */; };
 		611A46A7999E720B2A1250F3 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4903337AF2584627DD6F /* Node.m */; };
@@ -118,6 +119,7 @@
 		611A477AB8205B621067D2B1 /* MultiplyByTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplyByTwo.h; sourceTree = "<group>"; };
 		611A47982BF70A409EB6130A /* StringConcatenationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringConcatenationTest.h; sourceTree = "<group>"; };
 		611A47CF5767045A392B35F8 /* PlaygroundTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundTest.swift; sourceTree = "<group>"; };
+		611A488825E3F3AF162F82DE /* MultipleGnuplotExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleGnuplotExporter.swift; sourceTree = "<group>"; };
 		611A48898B089D2E2ABE72E9 /* DijkstraOptimizedTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DijkstraOptimizedTest.swift; sourceTree = "<group>"; };
 		611A48B830E4C061A78ECBFC /* DijkstraTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DijkstraTest.m; sourceTree = "<group>"; };
 		611A48E9A620B3C7FFCCA071 /* StringConcatenationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringConcatenationTest.m; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				611A4DFA80FA0974F0E5FA1D /* TerminalExporter.swift */,
 				611A4F95191ADFAE3FAE9C92 /* GnuplotExporter.swift */,
 				611A4099E61B853D6403AFE9 /* ResultExporter.swift */,
+				611A488825E3F3AF162F82DE /* MultipleGnuplotExporter.swift */,
 			);
 			path = Exporters;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				611A4C6880C05725656592E3 /* RC4Test.m in Sources */,
 				611A4A411DA920DC449E968E /* WordFrequencyTest.swift in Sources */,
 				611A436C91A170855A16DCDE /* WordFrequencyTest.m in Sources */,
+				611A45FE81B137EF8071D784 /* MultipleGnuplotExporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
