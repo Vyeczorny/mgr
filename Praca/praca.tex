@@ -8,6 +8,8 @@
 \usepackage{lmodern}
 \usepackage{program}
 \usepackage{algorithm}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
 \polishtitle    {Polski tytuł}
@@ -82,6 +84,9 @@
 }
 
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+
+\definecolor{MTRed}{RGB}{180,0,0}
+\definecolor{MTGreen}{RGB}{50,120,20}
 
 \begin{document}
 
@@ -666,26 +671,53 @@ Ostatni test \texttt{StringConcatenation} pokazał, że implementacja operacji d
 
 \section{Podsumowanie}
 
-\begin{center}
-    \begin{tabular}{ lrrrr } 
-     \hline
-     \textbf{Test} & \textbf{Przykładowe $n$} & \multicolumn{2}{c}{\textbf{Przykładowy dla $n$}} & \textbf{Względny średni wynik} \\
-     &  & Swift & Objective-C &  \\
-     \hline
-    \texttt{ArrayInsertion}  &  &  &  & \\ 
-    \texttt{Fibonacci}  &  &  &  & \\ 
-    \texttt{BubbleSort}  &  &  &  & \\ 
-    \texttt{BinarySearchTree}  &  &  &  & \\ 
-    \texttt{DispatchMethod}  &  &  &  & \\ 
-    \texttt{Dijkstra} &  &  &  & \\ 
-    \texttt{WordFrequency}  &  &  &  & \\ 
-    \texttt{SieveOfEratosthenes}  &  &  &  & \\ 
-    \texttt{CountLinesWordsChars}  &  &  &  & \\ 
-    \texttt{StringConcatenation} & 200000 & 8,33 $ms$ & 11,78 $ms$ & -29,58 \% \\
-    \texttt{RGBHistogram}  & 50000 & 1,40 $ms$ & 14,42 $ms$ & -925,26 \% \\ 
-    \texttt{RC4} & 201000 & 4,12 $ms$ & 1,78 $ms$ & 116,41 \% \\ 
-    \end{tabular}
-\end{center}
+\rowcolors{2}{white!}{gray!10}
+\begin{tabularx}{0.92\textwidth}{ Xc } 
+    \hline
+    \textbf{Test}  & \textbf{Względny średni wynik} \\
+    \hline
+\texttt{ArrayInsertion}                                 & \textcolor{MTGreen}{-78,32 \%}    \\ 
+\texttt{Fibonacci}                                      & \textcolor{MTGreen}{-45,84 \%}    \\ 
+\texttt{BubbleSort}                                     & \textcolor{MTGreen}{-87,69 \%}    \\ 
+\texttt{BinarySearchTree - Classis }                    & \textcolor{MTRed}{+129,29 \%}     \\ 
+\texttt{BinarySearchTree - Enums }                      & \textcolor{MTRed}{+103,20 \%}     \\ 
+\texttt{BinarySearchTree - Optimized}                   & \textcolor{MTGreen}{-72.09 \%}    \\ 
+\texttt{DispatchMethod - Static vs Message}             & \textcolor{MTGreen}{-75,00 \%}    \\ 
+\texttt{DispatchMethod - Dynamic vs Message}            & \textcolor{MTRed}{+112,79 \%}     \\ 
+\texttt{Dijkstra}                                       & \textcolor{MTGreen}{-65,33 \%}    \\ 
+\texttt{DijkstraOptimized}                              & \textcolor{MTGreen}{-5,14 \%}     \\ 
+\texttt{WordFrequency}                                  & \textcolor{MTRed}{+157,48 \%}     \\ 
+\texttt{SieveOfEratosthenes}                            & \textcolor{MTRed}{+70,94 \%}      \\ 
+\texttt{CountLinesWordsChars}                           & \textcolor{MTRed}{+7718,38 \%}    \\ 
+\texttt{StringConcatenation}                            & \textcolor{MTGreen}{-22,48 \%}    \\
+\texttt{RGBHistogram}                                   & \textcolor{MTGreen}{-90,21 \%}    \\ 
+\texttt{RC4}                                            & \textcolor{MTRed}{+116,41 \%}     \\ 
+\end{tabularx}
+
+% \begin{center}
+%     \begin{tabular}{ p{5cm}rrrr } 
+%      \hline
+%      \textbf{Test} & \textbf{Przykładowe $n$} & \multicolumn{2}{c}{\textbf{Przykładowy dla $n$}} & \textbf{Względny średni wynik} \\
+%      &  & Swift & Objective-C &  \\
+%      \hline
+%     \texttt{ArrayInsertion}         & 2500000 & 11,63 $ms$ & 55,68 $ms$ & -78,32 \% \\ 
+%     \texttt{Fibonacci}              & 30 & 4,70 $ms$ & 9,41 $ms$ & -45,84 \% \\ 
+%     \texttt{BubbleSort}             & 7500 & 60,59 $ms$ & 481,06 $ms$ & -87,69 \% \\ 
+%     \texttt{BinarySearchTree \newline Classis } & 50000 & 188,21 $ms$ & 82,75 $ms$ & +129,29 \% \\ 
+%     \texttt{BinarySearchTree \newline Enums } & 50000 & 169,67 $ms$ & 82,75 $ms$ & + 103,20 \% \\ 
+%     \texttt{BinarySearchTree \newline Optimized} & 50000 & 20,49 $ms$ & 74,16 $ms$ & -72.09 \% \\ 
+%     \texttt{DispatchMethod \newline (Static vs Message)} & 5000000 & 5,96 $ms$ & 24,69 $ms$ & -75,00 \% \\ 
+%     \texttt{DispatchMethod \newline (Dynamic vs Message)} & 5000000 & 54,00 $ms$ & 24,69 $ms$ & +112,79 \% \\ 
+%     \texttt{Dijkstra}               & 1500      & 115,14 $ms$   & 392,48 $ms$   & -65,33 \%     \\ 
+%     \texttt{DijkstraOptimized}      & 1500      & 61,28 $ms$    & 52,47 $ms$    & -5,14 \%      \\ 
+%     \texttt{WordFrequency}          & 25000     & 21,88 $ms$    & 8,67 $ms$     & +157,48 \%    \\ 
+%     \texttt{SieveOfEratosthenes}    & 25000     & 36,35 $ms$    & 20,71 $ms$    & +70,94 \%     \\ 
+%     \texttt{CountLinesWordsChars}   & 50000     & 2,27 $ms$     & 0.03 $ms$     & +7718,38 \%   \\ 
+%     \texttt{StringConcatenation}    & 200000    & 8,33 $ms$     & 11,78 $ms$    & -22,48 \%     \\
+%     \texttt{RGBHistogram}           & 50000     & 1,40 $ms$     & 14,42 $ms$    & -90,21 \%     \\ 
+%     \texttt{RC4}                    & 201000    & 4,12 $ms$     & 1,78 $ms$     & +116,41 \%    \\ 
+%     \end{tabular}
+% \end{center}
 
 %%%%% BIBLIOGRAFIA
 
