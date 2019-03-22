@@ -22,6 +22,8 @@ http://www.friday.com/bbum/2009/12/18/objc_msgsend-part-1-the-road-map/
 https://developer.apple.com/videos/play/wwdc2015/409/
 https://www.youtube.com/watch?v=9By9KLs51Dc
 https://www.crcpress.com/RC4-Stream-Cipher-and-Its-Variants/Paul-Maitra/p/book/9781439831359
+https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md
+https://researcher.watson.ibm.com/researcher/files/us-lmandel/lattner.pdf
 
 # Pytania
 

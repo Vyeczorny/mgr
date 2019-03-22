@@ -84,6 +84,7 @@
 }
 
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 
 \definecolor{MTRed}{RGB}{180,0,0}
 \definecolor{MTGreen}{RGB}{50,120,20}
@@ -669,30 +670,38 @@ Ostatni test \texttt{StringConcatenation} pokazał, że implementacja operacji d
     \label{p:other}
 \end{figure}
 
-\section{Podsumowanie}
+\chapter{Wnioski}
 
-\rowcolors{2}{white!}{gray!10}
-\begin{tabularx}{0.92\textwidth}{ Xc } 
-    \hline
-    \textbf{Test}  & \textbf{Względny średni wynik} \\
-    \hline
-\texttt{ArrayInsertion}                                 & \textcolor{MTGreen}{-78,32 \%}    \\ 
-\texttt{Fibonacci}                                      & \textcolor{MTGreen}{-45,84 \%}    \\ 
-\texttt{BubbleSort}                                     & \textcolor{MTGreen}{-87,69 \%}    \\ 
-\texttt{BinarySearchTree - Classis }                    & \textcolor{MTRed}{+129,29 \%}     \\ 
-\texttt{BinarySearchTree - Enums }                      & \textcolor{MTRed}{+103,20 \%}     \\ 
-\texttt{BinarySearchTree - Optimized}                   & \textcolor{MTGreen}{-72.09 \%}    \\ 
-\texttt{DispatchMethod - Static vs Message}             & \textcolor{MTGreen}{-75,00 \%}    \\ 
-\texttt{DispatchMethod - Dynamic vs Message}            & \textcolor{MTRed}{+112,79 \%}     \\ 
-\texttt{Dijkstra}                                       & \textcolor{MTGreen}{-65,33 \%}    \\ 
-\texttt{DijkstraOptimized}                              & \textcolor{MTGreen}{-5,14 \%}     \\ 
-\texttt{WordFrequency}                                  & \textcolor{MTRed}{+157,48 \%}     \\ 
-\texttt{SieveOfEratosthenes}                            & \textcolor{MTRed}{+70,94 \%}      \\ 
-\texttt{CountLinesWordsChars}                           & \textcolor{MTRed}{+7718,38 \%}    \\ 
-\texttt{StringConcatenation}                            & \textcolor{MTGreen}{-22,48 \%}    \\
-\texttt{RGBHistogram}                                   & \textcolor{MTGreen}{-90,21 \%}    \\ 
-\texttt{RC4}                                            & \textcolor{MTRed}{+116,41 \%}     \\ 
-\end{tabularx}
+\section{Podsumowanie wyników}
+
+\begin{table}[!ht]
+    \rowcolors{2}{white!}{gray!10}
+    \begin{tabularx}{1.0\textwidth}{ rXc } 
+        \hline
+        \textbf{L.p.} & \textbf{Test}  & \textbf{Względny średni} \\
+                        &                & \textbf{czas testu} \\
+        \hline
+        1. & \texttt{ArrayInsertion}                         & \textcolor{MTGreen}{-78,32 \%}    \\ 
+        2. & \texttt{Fibonacci}                              & \textcolor{MTGreen}{-45,84 \%}    \\ 
+        3. & \texttt{BubbleSort}                             & \textcolor{MTGreen}{-87,69 \%}    \\ 
+        4a. & \texttt{BinarySearchTree - Classic }            & \textcolor{MTRed}{+129,29 \%}     \\ 
+        4b. & \texttt{BinarySearchTree - Enums }              & \textcolor{MTRed}{+103,20 \%}     \\ 
+        4c. & \texttt{BinarySearchTree - Optimized}           & \textcolor{MTGreen}{-72.09 \%}    \\ 
+        5a. & \texttt{DispatchMethod - Static vs Message}     & \textcolor{MTGreen}{-75,00 \%}    \\ 
+        5b. & \texttt{DispatchMethod - Dynamic vs Message}    & \textcolor{MTRed}{+112,79 \%}     \\ 
+        6a. & \texttt{Dijkstra}                               & \textcolor{MTGreen}{-65,33 \%}    \\ 
+        6b. & \texttt{DijkstraOptimized}                      & \textcolor{MTGreen}{-5,14 \%}     \\ 
+        7. & \texttt{WordFrequency}                          & \textcolor{MTRed}{+157,48 \%}     \\ 
+        8. & \texttt{SieveOfEratosthenes}                    & \textcolor{MTRed}{+70,94 \%}      \\ 
+        9. & \texttt{CountLinesWordsChars}                   & \textcolor{MTRed}{+7718,38 \%}    \\ 
+        10. & \texttt{StringConcatenation}                    & \textcolor{MTGreen}{-22,48 \%}    \\ 
+        11. & \texttt{RGBHistogram}                           & \textcolor{MTGreen}{-90,21 \%}    \\ 
+        12. & \texttt{RC4}                                    & \textcolor{MTRed}{+116,41 \%}     \\ 
+        \hline
+    \end{tabularx}
+    \caption{Tabela względnych czasów testów kodu Swift do kodu Objective-C}
+    \label{t:results}
+\end{table}
 
 % \begin{center}
 %     \begin{tabular}{ p{5cm}rrrr } 
@@ -718,6 +727,49 @@ Ostatni test \texttt{StringConcatenation} pokazał, że implementacja operacji d
 %     \texttt{RC4}                    & 201000    & 4,12 $ms$     & 1,78 $ms$     & +116,41 \%    \\ 
 %     \end{tabular}
 % \end{center}
+
+Tabela \ref{t:results} przedstawia różnicę, między czasem wykonania testu w Swift a Objective-C dla każdego testu opisanego w tej pracy. Wartość ujemna (oznaczona kolorem zielony) oznacza, że kod Swift był średnio o $x$ procent szybszy w danym teście. Analogicznie wartość dodatnia (oznaczona kolorem czerwonym) wskazuje, że kod Swift był średnio o $x$ procent wolniejszy od kodu Objective-C.
+
+Z dwunastu przeprowadzonych testów, kod pisany w języku Swift był szybszy w ośmiu przypadkach. W dwóch z ośmiu przypadków wymagane były pewne optymalizacje kodu. W przypadku testu \texttt{BinarySearchTree} należało zrezygnować z typów wartościowych na rzecz klas. W teście \texttt{DispatchMethod}, dopiero staryczne wywoływanie funkcji okazało się szybsze od wywoływania przez wiadomości z Objective-C. Przykłady te pozwalają wysnuć wniosek, że choć Swift jest ogólnie szybszy od Objective-C, to należy ostrożnie używać bardziej zaawansowanych właściwości tego języka. W czterach testach szybszy był kod Objective-C.
+
+\section{Wady i zalety Swifta na podstawie testów}
+
+Główne cechy Swifta, dzięki którym kod pisany w tym języku jest szybszy to:
+\begin{itemize}
+    \item lepiej zoptymalizowane podstawowe struktury danych: \swiftinline{Array}, \swiftinline{Dictionary} oraz \swiftinline{Set} (w tym, możliwość zapisywania prymitywnych typów danych)
+    \item zrezygnowanie z wywoływania metod przez wiadomości i zastąpienie go w większości przypadków wywołaniami statycznymi
+    \item zoptymalizowana obsługa ARC, np. poprzez stosowanie typów wartościowych   
+    \item ulepszona obsługa właściwości klas (\ang{properties})    
+\end{itemize}
+
+Aspekty, w których Swift przegrywa wydajnościowo z Objective-C:
+\begin{itemize}
+    \item obługa napisów (\ang{strings})
+    \item język C jest nadal szybszy od Swift, zatem dobrze zoptymalizowany kod w Objective-C (tj. w którym najważniejsze fragmenty są napisane w C), może okazać się szybszy od kodu swiftowego
+\end{itemize}
+
+\section{Inspiracje dla Swift z innych języków programowania}
+
+Swift jest językiem stawiającym na bezpiczeństwo, wygodę pracy oraz po cześci również na szybkość działania. Otwarte źródła języka, dynamiczny rozwój oraz zaangażowana społeczość sprawiają, że ma on szansę podbić nie tylko świat aplikacji na systemy Apple, ale również inne gałęzie branży informatycznej. Aby to jednak miało miejsce, Swift musi poprawić kilka aspektów, w których wyraźnie odstaje od konkurencyjnych języków.
+
+Największym problemem Swifta jest jego młody wiek. Pomimo, że od czasu wydania wersji 1.0 języka minęło już prawie 5 lat, to nadal nie ma stabilnego Interfejsu binarnego aplikacji (ABI), a co za tym idzie, programiści nie mogą używać bibliotek napisanych w innych wersjach języka niż wersja, w której piszą projekt. Do wersji 3.2 Swift nie miał też kompatybilności wstecznej, przez co przejście na nowszą wersję języka wiązało się z koniecznością konwersji całego kodu, co nie zawsze należało do najłatwiejszych zadań.
+
+Przez pierwsze półtora roku Swift był językiem pozwalającym na tworzenie aplikacji tylko i wyłącznie na platformy iOS i MacOS. Z tego powodu, wszystkie biblioteki w tamtym czasie skupiały się na potrzebach tych dwóch platform. 3 grudnia 2015 roku ogłoszono, że Swift może zostać uruchomiony na systemach rodziny Linux. Okazało się jednak, że poza samym językiem i jego biblioteką standardową nie ma zbyy wielu narzędzi, bo albo nie zostały przystosowane do uruchamiania pod systemem innym niż MacOS, albo w ogóle nie było potrzeby dla takich narzędzi. Społeczność zaczęła wtedy portować istniejące programy i tworzyć nowe, nadal jednak brakuje wielu stabilnych, multiplatformowych bibliotek. Przykładem może być brak multiplatformowej biblioteki do tworzenia interfejsów graficznych, takiej jak Swing czy QT czy zaawansowanego frameworka do tworzenia aplikacji internetowych. Nie istnieje też zintegrowane środowisko programistyczne do pracy w Swift pod systemem Linux.
+
+Testy opisane w tej pracy udowodniły, że automatyczne zliczanie referencji powoduje w niektórych przypadkach duży narzut obliczeniowy. Jeśli język Swift ma się stać językiem do pisania wielkich, wysokowydajnościowych systemów, problem ten musi zostać zaadresowany. Jedną z propozycji na rozwiązanie tego problemu jest implementacja koncepcji własności (\ang{ownership}) pamięci \footnote{https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md}, zastowana ostatnio w języku Rust. 
+
+Generyczność w Swift również pozostawia pole do poprawy. W 2016 roku na powstał dokument \footnote{https://github.com/apple/swift/blob/master/docs/GenericsManifesto.md}, w którym wymienione zostały poprawki, które ulepszyłyby pracę z typami generycznymi, funkcjami generycznymi i protokołami. Znalazły się tam m.in. takie zagadnienia jak:
+\begin{itemize}
+    \item \textit{variadic generics}, czyli funkcja znana z języka C++ (tam zastosowana dla szablonów, nie typów generycznych, zasada działania pozostaje jednak taka sama)
+    \item rozszerzenia typów strukturalnych (czyli w wypadku Swift - krotek)
+    \item generyczne protokoły, podobne jak generyczne interfejsy w C\# czy Java
+\end{itemize}
+
+Refleksje i wparcie dla metaprogramingu to kolejne przydatne funkcje, których brakuje w Swift. Co prawda istnieje typ \swiftinline{Mirror} pozwalający na przeglądanie struktury typu (typów zagnieżdżonych, funkcji, właściwości i ich wartości), niemniej w porównaniu z refleksjami z C\#, Java, nie wspominając już o językach skryptowych takich jak JavaScript, funkcja ta jest mocno ograniczona. Przykładowo, za pomocą mirroringu nie można ustawić wartości właściwości. Brak pełnych refleksji jest sporym utrudnieniem w pisaniu narzędzi automatyzujących pracę, np.  generatorów kodu czy linterów.
+
+Twórcy Swifta powinni również poprawić wsparcie dla obliczeń asynchronicznych. W tym momencie, Swift nie zawiera żadnego wbudowanego mechanizmu wykonywania kodu asynchronicznego. Programiści zwykle wykorzystują do tego multiplatformową technologię Grand Central Dispatch, opakowującą wątki systemowe w abstrakcję w postaci kolejek operacji. Już w 2016 roku Chris Lattner wspominał o możliwości zaimplementowania w Swift mechanizmu, znanego z C\# czy JavaScript lub modelu aktorów, na razie jednak nie pojawiły się żadne informacje o postępach w tym kierunku.
+
+Ostatnim dużym problemem Swifta jest słaba współpraca z innymi językami programowania. Język Java dzięki platformie JVM może używać kodu napisanego w takich językach jak Kotlin, Clojure, Groovy czy Scala. C\# współpracuje np. z C, C++, F\#, Visual Basic .NET. Istnieją również implementacje popularnych języków skryptowych takich jak Python czy Ruby pozwalające na kompilowanie ich kodu do kodu pośredniego JVM lub CIL. Swift w w wersji 4.0 współpracuje w zasadzie tylko z Objective-C oraz C (jako, że C jest podzbiorem Objective-C). Istnieje również możliwość używania kodu napisanego w C++, wiąże się to jednak z napisaniem biblioteki opakowującej (\ang{wrapper}) w Objective-C.
 
 %%%%% BIBLIOGRAFIA
 
