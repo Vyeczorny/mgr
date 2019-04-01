@@ -9,6 +9,7 @@
 \usepackage{program}
 \usepackage{algorithm}
 \usepackage{tabularx}
+\usepackage{hyperref}
 \usepackage[table]{xcolor}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
@@ -96,7 +97,17 @@
 \chapter{Wstęp}
 \label{ch:wstep}
 
-...
+Swift to język programowania stworzony przez firmę Apple głównie na potrzeby tworzenia aplikacji na platformy iOS, Mac OS, tvOS i WatchOS. Jego pierwsza wersja została ogłoszona 2 czerwca 2014 roku podczas konferecji WWDC. 
+
+Przed 2014 rokiem głównym językiem używanym do tworzenia oprogramowania na systemy operacyjne Apple był język Objective-C. Powstał on w 1983 roku jako nakładka na C rozszerzona o elementy obiektowe wzrorowane na Smalltalku. Głównym problemem Objective-C jest wysoki poziom trudności nauki. Składnia tego języka różni sie znacznie od składni innych popularnych języków obiektowych, jest dużo bardziej rozwlekła i mniej czytelna. Również wydajność nie jest najlepsza, w celu uzyskania szybko działającego kodu programiści często wykorzystują fakt, że Objective-C współpracuje z C i piszą najważniejsze części aplikacji właśnie w tym języku. Swift ma za zadanie rozwiązać właśnie te problemy. Jego składnia jest dużo prostsza i bardziej podobna do innych obiektowych języków programowania. Zaadresowano również zwiększenie wydajności i bezpieczeństwa kodu. Swift otrzymał nowe funkcje pozwalające pisać kod szybciej, wydajniej i bezpieczniej. Dokładne porównanie obydwu języków znajduje się w rozdziale \ref{ch:swift-objc}.
+
+Swift zaczął bardzo szybko zyskiwać na popularności. Wg ankiety przeprowadzanej co roku przez serwis \url{StackOverflow.com} już w 2017 roku nowy język był bardziej popularny od swojego poprzednika \footnote{https://insights.stackoverflow.com/survey/2017\#most-popular-technologies}. Należy również zwrócić uwagę na kategorię "Most Loved Languages", w której Swift rokrocznie zajmuje miejsce w pierwszej piątce.
+
+3 grudnia 2015 roku kod źródłowy języka został udostępniony na serwisie GitHub. W tym samym momencie ogłoszono również wsparcie dla systemów z rodziny Linux. Te dwa wydarzenie pozwoliły na myślenie o szerszym użyciu tego języka, niż tylko aplikacje mobilne. W niedługim czasie powstało kilka ram do tworzenia aplikacji serwerowych, takich jak Kitura, Vapor czy Perfect. Firma IBM dodała również wsparcie dla Swifta w swoich serwisach chmurowych. Kolejnym potencjalnym zastosowaniem jest uczenie maszynowe. Pierwszą próbą w tym kierunku jest wersja platformy TensorFlow wykorzystująca Swift.
+
+Pomimo szybko rosnącej popularności Swifta, istnieje mało źródeł traktujących o wydajności nowego języka. W Internecie można znaleźć kilka stron i blogów zawierających testy wydajnościowe, takich jak np. "The Computer Language Benchmark Game \footnote{\url{https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/swift.html}}", żaden z autorów nie pokusił się jednak o bardziej wnikliwą analizę. 
+
+Z tego też powodu, głównym celem niniejszej pracy jest porównanie wydajności programów napisanych w Swift z Objective-C oraz analiza przyczyn lepszej (lub gorszej) wydajności nowego języka. Aby to osiągnąć, zaimplementowano w obydwu językach szereg testów wydajnościowych. Następnie za pomocą narzędzia profilującego Intruments dokonano analizy szybkości działania kodu w zależności od języka, w którym został napisany. Szczegółowe wnioski znajdują się w rozdziale \ref{ch:testy}, natomiast podsumowanie zostało przedstawione w rozdziale \ref{ch:wnioski}.
 
 \chapter{Podobieństwa do innych języków programowania}
 \label{ch:podobienstwa_do_innych}
@@ -247,6 +258,7 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 \swiftlisting{2_extension}{Przykład rozszerzenia w Swift}
 
 \chapter{Podobieństwa i różnice pomiędzy Swiftem i Objective-C}
+\label{ch:swift-objc}
 
 \section{Podobieństwa}
 
@@ -321,6 +333,7 @@ Jednym z podstawowych założeń przyjętych przy tworzeniu Swifta było stworze
 \end{itemize}
 
 \chapter{Testy}
+\label{ch:testy}
 
 \section{Założenia i platforma testowa}
 
@@ -671,6 +684,7 @@ Ostatni test \texttt{StringConcatenation} pokazał, że implementacja operacji d
 \end{figure}
 
 \chapter{Wnioski}
+\label{ch:wnioski}
 
 \section{Podsumowanie wyników}
 
@@ -749,6 +763,7 @@ Aspekty, w których Swift przegrywa wydajnościowo z Objective-C:
 \end{itemize}
 
 \section{Inspiracje dla Swift z innych języków programowania}
+% Alternatywny tytuł: Możliwości rozwoju języka 
 
 Swift jest językiem stawiającym na bezpiczeństwo, wygodę pracy oraz po cześci również na szybkość działania. Otwarte źródła języka, dynamiczny rozwój oraz zaangażowana społeczość sprawiają, że ma on szansę podbić nie tylko świat aplikacji na systemy Apple, ale również inne gałęzie branży informatycznej. Aby to jednak miało miejsce, Swift musi poprawić kilka aspektów, w których wyraźnie odstaje od konkurencyjnych języków.
 
