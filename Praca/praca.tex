@@ -339,7 +339,7 @@ Jednym z podstawowych założeń przyjętych przy tworzeniu Swifta było stworze
 
 \section{Założenia i platforma testowa}
 
-Wszystkie testy opisane w tej pracy zostały wykonane na komputerze Macbook Pro o następującej specyfikacji:
+Kod testów, razem z platformą do ich urochomienia znajduje się w repozytorium dostępnym w serwisie GitHub pod adresem \url{https://github.com/vyeczorny/mgr}. Wszystkie testy opisane w tej pracy zostały wykonane na laptopie Macbook Pro o następującej specyfikacji:
 
 \begin{itemize}
     \item procesor: Intel Core I7-7700HQ 2,8 GHz
@@ -349,7 +349,16 @@ Wszystkie testy opisane w tej pracy zostały wykonane na komputerze Macbook Pro 
     \item wersja LLVM: 9.0.0 (clang-900.0.39.2)
 \end{itemize}
 
-\todo{Napisać coś o platformie, metodzie i załoeniach testów}
+Głównym celem niniejszej pracy jest porównanie wydajności dwóch języków. Z tego powodu wszystkie implementacje w obrębie danego testu używają tego samego algorytmu do rozwiązania zadanego problemu. Również zakres wartości, dla których przeprowadzany jest test jest stały w obrębie danego testu. Dla każdej wartości $n$ zostało przeprowadzone conajmniej 10 pomiarów, wyniki przedstawione na wykresach są średnimi tych pomiarów.
+
+Każdy test został zaimplementowany w conajmniej jednej wersji dla każdego z języków. Analiza testu składa się z kilku części:
+
+\begin{itemize}
+    \item opisu problemu przedstawionego w teście
+    \item przedstawienia wyników w formie wykresu i/lub tablicy profilowania
+    \item analizy wyników
+    \item (opcjonalnie) dodatkowwych testach sprawdzających wnioski wyciągnięta podczas analizy wyników
+\end{itemize}
 
 \section{Wstawianie elementu do tablicy}
 
