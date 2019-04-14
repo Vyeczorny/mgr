@@ -42,7 +42,6 @@ class RC4TestSwift: Test {
 
     func cipherText(S: [UInt8], text: [UInt8]) -> [UInt8] {
         var S = S
-        var output = [UInt8]()
         var i: UInt8 = 0
         var j: UInt8 = 0
 

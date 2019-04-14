@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface BinarySearchTreeTestObjC : NSObject <Test>
+@interface BinarySearchTreeTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

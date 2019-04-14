@@ -6,7 +6,7 @@
 #import "RC4Test.h"
 #import "Benchmarks-Swift.h"
 
-@interface RC4TestObjC ()
+@interface RC4TestObjC () <Test>
 
 @property (nonatomic, assign) int dataLength;
 @property (nonatomic, strong) NSString *data;
@@ -82,7 +82,7 @@
     for (int i = 0; i < length; ++i) {
         [string appendString:[NSString stringWithFormat:@"%02X ", array[i]]];
     }
-    NSLog(string);
+    NSLog(@"%@", string);
 }
 
 - (NSString *)generateStringOfSize:(int)n {

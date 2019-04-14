@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface MessageDispatchTestObjC : NSObject <Test>
+@interface MessageDispatchTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

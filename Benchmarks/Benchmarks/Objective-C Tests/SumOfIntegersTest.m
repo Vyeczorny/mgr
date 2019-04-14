@@ -3,11 +3,10 @@
 // Copyright (c) 2019 Karol Wieczorek. All rights reserved.
 //
 
-#import <InstantMessage/IMAVControl.h>
 #import "SumOfIntegersTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface SumOfIntegersTestObjC ()
+@interface SumOfIntegersTestObjC () <Test>
 
 @property(nonatomic, strong) NSArray<NSNumber *> *numbers;
 

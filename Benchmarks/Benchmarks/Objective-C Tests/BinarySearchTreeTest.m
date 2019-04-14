@@ -8,7 +8,7 @@
 #import "NSArray+generate.h"
 #import "Benchmarks-Swift.h"
 
-@interface BinarySearchTreeTestObjC ()
+@interface BinarySearchTreeTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 @property (nonatomic, strong) BinarySearchTreeObjC *tree;

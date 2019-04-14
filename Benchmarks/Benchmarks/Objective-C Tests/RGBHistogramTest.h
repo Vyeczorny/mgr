@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface RGBHistogramTestObjC : NSObject <Test>
+@interface RGBHistogramTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

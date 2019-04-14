@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface SieveOfEratosthenesTestObjC : NSObject <Test>
+@interface SieveOfEratosthenesTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

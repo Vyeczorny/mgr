@@ -6,7 +6,7 @@
 #import "CountLinesWordsCharsTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface CountLinesWordsCharsTestObjC ()
+@interface CountLinesWordsCharsTestObjC () <Test>
 
 @property (nonatomic, strong) NSString *data;
 
@@ -27,13 +27,15 @@
     NSUInteger length = self.data.length;
     unichar stringBuffer[length];
     [self.data getCharacters: stringBuffer];
-    NSUInteger chars = length;
+    NSUInteger chars = 0;
     NSUInteger words = 0;
     NSUInteger lines = 0;
 
     BOOL isInWord = NO;
 
     for (int i = 0; i < length; ++i) {
+        ++chars;
+        
         unichar current = stringBuffer[i];
         if (current == '\n') {
             ++lines;

@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface DijkstraTestObjC : NSObject <Test>
+@interface DijkstraTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 - (nonnull instancetype)initWithAdjacencyMatrix:(NSArray<NSArray<NSNumber *> *> *)matrix;

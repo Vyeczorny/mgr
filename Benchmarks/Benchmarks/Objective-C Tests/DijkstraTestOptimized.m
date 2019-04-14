@@ -9,7 +9,7 @@
 
 #import "Benchmarks-Swift.h"
 
-@interface DijkstraOptimizedTestObjC ()
+@interface DijkstraOptimizedTestObjC () <Test>
 
 @property (nonatomic, assign) NSUInteger n;
 @property (nonatomic, assign) NSUInteger *adjacency;

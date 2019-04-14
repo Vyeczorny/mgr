@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface CountLinesWordsCharsTestObjC : NSObject <Test>
+@interface CountLinesWordsCharsTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

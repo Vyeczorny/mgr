@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface FibonacciTestObjC : NSObject <Test>
+@interface FibonacciTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

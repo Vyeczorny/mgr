@@ -36,19 +36,13 @@ class MultipleGnuplotExporter {
         groupedTests.forEach { (group, tests) in
             content += "plot"
 
-            for (i, test) in tests {
+            for (i, _) in tests {
                 content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' pt 7 ps 0.5,"
             }
 
             content += "\n"
         }
 
-//
-//
-//        for i in 0..<testSuiteResult.testResults.count {
-//            content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' pt 7 ps 0.5,"
-//        }
-//
         FileManager.default.createFile(atPath: scriptFile, contents: content.data(using: .utf8))
 
         let task = Process()

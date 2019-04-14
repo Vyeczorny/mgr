@@ -6,7 +6,7 @@
 #import "PlaygroundTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface PlaygroundTestObjC ()
+@interface PlaygroundTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 

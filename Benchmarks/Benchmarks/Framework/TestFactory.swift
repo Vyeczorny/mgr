@@ -15,67 +15,67 @@ class TestFactory {
     private let tests: [TestInformation] = [
         TestInformation(
             name: "ArrayInsertionObjC",
-            generatingFunction: { ArrayInsertionTestObjC(n: Int32($0)) }
+            generatingFunction: { ArrayInsertionTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "FibonacciObjC",
-            generatingFunction: { FibonacciTestObjC(n: Int32($0)) }
+            generatingFunction: { FibonacciTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "PlaygroundObjC",
-            generatingFunction: { PlaygroundTestObjC(n: Int32($0)) }
+            generatingFunction: { PlaygroundTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "BubbleSortObjC",
-            generatingFunction: { BubbleSortTestObjC(n: Int32($0)) }
+            generatingFunction: { BubbleSortTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "BubbleSortOptimizedObjC",
-            generatingFunction: { BubbleSortOptimizedTestObjC(n: Int32($0)) }
+            generatingFunction: { BubbleSortOptimizedTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "BinarySearchTreeObjC",
-            generatingFunction: { BinarySearchTreeTestObjC(n: Int32($0)) }
+            generatingFunction: { BinarySearchTreeTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "DijkstraObjC",
-            generatingFunction: { DijkstraTestObjC(n: Int32($0)) }
+            generatingFunction: { DijkstraTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "DijkstraOptimizedObjC",
-            generatingFunction: { DijkstraOptimizedTestObjC(n: Int32($0)) }
+            generatingFunction: { DijkstraOptimizedTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "MessageDispatchObjC",
-            generatingFunction: { MessageDispatchTestObjC(n: Int32($0)) }
+            generatingFunction: { MessageDispatchTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "SieveOfEratosthenesObjC",
-            generatingFunction: { SieveOfEratosthenesTestObjC(n: Int32($0)) }
+            generatingFunction: { SieveOfEratosthenesTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "RGBHistogramObjC",
-            generatingFunction: { RGBHistogramTestObjC(n: Int32($0)) }
+            generatingFunction: { RGBHistogramTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "CountLinesWordsCharsObjC",
-            generatingFunction: { CountLinesWordsCharsTestObjC(n: Int32($0)) }
+            generatingFunction: { CountLinesWordsCharsTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "StringConcatenationObjC",
-            generatingFunction: { StringConcatenationTestObjC(n: Int32($0)) }
+            generatingFunction: { StringConcatenationTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "SumOfIntegersObjC",
-            generatingFunction: { SumOfIntegersTestObjC(n: Int32($0)) }
+            generatingFunction: { SumOfIntegersTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "RC4ObjC",
-            generatingFunction: { RC4TestObjC(n: Int32($0)) }
+            generatingFunction: { RC4TestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "WordFrequencyObjC",
-            generatingFunction: { WordFrequencyTestObjC(n: Int32($0)) }
+            generatingFunction: { WordFrequencyTestObjC(n: Int32($0)) as! Test }
         ),
         TestInformation(
             name: "ArrayInsertionSwift",

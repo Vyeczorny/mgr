@@ -6,7 +6,7 @@
 #import "StringConcatenationTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface StringConcatenationTestObjC ()
+@interface StringConcatenationTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 

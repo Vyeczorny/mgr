@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface PlaygroundTestObjC : NSObject <Test>
+@interface PlaygroundTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

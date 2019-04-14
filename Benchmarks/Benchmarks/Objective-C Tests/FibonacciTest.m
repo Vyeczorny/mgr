@@ -6,7 +6,7 @@
 #import "FibonacciTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface FibonacciTestObjC ()
+@interface FibonacciTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 

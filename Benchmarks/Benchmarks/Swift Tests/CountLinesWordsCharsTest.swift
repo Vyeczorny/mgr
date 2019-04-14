@@ -14,13 +14,15 @@ class CountLinesWordsCharsTestSwift: Test {
     }
 
     func run() {
-        var chars = data.count
+        var chars = 0
         var words = 0
         var lines = 0
 
         var isInWord = false
 
         for c in data {
+            chars += 1
+            
             if c == "\n" {
                 lines += 1
             }

@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface RC4TestObjC : NSObject <Test>
+@interface RC4TestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

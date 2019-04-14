@@ -6,7 +6,7 @@
 #import "SieveOfEratosthenesTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface SieveOfEratosthenesTestObjC ()
+@interface SieveOfEratosthenesTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 

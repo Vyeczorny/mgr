@@ -8,7 +8,7 @@
 #import "MultiplyByTwoProtocol.h"
 #import "MultiplyByTwo.h"
 
-@interface MessageDispatchTestObjC ()
+@interface MessageDispatchTestObjC () <Test>
 
 @property (nonatomic, strong) NSArray<id<MultiplyByTwoProtocol>>* inputData;
 

@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface SumOfIntegersTestObjC : NSObject<Test>
+@interface SumOfIntegersTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

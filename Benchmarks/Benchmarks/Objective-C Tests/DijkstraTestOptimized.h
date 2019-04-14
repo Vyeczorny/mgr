@@ -5,12 +5,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface DijkstraOptimizedTestObjC : NSObject <Test>
+@interface DijkstraOptimizedTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
-- (nonnull instancetype)initWithAdjacencyMatrix:(NSArray<NSArray<NSNumber *> *> *)matrix;
+- (nonnull instancetype)initWithAdjacencyMatrix:(nonnull NSArray<NSArray<NSNumber *> *> *)matrix;
 - (void)run;
 
 // temporary

@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface StringConcatenationTestObjC : NSObject <Test>
+@interface StringConcatenationTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

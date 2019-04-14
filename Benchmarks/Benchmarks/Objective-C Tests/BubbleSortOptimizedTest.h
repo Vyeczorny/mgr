@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface BubbleSortOptimizedTestObjC : NSObject  <Test>
+@interface BubbleSortOptimizedTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

@@ -6,7 +6,7 @@
 #import "BubbleSortTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface BubbleSortTestObjC ()
+@interface BubbleSortTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 

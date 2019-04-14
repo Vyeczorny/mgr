@@ -9,7 +9,7 @@
 
 #import "Benchmarks-Swift.h"
 
-@interface DijkstraTestObjC ()
+@interface DijkstraTestObjC () <Test>
 
 @property (nonatomic, assign) NSUInteger n;
 @property (nonatomic, strong) NSArray<NSArray<NSNumber *> *> * adjacencyMatrix;

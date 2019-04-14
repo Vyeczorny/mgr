@@ -6,7 +6,7 @@
 #import "WordFrequencyTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface WordFrequencyTestObjC ()
+@interface WordFrequencyTestObjC () <Test>
 
 @property (nonatomic, strong) NSString *data;
 

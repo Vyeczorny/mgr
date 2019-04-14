@@ -5,9 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface WordFrequencyTestObjC : NSObject <Test>
+@interface WordFrequencyTestObjC : NSObject
 
 - (nonnull instancetype)initWithN:(int)n;
 

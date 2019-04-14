@@ -9,7 +9,7 @@
 #import "ArrayInsertionTest.h"
 #import "Benchmarks-Swift.h"
 
-@interface ArrayInsertionTestObjC ()
+@interface ArrayInsertionTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 

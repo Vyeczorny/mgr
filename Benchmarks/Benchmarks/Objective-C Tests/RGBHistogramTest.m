@@ -14,7 +14,7 @@ typedef NSArray<NSNumber *> Pixel;
 typedef NSArray<Pixel *> RGBData;
 
 
-@interface RGBHistogramTestObjC ()
+@interface RGBHistogramTestObjC () <Test>
 
 @property (nonatomic, assign) int n;
 @property (nonatomic, strong) RGBData *data;

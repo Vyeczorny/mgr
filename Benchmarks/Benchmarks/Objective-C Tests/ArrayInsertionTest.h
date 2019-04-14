@@ -8,10 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Test;
-
-@interface ArrayInsertionTestObjC : NSObject <Test>
-
+@interface ArrayInsertionTestObjC : NSObject
 - (nonnull instancetype)initWithN:(int)n;
 
 @end
