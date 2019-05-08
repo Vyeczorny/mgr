@@ -99,7 +99,7 @@
 
 Swift to język programowania stworzony przez firmę Apple na potrzeby tworzenia aplikacji na platformy iOS, Mac OS, tvOS i WatchOS. Jego pierwsza wersja została zapowiedziana 2 czerwca 2014 roku podczas konferecji Apple Worldwide Developers Conference (WWDC) i wydana 9 września 2014 roku.
 
-Przed 2014 rokiem głównym językiem używanym do tworzenia oprogramowania na systemy operacyjne Apple był język Objective-C. Powstał on w 1983 roku jako nakładka język na C rozszerzająca go o elementy obiektowe wzrorowane na Smalltalku. Głównym problemem Objective-C jest wysoki poziom trudności. Składnia tego języka różni sie znacznie od składni innych popularnych języków obiektowych, jest dużo bardziej skomplikowana i mniej czytelna. Również wydajność nie jest najlepsza. W celu uzyskania szybko działającego kodu programiści często wykorzystują fakt, że Objective-C współpracuje z językiem C i używają go do zaimplementowania najważniejszych części aplikacji. 
+Przed 2014 rokiem głównym językiem używanym do tworzenia oprogramowania na systemy operacyjne Apple był język Objective-C. Powstał on w 1983 roku jako nakładka na język C rozszerzająca go o elementy obiektowe wzrorowane na Smalltalku. Głównym problemem Objective-C jest wysoki poziom trudności. Składnia tego języka różni sie znacznie od składni innych popularnych języków obiektowych, jest dużo bardziej skomplikowana i mniej czytelna. Również wydajność nie jest najlepsza. W celu uzyskania szybko działającego kodu programiści często wykorzystują fakt, że Objective-C współpracuje z językiem C i używają go do zaimplementowania najważniejszych części aplikacji. 
 
 Swift ma za zadanie rozwiązać problemy, z którymi zmaga się Objective-C. Jego składnia jest dużo prostsza i bardziej podobna do innych obiektowych języków programowania. Zaadresowano również zwiększenie wydajności i bezpieczeństwa kodu. Swift otrzymał nowe funkcje pozwalające pisać kod szybciej, wydajniej i bezpieczniej. Dokładne porównanie obydwu języków znajduje się w rozdziale \ref{ch:swift-objc}
 
@@ -125,13 +125,13 @@ Swift to wieloparadygmatowy język programowania łączący pomysły znane z inn
 Swift wspiera dwie podstawowe koncepcje generyczności:
 \begin{itemize}
   \item klasy, struktury, typy wyliczeniowe oraz funkcje z parametrami typu (ang. \textit{generics})
-  \item protokoły z powiązanymi typami (ang. \textit{associated types})
+  \item protokoły z typami powiązanymi (ang. \textit{associated types})
 \end{itemize}
 
-Klasy (struktury, funkcje) ze zmiennymi typu to pomysł dobrze znany z większości popularnych języków programowania obiektowego, takich jak C\# czy Java. W momencie definiowania klasy programista ma możliwość zdefiniowania zmiennych przebiegających przestrzeń typów używanych w definiowanej klasie. Dodatkowo Swift oferuje kilka bardziej zaawansowanych mechanizmów związanych ze zmiennymi typu:
+Klasy (struktury, funkcje) ze zmiennymi typu to pomysł dobrze znany z większości popularnych języków programowania obiektowego, takich jak C\# czy Java. W momencie definiowania klasy programista ma możliwość zdefiniowania zmiennych przebiegających przestrzeń typów używanych w definiowanej klasie. Dodatkowo, Swift oferuje kilka bardziej zaawansowanych mechanizmów związanych ze zmiennymi typu:
 
 \begin{itemize}
-  \item możliwość dodania ograniczeń na typy, po których przebiega zmienna, np. zmienna może być tylko typem implementującym dany protokół lub dziedziczącym po danej klasie
+  \item możliwość dodania ograniczeń na typy, po których przebiega zmienna, np. pod zmienną można podstawić tylko typ implementujący dany protokół lub dziedziczącym po danej klasie
   \item automatyczna inferencja typów paremetrów generycznych
   \item możliwość nadawania aliasów funkcjom i typom generycznym
 \end{itemize}
@@ -142,7 +142,7 @@ Przykład użycia typów generycznych ilustruje Listing \ref{l:2_generics_and_in
     {2_generics_and_inheritance}
     {Przykład klasy generycznej i klasy pochodnej w Swift}
 
-W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną typu przed programistą używającym klasy implementującej dany protokół - typ podstawiony pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenia obiektu implementującego protokół. Przykład użycia protokołu z parametrami typu prezentuje Listing \ref{l:2_associated_types}.
+W odróżnieniu od klas, struktur i funkcji, protokoły nie wspierają generycznych paremetrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na znanym np. ze Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on na zdefiniowanie w protokole zmiennej typu, która zostanie ukonkretniona dopiero przez klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod zmienną przed programistą używającym klasy implementującej dany protokół - typ podstawiany pod zmienną jest częścią implementacji i nie musi być jawnie podawany podczas tworzenia obiektu implementującego protokół. Przykład użycia protokołu z parametrami typu prezentuje Listing \ref{l:2_associated_types}.
 
 \swiftlisting
     {2_associated_types}
@@ -158,7 +158,7 @@ Podobnie jak w języku C\#, typy w Swifcie można podzielić na dwie grupy:
     \item typy referencyjne (\ang{reference types})
 \end{itemize}
 
-Typy wartościowe to typy, które tworzą nowe instancje obiektów podczas przypisywania do zmiennej lub przekazywania do funkcji. Innymi słowy, każda instancja posiada swoją własną kopię danych, obiekty takie nie dzielą ze sobą stanu, przez co są łatwiejsze w zrozumieniu i bezpieczniejsze przy pracy z wieloma wątkami. Jeśli zmienna typu wartościowego zostanie zadeklarowana jako stała, cały obiekt, łącznie ze wszystkimi polami nie może zostać zmieniony. Typami wartościowymi w Swifcie są:
+Typy wartościowe to typy, które tworzą nowe instancje obiektów podczas przypisywania do zmiennej lub przekazywania do funkcji. Innymi słowy, każda instancja posiada swoją własną kopię danych, obiekty takie nie dzielą ze sobą stanu, przez co są łatwiejsze w zrozumieniu i bezpieczniejsze dla aplikacji używających wielu wątków. Jeśli zmienna typu wartościowego zostanie zadeklarowana jako stała, cały obiekt, łącznie ze wszystkimi polami nie może zostać zmieniony. Typami wartościowymi w Swifcie są:
 
 \begin{itemize}
     \item struktury
@@ -166,11 +166,11 @@ Typy wartościowe to typy, które tworzą nowe instancje obiektów podczas przyp
     \item krotki
 \end{itemize}
 
-Typy referencyjne to typy, których obiekty dzielą pomiędzy sobą te same dane, a podczas przypisywania lub przekazywania do funkcji tworzona jest tylko nowa referencja do tych samych danych. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do zmiennej mogą być bez dowolnie zmieniane. Typami referencyjnymi w Swifcie są tylko klasy.
+Typy referencyjne to typy, których obiekty dzielą pomiędzy sobą te same dane, a podczas przypisywania lub przekazywania do funkcji tworzona jest tylko nowa referencja do tego samego adresu w pamięci. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do zmiennej mogą być bez dowolnie zmieniane. Typami referencyjnymi w Swifcie są tylko klasy.
 
 \swiftlisting
     {2_class_struct_protocol_enum}
-    {Przykładowe definicje podstwowych obiektów w Swift: struktury, klasy, protokołu i typu wyliczeniowego}
+    {Przykładowe definicje podstawowych obiektów w Swift: struktury, klasy, protokołu i typu wyliczeniowego}
 
 \section{Domknięcia jako typy pierwszoklasowe}
 \label{s:domkniecia_jako_typy_pierwszoklasowe}
@@ -188,7 +188,7 @@ Podobnie jak w językach funkcyjnych i w większości nowoczesnych języków pro
 \section{Leniwość}
 \label{s:leniwosc}
 
-Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opiera się na znanych również z języka C\# czy Java generatorach.
+Swift domyślnie używa gorliwej ewaluacji wyrażeń, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w podstawowym stopniu na wspieranie leniwych obliczeń. Po pierwsze, w Swifcie, podobnie jak w C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w C\# mechanizm ten polega na użyciu klasy $Lazy$ z biblioteki standardowej, o tyle w Swifcie jest on zaszyty w samym języku - służy do tego słowo kluczowe $lazy$. Obiekt utworzony przy użyciu tego słowa zostanie stworzony dopiero w chwili pierwszego odwołania się do niego. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opiera się na znanych również z języka C\# czy Java generatorach.
 
 \swiftlisting
     {2_laziness}
@@ -197,22 +197,22 @@ Swift jest domyślnie językiem z ewaluacją gorliwą, autorzy zaimplementowali 
 \section{Elementy zaczerpnięte z języków funkcyjnych}
 \label{s:element_zaczerpniete_z_jezykow_funkcyjnych}
 
-Pomimo tego, że Swift był projektowany głównie jako język programowania obiektowego, jego twórcy skupili dużą część swojej uwagi na elementach powiązanych z programowaniem funkcyjnym, które mogłyby pomóc programistom pisać bezpieczniejszy i bardziej czytelny kod obiektowy. Najważniejsze z nich to:
+Pomimo faktu, że Swift był projektowany głównie jako język programowania obiektowego, jego twórcy skupili dużą część swojej uwagi na elementach powiązanych z programowaniem funkcyjnym, które mogłyby pomóc programistom pisać bezpieczniejszy i bardziej czytelny kod obiektowy. Najważniejsze z nich to:
 
 \begin{itemize}
-    \item Typy wyliczeniowe z wartościami powiązanymi (\ang{associated values}), które pozwalanją na definiowanie typów podobnych do algebraicznych typów danych (\ang{Algrebraic data types} znanych z programowania funkcyjnego (zob. Listing \ref{l:2_enum_with_associated_value}).
+    \item Typy wyliczeniowe z wartościami powiązanymi (\ang{associated values}), które pozwalanją na definiowanie typów podobnych do algebraicznych typów danych (\ang{Algrebraic data types}) znanych z programowania funkcyjnego.
 
     \swiftlisting
         {2_enum_with_associated_value}
-        {Implementacja drzewa binarnego w Swift}
+        {Implementacja drzewa binarnego w Swift za pomocą typu wyliczeniowego}
 
     \item Dzięki zwięzłej i eleganckiej składni oraz potraktowaniu domknięć na równi klasami i stukturami, Swift oferuje bardzo dobre wsparcie dla funkcji wyższego rzędu. Funkcje wyższego rzędu są też często używane w bibliotece standardowej, np. kolekcje danych posiadają najczęściej używane funkcje służące do manipulowania nimi, takie jak \texttt{filter}, \texttt{map}, \texttt{reduce} czy \texttt{flatMap}.
 
-    \item Autorzy Swifta postawili bardzo duży nacisk na niemutowalność (\todo{lepsze słowo?}) danych, co przejawia się w całej składni języka, np. dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do deklarowania stałych, parametry przekazywane do funkcji są domyślnie stałymi, użycie typów wartościowych jest preferowane nad użyciem klas (również w bibliotece standardowej) itp.
+    \item Autorzy Swifta postawili bardzo duży nacisk na niemutowalne struktury danych, co przejawia się w całej składni języka. Dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do deklarowania stałych, parametry przekazywane do funkcji są domyślnie stałymi, a użycie typów wartościowych jest preferowane nad użyciem klas (również w bibliotece standardowej).
 
-    \item Swift posiada zaawansowany mechanizm \textit{pattern matchingu}, który można wykorzystać do dopasowywania typów wyliczeniowych, krotek i wyrażeń. Tak jak w wielu językach funkcyjnych, \textit{pattern matching} w Swifcie jest wyczerpujący (\ang{exhaustive}), co oznacza, że każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
+    \item Swift posiada zaawansowany mechanizm \textit{pattern matchingu}, który można wykorzystać do przetwarzania typów wyliczeniowych, krotek i wyrażeń. Tak jak w wielu językach funkcyjnych, \textit{pattern matching} w Swifcie jest wyczerpujący (\ang{exhaustive}), co oznacza, że każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
 
-    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicjalizowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaning}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
+    \item Aby uniknąć problemów z wartością \texttt{nil}, w języku Swift każda zmienna musi zostać zainicjalizowana już w momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w swojej konstrukcji jest bardzo podobny do monady \texttt{Maybe} znanej z Haskella. Istnieje nawet mechanizm zwany \textit{optional chaining}, który zachowuje się tak, jak operacja \texttt{>>=} dla monady \texttt{Maybe}.
 
     \swiftlisting
         {2_optional}
@@ -223,7 +223,7 @@ Pomimo tego, że Swift był projektowany głównie jako język programowania obi
 \section{Zwięzłość składni}
 \label{s:zwiezlosc_skladni}
 
-Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta inżynierowie Apple mocno wzorowali się na językach znanych ze swojej zwięzłości i łatwości czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, wprowadzono dużo cukru syntaktycznego dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a równoważnym kodem w Swift.
+Jednym z największych problemów podczas programowania w Objective-C była słaba czytelność kodu i bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta inżynierowie Apple mocno wzorowali się na językach znanych ze swojej zwięzłości i łatwości czytania, takich jak Python czy Ruby. Zrezygnowano z plików nagłówkowych, dodano dużą ilość dodatkowej składni upraszczającej kod (tzw. \textit{cukru syntaktycznego}) dla najcześciej stosowanych konstrukcji (jak np. operator \texttt{T?} dla typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w Objective-C, a równoważnym kodem w Swift.
 
 \begin{listing}[ht]
 \begin{minted}{objc}
@@ -247,7 +247,7 @@ myDelegate?.scrollViewDidScroll?(myScrollView)
 \section{Rozszerzenia typów}
 \label{s:rozszerzenia_typow}
 
-Jedną z rzadziej spotykanych w językach statycznie typowanych językach programowania funkcjonalności jest możliwość rozszerzania istniejących już typów. Co prawda już w Objective-C programista miał moliwość stworzenia kategorii (\ang{category}), ale pozwalała ona tylko na dodawanie nowych funkcji, nie można było natomiast definiować nowych właściwości, konstruktorów ani typów zagnieżdżonych. Dlatego w Swifcie zotały zaimplementowane rozszerzenia (\ang{extensions}), które pozwalają na:
+Jedną z rzadziej spotykanych w statycznie typowanych językach programowania funkcjonalności jest możliwość rozszerzania istniejących już typów. Co prawda już w Objective-C programista miał moliwość stworzenia kategorii (\ang{category}), ale pozwalała ona tylko na dodawanie nowych funkcji, nie można było natomiast definiować nowych właściwości, konstruktorów ani typów zagnieżdżonych. Dlatego w Swifcie zotały zaimplementowane rozszerzenia (\ang{extensions}), które pozwalają na:
 
 \begin{itemize}
     \item dodawanie nowych właściwości obliczanych (\ang{computed properties})
@@ -266,7 +266,7 @@ Jedną z rzadziej spotykanych w językach statycznie typowanych językach progra
 
 \subsection{Swift i Objective-C jako języki programowania obiektowego}
 
-Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i polimorfizm. Dzięki modyfikatorom dostępu oraz protokołom umożliwiają również enkapsulację implementacji i opisywanie zachowań za pomocą abstrakcyjnych typów danych.
+Zarówno Swift, jak i Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na definiowanie własnych typów (klasy i typy wyliczeniowe w Objective-C, struktury, klasy oraz typy wyliczeniowe w Swifcie), wspierają dziedziczenie i protokoły. Dzięki modyfikatorom dostępu oraz protokołom umożliwiają również enkapsulację implementacji i opisywanie zachowań za pomocą abstrakcyjnych typów danych.
 
 \objclisting{3_objective_c_example}{Przykład kodu obiektowego w Objective-C}
 
@@ -275,16 +275,15 @@ Zarówno Swift, jak i Objective-C są głównie językami programowania  obiekto
 \subsection{Zarządzanie pamięcią}
 \label{s:zarzadzanie_pamiecia}
 
-\todo{Może warto dodać, że ARC został wprowadzony ze względu na Swifta?}
 W początkowych wersjach systemu Mac OS i iOS zarządzanie pamięcią było w pełni manualne - co prawda obiekty (a właściwie wskaźniki do nich) posiadały liczniki referencji, jednak programista musiał sam zadbać o zarządzanie nimi. Przełom nastąpił w roku 2011, kiedy to do Objective-C zostało dodane automatyczne zliczanie referencji (\ang{automatic reference counting}, w skrócie: ARC).
 
-Automatyczne zliczanie referencji to jedna z najprostszych metod zarządzania pamięcią, odciążajaca programistę z obowiązku jawnego inkrementowania i dekrementowania liczników referencji. Użycie ARC w Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w momencie, gdy nowa referencja do obiektu zostaje utworzona (np. inicjalizacja, przypisanie, przekazania obiektu w parametrze) oraz zmniejsza go, w momencie usunięcia referencji. Dzięki temu programista nie musi manualnie używać funkcji \texttt{retain} i \texttt{release}, jak to miało miejsce w poprzednich wersjach Objective-C. Pozwala to na zapobiegnięcie wielu błędom, takim jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy odwoływanie się do wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie wprowadza niedeterminizmu, co ma miejsce w przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma znikomy wpływ na wydajność działania aplikacji.
+Automatyczne zliczanie referencji to jedna z najprostszych metod zarządzania pamięcią, odciążajaca programistę z obowiązku jawnego inkrementowania i dekrementowania liczników referencji. Użycie ARC w Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w momencie, gdy nowa referencja do obiektu zostaje utworzona (np. inicjalizacja, przypisanie, przekazania obiektu w parametrze) oraz zmniejsza go, w momencie usunięcia referencji. Dzięki temu programista nie musi manualnie używać funkcji \texttt{retain} i \texttt{release}, jak to miało miejsce wcześniej. Pozwala to na zapobiegnięcie wielu błędom, takim jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy odwoływanie się do wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie wprowadza niedeterminizmu, co ma miejsce w przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma znikomy wpływ na wydajność działania aplikacji.
 
-ARC jest również metodą zarządzania pamięcią zaimplementowaną w Swifcie. Główną różnicą jest jednak sposób implementacji. W Objective-C, ARC jest rozszerzeniem języka, operającym się głównie na preprocesorze i generowaniu kodu odpowiedzialnego za zliczanie referencji. W Swifcie natomiast, ARC jest jego podstawową cechą, posiadającą odrębną składnię i wparcie ze strony środowiska uruchomieniowego i kompilatora.
+ARC jest również metodą zarządzania pamięcią zaimplementowaną w Swifcie. Główną różnicą jest jednak sposób implementacji. W Objective-C, ARC jest rozszerzeniem języka, opierającym się głównie na  generowaniu kodu odpowiedzialnego za zliczanie referencji. W Swifcie natomiast, ARC jest właściwością języka, posiadającą odrębną składnię i wsparcie ze strony środowiska uruchomieniowego i kompilatora.
 
 \subsection{Biblioteki}
 
-Jedną z cech, dla której Swifta tak szybko zdobywa popularność jest możliwość wywoływania kodu Objective-C z poziomu kodu swiftowego i na odwrót (\ang{interoperability}). Z tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i są dostępne w obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w języku C, dlatego też wiele z zaawansowanych bibliotek, jak np. CoreAudio czy GLKit (\todo{źródło}) było dostępnych dla Swifta już od dnia jego prezentacji.
+Jedną z cech, dla której Swifta tak szybko zdobywa popularność jest możliwość wywoływania kodu Objective-C z poziomu kodu swiftowego i na odwrót (\ang{interoperability}). Z tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i są dostępne w obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w języku C, dlatego też wiele z zaawansowanych, niskopoziomowych bibliotek było dostępnych dla Swifta już od dnia jego prezentacji.
 
 \section{Różnice}
 
@@ -294,7 +293,7 @@ Objective-C to język, którego początki sięgają pierwszej połowy lat 80. Z 
 
 Pierwszym z udogodnień zaimplementowanych Swifta jest inferencja typów. W Objective-C każdy typ zmiennej musiał zostać jawnie napisany, co szczególnie w przypadku długich, złożonych typów (np. zawierających parametry generyczne) mogło być mocno uciążliwe. Kompilator Swifta natomiast stara się wywnioskować tak wiele informacji o typach, ile jest w stanie.
 
-Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. W Swifcie usunięto konieczność pisania nawiasów przy warunkach intrukcji warunkowych i pętli, dodano możliwość oddzielania kolejnych intrukcji poprzez znak nowej linii (nie ma potrzeby pisania znaku średnika na końcu linii), zaimplementowano dużo prostszą obsługę stringów, dodano dużo czytelniejszą składnię dla funkcji wyższego rzędu, zrezygnowano z plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w Javie czy C\#). Dodatkowo, najczęściej używane struktury składniowe otrzymały prostsze formy w postaci cukru syntaktycznego, np:
+Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. W Swifcie usunięto konieczność pisania nawiasów przy warunkach instrukcji warunkowych i pętli, dodano możliwość oddzielania kolejnych instrukcji poprzez znak nowej linii (nie ma potrzeby pisania znaku średnika na końcu linii), zaimplementowano dużo prostszą obsługę ciągów znakowych, dodano dużo bardziej czytelną składnię dla funkcji wyższego rzędu, zrezygnowano z plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w Javie czy C\#). Dodatkowo, najczęściej używane struktury składniowe otrzymały prostsze formy w postaci cukru syntaktycznego, np:
 
 \begin{itemize}
     \item definicja zmiennej \mintinline{swift}{var x: Int?} jest tożsama z \mintinline{swift}{var x: Optional<Int>}
@@ -305,7 +304,7 @@ Po drugie, sama składnia języka jest dużo bardziej zwięzła i czytelna. W Sw
 
 \subsection{Zarządzanie pamięcią}
 
-Pomimo, że zarówno Objective-C, jak i Swift korzystają z automatycznego zliczania referencji, jego implementacja jest diametralnie różna. W Objective-C ARC został dodany jako jedno z rozszerzeń języka C, jego implementacja bazuje głównie na wykorzystaniu makr i preprocesora, który automatycznie wstawia kod odpowiedzialny za zarządzanie licznikiem referencji. W Swifcie natomiast, ARC jest podstawowym elementem języka posiadającym odrębną składnię i słowa kluczowe.
+Pomimo, że zarówno Objective-C, jak i Swift korzystają z automatycznego zliczania referencji, jego implementacja jest zupełnie różna. W Objective-C ARC został dodany jako jedno z rozszerzeń języka C, jego implementacja bazuje głównie na wykorzystaniu makr i preprocesora, który automatycznie wstawia kod odpowiedzialny za zarządzanie licznikiem referencji. W Swifcie natomiast, ARC jest podstawowym elementem języka posiadającym odrębną składnię i słowa kluczowe.
 
 \subsection{System typów}
 \label{s:system_typow}
@@ -315,7 +314,7 @@ Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy n
 \begin{itemize}
 
     \item w Swifcie w zasadzie nie występuje niejawne rzutowanie typów. Każde (nawet najprostsze, jak rzutowanie z typu całkowitoliczbowego na zmiennoprzeciknowy) musi być jawnie wywołane przez programistę. W Objective-C zasady rzutowania zostały odziedziczone z języka C i są w zasadzie takie same.
-    \item sposób wywoływania metod w Objective-C został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy obiektami. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend } w trakcie działania programu. W Swifcie natomiast wywołania metod opierają się na wskaźnikach do metod oraz \textit{Protocol Witness Table} (odpowiednik \textit{vtable} z C++).
+    \item sposób wywoływania metod w Objective-C został zaczerpnięty z języka Smalltalk i odbywa się poprzez wysyłanie wiadomości (\ang{message}) pomiędzy do obiektu. Z tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w metodzie \mintinline{objc}{objc_msgSend } w trakcie działania programu. W Swifcie natomiast wywołania metod opierają się na wskaźnikach do metod oraz tablicy \textit{Protocol Witness Table} (odpowiednik \textit{vtable} z C++).
     \item w Objective-C istnieje klasa \mintinline{objc}{NSObject}, która jest superklasą dla wszystkich innych klas. Swift nie posiada takiej superklasy, została ona zastąpiona protokołem \mintinline{swift}{AnyObject}.
 
 \end{itemize}
@@ -325,11 +324,11 @@ Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy n
 Jednym z podstawowych założeń przyjętych przy tworzeniu Swifta było stworzenie języka, który będzie chronił programistę przed najczęstszymi błędami popełnianymi podczas pisania kodu. Najważniejsze mechanizmy służące temu celowi to:
 
 \begin{itemize}
-    \item typ \mintinline{swift}{Optional<T>} - typ ten chroni przed wszelkimi błędami związanymi z wartością \texttt{null}
+    \item typ \mintinline{swift}{Optional<T>} - typ ten chroni przed wszelkimi błędami związanymi z wartością \texttt{nil}
     \item konieczność inicjalizacji obiektu - każdy obiekt musi zostać zainicjalizowany w trakcie zadeklarowania referencji, co zapobiega problemom z dostępem do jeszcze nie zainicjalizowanej pamięci
     \item generyczne struktury danych - Objective-C nie posiadało typów generycznych, przez co struktury danych mogły przechowywać wartości różnych typów, co z kolei powodowało konieczność sprawdzania typów. W Swifcie struktury są silnie typowane i homogeniczne
     \item domyślna niemutowalność - w Swifcie istnieje wiele miejsc, gdzie obiekty są domyślnie niemutowalne, np przy przekazywaniu do funkcji
-    \item preferowanie typów wartościowych nad referencyjne - typy wartościowe zapobiegają zmianom jednego obiektu z wielu miejsc, przez co czytelność i łatwość zrozumienia kodu jest dużo większa
+    \item preferowanie typów wartościowych nad referencyjne - typy wartościowe zapobiegają zmianom jednego obiektu z wielu miejsc, przez co czytelność i łatwość zrozumienia kodu jest większa
     \item automatyczne sprawdzanie przekroczenia zakresu liczb całkowitych
     \item zmiany w składni, takie jak: obowiązkowe nawiasy \texttt{\{...\}} dla ciał funkcji warunkowych i pętl, obsługa wszystkich możliwych wartości dla typów wyliczeniowych, konieczność zwrócenia wartości w fukcjach, które deklarują zwracany typ, brak instrukcji \texttt{goto} itp.
 \end{itemize}

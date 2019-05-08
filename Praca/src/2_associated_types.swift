@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ViewDecorator {
-    associatedtype ViewType: UIView
+    associatedtype ViewType: UIView // typ powiązany
     func decorate(view: ViewType)
 }
 
