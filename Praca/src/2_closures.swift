@@ -1,5 +1,8 @@
-// domknięcie przyjmujące dwa obiekty typu Int i zwracające obiekt typu Int
-let addTwoInts: ((Int, Int) -> Int) = { (a, b) in a + b }
+let sum = { (x: Int) in
+    return { (y: Int) in
+        return x + y
+    }
+}
 
-// wywołanie domknięcia przypisanego do zmiennej `addTwoInts`
-let result = addTwoInts(5, 10)
+let sum5 = sum(5)
+let _5sum4 = sum5(4)

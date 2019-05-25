@@ -24,6 +24,8 @@ https://www.youtube.com/watch?v=9By9KLs51Dc
 https://www.crcpress.com/RC4-Stream-Cipher-and-Its-Variants/Paul-Maitra/p/book/9781439831359
 https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md
 https://researcher.watson.ibm.com/researcher/files/us-lmandel/lattner.pdf
+https://clang.llvm.org/docs/AutomaticReferenceCounting.html - dokumentacja ARAC w Objective-C
+https://sectionfive.net/blog/2015/03/31/arc-in-depth-part-i/ - ObjC ARC in depth
 
 # Pytania
 
