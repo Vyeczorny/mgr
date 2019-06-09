@@ -33,7 +33,7 @@ class GnuplotExporter {
         content += "plot "
 
         for i in 0..<testSuiteResult.testResults.count {
-            content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' pt 7 ps 0.5,"
+            content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' lc rgb 'black',"
         }
 
         FileManager.default.createFile(atPath: scriptFile, contents: content.data(using: .utf8))

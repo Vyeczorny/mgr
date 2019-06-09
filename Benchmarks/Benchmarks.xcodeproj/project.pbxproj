@@ -46,6 +46,7 @@
 		611A4B3A7CF697B8144775EB /* FibonacciTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A43606C4E5DC13D721350 /* FibonacciTest.swift */; };
 		611A4BE3AE36B57CC270FF74 /* AckermannTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F7BB5376F53D38DBCF7 /* AckermannTest.swift */; };
 		611A4C030CC06D1DB3D385FD /* SumOfIntegersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A4F142CCDC01CDC859860 /* SumOfIntegersTest.swift */; };
+		611A4C09CA2BE3533B69A7B5 /* LatexTableExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A43794053512781D29033 /* LatexTableExporter.swift */; };
 		611A4C2266EFFE2B67613B0A /* BinarySearchTreeOptimizedClassicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A456E4912FACA22DEDEFA /* BinarySearchTreeOptimizedClassicTest.swift */; };
 		611A4C53EB23AF94E15407BF /* StringConcatenationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611A42EC3CF8C57C528D6902 /* StringConcatenationTest.swift */; };
 		611A4C6880C05725656592E3 /* RC4Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 611A4299231E818E444F672E /* RC4Test.m */; };
@@ -100,6 +101,7 @@
 		611A435BCFEB7B10DC7CAEF7 /* SieveOfEratosthenesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SieveOfEratosthenesTest.h; sourceTree = "<group>"; };
 		611A43606C4E5DC13D721350 /* FibonacciTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FibonacciTest.swift; sourceTree = "<group>"; };
 		611A4362E436E9022B6D5493 /* GraphElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphElement.h; sourceTree = "<group>"; };
+		611A43794053512781D29033 /* LatexTableExporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatexTableExporter.swift; sourceTree = "<group>"; };
 		611A43918A5FFE15E75F3A7D /* SumOfIntegersTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SumOfIntegersTest.m; sourceTree = "<group>"; };
 		611A43E8B9835BFDBF8C731B /* BubbleSortOptimizedTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleSortOptimizedTest.h; sourceTree = "<group>"; };
 		611A43F7FB1151CBBC7A9B65 /* MultiplyByTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyByTwo.m; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				611A4F95191ADFAE3FAE9C92 /* GnuplotExporter.swift */,
 				611A4099E61B853D6403AFE9 /* ResultExporter.swift */,
 				611A488825E3F3AF162F82DE /* MultipleGnuplotExporter.swift */,
+				611A43794053512781D29033 /* LatexTableExporter.swift */,
 			);
 			path = Exporters;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				611A4A411DA920DC449E968E /* WordFrequencyTest.swift in Sources */,
 				611A436C91A170855A16DCDE /* WordFrequencyTest.m in Sources */,
 				611A45FE81B137EF8071D784 /* MultipleGnuplotExporter.swift in Sources */,
+				611A4C09CA2BE3533B69A7B5 /* LatexTableExporter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

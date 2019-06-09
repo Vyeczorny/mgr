@@ -12,6 +12,7 @@ enum ExportOption: String {
     case terminal
     case gnuplot
     case mGnuplot
+    case latexTable
 }
 
 enum PlotScale: String {

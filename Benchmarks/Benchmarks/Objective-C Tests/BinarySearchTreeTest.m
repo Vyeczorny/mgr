@@ -33,6 +33,8 @@
     for (NSNumber *element in elements) {
         [tree addElement:[element integerValue]];
     }
+
+//    [tree print];
 }
 
 @end

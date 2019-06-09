@@ -14,6 +14,8 @@ class ResultExporter {
                 GnuplotExporter(runningOptions: runningOptions).export(testSuiteResult: testSuiteResult)
             case .mGnuplot:
                 MultipleGnuplotExporter().export(testSuiteResult: testSuiteResult)
+            case .latexTable:
+                LatexTableExporter().export(testSuiteResult: testSuiteResult)
         }
     }
 }
