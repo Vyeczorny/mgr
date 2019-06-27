@@ -22,7 +22,7 @@ class GnuplotExporter {
         var content = """
         set terminal postscript eps enhanced color
         set output '\(outputFile)'
-        set key reverse left top Left
+        set key reverse left top Left spacing 1.5
         
         """
 
@@ -33,7 +33,7 @@ class GnuplotExporter {
         content += "plot "
 
         for i in 0..<testSuiteResult.testResults.count {
-            content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' lc rgb 'black',"
+            content += " '\(dataFile)' using 1:\(i+2) title '\(testSuiteResult.testResults[i].name)' lc rgb 'black' pt \((i+1)*2),"
         }
 
         FileManager.default.createFile(atPath: scriptFile, contents: content.data(using: .utf8))

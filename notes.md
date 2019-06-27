@@ -26,6 +26,10 @@ https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md
 https://researcher.watson.ibm.com/researcher/files/us-lmandel/lattner.pdf
 https://clang.llvm.org/docs/AutomaticReferenceCounting.html - dokumentacja ARAC w Objective-C
 https://sectionfive.net/blog/2015/03/31/arc-in-depth-part-i/ - ObjC ARC in depth
+https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithObjects/WorkingwithObjects.html - o wysyłaniu wiadomości
+https://www.mikeash.com/pyblog/friday-qa-2012-11-16-lets-build-objc_msgsend.html
+https://trinhngocthuyen.github.io/tech/method-dispatch-in-swift/
+https://www.rightpoint.com/rlabs/switch-method-dispatch-table
 
 # Pytania
 

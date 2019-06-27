@@ -12,26 +12,26 @@ set bmargin 2
 
 set title "WordFrequency"
 set xtics 10000
-plot 'WordFrequency.txt' using 1:2 title 'WordFrequencySwift' pt 7 ps 0.5, 'WordFrequency.txt' using 1:3 title 'WordFrequencyObjC' pt 7 ps 0.5,
+plot 'WordFrequency.txt' using 1:2 title 'WordFrequencySwift' lc rgb 'black' pt 2 ps 0.75, 'WordFrequency.txt' using 1:3 title 'WordFrequencyObjC' lc rgb 'black' pt 4 ps 0.75,
 
 set title "SieveOfEratosthenes"
 set xtics 10000
-plot 'SieveOfEratosthenes.txt' using 1:2 title 'SieveOfEratosthenesSwift' pt 7 ps 0.5, 'SieveOfEratosthenes.txt' using 1:3 title 'SieveOfEratosthenesObjC' pt 7 ps 0.5,
+plot 'SieveOfEratosthenes.txt' using 1:2 title 'SieveOfEratosthenesSwift' lc rgb 'black' pt 2 ps 0.75, 'SieveOfEratosthenes.txt' using 1:3 title 'SieveOfEratosthenesObjC' lc rgb 'black' pt 4 ps 0.75,
 
 set title "CountLinesWordsChars"
 set xtics 20000
-plot 'CountLinesWordsChars.txt' using 1:2 title 'CountLinesWordsCharsSwift' pt 7 ps 0.5, 'CountLinesWordsChars.txt' using 1:3 title 'CountLinesWordsCharsObjC' pt 7 ps 0.5,
+plot 'CountLinesWordsChars.txt' using 1:2 title 'CountLinesWordsCharsSwift' lc rgb 'black' pt 2 ps 0.75, 'CountLinesWordsChars.txt' using 1:3 title 'CountLinesWordsCharsObjC' lc rgb 'black' pt 4 ps 0.75,
 
 set title "StringConcatenation"
 set xtics 100000
-plot 'StringConcatenation.txt' using 1:2 title 'StringConcatenationSwift' pt 7 ps 0.5, 'StringConcatenation.txt' using 1:3 title 'StringConcatenationObjC' pt 7 ps 0.5,
+plot 'StringConcatenation.txt' using 1:2 title 'StringConcatenationSwift' lc rgb 'black' pt 2 ps 0.75, 'StringConcatenation.txt' using 1:3 title 'StringConcatenationObjC' lc rgb 'black' pt 4 ps 0.75,
 
 set title "RGBHistogram"
 set xtics 20000
-plot 'RGBHistogram.txt' using 1:2 title 'RGBHistogramSwift' pt 7 ps 0.5, 'RGBHistogram.txt' using 1:3 title 'RGBHistogramObjC' pt 7 ps 0.5,
+plot 'RGBHistogram.txt' using 1:2 title 'RGBHistogramSwift' lc rgb 'black' pt 2 ps 0.75, 'RGBHistogram.txt' using 1:3 title 'RGBHistogramObjC' lc rgb 'black' pt 4 ps 0.75,
 
 set title "RC4"
 set xtics 100000
-plot 'RC4.txt' using 1:2 title 'RC4Swift' pt 7 ps 0.5, 'RC4.txt' using 1:3 title 'RC4ObjC' pt 7 ps 0.5
+plot 'RC4.txt' using 1:2 title 'RC4Swift' lc rgb 'black' pt 2 ps 0.75, 'RC4.txt' using 1:3 title 'RC4ObjC' lc rgb 'black' pt 4 ps 0.75
 
 unset multiplot

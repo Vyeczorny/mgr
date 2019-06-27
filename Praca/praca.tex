@@ -341,6 +341,57 @@ Oba omawiane języki są językami statyczni typowanymi, jest jednak pomiędzy n
 
 \end{itemize}
 
+\subsection{Wywołania metod}
+
+Język Swift obsługuje dwa rodzaje wywołań metod: statyczne (\ang{direct dispatch} lub~\textit{static dispatch}) i~dynamiczne (\ang{table dispatch} lub~\textit{dynamic dispatch}). Oprócz tego, ze~względu na~możliwość użycia kodu Objective-C w~Swift, programista może również używać wywoływania poprzez wiadomości (\ang{message dispatch}). które jest jedynym sposobem wywoływania w~starszym z~języków.
+
+Wywoływanie statyczne i dynamiczne to dwa najpopularniejsze sposoby na wywoływanie metod w obiektowych językach programowania. Pierwszy z nich polega na wstawieniu w miejsce wywołania metody odpowiedniego adresu funkcji już w trakcie kompilacji programu. Drugi używa tablic wirtualnych, dzięki którym już w trakcie działania programu powstaje powiązanie adresu funkcji z wywołaniem.
+
+Wywołanie przez wysłanie wiadomości jest najrzadziej spotykanym podejściem z trzech wymienionych w tym rozdziale. Jego działanie jest podobne do wywołania dynamicznego, ma jednak kilka różnic, o których warto wspomnieć.
+
+Aby wysłanie wiadomości było możliwe, kompilator musi wykonać kilka kroków preprocessingu kodu Objective-C. Po pierwsze, do każdego obiektu kompilator dodaje właściwość \objcinline{isa} typu \objcinline{objc_class *}. Typ \objcinline{objc_class} to klasyczna struktura z języka C reprezentująca klasę Objective-C. Zawiera takie dane jak nazwa klasy, wskaźnik na obiekt \objcinline{objc_class} superklasy, lista właściwości danej klasy, lista metod czy zaimplementowanych protokołów.
+
+Następnie, każda metoda zostaje przetłumaczona na funkcję języka C, postaci:
+
+\begin{minted}{objc}
+ZwracanyTyp* nazwaFunkcji(id self, SEL _cmd, args...)
+\end{minted}
+
+Argument \objcinline{self} jest wskaźnikiem na obiekt, które jest odbiorcą wiadomości, \objcinline{_cmd} to selektor danej metody, a pozostałe argumenty to parametry wywołania funkcji. Selektor (\ang{selector}) to unikalna nazwa każdej metody zdefiniowanej w kodzie Objective-C reprezentowana w kodzie C o Objective-C przez typ \objcinline{SEL}.
+
+Ostatnim krokiem jest utworzenie dla każdej klasy Objective-C tablicy przyporządkowującej selektorom danej klasy wskaźniki na odpowiednie funkcje opisane w poprzednim punkcie. W ten sposób, w trakcie działania programu, środowisko uruchomieniowe może znaleźć odpowiednią implementację dla danego selektora.
+
+Wysłanie wiadomości odbywa się za pomocą funkcji \objcinline{objc_msgSend}. W momencie, gdy kompilator napotyka instrukcję wysłania wiadomości, taką jak np.:
+
+\begin{minted}{objc}
+Element *element = ...;
+BinarySearchTreeObjC *tree = ...
+[tree addElement:element];
+\end{minted}
+
+zamienia ją na wywołanie:
+
+\begin{minted}{objc}
+objc_msgSend(tree, @selector(addElement:), element);
+\end{minted}
+
+Pierwszy argument to odbiorca wiadomości, drugi argument to selektor wywoływanej funkcji (\objcinline{@selector} to dyrektywa kompilatora służąca do zamiany nazwy funkcji z ciągu znaków na selektor), a pozostałe to parametry wywołania funkcji.
+
+Cała obsługa wysyłania wiadomości w trakcie działania programu jest wykonywana przez funkcję \objcinline{objc_msgSend}. Jej głównym zadaniem jest powiązanie wywołanego selektora z odpowiednią implementacją. Dzieje się to według następujących kroków:
+
+\begin{enumerate}
+    \item Weź wskaźnik na obiekt \objcinline{isa} dla odbiorcy wiadomości.
+    \item Sprawdź, czy w cache'u jest wskaźnik na funkcję dla wywoływanego selektora. Jeśli tak, wywołaj funkcję i zakończ procedurę.
+    \item Jeśli w cache'u nie ma informacji o funkcji dla danego selektora, sprawdź sprawdź tablicę metod danej klasy. Jeśli znajduje się tam wskaźnik na funkcję dla wywoływanego selektora, wywołaj tą funkcję i zakończ procedurę.
+    \item Jeśli w tablicy metod nie ma informacji o funkcji dla zadanego selektora, weź z obiektu \objcinline{isa} dane o superklasie i wykonaj całą procedurę dla superklasy.
+\end{enumerate}
+
+Jak widać, pomimo prostego założenia dla funkcji \objcinline{objc_msgSend} ("weź wskaźnik na funkcję i ją wywołaj"), szczegóły implementacyjne czynią ją bardzo skomplikowaną. Jest w niej zawarta nie tylko obsługa sytuacji brzegowych, takich jak wyszukiwanie implementacji w hierarchii klas czy puste wskaźniki (o wartości \objcinline{nil}), ale również wiele optymalizacji, jak np. użycie cache czy częściowa implementacja w asemblerze. Złożoność tej funkcji sprawia, że w większości testów opisanych w kolejnych rozdziałach tej pracy, będzie ona miała duży wpływ na szybkość wykonywania kodu napisanego w Objective-C.
+
+W niektórych przypadkach czas wykonywania funkcji \objcinline{objc_msgSend} jest na tyle duży, że zachodzi potrzeba jego optymalizacji. Najbardziej efektywnym sposobem jest pominięcie wywoływania tej funkcji poprzez ograniczenie ilości wysyłanych wiadomości. Ponieważ każda metoda Objective-C jest w trakcie kompilacji tłumaczona na procedurę języka C, można za pomocą metody \objcinline{methodForSelector:} znaleźć wskaźnik do implementacji (czyli \textit{de facto} wskaźnik na funkcję w C) dla danego selektora i wywoływać wprost taką funkcję, z pominięciem całego mechanizmu wiadomości. Opisany tutaj sposób jeszcze szczególnie wydajny w sytuacji, gdy pojedyncza metoda jest wywoływana wiele razy dla różnych instancji tej samej klasy (patrz test \ref{s:bubble_sort}). Innym sposobem może być używanie zwykłych zmiennych zamiast właściwości.
+
+Pomimo, że istnieją metody poprawiające wydajność wywoływania metod w Objective-C i są znane dla większości doświadczonych programistów, są one rzadko stosowane. Głównym powodem jest możliwość użycia czystego języka C do zaimplementowania niskopoziomowych bibliotek i funkcji. Użycie C jest lepszym wyborem nie tylko z punktu widzenia szybkości działania, ale również możliwości użycia takiej biblioteki z poziomu innych języków programowania. Dlatego też fragmenty aplikacji, które mają działać bardzo szybko są zwykle pisane w C.
+
 \subsection{Bezpieczeństwo}
 
 Jednym z~podstawowych założeń przyjętych przy tworzeniu Swifta było stworzenie języka, który będzie chronił programistę przed najczęstszymi błędami popełnianymi podczas pisania kodu. Najważniejsze mechanizmy służące temu celowi to:
@@ -370,16 +421,15 @@ W sieci Internet dostępnych jest kilka źródeł, które porównują Swift z in
     \item Blog firmy Yalantis \footnote{\url{https://yalantis.com/blog/is-swift-faster-than-objective-c/}}
 \end{itemize}
 
-Większość z wymienionych stron internetowych porównuje więcej niż jeden język programowania. Duża część nie zawiera testów w języku Swift i/lub Objective-C, co powoduje, że nie można na ich podstawie stwierdzić, który z języków omawianych w tej pracy jest szybszy. Wyniki tam przedstawione opierają się głównie na zadaniach algorytmiczny pokazujących ogólną wydajność i nie są szczegółowo analizowane, co z kolei nie pozwala odpowiedzieć na pytanie, dlaczego wydajność jest taka, a nie inna. Testy napisane na potrzeby tej pracy magisterskiej opierają się na nieco innych założeniach. 
+Większość z wymienionych stron internetowych porównuje więcej niż jeden język programowania. Duża część nie zawiera testów w języku Swift i/lub Objective-C, co powoduje, że nie można na ich podstawie stwierdzić, który z tych dwóch języków jest szybszy. Wyniki tam przedstawione opierają się głównie na zadaniach algorytmicznych pokazujących ogólną wydajność i nie są szczegółowo analizowane, co z kolei nie pozwala odpowiedzieć na pytanie, dlaczego wydajność jest taka, a nie inna. 
 
-Każdy test sprawdza wydajność pojedynczego elementu języka. Przykładowo, obliczanie $n$-tej liczby ciągu Fibonacciego (w naiwny sposób, rozdział \ref{s:fibonacci}) pokazuje wydajność wykonywania wielokrotnie zagnieżdżonych wywołań rekurencyjnych, a test różnych sposobów wywoływania metod (rozdział \ref{s:wywolania_metod}) sprawdza, który mechanizm wywoływania jest najszybszy. Testy opisane w tej pracy są prostsze i mniej złożone niż te, które można znaleźć w ww. źródłach, skupiają się za to mocno na konkretnej funkcjonalności języka, co pozwala na łatwiejszą analizę i wyciągnięcie wniosków odnośnie tej funkcjonalności.
+Testy napisane na potrzeby tej pracy magisterskiej nawiązują do wyżej wymienionych metodologii, jednak ze względu na nieco inne założenia pracy zostały odpowiednio zmodyfikowane. Każdy test sprawdza wydajność pojedynczego elementu języka. Przykładowo, obliczanie $n$-tej liczby ciągu Fibonacciego (w naiwny sposób, rozdział \ref{s:fibonacci}) pokazuje wydajność wykonywania wielokrotnie zagnieżdżonych wywołań rekurencyjnych, a test różnych sposobów wywoływania metod (rozdział \ref{s:wywolania_metod}) sprawdza, który mechanizm wywoływania jest najszybszy. Testy opisane w tej pracy są prostsze i mniej złożone niż te, które można znaleźć w ww. źródłach, skupiają się za to mocno na konkretnej funkcjonalności języka, co pozwala na łatwiejszą analizę i wyciągnięcie wniosków odnośnie tej funkcjonalności.
 
-Wszystkie zostały dokładnie przeanalizowana pod kątem przyczyn otrzymanych wyników. W ten sposób otrzymano listę elementów języka Swifta sprawiających, że jest bardziej wydajny od Objective-C. Wyniki te stanowią wartość nie tylko naukową, ale i praktyczną, ponieważ mogą być zastosowane przez programistów jako wskazówki podczas pisania dobrze zoptymalizowanych programów.
-
+Wszystkie testy zostały dokładnie przeanalizowane pod kątem przyczyn otrzymanych wyników. W ten sposób uzyskano otrzymano listę elementów języka Swifta sprawiających, że jest bardziej wydajny od Objective-C. Wyniki te stanowią wartość nie tylko naukową, ale i praktyczną, ponieważ mogą być zastosowane przez programistów jako wskazówki podczas pisania dobrze zoptymalizowanych programów.
 
 \section{Założenia i~platforma testowa}
 
-Wszystkie implementacje w~obrębie danego testu używają tego samego algorytmu do~rozwiązania zadanego problemu. Również zakres wartości, dla~których przeprowadzany jest test jest stały w~obrębie danego testu. Dla każdej wartości $n$ zostało przeprowadzone conajmniej 10 pomiarów, wyniki przedstawione na~wykresach są średnimi tych pomiarów.
+Wszystkie implementacje w~obrębie danego testu używają tego samego algorytmu do~rozwiązania zadanego problemu. Również zakres wartości, dla~których przeprowadzono test jest stały w~obrębie danego testu. Dla każdej wartości $n$ zostało przeprowadzone co najmniej 10 pomiarów. Wyniki przedstawione na~wykresach są średnimi tych pomiarów.
 
 Każdy test został zaimplementowany w~conajmniej jednej wersji dla~każdego z~języków. Analiza testu składa się z~kilku części:
 
@@ -387,7 +437,7 @@ Każdy test został zaimplementowany w~conajmniej jednej wersji dla~każdego z~j
     \item opisu problemu przedstawionego w~teście
     \item przedstawienia wyników w~formie wykresu i/lub tablicy profilowania
     \item analizy wyników
-    \item (opcjonalnie) dodatkowych testach sprawdzających wnioski wyciągnięta podczas analizy wyników
+    \item (opcjonalnie) dodatkowych testów sprawdzających wnioski wyciągnięta podczas analizy wyników
 \end{itemize}
 
 Kod testów, razem z~platformą potrzebną do~ich uruchomienia znajduje się w~repozytorium dostępnym w~serwisie GitHub pod~adresem \url{https://github.com/vyeczorny/mgr}. Wszystkie testy opisane w~tej pracy zostały przeprowadzone na~laptopie Macbook Pro o~następującej specyfikacji:
@@ -471,6 +521,7 @@ Drugim powodem, dla~którego kod napisany w~Objective-C jest wolniejszy jest sam
 
 
 \section{Sortowanie bąbelkowe}
+\label{s:bubble_sort}
 
 \subsection{Omówienie}
 
@@ -529,7 +580,7 @@ Klasa \objcinline{BubbleSortOptimizedTestObjC} zawiera implementację wyżej wy
 
 Największy przyrost wydajności zaobserwowano dla~wywołań funkcji \objcinline{objc_msgSend }, czas $4,58s$ udało się zmniejszyć do~$1,83s$ (spadek o~$60\%$). Główne powody to~zastąpienie kilku wywołań operatora indeksowania jednym wywołaniem metody zamieniającej elementy miejscami oraz trzymanie referencji na~tą metodę w~zmiennej lokalnej. Spadł również czas wywołania metod związanych z~operatorem indeksowania - pozbyto się zupełnie użycia metody ustawiającej wartość, a~czas zużywany na~metodę pobierającą wartość spadł z~$2,51s$ do~$1,61s$. Łącznie czas operacji na~tablicy spadł z $4,31s$ do~$3,18s$ (spadek o~$25\%$). Czas obsługi liczników referencji spadł z~$2,4s$ do~$1,6s$, co~oznacza spadek o~około $35\%$, a~czas poświęcony wcześniej na~odczyt właściwości \objcinline{n} spadła do~wartości niezauważalnej podczas profilowania.
 
-Pomimo tak~znacznego przyspieszenia, kod ten nadal jest około 6-krotnie wolniejszy od~implementacji w~Swift.
+Pomimo tak~znacznego przyspieszenia, kod ten nadal jest około 6-krotnie wolniejszy od~jego~odpowiednika w~Swift. Implementacja w nowszym z języków zyskuje najwięcej na użyciu wartościowych typów danych, które nie wymagają zliczania referencji i wysyłania wiadomości pomiędzy obiektami oraz na znacznie szybszych operacjach tablicowych. Te dwa aspekty odpowiadają za ok. 80 \% całkowitego czasu działania kodu Objective-C.
 
 \subsection{Podsumowanie}
 
@@ -592,7 +643,7 @@ Pomimo początkowych problemów z~wydajnością również i~w~tym teście kod na
 
 \subsection{Omówienie}
 
-Język Swift obsługuje dwa rodzaje wywołań metod: statyczną (\ang{direct dispatch} lub~\textit{static dispatch}) i~dynamiczną (\ang{table dispatch} lub~\textit{dynamic dispatch}). Oprócz tego, ze~względu na~możliwość użycia kodu Swift w~Objective-C, programista może również używać wywoływania poprzez wiadomości (\ang{message dispatch}), które jest jedynym sposobem wywoływania w~starszym z~języków.
+\todo{Odnieść się do nowego rozdziału o różnych metodach wywołania}
 
 Wywoływanie statyczne jest uznawane za~najszybszy sposób wykonywania metod. Główną cechą jest pełna wiedza o~tym, która metoda ma~zostać wykonana już w~trakcie procesu kompilowania. Z~tego powodu, kompilator może stosować dużą ilość optymalizacji, takich jak bezpośrednie odwołania do~adresu funkcji czy~wywołanie funkcji "w linii" (\ang{inline}). Główną jej wadą jest natomiast ograniczone wsparcie dla~polimorfizmu, przez~co~większość języków implementuje dodatkowo inny rodzaj wywoływania metod (np.~tablice wirtualne w~C++). W~Swift wywoływanie statyczne jest używane dla~struktur oraz rozszerzeń protokołów (\ang{protocol extensions}).
 
@@ -605,7 +656,7 @@ Wywołanie dynamiczne to~mechanizm zaimplementowany w~większości współczesny
 
 Zaletą takiego podejścia jest jego elastyczność, która umożliwia zaimplementowanie takich elementów języka, jak dziedziczenie czy~protokoły. Wadą natomiast jest dodatkowy czas, potrzebny na~wyszukanie adresu funkcji w~tablicy wirtualnej w~trakcie działania programu. Uniemożliwia też stosowanie niektórych metod optymalizacji kodu. W~Swift wywoływanie dynamiczne jest domyślnie używane dla~klas oraz protokołów.
 
-Wywołanie przez~wiadomości to~mechanizm odziedziczony z~Objective-C i~używany głównie w~trakcie wywoływania kodu Objective-C. Jest uważany za~najwolniejszy z~trzech dostępnych sposobów wywoływania funkcji, wspiera jednak funkcje języka, takie jak selektory czy~KVO (\ang{Key Value Observers}) bez~których prawie niemożliwe byłoby używanie klas i~bibliotek napisanych w~Objective-C z~poziomu kodu swiftowego.
+Wywołanie przez~wiadomości to~mechanizm odziedziczony z~Objective-C i~używany głównie w~trakcie wywoływania kodu Objective-C. Jest uważany za~najwolniejszy z~trzech dostępnych sposobów wywoływania funkcji, wspiera jednak funkcje języka, bez~których niemożliwe byłoby używanie klas i~bibliotek napisanych w~Objective-C z~poziomu kodu swiftowego.
 
 Test opisany w~tym rozdziale polega na~wykonaniu bardzo prostej funkcji mnożącej liczbę całkowitą przez~2 na~kilka sposobów:
 
@@ -781,7 +832,7 @@ Ostatni test \texttt{StringConcatenation} pokazał, że~implementacja operacji d
 
 \begin{figure}
     \includegraphics{plots/otherTests}
-    \caption{Wykresy czasu działania pozostałych testów (zielona linia - Objective-C, fioletowa - Swift)}
+    \caption{Wykresy czasu działania pozostałych testów (linia znaków 'x' - Swift, linia kwadratów - Objective-C)}
     \label{p:other}
 \end{figure}
 
