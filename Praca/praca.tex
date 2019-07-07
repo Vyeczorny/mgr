@@ -58,7 +58,7 @@
   \textit{\textbf{TODO: }#1}
 }
 
-\newcommand{\ang}[1]{ang. \textit{#1}}
+\newcommand{\ang}[1]{ang.~\textit{#1}}
 
 \newcommand{\swiftlisting}[2]{
     \swiftcode{src/#1.swift}
@@ -101,20 +101,20 @@
 
 Swift to~język programowania stworzony przez~firmę Apple na~potrzeby tworzenia aplikacji na~platformy iOS, Mac~OS, tvOS i~WatchOS. Jego pierwsza wersja została zapowiedziana 2~czerwca 2014~roku podczas konferencji Apple Worldwide Developers Conference (WWDC) i~wydana 9~września 2014~roku.
 
-Przed 2014~rokiem głównym językiem używanym do~tworzenia oprogramowania na~systemy operacyjne Apple był~język Objective-C. Powstał on~w~1983~roku jako nakładka na~język~C rozszerzająca go~o~elementy obiektowe wzorowane na~Smalltalku. Głównym problemem Objective-C jest~wysoki próg wejścia. Składnia tego języka różni się znacznie od~składni innych popularnych języków obiektowych, jest dużo bardziej skomplikowana i~mniej czytelna. Również wydajność nie~jest najlepsza. W~celu uzyskania szybko działającego kodu programiści często wykorzystują fakt, że~Objective-C współpracuje z~językiem~C i~używają go~do~zaimplementowania najważniejszych części aplikacji. 
+Przed 2014~rokiem głównym językiem używanym do~tworzenia oprogramowania na~systemy operacyjne Apple był~język Objective-C. Powstał on~w~1983~roku jako nakładka na~język~C rozszerzająca go~o~elementy obiektowe wzorowane na~Smalltalku. Głównym problemem Objective-C jest~wysoki próg wejścia. Składnia tego języka różni się znacznie od~składni innych popularnych języków obiektowych, jest~dużo bardziej skomplikowana i~mniej czytelna. Również wydajność nie~jest najlepsza. W~celu uzyskania szybko działającego kodu programiści często wykorzystują fakt, że~Objective-C współpracuje z~językiem~C i~używają go~do~zaimplementowania najważniejszych części aplikacji. 
 
-Swift ma~za~zadanie rozwiązać problemy, z~którymi zmaga się Objective-C. Jego składnia jest dużo prostsza i~bardziej podobna do~innych obiektowych języków programowania. Zaadresowano również zwiększenie wydajności i~bezpieczeństwa kodu. Swift posiada nowe funkcje pozwalające pisać kod szybciej, wydajniej i~bezpieczniej. Dokładne porównanie obydwu języków znajduje się w~rozdziale \ref{ch:swift-objc}
+Swift ma~za~zadanie rozwiązać problemy, z~którymi zmaga się Objective-C. Jego składnia jest~dużo prostsza i~bardziej podobna do~innych obiektowych języków programowania. Zaadresowano również zwiększenie wydajności i~bezpieczeństwa kodu. Swift posiada nowe funkcje pozwalające pisać kod szybciej, wydajniej i~bezpieczniej. Dokładne porównanie obydwu języków znajduje się w~rozdziale \ref{ch:swift-objc}
 
 Swift zaczął bardzo szybko zyskiwać na~popularności. Według ankiety przeprowadzanej co~roku przez~serwis \url{StackOverflow.com} już w~2017 roku nowy język był bardziej popularny od~swojego poprzednika \footnote{\url{https://insights.stackoverflow.com/survey/2017\#most-popular-technologies}}. Należy również zwrócić uwagę na~kategorię "Most Loved Languages", w~której Swift rokrocznie zajmuje miejsce w~pierwszej szóstce.
 
-3 grudnia 2015 roku kod źródłowy języka został udostępniony w~serwisie GitHub. W~tym samym momencie ogłoszono również wsparcie dla~systemów z~rodziny Linux. Te dwa wydarzenia pozwoliły na~próby zastosowania tego języka w~gałęziach IT innych niż aplikacje na platformy Apple. W~niedługim czasie powstało kilka ram do~tworzenia aplikacji serwerowych, takich jak Kitura, Vapor czy~Perfect. Firma IBM dodała również wsparcie dla~Swifta w~swoich serwisach chmurowych. Kolejnym potencjalnym zastosowaniem jest uczenie maszynowe. Pierwszą próbą w~tym kierunku jest wersja platformy TensorFlow wykorzystująca Swift (Swift for TensorFlow).
+3 grudnia 2015 roku kod źródłowy języka został udostępniony w~serwisie GitHub. W~tym samym momencie ogłoszono również wsparcie dla~systemów z~rodziny Linux. Te dwa wydarzenia pozwoliły na~próby zastosowania tego języka w~gałęziach IT innych niż aplikacje na~platformy Apple. W~niedługim czasie powstało kilka ram do~tworzenia aplikacji serwerowych, takich jak Kitura, Vapor czy~Perfect. Firma IBM dodała również wsparcie dla~Swift w~swoich serwisach chmurowych. Kolejnym potencjalnym zastosowaniem jest~uczenie maszynowe. Pierwszą próbą w~tym kierunku jest~wersja platformy TensorFlow wykorzystująca Swift (Swift for TensorFlow).
 
-Pomimo szybko rosnącej popularności Swifta, istnieje mało źródeł traktujących o~wydajności nowego języka. W~Internecie można znaleźć kilka stron i~blogów zawierających testy wydajnościowe, takich jak np.~" The Computer Language Benchmark Game"\footnote{\url{https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/swift.html}} czy~blog firmy Yalantis \footnote{\url{https://yalantis.com/blog/is-swift-faster-than-objective-c}}, żaden z~autorów nie~pokusił się jednak o~bardziej wnikliwą analizę. 
+Pomimo szybko rosnącej popularności Swift, istnieje mało źródeł traktujących o~wydajności nowego języka. W~Internecie można znaleźć kilka stron i~blogów zawierających testy wydajnościowe, takich jak np.~" The Computer Language Benchmark Game"\footnote{\url{https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/swift.html}} czy~blog firmy Yalantis \footnote{\url{https://yalantis.com/blog/is-swift-faster-than-objective-c}}, żaden z~autorów nie~pokusił się jednak o~bardziej wnikliwą analizę. 
 
-Z tego też powodu, głównym celem niniejszej pracy jest porównanie wydajności programów napisanych w~Swift z~Objective-C oraz analiza przyczyn otrzymanych wyników. Aby to~osiągnąć, zaimplementowano w~obydwu językach szereg testów wydajnościowych. Następnie za~pomocą narzędzia profilującego Instruments dokonano analizy szybkości działania kodu w~zależności od~języka, w~którym został napisany. Szczegółowe wnioski znajdują się w rozdziale \ref{ch:testy}, natomiast podsumowanie zostało przedstawione w~rozdziale \ref{ch:wnioski}
+Z tego też powodu, głównym celem niniejszej pracy jest~porównanie wydajności programów napisanych w~Swift z~Objective-C oraz analiza przyczyn otrzymanych wyników. Aby to~osiągnąć, zaimplementowano w~obydwu językach szereg testów wydajnościowych. Następnie za~pomocą narzędzia profilującego Instruments dokonano analizy szybkości działania kodu w~zależności od~języka, w~którym został napisany. Szczegółowe wnioski znajdują się w rozdziale \ref{ch:testy}, natomiast podsumowanie zostało przedstawione w~rozdziale \ref{ch:wnioski}
 
 \chapter{Podobieństwa do~innych języków programowania}
-\chaptermark{Podobieństwa do innych języków}
+\chaptermark{Podobieństwa do~innych języków}
 \label{ch:podobienstwa_do_innych}
 
 \section{Podstawowe cechy}
@@ -127,7 +127,7 @@ Swift to~wieloparadygmatowy język programowania łączący pomysły znane z~inn
 
 Swift wspiera dwie podstawowe koncepcje generyczności:
 \begin{itemize}
-  \item klasy, struktury, typy wyliczeniowe oraz funkcje z~parametrami typu (ang. \textit{generics})
+  \item klasy, struktury, typy wyliczeniowe oraz funkcje z~parametrami typu (\ang{generics})
   \item protokoły z~typami powiązanymi (ang. \textit{associated types}).
 \end{itemize}
 
@@ -145,7 +145,7 @@ Przykład użycia typów generycznych ilustruje Listing \ref{l:2_generics_and_in
     {2_generics_and_inheritance}
     {Przykład klasy generycznej i~klasy pochodnej w~Swift}
 
-W odróżnieniu od~klas, struktur i~funkcji, protokoły nie~wspierają generycznych parametrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na~znanym np.~ze~Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on~na~zdefiniowanie w~protokole zmiennej typu, która zostanie ukonkretniona dopiero przez~klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest ukrycie typu podstawionego pod~zmienną przed programistą używającym klasy implementującej dany protokół - typ podstawiany pod~zmienną jest częścią implementacji i~nie musi być jawnie podawany podczas tworzenia obiektu implementującego protokół. Przykład użycia protokołu z~parametrami typu prezentuje Listing \ref{l:2_associated_types}.
+W odróżnieniu od~klas, struktur i~funkcji, protokoły nie~wspierają generycznych parametrów typu. Zamiast tego, protokoły posiadają mechanizm typów powiązanych (\ang{associated types}), wzorowany na~znanym np.~ze~Scali mechanizmie abstrakcyjnych pól typu (\ang{abstract type members}). Pozwala on~na~zdefiniowanie w~protokole zmiennej typu, która zostanie ukonkretniona dopiero przez~klasę implementującą dany protokół. Główną zaletą tego rozwiązania jest~ukrycie typu podstawionego pod~zmienną przed programistą używającym klasy implementującej dany protokół - typ podstawiany pod~zmienną jest~częścią implementacji i~nie~musi być jawnie podawany podczas tworzenia obiektu implementującego protokół. Przykład użycia protokołu z~parametrami typu prezentuje Listing \ref{l:2_associated_types}.
 
 \swiftlisting
     {2_associated_types}
@@ -169,9 +169,9 @@ Typy wartościowe to~typy, które tworzą nowe instancje obiektów podczas przyp
     \item krotki.
 \end{itemize}
 
-Typy referencyjne to~typy, których obiekty dzielą pomiędzy sobą te same dane, a~podczas przypisywania lub~przekazywania do~funkcji tworzona jest tylko~nowa referencja do~tego samego adresu w~pamięci. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do~zmiennej mogą być bez~dowolnie zmieniane. Typami referencyjnymi w~Swift są klasy oraz~domknięcia.
+Typy referencyjne to~typy, których obiekty dzielą pomiędzy sobą te same dane, a~podczas przypisywania lub~przekazywania do~funkcji tworzona jest~tylko~nowa referencja do~tego samego adresu w~pamięci. Zmienne typu referencyjnego zadeklarowane jako stałe zapewniają jedynie stałość referencji, jednak dane przypisane do~zmiennej mogą być bez~dowolnie zmieniane. Typami referencyjnymi w~Swift są klasy oraz~domknięcia.
 
-W odróżnieniu od innych języków, struktury oraz klasy w Swift mają bardzo podobną funkcjonalność. Obie konstrukcje językowe pozwalają na:
+W odróżnieniu od innych języków, struktury oraz klasy w~Swift mają bardzo podobną funkcjonalność. Obie konstrukcje językowe pozwalają na:
 
 \begin{itemize}
     \item definiowanie właściwości
@@ -184,13 +184,13 @@ W odróżnieniu od innych języków, struktury oraz klasy w Swift mają bardzo p
 Głównymi różnicami są:
 
 \begin{itemize}
-    \item struktury jako typy wartościowe, a klasy - referencyjne
+    \item struktury jako typy wartościowe, a~klasy - referencyjne
     \item możliwość dziedziczenia dla klas
     \item możliwość definiowania własnych deinicjalizatorów dla klas
     \item automatycznie wygenerowany inicjalizator dla struktur.
 \end{itemize}
 
-Co ciekawe, wszystkie podstawowe typy zdefiniowane w bibliotece standardowej: typ boolowski \swiftinline{Bool}, typy całkowitoliczbowe bezznakowe \swiftinline{UInt8/16/32/64} oraz znakowe \swiftinline{Int8/16/32/64}, zmiennoprzecinkowe \swiftinline{Float} oraz \swiftinline{Double}, typ znakowy \swiftinline{Character}, typ napisowy \swiftinline{String}, tablica \swiftinline{Array} oraz słownik \swiftinline{Dictionary} zostały zaimplementowane jako struktury.
+Co ciekawe, wszystkie podstawowe typy zdefiniowane w~bibliotece standardowej: typ boolowski \swiftinline{Bool}, typy całkowitoliczbowe bezznakowe \swiftinline{UInt8/16/32/64} oraz znakowe \swiftinline{Int8/16/32/64}, zmiennoprzecinkowe \swiftinline{Float} oraz \swiftinline{Double}, typ znakowy \swiftinline{Character}, typ napisowy \swiftinline{String}, tablica \swiftinline{Array} oraz słownik \swiftinline{Dictionary} zostały zaimplementowane jako struktury.
 
 \swiftlisting
     {2_class_struct_protocol_enum}
@@ -212,7 +212,7 @@ Podobnie jak w~językach funkcyjnych i~w~większości nowoczesnych języków pro
 \section{Leniwość}
 \label{s:leniwosc}
 
-Swift domyślnie używa gorliwej ewaluacji wyrażeń, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w~podstawowym stopniu na~wspieranie leniwych obliczeń. Po pierwsze, w~Swift, podobnie jak w~C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w~C\# mechanizm ten polega na~użyciu klasy $Lazy$ z~biblioteki standardowej, o~tyle w~Swift jest on~zaszyty w~samym języku - służy do~tego słowo kluczowe $lazy$. Obiekt utworzony przy użyciu tego słowa zostanie stworzony dopiero w~chwili pierwszego odwołania się do~niego. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opiera się na~znanych również z~języka C\# czy~Java generatorach.
+Swift domyślnie używa gorliwej ewaluacji wyrażeń, autorzy zaimplementowali jednak dwa rozwiązania pozwalające w~podstawowym stopniu na~wspieranie leniwych obliczeń. Po pierwsze, w~Swift, podobnie jak w~C\#, istnieje możliwość leniwej inicjalizacji obiektów. O ile jednak w~C\# mechanizm ten polega na~użyciu klasy $Lazy$ z~biblioteki standardowej, o~tyle w~Swift jest~on~zaszyty w~samym języku - służy do~tego słowo kluczowe $lazy$. Obiekt utworzony przy użyciu tego słowa zostanie stworzony dopiero w~chwili pierwszego odwołania się do~niego. Drugim rozwiązaniem są leniwe struktury danych, których implementacja opiera się na~znanych również z~języka C\# czy~Java generatorach.
 
 \swiftlisting
     {2_laziness}
@@ -221,7 +221,7 @@ Swift domyślnie używa gorliwej ewaluacji wyrażeń, autorzy zaimplementowali j
 \section{Elementy zaczerpnięte z~języków funkcyjnych}
 \label{s:element_zaczerpniete_z_jezykow_funkcyjnych}
 
-Pomimo faktu, że~Swift został zaprojektowany głównie jako język programowania obiektowego, jego twórcy dodali do języka elementy zaczerpnięte z~programowania funkcyjnego, które mogłyby pomóc programistom pisać bezpieczniejszy i~bardziej czytelny kod obiektowy. Najważniejsze z~nich to:
+Pomimo faktu, że~Swift został zaprojektowany głównie jako język programowania obiektowego, jego twórcy dodali do~języka elementy zaczerpnięte z~programowania funkcyjnego, które mogłyby pomóc programistom pisać bezpieczniejszy i~bardziej czytelny kod obiektowy. Najważniejsze z~nich to:
 
 \begin{itemize}
     \item Typy wyliczeniowe z~wartościami powiązanymi (\ang{associated values}), które pozwalają na~definiowanie typów podobnych do~algebraicznych typów danych (\ang{Algrebraic data types}) znanych z~programowania funkcyjnego.
@@ -232,11 +232,11 @@ Pomimo faktu, że~Swift został zaprojektowany głównie jako język programowan
 
     \item Dzięki zwięzłej składni oraz traktowaniu domknięć na~równi z~klasami i~strukturami, Swift oferuje bardzo dobre wsparcie dla~funkcji wyższego rzędu. Funkcje wyższego rzędu są też często używane w~bibliotece standardowej, np.~kolekcje danych posiadają najczęściej używane funkcje służące do~manipulowania nimi, takie jak \texttt{filter}, \texttt{map}, \texttt{reduce} czy~\texttt{flatMap}.
 
-    \item Autorzy Swifta postawili bardzo duży nacisk na~niemutowalne struktury danych, co~przejawia się w~całej składni języka. Dostępne jest słowo odrębne słowo kluczowe \texttt{let} służące do~deklarowania stałych, parametry przekazywane do~funkcji są domyślnie stałymi, a~użycie typów wartościowych jest preferowane nad~użyciem klas (również w~bibliotece standardowej).
+    \item Autorzy Swift postawili bardzo duży nacisk na~niemutowalne struktury danych, co~przejawia się w~całej składni języka. Dostępne jest~słowo odrębne słowo kluczowe \texttt{let} służące do~deklarowania stałych, parametry przekazywane do~funkcji są domyślnie stałymi, a~użycie typów wartościowych jest~preferowane nad~użyciem klas (również w~bibliotece standardowej).
 
-    \item Swift posiada zaawansowany mechanizm \textit{pattern matching}, który można wykorzystać do~przetwarzania typów wyliczeniowych, krotek i~wyrażeń. Tak jak w~wielu językach funkcyjnych, \textit{pattern matching} w~Swift jest wyczerpujący (\ang{exhaustive}), co~oznacza, że~każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
+    \item Swift posiada zaawansowany mechanizm \textit{pattern matching}, który można wykorzystać do~przetwarzania typów wyliczeniowych, krotek i~wyrażeń. Tak jak w~wielu językach funkcyjnych, \textit{pattern matching} w~Swift jest~wyczerpujący (\ang{exhaustive}), co~oznacza, że~każda wartość, która może pojawić się podczas dopasowywania musi zostać obsłużona.
 
-    \item Aby uniknąć problemów z~wartością \texttt{nil}, w~języku Swift każda zmienna musi zostać zainicjalizowana już w~momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w~swojej konstrukcji jest bardzo podobny do~monady \texttt{Maybe} znanej z~Haskella. Istnieje nawet mechanizm zwany \textit{optional chaining}, który zachowuje się tak, jak operacja \texttt{>>=} dla~monady \texttt{Maybe}.
+    \item Aby uniknąć problemów z~wartością \texttt{nil}, w~języku Swift każda zmienna musi zostać zainicjalizowana już w~momencie deklaracji. Jeśli programista chce celowo stworzyć zmienną mogącą przyjmować wartość \texttt{nil}, powinien użyć typu \texttt{Optional<T>}, który w~swojej konstrukcji jest~bardzo podobny do~monady \texttt{Maybe} znanej z~Haskella. Istnieje nawet mechanizm zwany \textit{optional chaining}, który zachowuje się tak, jak operacja \texttt{>>=} dla~monady \texttt{Maybe}.
 
     \swiftlisting
         {2_optional}
@@ -247,7 +247,7 @@ Pomimo faktu, że~Swift został zaprojektowany głównie jako język programowan
 \section{Zwięzłość składni}
 \label{s:zwiezlosc_skladni}
 
-Jednym z~największych problemów podczas programowania w~Objective-C jest słaba czytelność kodu i~bardzo rozwlekła składnia. Dlatego podczas projektowania Swifta inżynierowie Apple mocno wzorowali się na~innych~językach znanych ze~swojej zwięzłości i~łatwości czytania, takich jak Python czy~Ruby. Zrezygnowano z~plików nagłówkowych, dodano dużą ilość dodatkowej składni upraszczającej kod (tzw. \textit{cukru syntaktycznego}) dla~najcześciej stosowanych konstrukcji (jak np.~operator \texttt{T?} dla~typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w~Objective-C, a~równoważnym kodem w~Swift.
+Jednym z~największych problemów podczas programowania w~Objective-C jest~słaba czytelność kodu i~bardzo rozwlekła składnia. Dlatego podczas projektowania Swift inżynierowie Apple mocno wzorowali się na~innych~językach znanych ze~swojej zwięzłości i~łatwości czytania, takich jak Python czy~Ruby. Zrezygnowano z~plików nagłówkowych, dodano dużą ilość dodatkowej składni upraszczającej kod (tzw. \textit{cukru syntaktycznego}) dla~najcześciej stosowanych konstrukcji (jak np.~operator \texttt{T?} dla~typu \texttt{Optional<T>}), wprowadzono domyślną inferencję typów. Rysunek \ref{f:keynote} pokazuje różnice pomiędzy kodem napisanym w~Objective-C, a~równoważnym kodem w~Swift.
 
 \begin{listing}[ht]
 \begin{minted}{objc}
@@ -271,7 +271,7 @@ myDelegate?.scrollViewDidScroll?(myScrollView)
 \section{Rozszerzenia typów}
 \label{s:rozszerzenia_typow}
 
-Jedną z~rzadziej spotykanych w~statycznie typowanych językach programowania funkcjonalności jest możliwość rozszerzania istniejących już typów. Co prawda już w~Objective-C programista ma możliwość stworzenia kategorii (\ang{category}), ale~pozwala ona tylko~na~dodawanie nowych funkcji, nie~można natomiast definiować nowych właściwości, konstruktorów ani typów zagnieżdżonych. Dlatego w~Swift zaimplementowano rozszerzenia (\ang{extensions}), które pozwalają na:
+Jedną z~rzadziej spotykanych w~statycznie typowanych językach programowania funkcjonalności jest~możliwość rozszerzania istniejących już typów. Co prawda już w~Objective-C programista ma możliwość stworzenia kategorii (\ang{category}), ale~pozwala ona tylko~na~dodawanie nowych funkcji, nie~można natomiast definiować nowych właściwości, konstruktorów ani typów zagnieżdżonych. Dlatego w~Swift zaimplementowano rozszerzenia (\ang{extensions}), które pozwalają na:
 
 \begin{itemize}
     \item dodawanie nowych właściwości obliczanych (\ang{computed properties})
@@ -288,11 +288,11 @@ Jedną z~rzadziej spotykanych w~statycznie typowanych językach programowania fu
 \label{ch:swift-objc}
 
 \section{Podobieństwa}
-\chaptermark{Podobieństwa Swift i Objective-C}
+\chaptermark{Podobieństwa Swift i~Objective-C}
 
 \subsection{Swift i~Objective-C jako języki programowania obiektowego}
 
-Zarówno Swift, jak i~Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na~definiowanie własnych typów (klasy i~typy wyliczeniowe w~Objective-C; struktury, klasy oraz typy wyliczeniowe w~Swift) oraz wspierają dziedziczenie i~protokoły. Dzięki modyfikatorom dostępu i protokołom umożliwiają również enkapsulację implementacji i~opisywanie zachowań za~pomocą abstrakcyjnych typów danych.
+Zarówno Swift, jak i~Objective-C są głównie językami programowania  obiektowego. Oba języki pozwalają na~definiowanie własnych typów (klasy i~typy wyliczeniowe w~Objective-C; struktury, klasy oraz typy wyliczeniowe w~Swift) oraz wspierają dziedziczenie i~protokoły. Dzięki modyfikatorom dostępu i~protokołom umożliwiają również enkapsulację implementacji i~opisywanie zachowań za~pomocą abstrakcyjnych typów danych.
 
 \objclisting{3_objective_c_example}{Przykład kodu obiektowego w~Objective-C}
 
@@ -305,30 +305,30 @@ W początkowych wersjach systemu Mac OS i~iOS zarządzanie pamięcią było w~pe
 
 Automatyczne zliczanie referencji to~jedna z~najprostszych metod zarządzania pamięcią, odciążająca programistę z~obowiązku jawnego inkrementowania i~dekrementowania liczników referencji. Użycie ARC w~Objective-C powoduje wygenerowanie kodu, który zwiększa licznik referencji w~momencie, gdy nowa referencja do~obiektu zostaje utworzona (np.~inicjalizacja, przypisanie, przekazania obiektu w~parametrze) oraz zmniejsza go, w~momencie usunięcia referencji. Dzięki temu programista nie~musi manualnie używać funkcji \texttt{retain} i~\texttt{release}, jak to~miało miejsce wcześniej. Pozwala to~na~zapobiegnięcie wielu błędom, takim jak: wycieki pamięci, wielokrotne zwalnianie pamięci czy~odwoływanie się do~wcześniej zwolnionej pamięci. Jednocześnie, użycie ARC nie~wprowadza niedeterminizmu, co~ma miejsce w~przypadku użycia automatycznego odśmiecania pamięci (\ang{garbage collector}) oraz ma~~znikomy wpływ na~wydajność działania aplikacji.
 
-ARC jest również metodą zarządzania pamięcią zaimplementowaną w~Swift. Główną różnicą jest jednak sposób implementacji. W~Objective-C, ARC jest rozszerzeniem języka, opierającym się głównie na~ generowaniu kodu odpowiedzialnego za~zliczanie referencji. W~Swift natomiast, ARC jest właściwością języka, posiadającą odrębną składnię i~wsparcie ze~strony środowiska uruchomieniowego i~kompilatora.
+ARC jest~również metodą zarządzania pamięcią zaimplementowaną w~Swift. Główną różnicą jest~jednak sposób implementacji. W~Objective-C, ARC jest~rozszerzeniem języka, opierającym się głównie na~ generowaniu kodu odpowiedzialnego za~zliczanie referencji. W~Swift natomiast, ARC jest~właściwością języka, posiadającą odrębną składnię i~wsparcie ze~strony środowiska uruchomieniowego i~kompilatora.
 
-\swiftlisting{3_arc}{Przykład kodu wkorzystuącego ARC w Swift}
+\swiftlisting{3_arc}{Przykład kodu wkorzystuącego ARC w~Swift}
 
-Listing \ref{l:3_arc} przedstawia fragment kodu używającego ARC. W przykładzie tym zaimplementowane zostały dwie klasy: \swiftinline{Property} oraz \swiftinline{Owner}. W pierwszej linii funkcji \swiftinline{test} tworzony jest obiekt typu \swiftinline{Property}, referencja do niego jest przypisywana do zmiennej \swiftinline{property}, a jego licznik referencji jest równy 1. Analogicznie, w drugiej linii tworzony jest obiekt typu \swiftinline{Owner}. Następnie do właściwości \swiftinline{ownedProperty} obiektu \swiftinline{owner}, zostaje przypisana referencja do obiektu spod zmiennej \swiftinline{property}, co skutkuje zinkrementowaniem jego licznika do 2. W linii 4. początkowa referencja \swiftinline{property} zostaje usunięta, przez co licznik referencji tego obiektu zostaje zdekrementowany do 1, nadal jednak można się do niego odwołać poprzez właściwość obiektu \swiftinline{owner} (linia 5.). Gdy funkcja kończy działanie, wszystkie liczniki referencji obiektów przypisanych do zmiennych lokalnych zostają zdekrementowane i jeśli wartość liczników wynosi 0, obiekty te zostają usunięte. Zatem obiekt \swiftinline{Owner(name: "Jan Kowalski")} zostanie zdealokowany. Podczas dealokowania zostanie wywołana dla tego obiektu funkcja \swiftinline{deinit}, która domyślnie dekrementuje liczniki referencji wszystkich obiektów przypisanych do właściwości danego obiektu. W tym wypadku, zmniejszony zostanie licznik obiektu pod właściwością \swiftinline{ownedProperty}, czyli \swiftinline{Property(address: "Rynek 1")}. Po tej operacji jego wartość wyniesie 0, co poskutkuje zdealokowaniem zajmowanej przez niego pamięci.
+Listing \ref{l:3_arc} przedstawia fragment kodu używającego ARC. W przykładzie tym zaimplementowane zostały dwie klasy: \swiftinline{Property} oraz \swiftinline{Owner}. W pierwszej linii funkcji \swiftinline{test} tworzony jest~obiekt typu \swiftinline{Property}, referencja do~niego jest~przypisywana do~zmiennej \swiftinline{property}, a~jego licznik referencji jest~równy 1. Analogicznie, w~drugiej linii tworzony jest~obiekt typu \swiftinline{Owner}. Następnie do~właściwości \swiftinline{ownedProperty} obiektu \swiftinline{owner}, zostaje przypisana referencja do~obiektu spod zmiennej \swiftinline{property}, co skutkuje zinkrementowaniem jego licznika do~2. W linii 4. początkowa referencja \swiftinline{property} zostaje usunięta, przez co licznik referencji tego obiektu zostaje zdekrementowany do~1, nadal jednak można się do~niego odwołać poprzez właściwość obiektu \swiftinline{owner} (linia 5.). Gdy funkcja kończy działanie, wszystkie liczniki referencji obiektów przypisanych do~zmiennych lokalnych zostają zdekrementowane i~jeśli wartość liczników wynosi 0, obiekty te zostają usunięte. Zatem obiekt \swiftinline{Owner(name: "Jan Kowalski")} zostanie zdealokowany. Podczas dealokowania zostanie wywołana dla tego obiektu funkcja \swiftinline{deinit}, która domyślnie dekrementuje liczniki referencji wszystkich obiektów przypisanych do~właściwości danego obiektu. W tym wypadku, zmniejszony zostanie licznik obiektu pod właściwością \swiftinline{ownedProperty}, czyli \swiftinline{Property(address: "Rynek 1")}. Po tej operacji jego wartość wyniesie 0, co poskutkuje zdealokowaniem zajmowanej przez niego pamięci.
 
 \subsection{Biblioteki}
 
-Jedną z~cech, dla~której Swift tak~szybko zdobywa popularność jest możliwość wywoływania kodu Objective-C z~poziomu kodu swiftowego i~na odwrót (\ang{interoperability}). Z~tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i~są dostępne w~obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w~języku C, dlatego też wiele z~zaawansowanych, niskopoziomowych bibliotek było dostępnych dla~Swifta już od~dnia jego prezentacji.
+Jedną z~cech, dla~której Swift tak~szybko zdobywa popularność jest~możliwość wywoływania kodu Objective-C z~poziomu kodu swiftowego i~na odwrót (\ang{interoperability}). Z~tego względu prawie wszystkie biblioteki standardowe posiadają bardzo podobne interfejsy i~są dostępne w~obu językach. Oba języki posiadają też możliwość wywoływania kodu pisanego w~języku C, dlatego też wiele z~zaawansowanych, niskopoziomowych bibliotek było dostępnych dla~Swift już od~dnia jego prezentacji.
 
 \section{Różnice}
-\chaptermark{Różnice pomiędzy Swift i Objective-C}
+\chaptermark{Różnice pomiędzy Swift i~Objective-C}
 
 \subsection{Składnia}
 
 Objective-C to~język, którego początki sięgają pierwszej połowy lat 80. Z~tego powodu, niektóre jego cechy są w~tym momencie uważane w~środowisku developerów za~przestarzałe i~niewygodne. Mając te cechy na~uwadze, inżynierowie Apple opracowali nowy język z~uproszczoną składnią i~wieloma udogodnieniami pozwalającymi programistom w~krótszym czasie pisać kod, który będzie czytelniejszy i~łatwiejszy w~utrzymaniu.
 
-Pierwszym z~udogodnień zaimplementowanych w Swift jest inferencja typów. W~Objective-C każdy typ zmiennej musi zostać jawnie napisany, co~szczególnie w~przypadku długich, złożonych typów (np.~zawierających parametry generyczne) może być uciążliwe. Kompilator Swifta natomiast stara się wywnioskować tak~wiele informacji o~typach, ile jest w~stanie.
+Pierwszym z~udogodnień zaimplementowanych w~Swift jest~inferencja typów. W~Objective-C każdy typ zmiennej musi zostać jawnie napisany, co~szczególnie w~przypadku długich, złożonych typów (np.~zawierających parametry generyczne) może być uciążliwe. Kompilator Swift natomiast stara się wywnioskować tak~wiele informacji o~typach, ile jest~w~stanie.
 
-Po drugie, sama składnia języka jest dużo bardziej zwięzła i~czytelna. W~Swift usunięto konieczność pisania nawiasów przy warunkach instrukcji warunkowych i~pętli, dodano możliwość oddzielania kolejnych instrukcji poprzez znak nowej linii (nie ma~potrzeby pisania znaku średnika na~końcu linii), zaimplementowano dużo prostszą obsługę ciągów znakowych, poprawiono czytelność składni dla~funkcji wyższego rzędu, zrezygnowano z~plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w~Javie czy~C\#). Dodatkowo, do najczęściej używanych struktur składniowych dodano prostsze formy w~postaci cukru syntaktycznego, np:
+Po drugie, sama składnia języka jest~dużo bardziej zwięzła i~czytelna. W~Swift usunięto konieczność pisania nawiasów przy warunkach instrukcji warunkowych i~pętli, dodano możliwość oddzielania kolejnych instrukcji poprzez znak nowej linii (nie ma~potrzeby pisania znaku średnika na~końcu linii), zaimplementowano dużo prostszą obsługę ciągów znakowych, poprawiono czytelność składni dla~funkcji wyższego rzędu, zrezygnowano z~plików nagłówkowych (modyfikatory dostępu definiuje się podobnie jak w~Javie czy~C\#). Dodatkowo, do~najczęściej używanych struktur składniowych dodano prostsze formy w~postaci cukru syntaktycznego, np:
 
 \begin{itemize}
-    \item definicja zmiennej \mintinline{swift}{var x: Int?} jest tożsama z~\mintinline{swift}{var x: Optional<Int>}
-    \item konstrukcja \texttt{if let} jest cukrem syntaktycznym dla~wyrażenia \mintinline{swift}{switch}, wywołanego na~obiekcie typu \mintinline{swift}{Optional<T>}
+    \item definicja zmiennej \mintinline{swift}{var x: Int?} jest~tożsama z~\mintinline{swift}{var x: Optional<Int>}
+    \item konstrukcja \texttt{if let} jest~cukrem syntaktycznym dla~wyrażenia \mintinline{swift}{switch}, wywołanego na~obiekcie typu \mintinline{swift}{Optional<T>}
     \item Swift 2.2 wprowadził cukier syntaktyczny dla~selektorów (obiektów zawierających informacje pozwalające wywoływać na~obiektach funkcje w~runtime)
     \item pattern matching dla~typów wyliczeniowych i~krotek to~bardzo mocno rozwinięty cukier syntaktyczny dla~instrukcji warunkowych dla~tych typów.
 \end{itemize}
@@ -336,47 +336,47 @@ Po drugie, sama składnia języka jest dużo bardziej zwięzła i~czytelna. W~Sw
 \subsection{System typów}
 \label{s:system_typow}
 
-Oba omawiane języki są językami statycznie typowanymi, jest jednak pomiędzy nimi kilka istotnych różnic:
+Oba omawiane języki są językami statycznie typowanymi, jest~jednak pomiędzy nimi kilka istotnych różnic:
 
 \begin{itemize}
 
     \item w~Swift w~zasadzie nie~występuje niejawne rzutowanie typów. Każde (nawet najprostsze, jak rzutowanie z~typu całkowitoliczbowego na~zmiennoprzecinkowy) musi być jawnie wywołane przez~programistę. W~Objective-C zasady rzutowania zostały odziedziczone z~języka C i~są w~zasadzie takie same.
     \item sposób wywoływania metod w~Objective-C zaczerpnięto z~języka Smalltalk. Odbywa się on~poprzez~wysyłanie wiadomości (\ang{message}) do~obiektu. Z~tego względu rozwiązywanie, którą funkcję należy wywołać dzieje się w~metodzie \mintinline{objc}{objc_msgSend } w~trakcie działania programu. W~Swift natomiast wywołania metod opierają się na~wskaźnikach do~metod oraz tablicy \textit{Protocol Witness Table} (odpowiednik \textit{vtable} z~C++).
-    \item w~Objective-C istnieje klasa \mintinline{objc}{NSObject}, która jest superklasą dla~wszystkich innych klas. Swift nie~posiada takiej superklasy, zastąpiono ją protokołem \mintinline{swift}{AnyObject}.
+    \item w~Objective-C istnieje klasa \mintinline{objc}{NSObject}, która jest~superklasą dla~wszystkich innych klas. Swift nie~posiada takiej superklasy, zastąpiono ją protokołem \mintinline{swift}{AnyObject}.
 
 \end{itemize}
 
 \subsection{Wywołania metod}
 \label{s:wywolania_metod}
 
-Język Swift obsługuje dwa rodzaje wywołań metod: statyczne (\ang{direct dispatch} lub~\textit{static dispatch}) i~dynamiczne (\ang{table dispatch} lub~\textit{dynamic dispatch}). Oprócz tego, ze~względu na~możliwość użycia kodu Objective-C w~Swift, programista może również używać wywoływania poprzez wiadomości (\ang{message dispatch}). które jest jedynym sposobem wywoływania w~starszym z~języków.
+Język Swift obsługuje dwa rodzaje wywołań metod: statyczne (\ang{direct dispatch} lub~\textit{static dispatch}) i~dynamiczne (\ang{table dispatch} lub~\textit{dynamic dispatch}). Oprócz tego, ze~względu na~możliwość użycia kodu Objective-C w~Swift, programista może również używać wywoływania poprzez wiadomości (\ang{message dispatch}). które jest~jedynym sposobem wywoływania w~starszym z~języków.
 
-Wywoływanie statyczne jest uznawane za~najszybszy sposób wykonywania metod. Główną cechą jest pełna wiedza o~tym, która metoda ma~zostać wykonana już w~trakcie procesu kompilowania. Z~tego powodu, kompilator może stosować dużą ilość optymalizacji, takich jak bezpośrednie odwołania do~adresu funkcji czy~wywołanie funkcji "w linii" (\ang{inline}). Główną jej wadą jest natomiast ograniczone wsparcie dla~polimorfizmu, przez~co~większość języków implementuje dodatkowo inny rodzaj wywoływania metod (np.~tablice wirtualne w~C++). W~Swift wywoływanie statyczne jest używane dla~struktur oraz rozszerzeń protokołów (\ang{protocol extensions}).
+Wywoływanie statyczne jest~uznawane za~najszybszy sposób wykonywania metod. Główną cechą jest~pełna wiedza o~tym, która metoda ma~zostać wykonana już w~trakcie procesu kompilowania. Z~tego powodu, kompilator może stosować dużą ilość optymalizacji, takich jak bezpośrednie odwołania do~adresu funkcji czy~wywołanie funkcji "w linii" (\ang{inline}). Główną jej wadą jest~natomiast ograniczone wsparcie dla~polimorfizmu, przez~co~większość języków implementuje dodatkowo inny rodzaj wywoływania metod (np.~tablice wirtualne w~C++). W~Swift wywoływanie statyczne jest~używane dla~struktur oraz rozszerzeń protokołów (\ang{protocol extensions}).
 
 Wywołanie dynamiczne to~mechanizm zaimplementowany w~większości współczesnych obiektowych języków programowania. Jego działanie opiera się na~tablicach wirtualnych. W~Swift istnieją dwa rodzaje tablic wirtualnych:
 
 \begin{itemize}
-    \item \textit{virtual dispatch tables} - tablice wirtualne tworzone dla~klas i~służące do~wywoływania odpowiednich metod klasy. Dzięki nim, możliwe jest dziedziczenie i~przeładowywanie metod w~klasach dziedziczących.
-    \item \textit{witness tables} - tablice wirtualne tworzone dla~każdego typu implementującego protokół. Dzięki nim możliwe jest użycie protokołów.
+    \item \textit{virtual dispatch tables} - tablice wirtualne tworzone dla~klas i~służące do~wywoływania odpowiednich metod klasy. Dzięki nim, możliwe jest~dziedziczenie i~przeładowywanie metod w~klasach dziedziczących.
+    \item \textit{witness tables} - tablice wirtualne tworzone dla~każdego typu implementującego protokół. Dzięki nim możliwe jest~użycie protokołów.
 \end{itemize}
 
-Zaletą wywołania dynamicznego jest elastyczność, która umożliwia zaimplementowanie takich elementów języka, jak dziedziczenie czy~protokoły. Wadą natomiast jest dodatkowy czas, potrzebny na~wyszukanie adresu funkcji w~tablicy wirtualnej w~trakcie działania programu oraz uniemożliwienie zastosowania niektórych metod optymalizacji kodu. W~Swift wywoływanie dynamiczne jest domyślnie używane dla~klas oraz protokołów.
+Zaletą wywołania dynamicznego jest~elastyczność, która umożliwia zaimplementowanie takich elementów języka, jak dziedziczenie czy~protokoły. Wadą natomiast jest~dodatkowy czas, potrzebny na~wyszukanie adresu funkcji w~tablicy wirtualnej w~trakcie działania programu oraz uniemożliwienie zastosowania niektórych metod optymalizacji kodu. W~Swift wywoływanie dynamiczne jest~domyślnie używane dla~klas oraz protokołów.
 
 Wywołanie przez~wysyłanie wiadomości to~mechanizm odziedziczony z~Objective-C i~używany głównie w~trakcie wywoływania kodu Objective-C. Jest uważany za~najwolniejszy z~trzech dostępnych sposobów wywoływania metod, wspiera jednak funkcje języka, bez~których niemożliwe byłoby używanie klas i~bibliotek napisanych w~Objective-C z~poziomu kodu swiftowego.
 
-Wywołanie przez wysłanie wiadomości jest najrzadziej spotykanym podejściem z trzech wymienionych w tym rozdziale. Jego działanie jest podobne do wywołania dynamicznego, ma jednak kilka różnic, o których warto wspomnieć.
+Wywołanie przez wysłanie wiadomości jest~najrzadziej spotykanym podejściem z~trzech wymienionych w~tym rozdziale. Jego działanie jest~podobne do~wywołania dynamicznego, ma jednak kilka różnic, o~których warto wspomnieć.
 
-Aby wysłanie wiadomości było możliwe, kompilator musi wykonać kilka kroków preprocessingu kodu Objective-C. Po pierwsze, do każdego obiektu kompilator dodaje właściwość \objcinline{isa} typu \objcinline{objc_class *}. Typ \objcinline{objc_class} to klasyczna struktura z języka C reprezentująca klasę Objective-C. Zawiera takie dane jak nazwa klasy, wskaźnik na obiekt \objcinline{objc_class} superklasy, lista właściwości danej klasy, lista metod czy zaimplementowanych protokołów.
+Aby wysłanie wiadomości było możliwe, kompilator musi wykonać kilka kroków preprocessingu kodu Objective-C. Po pierwsze, do~każdego obiektu kompilator dodaje właściwość \objcinline{isa} typu \objcinline{objc_class *}. Typ \objcinline{objc_class} to klasyczna struktura z~języka C reprezentująca klasę Objective-C. Zawiera takie dane jak nazwa klasy, wskaźnik na~obiekt \objcinline{objc_class} superklasy, lista właściwości danej klasy, lista metod czy zaimplementowanych protokołów.
 
-Następnie, każda metoda zostaje przetłumaczona na funkcję języka C, postaci:
+Następnie, każda metoda zostaje przetłumaczona na~funkcję języka C, postaci:
 
 \begin{minted}{objc}
 ZwracanyTyp* nazwaFunkcji(id self, SEL _cmd, args...)
 \end{minted}
 
-Argument \objcinline{self} jest wskaźnikiem na obiekt, które jest odbiorcą wiadomości, \objcinline{_cmd} to selektor danej metody, a pozostałe argumenty to parametry wywołania funkcji. Selektor (\ang{selector}) to unikalna nazwa każdej metody zdefiniowanej w~kodzie Objective-C reprezentowana w~kodzie~C o~Objective-C przez typ \objcinline{SEL}.
+Argument \objcinline{self} jest~wskaźnikiem na~obiekt, które jest~odbiorcą wiadomości, \objcinline{_cmd} to selektor danej metody, a~pozostałe argumenty to parametry wywołania funkcji. Selektor (\ang{selector}) to unikalna nazwa każdej metody zdefiniowanej w~kodzie Objective-C reprezentowana w~kodzie~C o~Objective-C przez typ \objcinline{SEL}.
 
-Ostatnim krokiem jest utworzenie dla każdej klasy Objective-C tablicy przyporządkowującej selektorom danej klasy wskaźniki na odpowiednie funkcje opisane w poprzednim punkcie. W ten sposób, w trakcie działania programu, środowisko uruchomieniowe może znaleźć odpowiednią implementację dla danego selektora.
+Ostatnim krokiem jest~utworzenie dla każdej klasy Objective-C tablicy przyporządkowującej selektorom danej klasy wskaźniki na~odpowiednie funkcje opisane w~poprzednim punkcie. W ten sposób, w~trakcie działania programu, środowisko uruchomieniowe może znaleźć odpowiednią implementację dla danego selektora.
 
 Wysłanie wiadomości odbywa się za pomocą funkcji \objcinline{objc_msgSend}. W momencie, gdy kompilator napotyka instrukcję wysłania wiadomości, taką jak np.:
 
@@ -386,39 +386,39 @@ BinarySearchTreeObjC *tree = ...
 [tree addElement:element];
 \end{minted}
 
-zamienia ją na wywołanie:
+zamienia ją na~wywołanie:
 
 \begin{minted}{objc}
 objc_msgSend(tree, @selector(addElement:), element);
 \end{minted}
 
-Pierwszy argument to odbiorca wiadomości, drugi argument to selektor wywoływanej funkcji (\objcinline{@selector} to dyrektywa kompilatora służąca do zamiany nazwy funkcji z ciągu znaków na selektor), a pozostałe to parametry wywołania funkcji.
+Pierwszy argument to odbiorca wiadomości, drugi argument to selektor wywoływanej funkcji (\objcinline{@selector} to dyrektywa kompilatora służąca do~zamiany nazwy funkcji z~ciągu znaków na~selektor), a~pozostałe to parametry wywołania funkcji.
 
-Cała obsługa wysyłania wiadomości w trakcie działania programu jest wykonywana przez funkcję \objcinline{objc_msgSend}. Jej głównym zadaniem jest powiązanie wywołanego selektora z odpowiednią implementacją. Dzieje się to według następujących kroków:
+Cała obsługa wysyłania wiadomości w~trakcie działania programu jest~wykonywana przez funkcję \objcinline{objc_msgSend}. Jej głównym zadaniem jest~powiązanie wywołanego selektora z~odpowiednią implementacją. Dzieje się to według następujących kroków:
 
 \begin{enumerate}
-    \item Weź wskaźnik na obiekt \objcinline{isa} dla odbiorcy wiadomości.
-    \item Sprawdź, czy w cache'u jest wskaźnik na funkcję dla wywoływanego selektora. Jeśli tak, wywołaj funkcję i zakończ procedurę.
-    \item Jeśli w cache'u nie ma informacji o funkcji dla danego selektora, sprawdź tablicę metod danej klasy. Jeśli znajduje się tam wskaźnik na funkcję dla wywoływanego selektora, wywołaj tą funkcję i zakończ procedurę.
-    \item Jeśli w tablicy metod nie ma informacji o funkcji dla zadanego selektora, weź z obiektu \objcinline{isa} dane o superklasie i wykonaj całą procedurę dla superklasy.
+    \item Weź wskaźnik na~obiekt \objcinline{isa} dla odbiorcy wiadomości.
+    \item Sprawdź, czy w~cache'u jest~wskaźnik na~funkcję dla wywoływanego selektora. Jeśli tak, wywołaj funkcję i~zakończ procedurę.
+    \item Jeśli w~cache'u nie~ma informacji o~funkcji dla danego selektora, sprawdź tablicę metod danej klasy. Jeśli znajduje się tam wskaźnik na~funkcję dla wywoływanego selektora, wywołaj tą funkcję i~zakończ procedurę.
+    \item Jeśli w~tablicy metod nie~ma informacji o~funkcji dla zadanego selektora, weź z~obiektu \objcinline{isa} dane o~superklasie i~wykonaj całą procedurę dla superklasy.
 \end{enumerate}
 
-Jak widać, pomimo prostego założenia dla funkcji \objcinline{objc_msgSend} ("weź wskaźnik na funkcję i ją wywołaj"), szczegóły implementacyjne czynią ją bardzo skomplikowaną. Jest w niej zawarta nie tylko obsługa sytuacji brzegowych, takich jak wyszukiwanie implementacji w hierarchii klas czy puste wskaźniki (o wartości \objcinline{nil}), ale również wiele optymalizacji, jak np. użycie cache czy częściowa implementacja w asemblerze. Złożoność tej funkcji sprawia, że w większości testów opisanych w kolejnych rozdziałach tej pracy, będzie ona miała duży wpływ na szybkość wykonywania kodu napisanego w Objective-C.
+Jak widać, pomimo prostego założenia dla funkcji \objcinline{objc_msgSend} ("weź wskaźnik na~funkcję i~ją wywołaj"), szczegóły implementacyjne czynią ją bardzo skomplikowaną. Jest w~niej zawarta nie~tylko obsługa sytuacji brzegowych, takich jak wyszukiwanie implementacji w~hierarchii klas czy puste wskaźniki (o wartości \objcinline{nil}), ale również wiele optymalizacji, jak np. użycie cache czy częściowa implementacja w~asemblerze. Złożoność tej funkcji sprawia, że~w~większości testów opisanych w~kolejnych rozdziałach tej pracy, będzie ona miała duży wpływ na~szybkość wykonywania kodu napisanego w~Objective-C.
 
-W niektórych przypadkach czas wykonywania funkcji \objcinline{objc_msgSend} jest na tyle znaczący, że zachodzi potrzeba jego optymalizacji. Najbardziej efektywnym sposobem jest pominięcie wywoływania tej funkcji poprzez ograniczenie ilości wysyłanych wiadomości. Ponieważ każda metoda Objective-C jest w trakcie kompilacji tłumaczona na procedurę języka C, można za pomocą metody \objcinline{methodForSelector:} znaleźć wskaźnik do implementacji (czyli \textit{de facto} wskaźnik na funkcję w C) dla danego selektora i wywoływać wprost taką funkcję, z pominięciem całego mechanizmu wiadomości. Opisany tutaj sposób jest szczególnie wydajny w sytuacji, gdy pojedynczą metodę wywołuje się wiele razy dla różnych instancji tej samej klasy (patrz test \ref{s:bubble_sort}). Innym sposobem może być używanie zwykłych zmiennych zamiast właściwości.
+W niektórych przypadkach czas wykonywania funkcji \objcinline{objc_msgSend} jest~na tyle znaczący, że~zachodzi potrzeba jego optymalizacji. Najbardziej efektywnym sposobem jest~pominięcie wywoływania tej funkcji poprzez ograniczenie ilości wysyłanych wiadomości. Ponieważ każda metoda Objective-C jest~w~trakcie kompilacji tłumaczona na~procedurę języka C, można za pomocą metody \objcinline{methodForSelector:} znaleźć wskaźnik do~implementacji (czyli \textit{de facto} wskaźnik na~funkcję w C) dla danego selektora i~wywoływać wprost taką funkcję, z~pominięciem całego mechanizmu wiadomości. Opisany tutaj sposób jest~szczególnie wydajny w~sytuacji, gdy pojedynczą metodę wywołuje się wiele razy dla różnych instancji tej samej klasy (patrz test \ref{s:bubble_sort}). Innym sposobem może być używanie zwykłych zmiennych zamiast właściwości.
 
-Pomimo, że istnieją metody poprawiające wydajność wywoływania metod w Objective-C i są znane większości doświadczonych programistów, rzadko się je stosuje ze względu na możliwość użycia czystego języka C do zaimplementowania niskopoziomowych bibliotek i funkcji. Użycie C jest lepszym wyborem nie tylko z punktu widzenia szybkości działania, ale również możliwości użycia takiej biblioteki z poziomu innych języków programowania. Dlatego też fragmenty aplikacji, które mają działać bardzo szybko są zwykle pisane w C.
+Pomimo, że~istnieją metody poprawiające wydajność wywoływania metod w~Objective-C i~są znane większości doświadczonych programistów, rzadko się je~stosuje ze względu na~możliwość użycia czystego języka C do~zaimplementowania niskopoziomowych bibliotek i~funkcji. Użycie C jest~lepszym wyborem nie~tylko z~punktu widzenia szybkości działania, ale również możliwości użycia takiej biblioteki z~poziomu innych języków programowania. Dlatego też fragmenty aplikacji, które mają działać bardzo szybko są zwykle pisane w~C.
 
 \subsection{Bezpieczeństwo}
 
-Jednym z~podstawowych założeń przyjętych przy tworzeniu Swifta było stworzenie języka, który będzie chronił programistę przed najczęstszymi błędami popełnianymi podczas pisania kodu. Najważniejsze mechanizmy służące temu celowi to:
+Jednym z~podstawowych założeń przyjętych przy tworzeniu Swift było stworzenie języka, który będzie chronił programistę przed najczęstszymi błędami popełnianymi podczas pisania kodu. Najważniejsze mechanizmy służące temu celowi to:
 
 \begin{itemize}
     \item typ \mintinline{swift}{Optional<T>} - typ ten chroni przed wszelkimi błędami związanymi z~wartością \texttt{nil}.
     \item konieczność inicjalizacji obiektu - każdy obiekt musi zostać zainicjalizowany w~trakcie zadeklarowania referencji, co~zapobiega problemom z~dostępem do~jeszcze nie~zainicjalizowanej pamięci.
-    \item generyczne struktury danych - Objective-C nie~ma typów generycznych, przez~co~struktury danych mogą przechowywać wartości różnych typów, co~z~kolei powoduje konieczność sprawdzania typów w trakcie działania programu. W Swift, każda struktura danych posiada generyczny parametr definiujący, jakie obiekty są przechowywane w danej strukturze. Struktura taka może zawierać tylko obiekty zadeklarowanego typu, obiekty typu dziedziczącego po zadeklarowanym typie lub - jeśli zadeklarowany typ jest protokołem - obiekty typu implementującego dany protokół.
-    \item preferowanie niemutowalnych obiektów - Swift posiada kilka mechanizmów, które nakłaniają programistę do używania niemutowalnych obiektów. Przykładowo, istnieje słowo kluczowe \swiftinline{let}, które służy do tworzenia obiektów stałych (niemutowalnych) i które - zgodnie z konwencją przyjętą przez programistów - powinno być używane jako domyślny sposób tworzenia obiektów i deklarowania właściwości obiektu. W przypadku struktur, definicja każdej metody, która zmienia stan obiektu, musi zostać poprzedzona słowem \swiftinline{mutating}. Struktury są przekazywane do funkcji "przez wartość", co sprawia, że domyślnie są niemodyfikowalne. A ponieważ większość typów z biblioteki standardowej jest zaimplementowanych jako struktury, więc typy, takie jak \swiftinline{Array<T>} czy \swiftinline{String} również wspierają wyżej wymienione mechanizmy.
-    \item preferowanie typów wartościowych nad~referencyjne - typy wartościowe zapobiegają zmianom jednego obiektu z~wielu miejsc, przez~co~czytelność i~łatwość zrozumienia kodu jest większa.
+    \item generyczne struktury danych - Objective-C nie~ma typów generycznych, przez~co~struktury danych mogą przechowywać wartości różnych typów, co~z~kolei powoduje konieczność sprawdzania typów w~trakcie działania programu. W Swift, każda struktura danych posiada generyczny parametr definiujący, jakie obiekty są przechowywane w~danej strukturze. Struktura taka może zawierać tylko obiekty zadeklarowanego typu, obiekty typu dziedziczącego po zadeklarowanym typie lub - jeśli zadeklarowany typ jest~protokołem - obiekty typu implementującego dany protokół.
+    \item preferowanie niemutowalnych obiektów - Swift posiada kilka mechanizmów, które nakłaniają programistę do~używania niemutowalnych obiektów. Przykładowo, istnieje słowo kluczowe \swiftinline{let}, które służy do~tworzenia obiektów stałych (niemutowalnych) i~które - zgodnie z~konwencją przyjętą przez programistów - powinno być używane jako domyślny sposób tworzenia obiektów i~deklarowania właściwości obiektu. W przypadku struktur, definicja każdej metody, która zmienia stan obiektu, musi zostać poprzedzona słowem \swiftinline{mutating}. Struktury są przekazywane do~funkcji "przez wartość", co sprawia, że~domyślnie są niemodyfikowalne. A ponieważ większość typów z~biblioteki standardowej jest~zaimplementowanych jako struktury, więc typy, takie jak \swiftinline{Array<T>} czy \swiftinline{String} również wspierają wyżej wymienione mechanizmy.
+    \item preferowanie typów wartościowych nad~referencyjne - typy wartościowe zapobiegają zmianom jednego obiektu z~wielu miejsc, przez~co~czytelność i~łatwość zrozumienia kodu jest~większa.
     \item automatyczne sprawdzanie przekroczenia zakresu liczb całkowitych.
     \item zmiany w~składni, takie jak: obowiązkowe nawiasy \texttt{\{...\}} dla~ciał funkcji warunkowych i~pętli, obsługa wszystkich możliwych wartości dla~typów wyliczeniowych, konieczność zwrócenia wartości w~funkcjach, które deklarują zwracany typ, brak instrukcji \texttt{goto} itp.
 \end{itemize}
@@ -428,25 +428,25 @@ Jednym z~podstawowych założeń przyjętych przy tworzeniu Swifta było stworze
 
 \section{Metodologia badań}
 
-Celem niniejszej pracy magisterskiej jest porównanie wydajności języka Swift z językiem Objective-C oraz podjęcie próby odpowiedzenia na pytanie, co jest przyczyną takiego stanu.
+Celem niniejszej pracy magisterskiej jest~porównanie wydajności języka Swift z~językiem Objective-C oraz podjęcie próby odpowiedzenia na~pytanie, co jest~przyczyną takiego stanu.
 
-W sieci Internet dostępnych jest kilka źródeł, które porównują Swift z innymi językami programowania. Jedne z największych pod względem ilości przeprowadzonych testów to:
+W sieci Internet dostępnych jest~kilka źródeł, które porównują Swift z~innymi językami programowania. Jedne z~największych pod względem ilości przeprowadzonych testów to:
 \begin{itemize}
     \item The Computer Language Benchmarks Game \footnote{\url{https://benchmarksgame-team.pages.debian.net/benchmarksgame}}
     \item Programming Language Benchmarks \footnote{\url{https://attractivechaos.github.io/plb/}}
-    \item Wpis na blogu firmy Yalantis \footnote{\url{https://yalantis.com/blog/is-swift-faster-than-objective-c/}}
-    \item Wpis na blogu Thomasa Günzela \footnote{\url{https://thomasguenzel.com/blog/2015/12/01/a-small-speed-comparison-objective-c-and-swift/}}.
+    \item Wpis na~blogu firmy Yalantis \footnote{\url{https://yalantis.com/blog/is-swift-faster-than-objective-c/}}
+    \item Wpis na~blogu Thomasa Günzela \footnote{\url{https://thomasguenzel.com/blog/2015/12/01/a-small-speed-comparison-objective-c-and-swift/}}.
 \end{itemize}
 
-Większość z wymienionych stron internetowych porównuje więcej niż jeden język programowania. Duża część nie zawiera testów w języku Swift i/lub Objective-C, co powoduje, że nie można na ich podstawie stwierdzić, który z tych dwóch języków jest szybszy. Wyniki tam przedstawione opierają się głównie na zadaniach algorytmicznych pokazujących ogólną wydajność i nie są szczegółowo analizowane, co z kolei nie pozwala odpowiedzieć na pytanie, dlaczego wydajność jest taka, a nie inna. 
+Większość z~wymienionych stron internetowych porównuje więcej niż jeden język programowania. Duża część nie zawiera testów w~języku Swift i/lub Objective-C, co powoduje, że~nie~można na~ich podstawie stwierdzić, który z~tych dwóch języków jest~szybszy. Wyniki tam przedstawione opierają się głównie na~zadaniach algorytmicznych pokazujących ogólną wydajność i~nie~są szczegółowo analizowane, co z~kolei nie~pozwala odpowiedzieć na pytanie, dlaczego wydajność jest~taka, a~nie~inna. 
 
-Testy napisane na potrzeby tej pracy magisterskiej nawiązują do wyżej wymienionych metodologii, jednak ze względu na nieco inne założenia pracy zostały odpowiednio zmodyfikowane. Każdy test sprawdza wydajność pojedynczego elementu języka. Przykładowo, obliczanie $n$-tej liczby ciągu Fibonacciego (w naiwny sposób, rozdział \ref{s:fibonacci}) pokazuje wydajność wykonywania wielokrotnie zagnieżdżonych wywołań rekurencyjnych, a test różnych sposobów wywoływania metod (rozdział \ref{s:wywolania_metod}) sprawdza, który mechanizm wywoływania jest najszybszy. Testy opisane w tej pracy są prostsze niż te, które można znaleźć w ww. źródłach, skupiają się za to mocno na konkretnej funkcjonalności języka, co pozwala na łatwiejszą analizę i wyciągnięcie wniosków odnośnie tej funkcjonalności.
+Testy napisane na~potrzeby tej pracy magisterskiej nawiązują do~wyżej wymienionych metodologii, jednak ze względu na~nieco inne założenia pracy zostały odpowiednio zmodyfikowane. Każdy test sprawdza wydajność pojedynczego elementu języka. Przykładowo, obliczanie $n$-tej liczby ciągu Fibonacciego (w naiwny sposób, rozdział \ref{s:fibonacci}) pokazuje wydajność wykonywania wielokrotnie zagnieżdżonych wywołań rekurencyjnych, a~test różnych sposobów wywoływania metod (rozdział \ref{s:wywolania_metod}) sprawdza, który mechanizm wywoływania jest~najszybszy. Testy opisane w~tej pracy są prostsze niż te, które można znaleźć w ww. źródłach, skupiają się za to mocno na~konkretnej funkcjonalności języka, co pozwala na~łatwiejszą analizę i~wyciągnięcie wniosków odnośnie tej funkcjonalności.
 
-Wszystkie testy zostały dokładnie przeanalizowane pod kątem przyczyn otrzymanych wyników. W ten sposób uzyskano listę elementów języka Swift sprawiających, że jest bardziej wydajny od Objective-C. Wyniki te stanowią wartość nie tylko naukową, ale i praktyczną, ponieważ mogą być zastosowane przez programistów jako wskazówki podczas pisania dobrze zoptymalizowanych programów.
+Wszystkie testy zostały dokładnie przeanalizowane pod kątem przyczyn otrzymanych wyników. W ten sposób uzyskano listę elementów języka Swift sprawiających, że~jest~bardziej wydajny od Objective-C. Wyniki te stanowią wartość nie~tylko naukową, ale i~praktyczną, ponieważ mogą być zastosowane przez programistów jako wskazówki podczas pisania dobrze zoptymalizowanych programów.
 
 \section{Założenia i~platforma testowa}
 
-Wszystkie implementacje w~obrębie danego testu używają tego samego algorytmu do~rozwiązania zadanego problemu. Również zakres wartości, dla~których przeprowadzono test jest stały w~obrębie danego testu. Dla każdej wartości $n$ zostało przeprowadzone co najmniej 10 pomiarów. Wyniki przedstawione na~wykresach są średnimi tych pomiarów.
+Wszystkie implementacje w~obrębie danego testu używają tego samego algorytmu do~rozwiązania zadanego problemu. Również zakres wartości, dla~których przeprowadzono test jest~stały w~obrębie danego testu. Dla każdej wartości $n$ zostało przeprowadzone co najmniej 10 pomiarów. Wyniki przedstawione na~wykresach są średnimi tych pomiarów.
 
 Każdy test został zaimplementowany w~conajmniej jednej wersji dla~każdego z~języków. Analiza testu składa się z~kilku części:
 
@@ -471,9 +471,9 @@ Kod testów, razem z~platformą potrzebną do~ich uruchomienia znajduje się w~r
 
 \subsection{Omówienie}
 
-Test polega na~dodaniu do~pustej tablicy \swiftinline{n} elementów. Ma on na celu sprawdzenie wydajności tablic na podstawie jednej z podstawowych operacji: wstawiania elementu do tablicy. Kod testów dla~obu omawianych języków znajduje się w~plikach \texttt{ArrayInsertionTest.swift} oraz \texttt{ArrayInsertionTest.m}, a~wyniki przedstawione zostały na~wykresie \ref{p:array_insertion}. Z~wykresu wynika, że~w~obu językach dodawanie elementów do~tablicy jest operacją działającą w~czasie asymptotycznie liniowym, w~języku Swift jest on~jednak czterokrotnie krótszy.
+Test polega na~dodaniu do~pustej tablicy \swiftinline{n} elementów. Ma on na~celu sprawdzenie wydajności tablic na~podstawie jednej z~podstawowych operacji: wstawiania elementu do~tablicy. Kod testów dla~obu omawianych języków znajduje się w~plikach \texttt{ArrayInsertionTest.swift} oraz \texttt{ArrayInsertionTest.m}, a~wyniki przedstawione zostały na~wykresie \ref{p:array_insertion}. Z~wykresu wynika, że~w~obu językach dodawanie elementów do~tablicy jest~operacją działającą w~czasie asymptotycznie liniowym, w~języku Swift jest~on~jednak czterokrotnie krótszy.
 
-Tak jak większość popularnych języków, zarówno Objective-C, jak i~Swift zapewniają ciągłość pamięci tablicy. Z~wykresu wynika, że~oba języki rezerwują z wyprzedzeniem większą ilość pamięci niż jest rzeczywiście potrzebna, a~w~razie przekroczenia już zajętej pamięci zwiększają rozmiar eksponencjalnie, robią to jednak w różnych momentach.
+Tak jak większość popularnych języków, zarówno Objective-C, jak i~Swift zapewniają ciągłość pamięci tablicy. Z~wykresu wynika, że~oba języki rezerwują z~wyprzedzeniem większą ilość pamięci niż jest~rzeczywiście potrzebna, a~w~razie przekroczenia już zajętej pamięci zwiększają rozmiar eksponencjalnie, robią to jednak w~różnych momentach.
 
 \begin{figure}[ht]
     \includegraphics{plots/ArrayInsertion.eps}
@@ -489,31 +489,31 @@ Tak jak większość popularnych języków, zarówno Objective-C, jak i~Swift za
     \label{i:array_insertion}
 \end{figure}
 
-Rysunek \ref{i:array_insertion} przestawia wyniki profilowania w~programie Instruments testu \texttt{ArrayInsertion} dla~$n = 200000000$. Zgodnie z~wykresem \ref{p:array_insertion}, czas działania testu w~języku Objective-C jest ponad trzykrotnie dłuższy niż takiego samego testu w~Swift. Tablica profilowania wskazuje potencjalne powody takiego stanu:
+Rysunek \ref{i:array_insertion} przestawia wyniki profilowania w~programie Instruments testu \texttt{ArrayInsertion} dla~$n = 200000000$. Zgodnie z~wykresem \ref{p:array_insertion}, czas działania testu w~języku Objective-C jest~ponad trzykrotnie dłuższy niż takiego samego testu w~Swift. Tablica profilowania wskazuje potencjalne powody takiego stanu:
 
 \begin{itemize}
-    \item kod funkcji \objcinline{run} w~teście języka Objective-C składa się z~utworzenia modyfikowalnej tablicy (operacja ta~ma~znikomy czas, nie~została wylistowana na~tablicy profilowania) oraz pętli \texttt{for} przebiegającej od~0 do~\objcinline{n}, gdzie \objcinline{n} jest liczbą obiektów dodanych do tablicy. W~związku z~tym można założyć, że~czas działania pętli \texttt{for} to~czas działania funkcji \objcinline{run} (oznaczony na~tablicy profilowania jako \textit{Self Weight}) plus czas dostępu do~właściwości przetrzymującej ilość elementów \objcinline{n} (kolor jasnoniebieski na~tablicy). Sumarycznie czas ten wynosi $429ms$. Kod testu dla~języka Swift jest bardzo podobny, jedyną różnicą jest zastąpienie klasycznej pętli \texttt{for} pętlą \texttt{for..in}, która w~swojej implementacji używa metody \swiftinline{formIndex(after:)} z protokołu \swiftinline{Collection} i~jego odpowiednich implementacji. Samo użycie tego protokołu wymaga $103ms$ (instrukcje oznaczone kolorem jasnoniebieskim na~tablicy profilowania), czas działania samej funkcji \swiftinline{run} to~z~kolei $748ms$, co~daje łączny czas $851ms$, czyli prawie dwukrotnie dłuższy niż w~przypadku języka Objective-C. Zatem prostota implementacji pętli w Objective-C sprawia, że są one bardziej wydajne.
-    \item w~Objective-C kod funkcji \objcinline{addObject} został zinline'owany do~wywołań metod \objcinline{insertObject:atIndex} oraz \objcinline{addObject} klas wewnętrznych. Łączny czas wywołań tych dwóch metod to~$4,14s$, z czego aż $2,56s$ program spędził na przenoszeniu i zerowaniu pamięci. W~Swift metoda \swiftinline{append} również została zinline'owana do~metody prywatnej \swiftinline{_copyToNewBuffer(oldCount:)}, jej czas wywołania to~jedynie $1.05s$, w tym $930ms$ to czas wywołań systemowej funkcji przenoszenia pamięci. Można więc~wyciągnąć wniosek, że~sama implementacja tych metod jest mniej wydajna w~Objective-C.
+    \item kod funkcji \objcinline{run} w~teście języka Objective-C składa się z~utworzenia modyfikowalnej tablicy (operacja ta~ma~znikomy czas, nie~została wylistowana na~tablicy profilowania) oraz pętli \texttt{for} przebiegającej od~0 do~\objcinline{n}, gdzie \objcinline{n} jest~liczbą obiektów dodanych do~tablicy. W~związku z~tym można założyć, że~czas działania pętli \texttt{for} to~czas działania funkcji \objcinline{run} (oznaczony na~tablicy profilowania jako \textit{Self Weight}) plus czas dostępu do~właściwości przetrzymującej ilość elementów \objcinline{n} (kolor jasnoniebieski na~tablicy). Sumarycznie czas ten wynosi $429ms$. Kod testu dla~języka Swift jest~bardzo podobny, jedyną różnicą jest~zastąpienie klasycznej pętli \texttt{for} pętlą \texttt{for..in}, która w~swojej implementacji używa metody \swiftinline{formIndex(after:)} z~protokołu \swiftinline{Collection} i~jego odpowiednich implementacji. Samo użycie tego protokołu wymaga $103ms$ (instrukcje oznaczone kolorem jasnoniebieskim na~tablicy profilowania), czas działania samej funkcji \swiftinline{run} to~z~kolei $748ms$, co~daje łączny czas $851ms$, czyli prawie dwukrotnie dłuższy niż w~przypadku języka Objective-C. Zatem prostota implementacji pętli w~Objective-C sprawia, że~są one bardziej wydajne.
+    \item w~Objective-C kod funkcji \objcinline{addObject} został zinline'owany do~wywołań metod \objcinline{insertObject:atIndex} oraz \objcinline{addObject} klas wewnętrznych. Łączny czas wywołań tych dwóch metod to~$4,14s$, z~czego aż $2,56s$ program spędził na~przenoszeniu i~zerowaniu pamięci. W~Swift metoda \swiftinline{append} również została zinline'owana do~metody prywatnej \swiftinline{_copyToNewBuffer(oldCount:)}, jej czas wywołania to~jedynie $1.05s$, w~tym $930ms$ to czas wywołań systemowej funkcji przenoszenia pamięci. Można więc~wyciągnąć wniosek, że~sama implementacja tych metod jest~mniej wydajna w~Objective-C.
     \item wywołania metody \objcinline{objc_msgSend} potrzebują $1,06s$.
     \item dealokowanie zajętej już pamięci (kolor czerwony na~rysunku) zajmuje mniej czasu w~Swift ($235ms$) niż w~Objective-C ($471ms$).
-    \item w~tablicy profilowania widnieją metody związane z obsługą ARC, takie jak \objcinline{objc_retain} czy~\objcinline{objc_release} (kolor żółty na~rysunku). Jak widać, ich wywołania zajmują około 6,5\% czasu wykonywania całego programu ($428ms$). Liczby całkowite w Swift są typami wartościowymi, stąd nie jest dla nich wymagane zliczanie referencji w tym języku.
-    \item tablice w~Objective-C mogą zawierać tylko~obiekty dziedziczące po~klasie \objcinline{NSObject}. Typ całkowitoliczbowy, jest typem prostym, należy go~zatem schować w~obiekcie klasy \objcinline{NSNumber}, który można dodać do~tablicy. Taka operacja to~jednak dodatkowe $214ms$ do~czasu działania programu (kolor różowy).
+    \item w~tablicy profilowania widnieją metody związane z~obsługą ARC, takie jak \objcinline{objc_retain} czy~\objcinline{objc_release} (kolor żółty na~rysunku). Jak widać, ich wywołania zajmują około 6,5\% czasu wykonywania całego programu ($428ms$). Liczby całkowite w~Swift są typami wartościowymi, stąd nie~jest~dla nich wymagane zliczanie referencji w~tym języku.
+    \item tablice w~Objective-C mogą zawierać tylko~obiekty dziedziczące po~klasie \objcinline{NSObject}. Typ całkowitoliczbowy, jest~typem prostym, należy go~zatem schować w~obiekcie klasy \objcinline{NSNumber}, który można dodać do~tablicy. Taka operacja to~jednak dodatkowe $214ms$ do~czasu działania programu (kolor różowy).
 \end{itemize}
 
 \subsection{Podsumowanie}
 
-Powyższy test pokazał, że implementacja wstawiania elementów do tablicy w języku Swift jest szybsza niż w Objective-C. Najwięcej czasu implementacja w Objective-C przenosiła i zwalniała zasoby. Na te operacje poświęcone zostało aż $3,03s$ całego czasu działania programu. W przypadku Swift było to tylko $1,17s$. Wydaje się więc, że zarządzanie pamięcią w tej strukturze danych zostało znacznie ulepszone w Swift.
+Powyższy test pokazał, że~implementacja wstawiania elementów do~tablicy w~języku Swift jest~szybsza niż w Objective-C. Najwięcej czasu implementacja w~Objective-C przenosiła i~zwalniała zasoby. Na te operacje poświęcone zostało aż $3,03s$ całego czasu działania programu. W przypadku Swift było to tylko $1,17s$. Wydaje się więc, że~zarządzanie pamięcią w~tej strukturze danych zostało znacznie ulepszone w~Swift.
 
-Drugim znaczącym czynnikiem, przez który implementacja w Objective-C jest wolniejsza od Swift jest aspekt obiektowy tego języka. Użycie obiektów w Objective-C oraz komunikacja pomiędzy nimi ma znaczący wpływ na wydajność, który jest widoczny w wywołaniach metody \objcinline{objc_msgSend}, opakowywaniu typu prostego \objcinline{int} w tym obiektowy \objcinline{NSNumber} czy pobieraniu wartości zmiennej \objcinline{n} z właściwości klasy. Operacje te łącznie zajęły $1,37s$, co jest równe 2/3 czasu wykonywania całego testu w Swift. Z tematem obiektowości wiąże się również obsługa zliczania referencji, która będzie wpływać na zmniejszenie wydajności tablic (a w zasadzie dowolnej struktury danych), niezależnie od rodzaju przeprowadzanych operacji.
+Drugim znaczącym czynnikiem, przez który implementacja w~Objective-C jest~wolniejsza od Swift jest~aspekt obiektowy tego języka. Użycie obiektów w~Objective-C oraz komunikacja pomiędzy nimi ma znaczący wpływ na~wydajność, który jest~widoczny w~wywołaniach metody \objcinline{objc_msgSend}, opakowywaniu typu prostego \objcinline{int} w~tym obiektowy \objcinline{NSNumber} czy pobieraniu wartości zmiennej \objcinline{n} z~właściwości klasy. Operacje te łącznie zajęły $1,37s$, co jest~równe 2/3 czasu wykonywania całego testu w~Swift. Z tematem obiektowości wiąże się również obsługa zliczania referencji, która będzie wpływać na~zmniejszenie wydajności tablic (a w~zasadzie dowolnej struktury danych), niezależnie od rodzaju przeprowadzanych operacji.
 
-Jedyna część testu, w której implementacja w starszym języku wypada lepiej to obsługa pętli \objcinline{for}, która jest w zasadzie elementem języka C, na którym bazuje Objective-C.
+Jedyna część testu, w~której implementacja w~starszym języku wypada lepiej to obsługa pętli \objcinline{for}, która jest~w~zasadzie elementem języka C, na~którym bazuje Objective-C.
 
 \section{Rekurencyjne obliczanie liczby Fibonacciego}
 \label{s:fibonacci}
 
 \subsection{Omówienie}
 
-Test polega na~obliczeniu $n$-tej liczby Fibonacciego za~pomocą naiwnego algorytmu rekurencyjnego. Głównym celem tego testu jest sprawdzenie, jak omawiane języki radzą sobie z dużą ilością zagnieżdżonych wywołań rekurencyjnych. Kod obu testów znajduje się w~plikach \texttt{FibonacciTest.m} oraz \texttt{FibonacciTest.swift}. Wyniki obu testów dla~wartości $n \in <5, 40>$ zostały zwizualizowane na~wykresie \ref{p:fibonacci}. Czas działania obu programów rośnie wykładniczo, z~wykresu wynika jednak, że~program napisany w~Swift jest szybszy. Pomiary wskazują, że kod swiftowy potrzebuje około 40\% mniej czasu na wykonanie niż jego odpowiednik napisany w~Objective-C.
+Test polega na~obliczeniu $n$-tej liczby Fibonacciego za~pomocą naiwnego algorytmu rekurencyjnego. Głównym celem tego testu jest~sprawdzenie, jak omawiane języki radzą sobie z~dużą ilością zagnieżdżonych wywołań rekurencyjnych. Kod obu testów znajduje się w~plikach \texttt{FibonacciTest.m} oraz \texttt{FibonacciTest.swift}. Wyniki obu testów dla~wartości $n \in <5, 40>$ zostały zwizualizowane na~wykresie \ref{p:fibonacci}. Czas działania obu programów rośnie wykładniczo, z~wykresu wynika jednak, że~program napisany w~Swift jest~szybszy. Pomiary wskazują, że~kod swiftowy potrzebuje około 40\% mniej czasu na~wykonanie niż jego odpowiednik napisany w~Objective-C.
 
 \begin{figure}[ht]
     \includegraphics{plots/Fibonacci.eps}
@@ -529,24 +529,24 @@ Test polega na~obliczeniu $n$-tej liczby Fibonacciego za~pomocą naiwnego algory
     \label{i:fibonacci}
 \end{figure}
 
-Tablica profilowania \ref{i:fibonacci} obu programów pozwala znaleźć powody różnicy prędkości pomiędzy implementacjami. Główną różnicą jest wywołanie funkcji \objcinline{objc_msgSend } w~teście napisanym w~Objective-C. Wywołania te są odpowiedzialne za~ponad 5 sekund czasu działania testu, co~daje prawie 37\% całego czasu działania testu. Więcej o~wywoływaniu metod w~Objective-C napisano w~sekcji \ref{s:system_typow} Przykład ten dobrze obrazuje problemy z~wydajnością języka Objective-C przy bardzo dużej ilości wywołań metod klas.
+Tablica profilowania \ref{i:fibonacci} obu programów pozwala znaleźć powody różnicy prędkości pomiędzy implementacjami. Główną różnicą jest~wywołanie funkcji \objcinline{objc_msgSend } w~teście napisanym w~Objective-C. Wywołania te są odpowiedzialne za~ponad 5 sekund czasu działania testu, co~daje prawie 37\% całego czasu działania testu. Więcej o~wywoływaniu metod w~Objective-C napisano w~sekcji \ref{s:system_typow} Przykład ten dobrze obrazuje problemy z~wydajnością języka Objective-C przy bardzo dużej ilości wywołań metod klas.
 
-Drugim powodem, dla~którego kod napisany w~Objective-C jest wolniejszy to działanie ciała metody \objcinline{[fibonacciForN:]}, które jest o~ponad 2 sekundy wolniejsze od~analogicznego kodu napisanego w~Swift. Ciało tej metody w obu implementacjach jest bardzo proste i składa się jedynie z instrukcji warunkowej \objcinline{if/else} oraz dwóch porównań liczb całkowitych. Obie implementacje składają się z dokładnie takich samych instrukcji. Wynika z tego, że translacja tych instrukcji do kodu wynikowego jest lepiej zoptymalizowana w nowszym języku.
+Drugim powodem, dla~którego kod napisany w~Objective-C jest~wolniejszy to działanie ciała metody \objcinline{[fibonacciForN:]}, które jest~o~ponad 2 sekundy wolniejsze od~analogicznego kodu napisanego w~Swift. Ciało tej metody w~obu implementacjach jest~bardzo proste i~składa się jedynie z~instrukcji warunkowej \objcinline{if/else} oraz dwóch porównań liczb całkowitych. Obie implementacje składają się z~dokładnie takich samych instrukcji. Wynika z~tego, że~translacja tych instrukcji do~kodu wynikowego jest~lepiej zoptymalizowana w~nowszym języku.
 
 \subsubsection{Podsumowanie}
 
-Powyższy test pokazuje, że przy dużej ilości wywołań rekurencyjnych lepiej radzi sobie Swift. Głównym powodem jest brak narzutu związanego z wysyłaniem wiadomości do obiektów oraz lepsza optymalizacja tłumaczenia kodu Swiftowego do kodu platformy LVVM.
+Powyższy test pokazuje, że~przy dużej ilości wywołań rekurencyjnych lepiej radzi sobie Swift. Głównym powodem jest~brak narzutu związanego z~wysyłaniem wiadomości do~obiektów oraz lepsza optymalizacja tłumaczenia kodu Swiftowego do~kodu platformy LVVM.
 
 \section{Sortowanie bąbelkowe}
 \label{s:bubble_sort}
 
 \subsection{Omówienie}
 
-Sortowanie bąbelkowe to~jeden z~najprostszych algorytmów sortowania. Jego największą zaletą jest bardzo prosta i~intuicyjna implementacja. Test opisany w~tym rozdziale polega na~zaimplementowaniu algorytmu sortowania bąbelkowego i~uruchomieniu go~na~tablicy o~wielkości $n \in <1000, 15000>$ wypełnionej losowymi 32-bitowymi liczbami całkowitymi. Jego zadaniem jest sprawdzenie wydajności operacji na tablicach. 
+Sortowanie bąbelkowe to~jeden z~najprostszych algorytmów sortowania. Jego największą zaletą jest~bardzo prosta i~intuicyjna implementacja. Test opisany w~tym rozdziale polega na~zaimplementowaniu algorytmu sortowania bąbelkowego i~uruchomieniu go~na~tablicy o~wielkości $n \in <1000, 15000>$ wypełnionej losowymi 32-bitowymi liczbami całkowitymi. Jego zadaniem jest~sprawdzenie wydajności operacji na~tablicach. 
 
 \subsection{Analiza działania}
 
-Jak wynika z~wykresu, implementacja w~Swift jest ponad 10-krotnie szybsza niż najprostsza implementacja w~Objective-C. Posortowanie tablicy $15000$ elementów zajmuje ~$288 ms$ w~przypadku kodu w~Swift i~$3,2 s$ dla~Objective-C.
+Jak wynika z~wykresu, implementacja w~Swift jest~ponad 10-krotnie szybsza niż najprostsza implementacja w~Objective-C. Posortowanie tablicy $15000$ elementów zajmuje ~$288 ms$ w~przypadku kodu w~Swift i~$3,2 s$ dla~Objective-C.
 
 Rysunek \ref{i:bubble_sort} przedstawia tablicę profilowania testu \texttt{BubbleSort} zaimplementowanego w~języku Swift (na górze) oraz w~Objective-C (po środku) dla~tablicy z~30000 elementów.
 
@@ -562,20 +562,20 @@ Rysunek \ref{i:bubble_sort} przedstawia tablicę profilowania testu \texttt{Bub
     \label{i:bubble_sort}
 \end{figure}
 
-Tablica profilowania testu napisanego w~języku Swift jest bardzo krótka - aż~93\% czasu wykonywania testu zajęły dwie operacje:
+Tablica profilowania testu napisanego w~języku Swift jest~bardzo krótka - aż~93\% czasu wykonywania testu zajęły dwie operacje:
 
 \begin{itemize}
     \item około $0,5s$ zajęło porównywanie elementów w~tablicy (oznaczone kolorem czerwonym)
     \item wywołanie operacji zdefiniowanych w~samej metodzie \swiftinline{BubbleSort(:_)} zajęło około $800 ms$. Te operacje to~obsługa pętli \texttt{for}, operacje arytmetyczne związane z~przesuwaniem indeksów oraz zamiana elementów w~tablicy.
 \end{itemize}
 
-Analiza implementacji w~Objective-C jest nieco bardziej skomplikowana. Najwięcej czasu zajęło wysyłanie wiadomości do~obiektów za~pomocą metody \objcinline{objc_msgSend } (oznaczonej kolorem żółtym na~tablicy profilowania). Czas wszystkich wywołań tej metody wyniósł $4,58s$.
+Analiza implementacji w~Objective-C jest~nieco bardziej skomplikowana. Najwięcej czasu zajęło wysyłanie wiadomości do~obiektów za~pomocą metody \objcinline{objc_msgSend } (oznaczonej kolorem żółtym na~tablicy profilowania). Czas wszystkich wywołań tej metody wyniósł $4,58s$.
 
 Drugą najbardziej czasochłonną grupą operacji były operacje odczytu i~zapisu do/z tablicy (kolor zielony na~tablicy profilowania). Metody \objcinline{objectAtIndexedSubscript:} i~\objcinline{setObject:atIndexedSubscript} są wywoływane po~użyciu operatora indeksowania na~tablicy \objcinline{NSArray} i~łącznie ich czas wywołania zajmuje $4,31s$.
 
 Wykonanie operacji z~ciała metody \objcinline{run} (kolor czerwony), trwało łącznie $2,5s$. Operacje te to~głównie obliczenia arytmetyczne oraz obsługa pętli \texttt{for}. Wywołania funkcji oznaczone kolorem niebieskim na~tablicy profilowania dotyczą zarządzania licznikami referencji i~łącznie potrzebują  również prawie $2,5s$.
 
-Ciekawym przypadkiem pokazującym kosztowność systemu wysyłania wiadomości jest sprawdzanie wartości zapisanej do~właściwości \objcinline{n}. W~Objective-C dla~każdej właściwości o~nazwie \objcinline{x} kompilator generuje:
+Ciekawym przypadkiem pokazującym kosztowność systemu wysyłania wiadomości jest~sprawdzanie wartości zapisanej do~właściwości \objcinline{n}. W~Objective-C dla~każdej właściwości o~nazwie \objcinline{x} kompilator generuje:
 
 \begin{itemize}
     \item zmienną o~nazwie \objcinline{_x}
@@ -583,13 +583,13 @@ Ciekawym przypadkiem pokazującym kosztowność systemu wysyłania wiadomości j
     \item setter \objcinline{setX:}
 \end{itemize}
 
-Z tego powodu, odczytanie wartości z~właściwości  \objcinline{n} jest tak~naprawdę wywołaniem metody \objcinline{n} i~odczytaniem wartości zmiennej ukrytej za~właściwością. Z~punktu widzenia kompilatora, odczyt taki jest zatem niczym innym jak wywołaniem metody, czyli wysłaniem wiadomości, stąd też samo odczytanie zmiennej zajmuje $172ms$ (kolor szary na~tablicy profilowania).
+Z tego powodu, odczytanie wartości z~właściwości  \objcinline{n} jest~tak~naprawdę wywołaniem metody \objcinline{n} i~odczytaniem wartości zmiennej ukrytej za~właściwością. Z~punktu widzenia kompilatora, odczyt taki jest~zatem niczym innym jak wywołaniem metody, czyli wysłaniem wiadomości, stąd też samo odczytanie zmiennej zajmuje $172ms$ (kolor szary na~tablicy profilowania).
 
 Z powyższej analizy można łatwo wyznaczyć fragmenty kodu, które powinny zostać zoptymalizowane w~implementacji w~Objective-C:
 
 \begin{itemize}
     \item wywoływanie operatora indeksowania - zamiast zamieniać miejscami elementy za~pomocą czterech wywołań operatora indeksowania, można użyć metody \objcinline{exchangeObjectAtIndex:withObjectAtIndex:} klasy \objcinline{NSArray}
-    \item wysyłanie wiadomości do~obiektów za~pomocą \objcinline{objc_msgSend } - metoda \objcinline{exchangeObjectAtIndex:withObjectAtIndex:} jest za~każdym razem wywoływana na~tym samym obiekcie, dlatego też można już wcześniej wziąć wskaźnik na~tą metodę (w nomenklaturze Objective-C - selektor), zachować referencję do~niego i~bezpośrednio wywoływać
+    \item wysyłanie wiadomości do~obiektów za~pomocą \objcinline{objc_msgSend } - metoda \objcinline{exchangeObjectAtIndex:withObjectAtIndex:} jest~za~każdym razem wywoływana na~tym samym obiekcie, dlatego też można już wcześniej wziąć wskaźnik na~tą metodę (w nomenklaturze Objective-C - selektor), zachować referencję do~niego i~bezpośrednio wywoływać
     \item użycie właściwości \objcinline{n} - zamiast przy każdym sprawdzeniu warunku pętli odwoływać się do~właściwości \objcinline{n}, można jej wartość zachować na~stosie jako zmienną lokalną funkcji i~odwoływać się do~niej bezpośrednio.
 \end{itemize}
 
@@ -597,25 +597,25 @@ Klasa \objcinline{BubbleSortOptimizedTestObjC} zawiera implementację wyżej wy
 
 Największy przyrost wydajności zaobserwowano dla~wywołań funkcji \objcinline{objc_msgSend }, czas $4,58s$ udało się zmniejszyć do~$1,83s$ (spadek o~$60\%$). Główne powody to~zastąpienie kilku wywołań operatora indeksowania jednym wywołaniem metody zamieniającej elementy miejscami oraz trzymanie referencji na~tą metodę w~zmiennej lokalnej. Spadł również czas wywołania metod związanych z~operatorem indeksowania - pozbyto się zupełnie użycia metody ustawiającej wartość, a~czas zużywany na~metodę pobierającą wartość spadł z~$2,51s$ do~$1,61s$. Łącznie czas operacji na~tablicy spadł z $4,31s$ do~$3,18s$ (spadek o~$25\%$). Czas obsługi liczników referencji spadł z~$2,4s$ do~$1,6s$, co~oznacza spadek o~około $35\%$, a~czas poświęcony wcześniej na~odczyt właściwości \objcinline{n} spadła do~wartości niezauważalnej podczas profilowania.
 
-Pomimo tak~znacznego przyspieszenia, kod ten nadal jest około 6-krotnie wolniejszy od~jego~odpowiednika w~Swift. Implementacja w nowszym języku zyskuje najwięcej na użyciu wartościowych typów danych, które nie wymagają zliczania referencji i wysyłania wiadomości pomiędzy obiektami oraz na znacznie szybszych operacjach tablicowych. Te dwa aspekty odpowiadają za ok. 80 \% całkowitego czasu działania kodu Objective-C.
+Pomimo tak~znacznego przyspieszenia, kod ten nadal jest~około 6-krotnie wolniejszy od~jego~odpowiednika w~Swift. Implementacja w~nowszym języku zyskuje najwięcej na~użyciu wartościowych typów danych, które nie~wymagają zliczania referencji i~wysyłania wiadomości pomiędzy obiektami oraz na~znacznie szybszych operacjach tablicowych. Te dwa aspekty odpowiadają za ok. 80 \% całkowitego czasu działania kodu Objective-C.
 
 \subsection{Podsumowanie}
 
-Powyższy test potwierdził wnioski z testu wstawiania elementów do tablicy - implementacja operacji tablicowych w Swift jest szybsza od tej w Objective-C. Największy wpływ na wyniki tego testu miały dwie cechy nowego języka.
+Powyższy test potwierdził wnioski z~testu wstawiania elementów do~tablicy - implementacja operacji tablicowych w~Swift jest~szybsza od tej w~Objective-C. Największy wpływ na~wyniki tego testu miały dwie cechy nowego języka.
 
-Po pierwsze, zastosowanie statycznego wywołania metod zamiast wywołania przez wiadomości pozwoliło ograniczyć narzut pochodzący z konieczności wysyłania wiadomości pomiędzy obiektami. Więcej o porównaniu sposobów wywoływania metod w teście \ref{s:wywolania_metod}
+Po pierwsze, zastosowanie statycznego wywołania metod zamiast wywołania przez wiadomości pozwoliło ograniczyć narzut pochodzący z~konieczności wysyłania wiadomości pomiędzy obiektami. Więcej o~porównaniu sposobów wywoływania metod w~teście \ref{s:wywolania_metod}
 
-Po drugie, zastosowanie typów wartościowych pozwoliło na znaczne zmniejszenie czasu poświęconego na obsługę ARC. Typy wartościowe są kopiowane podczas przypisań, inicjalizacji czy przekazania jako argument, zatem każdy obiekt takiego typu posiada tylko jedną referencję. Fakt ten sprawia, że obsługa licznika referencji jest zbędna - wystarczy usunąć obiekt z pamięci w momencie wyjścia z zakresu, w którym ten obiekt jest dostępny.
+Po drugie, zastosowanie typów wartościowych pozwoliło na~znaczne zmniejszenie czasu poświęconego na~obsługę ARC. Typy wartościowe są kopiowane podczas przypisań, inicjalizacji czy przekazania jako argument, zatem każdy obiekt takiego typu posiada tylko jedną referencję. Fakt ten sprawia, że~obsługa licznika referencji jest~zbędna - wystarczy usunąć obiekt z~pamięci w~momencie wyjścia z~zakresu, w~którym ten obiekt jest~dostępny.
 
 \section{Budowanie binarnego drzewa poszukiwań}
 
 \subsection{Omówienie}
 
-Test opisany w~tym rozdziale polega na~utworzeniu binarnego drzewa poszukiwań o~\swiftinline{n} elementach. Jego głównym celem jest sprawdzenie, jaki narzut na wydajność ma użycie takich funkcji języka Swift, jak typy wyliczeniowe z wartościami powiązanymi czy wartościowe typy danych.
+Test opisany w~tym rozdziale polega na~utworzeniu binarnego drzewa poszukiwań o~\swiftinline{n} elementach. Jego głównym celem jest~sprawdzenie, jaki narzut na~wydajność ma użycie takich funkcji języka Swift, jak typy wyliczeniowe z~wartościami powiązanymi czy wartościowe typy danych.
 
-Implementacja w~języku Objective-C jest klasyczną implementacją tego problemu. Zdefiniowana została struktura \objcinline{Node} przechowująca wskaźniki na~lewe i~prawe poddrzewo oraz wartość przechowywaną w~węźle.
+Implementacja w~języku Objective-C jest~klasyczną implementacją tego problemu. Zdefiniowana została struktura \objcinline{Node} przechowująca wskaźniki na~lewe i~prawe poddrzewo oraz wartość przechowywaną w~węźle.
 
-Nieco ciekawiej wygląda kwestia implementacji algorytmu budowania drzewa w~języku Swift. Po pierwsze, programiści Swift często przedkładają bezpieczeństwo i~niezawodność kodu nad~jego wydajność. Przykładowo, aby zapewnić bezpieczeństwo dostępu do~danych (np.~podczas dostępu z~wielu wątków) stosuje się struktury niemutowalne. Po drugie, Swift oferuje dużo więcej narzędzi niż Objective-C, m.in. funkcje wyższego rzędu jako typy pierwszoklasowe \ang{first class citizens} czy~algebraiczne typy danych w~postaci typów wyliczeniowych z~wartościami powiązanymi. Z~tych dwóch powodów, poniższy test zawiera dwie implementacje w~języku Swift. Obie zapewniają niemutowalność bieżących elementów drzewa - dodanie nowego elementu powoduje utworzenie nowego węzła, a~nie zmodyfikowanie już istniejącego. Pierwsza implementacja to~implementacja "klasyczna". Dane przechowywane są w~klasie \swiftinline{Tree} (odpowiednik klasy \objcinline{Node} z~Objective-C), a~metoda dodająca element przechodzi po~drzewie i~tworzy nowy obiekt typu \swiftinline{Tree} w~odpowiednim miejscu. Druga implementacja jest oparta na~wykorzystaniu typów wyliczeniowych z~wartościami powiązanymi i~wygląda nieco bardziej jak kod znany z~języków funkcyjnych. Dane przechowywane są tutaj w~typie wyliczeniowym \swiftinline{Tree}, który definiuje dwa "konstruktory typu": \swiftinline{empty} oraz \swiftinline{node(Tree, Int, Tree)}. Funkcja dodająca element używa pattern matchingu, aby znaleźć odpowiednie miejsce w~drzewie i~tam dodaje nowy obiekt. Kod opisanych testów znajduje się odpowiednio w~plikach \texttt{BinarySearchTreeTest.m}, \texttt{BinarySearchTreeClassicTest.swift} oraz \texttt{BinarySearchTreeEnumsTest.swift}.
+Nieco ciekawiej wygląda kwestia implementacji algorytmu budowania drzewa w~języku Swift. Po pierwsze, programiści Swift często przedkładają bezpieczeństwo i~niezawodność kodu nad~jego wydajność. Przykładowo, aby zapewnić bezpieczeństwo dostępu do~danych (np.~podczas dostępu z~wielu wątków) stosuje się struktury niemutowalne. Po drugie, Swift oferuje dużo więcej narzędzi niż Objective-C, m.in. funkcje wyższego rzędu jako typy pierwszoklasowe \ang{first class citizens} czy~algebraiczne typy danych w~postaci typów wyliczeniowych z~wartościami powiązanymi. Z~tych dwóch powodów, poniższy test zawiera dwie implementacje w~języku Swift. Obie zapewniają niemutowalność bieżących elementów drzewa - dodanie nowego elementu powoduje utworzenie nowego węzła, a~nie~zmodyfikowanie już istniejącego. Pierwsza implementacja to~implementacja "klasyczna". Dane przechowywane są w~klasie \swiftinline{Tree} (odpowiednik klasy \objcinline{Node} z~Objective-C), a~metoda dodająca element przechodzi po~drzewie i~tworzy nowy obiekt typu \swiftinline{Tree} w~odpowiednim miejscu. Druga implementacja jest~oparta na~wykorzystaniu typów wyliczeniowych z~wartościami powiązanymi i~wygląda nieco bardziej jak kod znany z~języków funkcyjnych. Dane przechowywane są tutaj w~typie wyliczeniowym \swiftinline{Tree}, który definiuje dwa "konstruktory typu": \swiftinline{empty} oraz \swiftinline{node(Tree, Int, Tree)}. Funkcja dodająca element używa pattern matchingu, aby znaleźć odpowiednie miejsce w~drzewie i~tam dodaje nowy obiekt. Kod opisanych testów znajduje się odpowiednio w~plikach \texttt{BinarySearchTreeTest.m}, \texttt{BinarySearchTreeClassicTest.swift} oraz \texttt{BinarySearchTreeEnumsTest.swift}.
 
 \subsection{Analiza działania}
 
@@ -625,7 +625,7 @@ Nieco ciekawiej wygląda kwestia implementacji algorytmu budowania drzewa w~jęz
     \label{p:binary_search}
 \end{figure}
 
-Wykres \ref{p:binary_search} Przedstawia wyniki działania testu tworzącego drzewo binarne o~wielkości \swiftinline{n}. Jest to~pierwszy test, dla~którego implementacja w~Objective-C jest szybsza od~implementacji w~Swift. Kod napisany w~starszym z~języków wykonuje się około 2 razy szybciej od~implementacji napisanej w Swift przy pomocy typów wyliczeniowych i~ponad dwa razy szybciej od~"klasycznej" implementacji w~Swift. 
+Wykres \ref{p:binary_search} Przedstawia wyniki działania testu tworzącego drzewo binarne o~wielkości \swiftinline{n}. Jest to~pierwszy test, dla~którego implementacja w~Objective-C jest~szybsza od~implementacji w~Swift. Kod napisany w~starszym z~języków wykonuje się około 2 razy szybciej od~implementacji napisanej w~Swift przy pomocy typów wyliczeniowych i~ponad dwa razy szybciej od~"klasycznej" implementacji w~Swift. 
 
 \begin{figure}
     \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/BinarySearch.png}}
@@ -651,11 +651,16 @@ Z powyższej analizy wynika, że~choć w Swift można napisać bardzo bezpieczn
     \label{i:binary_search2}
 \end{figure}
 
-Wykres \ref{p:binary_search2} przedstawia czas działania zoptymalizowanego testu napisanego w~języku Swift. Jak widać, ostatnia implementacja jest prawie 2-krotnie szybsza od~implementacji w~Objective-C. Tablica profilowania \ref{i:binary_search2} tego testu wskazuje wyraźnie na~przyczynę poprawy wydajności. W~zoptymalizowanej implementacji pozbyto się tworzenia dużej ilości nowych obiektów podczas dodawania nowego elementu. Wywołania inicjalizatora zajmują teraz jedynie 611ms, co~oznacza skrócenie czasu potrzebnego na~inicjalizację obiektów o~98\% (wcześniej - 32,63s). Czas obsługi ARC również uległ zmniejszeniu - z~11,64s do~7,47s (spadek o~35\%). 
+Wykres \ref{p:binary_search2} przedstawia czas działania zoptymalizowanego testu napisanego w~języku Swift. Jak widać, ostatnia implementacja jest~prawie 2-krotnie szybsza od~implementacji w~Objective-C. Tablica profilowania \ref{i:binary_search2} tego testu wskazuje wyraźnie na~przyczynę poprawy wydajności. W~zoptymalizowanej implementacji pozbyto się tworzenia dużej ilości nowych obiektów podczas dodawania nowego elementu. Wywołania inicjalizatora zajmują teraz jedynie 611ms, co~oznacza skrócenie czasu potrzebnego na~inicjalizację obiektów o~98\% (wcześniej - 32,63s). Czas obsługi ARC również uległ zmniejszeniu - z~11,64s do~7,47s (spadek o~35\%). 
 
 \subsection{Podsumowanie}
 
-Pomimo początkowych problemów z~wydajnością również i~w~tym teście kod napisany w~Swift okazał się szybszy. Należy jednak uważać, z~jakich właściwości języka się korzysta. Wykorzystanie niemutowalności obiektów czy zaawansowanych typów wyliczeniowych może pomóc w pisaniu bezpieczniejszego i bardziej czytelnego kodu, jednak źle wpływa na jego wydajność. Najszybsza wersja kodu w Swift okazała się szybsza od wersji w Objective-C głównie przez szybszą obsługę automatycznego zliczania referencji (spadek o 35\%).
+Pomimo początkowych problemów z~wydajnością również i~w~tym teście kod napisany w~Swift okazał się szybszy. Należy jednak uważać, z~jakich właściwości języka się korzysta. Wykorzystanie niemutowalności obiektów czy zaawansowanych typów wyliczeniowych może pomóc w~pisaniu bezpieczniejszego i~bardziej czytelnego kodu, jednak źle wpływa na~jego wydajność. Najszybsza wersja kodu w~Swift okazała się szybsza od wersji w~Objective-C głównie przez szybszą obsługę automatycznego zliczania referencji (spadek o~35\%).
+
+
+
+
+
 
 \section{Rodzaje wywołania metod}
 \label{s:wywolania_metod}
@@ -666,13 +671,13 @@ Test opisany w~tym rozdziale polega na~wykonaniu bardzo prostej funkcji mnożąc
 
 \begin{itemize}
     \item jako metoda struktury - metoda struktury zostanie wywołana statycznie. Kod tego eksperymentu znajduje się w teście \swiftinline{StaticDispatchTest.swift}.
-    \item jako metoda struktury implementującej protokół - ze~względu na~fakt, że~struktura jest schowana za~protokołem i~kompilator nie~ma~sposobu na~zidentyfikowanie dokładnego typu obiektu, metoda zostanie wywołana dynamicznie. Kod dla~tego eksperymentu znajduje się w teście \swiftinline{DynamicDispatchTest.swift}.
+    \item jako metoda struktury implementującej protokół - ze~względu na~fakt, że~struktura jest~schowana za~protokołem i~kompilator nie~ma~sposobu na~zidentyfikowanie dokładnego typu obiektu, metoda zostanie wywołana dynamicznie. Kod dla~tego eksperymentu znajduje się w teście \swiftinline{DynamicDispatchTest.swift}.
     \item jako metoda klasy z~Objective-C - funkcje napisane w~Objective-C są wywoływane przez~wysłanie wiadomości. Kod dla~tego testu znajduje się w pliku \swiftinline{MessageDispatchTest.m}.
 \end{itemize}
 
-Więcej informacji o sposobach na wywołanie metody w Swift i Objective-C znajduje się w sekcji \ref{s:wywolania_metod}.
+Więcej informacji o~sposobach na~wywołanie metody w~Swift i~Objective-C znajduje się w~sekcji \ref{s:wywolania_metod}.
 
-Głównym celem tego testu jest sprawdzenie, czy nowe sposoby wywoływania metod wprowadzone w Swift są szybsze niż wywoływanie przez wysyłanie wiadomości z Objective-C.
+Głównym celem tego testu jest~sprawdzenie, czy nowe sposoby wywoływania metod wprowadzone w~Swift są szybsze niż wywoływanie przez wysyłanie wiadomości z~Objective-C.
 
 \subsection{Analiza działania}
 
@@ -684,7 +689,7 @@ Wyniki wyżej opisanych testów znajdują się na wykresie \ref{p:dispatch_meth
     \label{p:dispatch_method}
 \end{figure}
 
-Czasy działania różnych metod wywołania różnią się od~siebie znacznie. Zgodnie z~przewidywaniami z~opisu tego testu, statyczna metoda wywołania funkcji jest najszybsza. Na drugim miejscu znalazł się mechanizm wywoływania przez~wiadomości, który jest ok. 4-krotnie wolniejszy od~wywoływania statycznego. Wywołanie dynamiczne okazało się natomiast niespodziewanie wolne, zajęło ponad 2 razy więcej czasu niż wywołanie przez~wiadomości i~prawie 9 razy więcej od~wywołania statycznego. Tablica profilowania z~rysunku \ref{i:dispatch_method} wskazuje na~pewne powody takiego stanu.
+Czasy działania różnych metod wywołania różnią się od~siebie znacznie. Zgodnie z~przewidywaniami z~opisu tego testu, statyczna metoda wywołania funkcji jest~najszybsza. Na drugim miejscu znalazł się mechanizm wywoływania przez~wiadomości, który jest~ok. 4-krotnie wolniejszy od~wywoływania statycznego. Wywołanie dynamiczne okazało się natomiast niespodziewanie wolne, zajęło ponad 2 razy więcej czasu niż wywołanie przez~wiadomości i~prawie 9 razy więcej od~wywołania statycznego. Tablica profilowania z~rysunku \ref{i:dispatch_method} wskazuje na~pewne powody takiego stanu.
 
 \begin{figure}
     \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/DispatchMethod.png}}
@@ -694,24 +699,24 @@ Czasy działania różnych metod wywołania różnią się od~siebie znacznie. Z
 
 Tablica profilowania przedstawiona na~rysunku \ref{i:dispatch_method} przedstawia czas działania testów dla~różnych metod wywołania i~parametru wejściowego $n = 20000000$. Na jej podstawie można wysnuć kilka wniosków odnośnie czasu działania testów.
 
-Po pierwsze, na~czas działania testu dla~wywołania statycznego składa się jedynie obsługa pętli \swiftinline{forEach} (kolor żółty na~tablicy profilowania) oraz wywołanie funkcji \swiftinline{multiply}. To właśnie brak dodatkowych kosztownych operacji powoduje, że~wywołanie statyczne jest najszybszym z~trzech porównywanych mechanizmów.
+Po pierwsze, na~czas działania testu dla~wywołania statycznego składa się jedynie obsługa pętli \swiftinline{forEach} (kolor żółty na~tablicy profilowania) oraz wywołanie funkcji \swiftinline{multiply}. To właśnie brak dodatkowych kosztownych operacji powoduje, że~wywołanie statyczne jest~najszybszym z~trzech porównywanych mechanizmów.
 
-Przy wywołaniu dynamicznym, implementacja funkcji \swiftinline{multiply} jest schowana za~protokołem. Z~tego powodu, adres funkcji, którą należy wywołać zostanie powiązany z wywołaniem dopiero w trakcie działania programu. Operacja ta~zostanie wykonana w~dwóch krokach:
+Przy wywołaniu dynamicznym, implementacja funkcji \swiftinline{multiply} jest~schowana za~protokołem. Z~tego powodu, adres funkcji, którą należy wywołać zostanie powiązany z~wywołaniem dopiero w~trakcie działania programu. Operacja ta~zostanie wykonana w~dwóch krokach:
 
 \begin{itemize}
-    \item w trakcie kompilacji kompilator utworzy tablicę wirtualną (\ang{Protocol witness table}) dla~protokołu \swiftinline{MultiplyByTwoProtocol} oraz struktury \swiftinline{MultiplyByTwoStruct}. Tablica ta~zawiera adresy funkcji dla~typu implementującego dany protokół. W~tym przykładzie znajdzie się tam adres implementacji dla~funkcji \swiftinline{multiply} w~strukturze \swiftinline{MultiplybyTwoStruct}.
-    \item następnie, w trakcie działania programu środowisko uruchomieniowe powiąże utworzoną tablicę z~danym obiektem struktury tworząc tymczasowy kontener (\ang{existential container}). Taki kontener zostanie dopiero przekazany jako argument wywołania funkcji.
+    \item w~trakcie kompilacji kompilator utworzy tablicę wirtualną (\ang{Protocol witness table}) dla~protokołu \swiftinline{MultiplyByTwoProtocol} oraz struktury \swiftinline{MultiplyByTwoStruct}. Tablica ta~zawiera adresy funkcji dla~typu implementującego dany protokół. W~tym przykładzie znajdzie się tam adres implementacji dla~funkcji \swiftinline{multiply} w~strukturze \swiftinline{MultiplybyTwoStruct}.
+    \item następnie, w~trakcie działania programu środowisko uruchomieniowe powiąże utworzoną tablicę z~danym obiektem struktury tworząc tymczasowy kontener (\ang{existential container}). Taki kontener zostanie dopiero przekazany jako argument wywołania funkcji.
 \end{itemize}
 
-Z tablicy profilowania wynika, że tworzenie i usuwanie  egzystencjalnego kontenera oraz kopiowanie danych struktury zawierającej się w kontenerze zajmuje $186ms$, czyli aż 76\% całego czasu wykonania funkcji (kolor czerwony na~tablicy profilowania). Pozostały czas ($56ms$) zajmuje wywołanie funkcji \swiftinline{multiply} oraz obsługa pętli \swiftinline{for..in}.
+Z tablicy profilowania wynika, że~tworzenie i~usuwanie  egzystencjalnego kontenera oraz kopiowanie danych struktury zawierającej się w~kontenerze zajmuje $186ms$, czyli aż 76\% całego czasu wykonania funkcji (kolor czerwony na~tablicy profilowania). Pozostały czas ($56ms$) zajmuje wywołanie funkcji \swiftinline{multiply} oraz obsługa pętli \swiftinline{for..in}.
 
-Wywołanie przez~wiadomości okazało się szybsze niż wywołanie dynamiczne. Zawdzięcza to~głównie świetnej optymalizacji oraz użyciu cache do~przechowywania informacji o~tym, jak obsłużyć ostatnio wysłane wiadomości. Jako, że~wysyłana jest cały czas taka sama wiadomość do~tej samej klasy, to~cache jest w tym wypadku bardzo wydajną formą optymalizacji. Nadal jednak narzut czasowy powodowany przez~wywołania funkcji \objcinline{objc_msgSend} to~$22ms$, czyli około 40\% czasu wykonywania całej metody.
+Wywołanie przez~wiadomości okazało się szybsze niż wywołanie dynamiczne. Zawdzięcza to~głównie świetnej optymalizacji oraz użyciu cache do~przechowywania informacji o~tym, jak obsłużyć ostatnio wysłane wiadomości. Jako, że~wysyłana jest~cały czas taka sama wiadomość do~tej samej klasy, to~cache jest~w~tym wypadku bardzo wydajną formą optymalizacji. Nadal jednak narzut czasowy powodowany przez~wywołania funkcji \objcinline{objc_msgSend} to~$22ms$, czyli około 40\% czasu wykonywania całej metody.
 
 \subsection{Podsumowanie}
 
-Powyższy test potwierdza tezę, że wywołanie statyczne jest najszybszym sposobem wywoływania metod. Z kolei fakt, że wywołanie przez wysyłanie wiadomości okazało się szybsze od wywołania dynamicznego jest już małym zaskoczeniem. Prawdopodobnie jest to spowodowane specyfiką testu - w trakcie działania programu wywoływana była ciągle tylko jedna funkcja, co pomogło środowisku uruchomieniowemu Objective-C w optymalizacji wysyłania wiadomości przy użyciu cache.
+Powyższy test potwierdza tezę, że~wywołanie statyczne jest~najszybszym sposobem wywoływania metod. Z kolei fakt, że~wywołanie przez wysyłanie wiadomości okazało się szybsze od wywołania dynamicznego jest~już małym zaskoczeniem. Prawdopodobnie jest~to spowodowane specyfiką testu - w~trakcie działania programu wywoływana była ciągle tylko jedna funkcja, co pomogło środowisku uruchomieniowemu Objective-C w~optymalizacji wysyłania wiadomości przy użyciu cache.
 
-Przyczyną słabej wydajności wywołania dynamicznego jest wyszukiwanie adresów wywoływanych funkcji w trakcie działania programu. O ile przy małej ilości wywołań jest to wartość pomijalna, o tyle w pracy nad dużymi systemami informatycznymi powinna zostać wzięta pod uwagę.
+Przyczyną słabej wydajności wywołania dynamicznego jest~wyszukiwanie adresów wywoływanych funkcji w~trakcie działania programu. O ile przy małej ilości wywołań jest~to wartość pomijalna, o~tyle w~pracy nad dużymi systemami informatycznymi powinna zostać wzięta pod uwagę.
 
 \section{Złożony algorytm}
 
@@ -745,7 +750,7 @@ Algorytm Dijkstry to~metoda znajdowania najkrótszych ścieżek w~grafie. Niech 
 \end{program}
 \end{algorithm}
 
-Ważną częścią algorytmu Dijkstry z~punktu widzenia złożoności obliczeniowej jest sposób implementacji kolejki priorytetowej. Ze względu na~dużą ilość operacji \swiftinline{removeMin} oraz \swiftinline{decreaseKey}, najwydajniejsze implementacje używają kopców Fibonacciego. Celem tego testu jest jednak porównanie czasu działania jak najbardziej podobnych do~siebie implementacji w~obu językach, a~nie napisanie jak najwydajniejszej implementacji algorytmu, dlatego zdecydowano się użyć prostszej struktury danych, czyli zwykłych kopców typu \texttt{min}. Pozwoliło to~na~prostszą analizę czasu działania kodu bez~zagłębiania się w~szczegóły działania samej struktury.
+Ważną częścią algorytmu Dijkstry z~punktu widzenia złożoności obliczeniowej jest~sposób implementacji kolejki priorytetowej. Ze względu na~dużą ilość operacji \swiftinline{removeMin} oraz \swiftinline{decreaseKey}, najwydajniejsze implementacje używają kopców Fibonacciego. Celem tego testu jest~jednak porównanie czasu działania jak najbardziej podobnych do~siebie implementacji w~obu językach, a~nie~napisanie jak najwydajniejszej implementacji algorytmu, dlatego zdecydowano się użyć prostszej struktury danych, czyli zwykłych kopców typu \texttt{min}. Pozwoliło to~na~prostszą analizę czasu działania kodu bez~zagłębiania się w~szczegóły działania samej struktury.
 
 Algorytm Dijkstry został zaimplementowany dwukrotnie dla~każdego z~języków. Pierwsze wersje (nazywane dalej \textit{standardowymi}) korzystają ze~wszystkich dostępnych funkcji danego języka. W~przypadku Swift będą to~funkcjonalności takie jak protokoły, funkcje wyższego rzędu \swiftinline{map} i~\swiftinline{filter} czy~funkcje pomocnicze. W~wersji dla~Objective-C użyto m.in. typów \objcinline{NSArray} zarządzającego automatycznie długością tablicy, typu \objcinline{NSNumber} pozwalającego na~przechowywanie liczb w~tablicy \objcinline{NSArray} oraz automatycznego zarządzania pamięcią wszędzie tam, gdzie było to~możliwe. Kod opisanych powyżej testów znajduje się w~plikach \texttt{DijkstraTest.m} (dla~Objective-C) oraz \texttt{DijkstraTest.swift} (dla~Swift). Następnie przeprowadzono analizę działania wyżej opisanych implementacji i~na podstawie jej wyników zoptymalizowano implementacje dla~obu języków. Poprawiony kod znajduje się w plikach \texttt{DijkstraOptimized.m} oraz \texttt{DijkstraOptimized.swift}.
 
@@ -757,7 +762,7 @@ Algorytm Dijkstry został zaimplementowany dwukrotnie dla~każdego z~języków. 
     \label{p:dijkstra}
 \end{figure}
 
-Rezultaty poszczególnych testów zostały przedstawione na~wykresie \ref{p:dijkstra}. W~przypadku standardowej implementacji przewaga Swifta jest wyraźna, kod napisany w~tym języku jest 3-4 razy szybszy od~kodu w~Objective-C. W~przypadku zoptymalizowanych wersji Swifta kod swiftowy nadal jest szybszy, jednak różnica nie~jest już aż~tak znacząca i~wynosi ok. 30\%.
+Rezultaty poszczególnych testów zostały przedstawione na~wykresie \ref{p:dijkstra}. W~przypadku standardowej implementacji przewaga Swift jest~wyraźna, kod napisany w~tym języku jest~3-4 razy szybszy od~kodu w~Objective-C. W~przypadku zoptymalizowanych wersji Swift kod swiftowy nadal jest~szybszy, jednak różnica nie~jest już aż~tak znacząca i~wynosi ok. 30\%.
 
 \begin{figure}
     \makebox[\textwidth][c]{\includegraphics[width=1.3\textwidth]{img/Dijkstra2.png}}
@@ -765,7 +770,7 @@ Rezultaty poszczególnych testów zostały przedstawione na~wykresie \ref{p:dijk
     \label{i:dijkstra}
 \end{figure}
 
-Tablica profilowania została przedstawiona na~rysunku \ref{i:dijkstra}. Test, którego wyniki przestawione są na~tablicy został uruchomiony dla~grafu o~10000 wierzchołków. Dla lepszej czytelności usunięto wpisy zajmujące nie~więcej niż 10$ms$. Krótka analiza tablicy wskazuje na~przyczyny słabej wydajności kodu napisanego w~Objective-C. Jak widać, cały test zajął ponad 20 sekund, z~czego obliczanie sąsiednich wierzchołków zajęło aż~$5,72s$ (około 27\% czasu całego testu). Również około $5s$ również pobieranie danych z~tablic typu \objcinline{NSArray}. Następnie, wywołanie funkcji \objcinline{objc_msgSend}, które łącznie zajęło $4,04s$ (ok. 19\% całkowitego czasu). Ostatnim czasochłonnym elementem jest obsługa zliczania referencji. Łączny czas wywołania funkcji \objcinline{objc_retain}, \objcinline{objc_release} i~ich pochodnych wyniósł łącznie $3,01s$, czyli około $14\%$ całkowitego czasu wywołania funkcji. Ciekawy jest znikomo mały czas obsługi kolejki priorytetowej (łącznie około $216ms$).
+Tablica profilowania została przedstawiona na~rysunku \ref{i:dijkstra}. Test, którego wyniki przestawione są na~tablicy został uruchomiony dla~grafu o~10000 wierzchołków. Dla lepszej czytelności usunięto wpisy zajmujące nie~więcej niż 10$ms$. Krótka analiza tablicy wskazuje na~przyczyny słabej wydajności kodu napisanego w~Objective-C. Jak widać, cały test zajął ponad 20 sekund, z~czego obliczanie sąsiednich wierzchołków zajęło aż~$5,72s$ (około 27\% czasu całego testu). Również około $5s$ również pobieranie danych z~tablic typu \objcinline{NSArray}. Następnie, wywołanie funkcji \objcinline{objc_msgSend}, które łącznie zajęło $4,04s$ (ok. 19\% całkowitego czasu). Ostatnim czasochłonnym elementem jest~obsługa zliczania referencji. Łączny czas wywołania funkcji \objcinline{objc_retain}, \objcinline{objc_release} i~ich pochodnych wyniósł łącznie $3,01s$, czyli około $14\%$ całkowitego czasu wywołania funkcji. Ciekawy jest~znikomo mały czas obsługi kolejki priorytetowej (łącznie około $216ms$).
 
 W przypadku implementacji w~języku Swift łączny czas testu wyniósł jedynie $4,45s$. Największą część zajęła obsługa zliczania referencji - łącznie $2,69s$, czyli ponad $60\%$ całkowitego czasu. Obliczanie sąsiednich wierzchołków również okazało się stosunkowo kosztowne i~potrzebowało $993ms$ ($22\%$ całkowitego czasu). Obsługa kolejki priorytetowej zajęła $207ms$, a~więc czas zbliżony do~tego z~implementacji w~Objective-C.
 
@@ -792,21 +797,21 @@ W przypadku kodu w~Swift optymalizacje skupiają się głównie na~zmniejszeniu
     \item użycie wczesnego wychodzenia z~pętli za~pomocą słowa kluczowego \swiftinline{continue}.
 \end{itemize}
 
-Wyniki testów po~optymalizacjach są również przedstawione na~wykresie \ref{p:dijkstra} oraz tablicy profilowania \ref{i:dijkstra}. Czas wykonania obu testów zmalał, w~przypadku implementacji w~Swift o~$63\%$, w~przypadku Objective-C aż~o~$88\%$. Wydajność kodu w~starszym języku znacznie zbliżyła się do~wydajności kodu w~Swift. Należy jednak zaznaczyć, że~w~kilku przypadkach użyto elementów języka C, który jest w~pełni kompatybilny z~Objective-C i~jest uważany za jeden z~najszybszych języków używanych współcześnie.
+Wyniki testów po~optymalizacjach są również przedstawione na~wykresie \ref{p:dijkstra} oraz tablicy profilowania \ref{i:dijkstra}. Czas wykonania obu testów zmalał, w~przypadku implementacji w~Swift o~$63\%$, w~przypadku Objective-C aż~o~$88\%$. Wydajność kodu w~starszym języku znacznie zbliżyła się do~wydajności kodu w~Swift. Należy jednak zaznaczyć, że~w~kilku przypadkach użyto elementów języka C, który jest~w~pełni kompatybilny z~Objective-C i~jest uważany za jeden z~najszybszych języków używanych współcześnie.
 
 \subsection{Podsumowanie}
 
-Powyższy test jest przykładem na to, że kod swiftowy jest wydajniejszy niż kod Objective-C również w przypadku złożonych problemów. Co więcej, kod napisany bez zwracania szczególnej uwagi na wydajność okazał się całkiem szybki.
+Powyższy test jest~przykładem na~to, że~kod swiftowy jest~wydajniejszy niż kod Objective-C również w~przypadku złożonych problemów. Co więcej, kod napisany bez zwracania szczególnej uwagi na~wydajność okazał się całkiem szybki.
 
-Standardowe implementacje w obu językach potwierdziły wnioski z poprzednich testów. Typ \objcinline{NSArray} w porównaniu z typem \swiftinline{Array} ze Swifta jest słabo wydajny. Kod Objective-C, który operuje na typach prostych powinien używać tablic z języka C. Jak w prawie każdym poprzednim teście, narzut funkcji \swiftinline{objc_msgSend} jest znaczący, a obsługa inkrementowania i dekrementowania liczników referencji zajmuje więcej czasu niż w Swift. Również użycie typu \objcinline{NSNumber} opakowującego typ całkowitoliczbowy pokazało, jak wolne jest to rozwiązanie.
+Standardowe implementacje w~obu językach potwierdziły wnioski z~poprzednich testów. Typ \objcinline{NSArray} w~porównaniu z~typem \swiftinline{Array} ze Swift jest~słabo wydajny. Kod Objective-C, który operuje na~typach prostych powinien używać tablic z~języka C. Jak w~prawie każdym poprzednim teście, narzut funkcji \swiftinline{objc_msgSend} jest~znaczący, a~obsługa inkrementowania i~dekrementowania liczników referencji zajmuje więcej czasu niż w~Swift. Również użycie typu \objcinline{NSNumber} opakowującego typ całkowitoliczbowy pokazało, jak wolne jest~to rozwiązanie.
 
-Aby kod zapisany w Objective-C wykonywał się w krótkim czasie, autor testu musiał użyć kilku elementów języka C. Jest zatem możliwe pisanie wydajnego kodu w Objective-C przy użyciu C, traci się przy tym jednak większość zalet, jakie Objective-C daje (np.~ARC, obiektowość).
+Aby kod zapisany w~Objective-C wykonywał się w~krótkim czasie, autor testu musiał użyć kilku elementów języka C. Jest zatem możliwe pisanie wydajnego kodu w~Objective-C przy użyciu C, traci się przy tym jednak większość zalet, jakie Objective-C daje (np.~ARC, obiektowość).
 
 \section{Pozostałe testy}
 
 \subsection{Zliczanie słów}
 
-Test polega na~zliczeniu ilości wystąpień słów w~tekście składającym się z~$n$ słów. Dla każdej instancji testu generowany jest nowy tekst zawierający słowa wylosowany z~tablicy około 100 słów. Kod testów dostępny jest w~plikach \texttt{WordFrequencyTest.swift} (dla~języka Swift) oraz \texttt{WordFrequencyTest.m} (dla~Objective-C).
+Test polega na~zliczeniu ilości wystąpień słów w~tekście składającym się z~$n$ słów. Dla każdej instancji testu generowany jest~nowy tekst zawierający słowa wylosowany z~tablicy około 100 słów. Kod testów dostępny jest~w~plikach \texttt{WordFrequencyTest.swift} (dla~języka Swift) oraz \texttt{WordFrequencyTest.m} (dla~Objective-C).
 
 \subsection{Sito Eratostenesa}
 
@@ -818,7 +823,7 @@ Test polega na~zliczaniu ilości liter, słów oraz linii w~tekście długości 
 
 \subsection{Konkatenacja napisów}
 
-Test polega na~$n$-krotnym skonkatenowaniu napisu \textit{Hello world} ze~sobą. Kod testów dostępny jest w~plikach \texttt{StringConcatenationTest.swift} (dla~języka Swift) oraz \texttt{StringConcatenationTest.m} (dla~Objective-C).
+Test polega na~$n$-krotnym skonkatenowaniu napisu \textit{Hello world} ze~sobą. Kod testów dostępny jest~w~plikach \texttt{StringConcatenationTest.swift} (dla~języka Swift) oraz \texttt{StringConcatenationTest.m} (dla~Objective-C).
 
 \subsection{Histogram RGB}
 
@@ -834,9 +839,9 @@ Wyniki pozostałych testów zostały przedstawione na~rysunku \ref{p:other}. W~c
 
 W teście \texttt{SieveOfErathostenes} największym obciążeniem były operacje na~tablicach. W~przypadku implementacji w~Objective-C użyto prostych tablic z~języka C, stąd tak~wysoka wydajność tej implementacji.
 
-Swift okazał się szybszy w~dwóch testach. Podobnie jak test \texttt{SieveOfEratosthenes}, test \texttt{RGBHistogram} również polegał na~wykonywaniu dużej ilości operacji na~tablicy. W~tym wypadku do~implementacji w~Objective-C użyto klasy \objcinline{NSArray}. Zatem wniosek, jaki nasuwa się na~myśl jest następujący: jeśli kod Objective-C ma~być szybki, należy użyć struktur danych z~C.
+Swift okazał się szybszy w~dwóch testach. Podobnie jak test \texttt{SieveOfEratosthenes}, test \texttt{RGBHistogram} również polegał na~wykonywaniu dużej ilości operacji na~tablicy. W~tym wypadku do~implementacji w~Objective-C użyto klasy \objcinline{NSArray}. Zatem wniosek, jaki nasuwa się na~myśl jest~następujący: jeśli kod Objective-C ma~być szybki, należy użyć struktur danych z~C.
 
-Ostatni test \texttt{StringConcatenation} pokazał, że~implementacja operacji dodawania napisów jest nieco szybsza w~Swift.
+Ostatni test \texttt{StringConcatenation} pokazał, że~implementacja operacji dodawania napisów jest~nieco szybsza w~Swift.
 
 \begin{figure}
     \includegraphics{plots/otherTests}
@@ -853,7 +858,7 @@ Ostatni test \texttt{StringConcatenation} pokazał, że~implementacja operacji d
     \rowcolors{2}{white!}{gray!10}
     \begin{tabularx}{1.0\textwidth}{ rXc } 
         \hline
-        \textbf{L.p.} & \textbf{Test}  & \textbf{Swift w porównaniu} \\
+        \textbf{L.p.} & \textbf{Test}  & \textbf{Swift w~porównaniu} \\
                       &                & \textbf{z Objective-C}      \\
         \hline
         1. & \texttt{ArrayInsertion}                         & \textcolor{MTGreen}{-78,32 \%}    \\ 
@@ -880,14 +885,14 @@ Ostatni test \texttt{StringConcatenation} pokazał, że~implementacja operacji d
 
 Tabela \ref{t:results} przedstawia różnicę, między czasem wykonania testu w~Swift a~Objective-C dla~każdego testu opisanego w~tej pracy. Wartość ujemna (oznaczona kolorem zielonym) oznacza, że~kod Swift był średnio o~$x$ procent szybszy w~danym teście. Analogicznie wartość dodatnia (oznaczona kolorem czerwonym) wskazuje, że~kod Swift był średnio o~$x$ procent wolniejszy od~kodu Objective-C.
 
-Z dwunastu przeprowadzonych testów, kod pisany w~języku Swift był szybszy w~ośmiu przypadkach. W~dwóch z~ośmiu przypadków wymagane były pewne optymalizacje kodu. W~przypadku testu \texttt{BinarySearchTree} należało zrezygnować z~typów wartościowych na~rzecz klas. W~teście \texttt{DispatchMethod}, dopiero statyczne wywoływanie funkcji okazało się szybsze od~wywoływania przez~wiadomości z~Objective-C. Przykłady te pozwalają wysnuć wniosek, że~choć Swift jest ogólnie szybszy od~Objective-C, to~należy z rozwagą używać bardziej zaawansowanych właściwości tego języka. W~czterech testach był szybszy kod Objective-C.
+Z dwunastu przeprowadzonych testów, kod pisany w~języku Swift był szybszy w~ośmiu przypadkach. W~dwóch z~ośmiu przypadków wymagane były pewne optymalizacje kodu. W~przypadku testu \texttt{BinarySearchTree} należało zrezygnować z~typów wartościowych na~rzecz klas. W~teście \texttt{DispatchMethod}, dopiero statyczne wywoływanie funkcji okazało się szybsze od~wywoływania przez~wiadomości z~Objective-C. Przykłady te pozwalają wysnuć wniosek, że~choć Swift jest~ogólnie szybszy od~Objective-C, to~należy z~rozwagą używać bardziej zaawansowanych właściwości tego języka. W~czterech testach był szybszy kod Objective-C.
 
-\section{Słabe i~mocne strony Swifta na~podstawie testów}
+\section{Słabe i~mocne strony Swift na~podstawie testów}
 
-Główne cechy Swifta, dzięki którym kod pisany w~tym języku jest szybszy to:
+Główne cechy Swift, dzięki którym kod pisany w~tym języku jest~szybszy to:
 \begin{itemize}
     \item lepiej zoptymalizowane podstawowe struktury danych: \swiftinline{Array}, \swiftinline{Dictionary} oraz \swiftinline{Set} (w tym, możliwość przechowywania w~nich prymitywnych typów danych)
-    \item zrezygnowanie z~wywoływania metod przez~wiadomości (a co za tym idzie wyeliminowanie narzutu obliczeniowego związanego z działaniem funkcji \objcinline{objc_msgSend}) i~zastąpienie go~w~większości przypadków wywołaniami statycznymi
+    \item zrezygnowanie z~wywoływania metod przez~wiadomości (a co za tym idzie wyeliminowanie narzutu obliczeniowego związanego z~działaniem funkcji \objcinline{objc_msgSend}) i~zastąpienie go~w~większości przypadków wywołaniami statycznymi
     \item zoptymalizowana obsługa ARC, np.~poprzez stosowanie typów wartościowych   
     \item ulepszona obsługa właściwości klas (\ang{properties}).
 \end{itemize}
@@ -895,42 +900,42 @@ Główne cechy Swifta, dzięki którym kod pisany w~tym języku jest szybszy to:
 Aspekty, w~których Swift przegrywa wydajnościowo z~Objective-C:
 \begin{itemize}
     \item obsługa napisów (\ang{strings})
-    \item język C jest nadal szybszy od~Swift, zatem dobrze zoptymalizowany kod w~Objective-C (tj. w~którym najważniejsze fragmenty są napisane w~C), może okazać się szybszy od~kodu swiftowego.
+    \item język C jest~nadal szybszy od~Swift, zatem dobrze zoptymalizowany kod w~Objective-C (tj. w~którym najważniejsze fragmenty są napisane w~C), może okazać się szybszy od~kodu swiftowego.
 \end{itemize}
 
-\section{Perspektywy na przyszłość}
+\section{Perspektywy na~przyszłość}
 % Alternatywny tytuł: Możliwości rozwoju języka 
 
-Swift jest językiem stawiającym na~bezpieczeństwo, wygodę pracy oraz po~części również na~szybkość działania. Otwarte źródła języka, dynamiczny rozwój oraz zaangażowana społeczność sprawiają, że~ma on~szansę podbić nie tylko~świat aplikacji na~systemy Apple, ale~również inne gałęzie branży informatycznej. Aby to~jednak miało miejsce, Swift musi poprawić kilka aspektów, w~których wyraźnie odstaje od~konkurencyjnych języków.
+Swift jest~językiem stawiającym na~bezpieczeństwo, wygodę pracy oraz po~części również na~szybkość działania. Otwarte źródła języka, dynamiczny rozwój oraz zaangażowana społeczność sprawiają, że~ma on~szansę podbić nie tylko~świat aplikacji na~systemy Apple, ale~również inne gałęzie branży informatycznej. Aby to~jednak miało miejsce, Swift musi poprawić kilka aspektów, w~których wyraźnie odstaje od~konkurencyjnych języków.
 
-Największym problemem Swifta jest jego młody wiek. Pomimo, że~od czasu wydania wersji 1.0 języka minęło już prawie 5 lat, to~nadal nie~ma~stabilnego Interfejsu binarnego aplikacji (ABI), a~co za~tym idzie, programiści nie~mogą używać bibliotek napisanych w~innych wersjach języka niż wersja, w~której piszą projekt. Do wersji 3.2 Swift nie~miał też kompatybilności wstecznej, przez~co~przejście na~nowszą wersję języka wiązało się z koniecznością konwersji całego kodu (łącznie z~bibliotekami zewnętrznymi), co~nie zawsze należało do~najłatwiejszych zadań.
+Największym problemem Swift jest~jego młody wiek. Pomimo, że~od czasu wydania wersji 1.0 języka minęło już prawie 5 lat, to~nadal nie~ma~stabilnego Interfejsu binarnego aplikacji (ABI), a~co za~tym idzie, programiści nie~mogą używać bibliotek napisanych w~innych wersjach języka niż wersja, w~której piszą projekt. Do wersji 3.2 Swift nie~miał też kompatybilności wstecznej, przez~co~przejście na~nowszą wersję języka wiązało się z koniecznością konwersji całego kodu (łącznie z~bibliotekami zewnętrznymi), co~nie~zawsze należało do~najłatwiejszych zadań.
 
 Przez pierwsze półtora roku Swift był językiem pozwalającym na~tworzenie aplikacji tylko~i~wyłącznie na~platformy iOS i~MacOS. Z~tego powodu, wszystkie biblioteki w~tamtym czasie skupiały się na~potrzebach tych dwóch platform. 3 grudnia 2015 roku ogłoszono, że~Swift może zostać uruchomiony na~systemach rodziny Linux. Okazało się jednak, że~poza samym językiem i~jego biblioteką standardową nie~ma~zbyt wielu narzędzi, gdyż albo~nie~zostały przystosowane do~uruchamiania pod~systemem innym niż MacOS, albo~do~tej pory nie~było potrzeby, żeby stworzyć takie narzędzia. Społeczność zaczęła wtedy portować istniejące programy i~tworzyć nowe, nadal jednak brakuje wielu stabilnych, multiplatformowych bibliotek. Przykładem może być brak multiplatformowej biblioteki do~tworzenia interfejsów graficznych, takiej jak Swing czy~QT czy~zaawansowanego frameworka do~tworzenia aplikacji internetowych. Nie istnieje też zintegrowane środowisko programistyczne do~pracy w~Swift pod~systemem Linux.
 
-Testy opisane w~tej pracy udowodniły, że~automatyczne zliczanie referencji powoduje w~niektórych przypadkach duży narzut obliczeniowy. Jeśli język Swift ma~się stać językiem do~pisania rozbudowanych, wysokowydajnościowych systemów, problem ten musi zostać zaadresowany. Jedną z~propozycji na~rozwiązanie tego problemu jest implementacja koncepcji własności (\ang{ownership}) pamięci \footnote{https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md}, zastosowana ostatnio w~języku Rust. 
+Testy opisane w~tej pracy udowodniły, że~automatyczne zliczanie referencji powoduje w~niektórych przypadkach duży narzut obliczeniowy. Jeśli język Swift ma~się stać językiem do~pisania rozbudowanych, wysokowydajnościowych systemów, problem ten musi zostać zaadresowany. Jedną z~propozycji na~rozwiązanie tego problemu jest~implementacja koncepcji własności (\ang{ownership}) pamięci \footnote{https://github.com/apple/swift/blob/master/docs/OwnershipManifesto.md}, zastosowana ostatnio w~języku Rust. 
 
-Generyczność w~Swift również pozostawia pole do~poprawy. W~2016 roku w repozytorium kodu Swift powstał dokument \footnote{https://github.com/apple/swift/blob/master/docs/GenericsManifesto.md}, w~którym wymienione zostały poprawki, które ulepszyłyby pracę z~typami generycznymi, funkcjami generycznymi i~protokołami. Znalazły się tam m.in. takie zagadnienia jak:
+Generyczność w~Swift również pozostawia pole do~poprawy. W~2016 roku w~repozytorium kodu Swift powstał dokument \footnote{https://github.com/apple/swift/blob/master/docs/GenericsManifesto.md}, w~którym wymienione zostały poprawki, które ulepszyłyby pracę z~typami generycznymi, funkcjami generycznymi i~protokołami. Znalazły się tam m.in. takie zagadnienia jak:
 \begin{itemize}
     \item \textit{variadic generics}, czyli funkcja znana z~języka C++ (zastosowana dla~typów generycznych, a~nie~szablonów, zasada działania pozostaje jednak taka sama)
     \item rozszerzenia typów strukturalnych (czyli w~wypadku Swift - krotek)
     \item generyczne protokoły, podobne do~generycznych interfejsów w~C\# czy~Java.
 \end{itemize}
 
-Refleksje i~wparcie dla~metaprogramingu to~kolejne przydatne funkcje, których brakuje w~Swift. Co prawda istnieje typ \swiftinline{Mirror} pozwalający na~przeglądanie struktury typu (typów zagnieżdżonych, funkcji, właściwości i~ich wartości), niemniej w~porównaniu z~refleksjami z~C\#, Java, nie~wspominając już o językach skryptowych takich jak JavaScript, funkcja ta~jest mocno ograniczona. Przykładowo, za~pomocą mirroringu nie~można ustawić wartości właściwości. Brak pełnych refleksji jest sporym utrudnieniem w~pisaniu narzędzi automatyzujących pracę, np.~generatorów kodu czy~linterów.
+Refleksje i~wparcie dla~metaprogramingu to~kolejne przydatne funkcje, których brakuje w~Swift. Co prawda istnieje typ \swiftinline{Mirror} pozwalający na~przeglądanie struktury typu (typów zagnieżdżonych, funkcji, właściwości i~ich wartości), niemniej w~porównaniu z~refleksjami z~C\#, Java, nie~wspominając już o językach skryptowych takich jak JavaScript, funkcja ta~jest mocno ograniczona. Przykładowo, za~pomocą mirroringu nie~można ustawić wartości właściwości. Brak pełnych refleksji jest~sporym utrudnieniem w~pisaniu narzędzi automatyzujących pracę, np.~generatorów kodu czy~linterów.
 
-Twórcy Swifta powinni również poprawić wsparcie dla~obliczeń asynchronicznych. W~tym momencie, Swift nie~posiada żadnego wbudowanego mechanizmu wykonywania kodu asynchronicznego. Programiści zwykle wykorzystują do tego multiplatformową technologię Grand Central Dispatch, opakowującą wątki systemowe w~abstrakcję w~postaci kolejek operacji. Już w~2016 roku jeden ze współtwórców Swift, Chris Lattner, wspominał o~możliwości zaimplementowania w~Swift mechanizmu \texttt{async/await}, znanego z~C\# czy~JavaScript lub~modelu aktorów, na~razie jednak nie~pojawiły się żadne informacje o~postępach w~tym kierunku.
+Twórcy Swift powinni również poprawić wsparcie dla~obliczeń asynchronicznych. W~tym momencie, Swift nie~posiada żadnego wbudowanego mechanizmu wykonywania kodu asynchronicznego. Programiści zwykle wykorzystują do tego multiplatformową technologię Grand Central Dispatch, opakowującą wątki systemowe w~abstrakcję w~postaci kolejek operacji. Już w~2016 roku jeden ze współtwórców Swift, Chris Lattner, wspominał o~możliwości zaimplementowania w~Swift mechanizmu \texttt{async/await}, znanego z~C\# czy~JavaScript lub~modelu aktorów, na~razie jednak nie~pojawiły się żadne informacje o~postępach w~tym kierunku.
 
-Ostatnim dużym problemem Swifta jest słaba współpraca z~innymi językami programowania. Język Java dzięki platformie JVM może używać kodu napisanego w~takich językach jak Kotlin, Clojure, Groovy czy~Scala. C\# współpracuje np.~z~C, C++, F\#, Visual Basic .NET. Istnieją również implementacje popularnych języków skryptowych takich jak Python czy~Ruby pozwalające na~kompilowanie ich kodu do~kodu pośredniego JVM lub~CIL. Swift w~w wersji 4.0 współpracuje w~zasadzie tylko~z~Objective-C oraz C (jako, że~C jest podzbiorem Objective-C). Istnieje również możliwość używania kodu napisanego w~C++, wiąże się to~jednak z~napisaniem biblioteki opakowującej kod C (\ang{wrapper}) w~Objective-C.
+Ostatnim dużym problemem Swift jest~słaba współpraca z~innymi językami programowania. Język Java dzięki platformie JVM może używać kodu napisanego w~takich językach jak Kotlin, Clojure, Groovy czy~Scala. C\# współpracuje np.~z~C, C++, F\#, Visual Basic .NET. Istnieją również implementacje popularnych języków skryptowych takich jak Python czy~Ruby pozwalające na~kompilowanie ich kodu do~kodu pośredniego JVM lub~CIL. Swift w~w wersji 4.0 współpracuje w~zasadzie tylko~z~Objective-C oraz C (jako, że~C jest~podzbiorem Objective-C). Istnieje również możliwość używania kodu napisanego w~C++, wiąże się to~jednak z~napisaniem biblioteki opakowującej kod C (\ang{wrapper}) w~Objective-C.
 
-\chapter{Podsumowanie i dalsze kierunki}
+\chapter{Podsumowanie i~dalsze kierunki}
 
-Głównym celem tej pracy było porównanie wydajności języka Swift z Objective-C. Na podstawie przeprowadzonych testów można stwierdzić, że w większości przypadków Swift jest bardziej wydajnym językiem. Wyniki przedstawione we wpisie z blogu \cite{yalantis} oraz pracy \cite{ijeast}, choć mocno okrojone, potwierdzają rezultaty otrzymane w tej pracy. Wyniki z wpisu \cite{gunzel} sugerują podobną wydajność, badania zostały jednak przeprowadzone w 2015 roku, czyli przy użyciu Swifta w wersji nie wyższej niż 2.0, który od tamtej pory został zoptymalizowany.
+Głównym celem tej pracy było porównanie wydajności języka Swift z~Objective-C. Na podstawie przeprowadzonych testów można stwierdzić, że~w~większości przypadków Swift jest~bardziej wydajnym językiem. Wyniki przedstawione we wpisie z~blogu \cite{yalantis} oraz pracy \cite{ijeast}, choć mocno okrojone, potwierdzają rezultaty otrzymane w~tej pracy. Wyniki z~wpisu \cite{gunzel} sugerują podobną wydajność, badania zostały jednak przeprowadzone w~2015 roku, czyli przy użyciu Swift w~wersji nie~wyższej niż 2.0, który od tamtej pory został zoptymalizowany.
 
-Najważniejsze powody lepszej wydajności Swift to zastosowanie wywoływania statycznego i dynamicznego metod zamiast wywoływania przez wiadomości, zoptymalizowane struktury danych i obsługa ARC oraz lepsze wsparcie dla programowania obiektowego. Na korzyść Objective-C przemawia szybsza implementacja ciągów znakowych oraz stuprocentowa kompatybilność z C. Nie istnieją prace, które porównywałyby te dwa języki w równie szczegółowy sposób co niniejsza praca, z tego też względu nie ma możliwości skonfrontowania opisanych w tym akapicie wniosków. 
+Najważniejsze powody lepszej wydajności Swift to zastosowanie wywoływania statycznego i~dynamicznego metod zamiast wywoływania przez wiadomości, zoptymalizowane struktury danych i~obsługa ARC oraz lepsze wsparcie dla programowania obiektowego. Na korzyść Objective-C przemawia szybsza implementacja ciągów znakowych oraz stuprocentowa kompatybilność z~C. Nie istnieją prace, które porównywałyby te dwa języki w~równie szczegółowy sposób co niniejsza praca, z~tego też względu nie~ma możliwości skonfrontowania opisanych w~tym akapicie wniosków. 
 
-Nowy język naprawia wiele problemów wydajnościowych, z którymi borykało się Objective-C, co w połączeniu z nowymi funkcjami Swifta przyspieszającymi tworzenie bezpieczniejszego i łatwiejszego w utrzymaniu oprogramowania sprawia, że jest dużo lepszym wyborem dla aplikacji mobilnych i desktopowych (a w przyszłości być może również serwerowych).
+Nowy język naprawia wiele problemów wydajnościowych, z~którymi borykało się Objective-C, co w~połączeniu z~nowymi funkcjami Swift przyspieszającymi tworzenie bezpieczniejszego i~łatwiejszego w~utrzymaniu oprogramowania sprawia, że~jest~dużo lepszym wyborem dla aplikacji mobilnych i~desktopowych (a w~przyszłości być może również serwerowych).
  
-Swift jest językiem podlegającym ciągłemu i szybkiemu rozwojowi. Z tego powodu, powyższa praca nie jest definitywnie zakończona i w przyszłości może być rozszerzana o kolejne przypadki testowe sprawdzające nowe funkcje języka czy zmiany w optymalizacji kompilatora lub środowiska uruchomieniowego.
+Swift jest~językiem podlegającym ciągłemu i~szybkiemu rozwojowi. Z tego powodu, powyższa praca nie~jest~definitywnie zakończona i~w przyszłości może być rozszerzana o~kolejne przypadki testowe sprawdzające nowe funkcje języka czy zmiany w~optymalizacji kompilatora lub środowiska uruchomieniowego.
 
 %%%%% BIBLIOGRAFIA
 
