@@ -13,22 +13,34 @@
 \usepackage[table]{xcolor}
 
 %%%%% DANE DO STRONY TYTUŁOWEJ
-\polishtitle    {Polski tytuł}
-\englishtitle   {English title}
+\polishtitle    {Porównanie właściwości i wydajności języków Swift i Objective-C}
+\englishtitle   {Properties and performance comparison of Swift and Objective-C languages}
 %\polishabstract {\ldots}
 %\englishabstract{\ldots}
-\author         {Maksymilian Debeściak}
+\author         {Karol Wieczorek}
 % w~przypadku kilku promotorów, lub~konieczności podania ich afiliacji, linie
 % w~poniższym poleceniu można złamać poleceniem \fmlinebreak
-\advisor        {dr Jan Kowalski}
+\advisor        {dr Wiktor Zychla}
 %\date          {}                     % Data złożenia pracy
 
-\polishabstract {Polskie streszczenie}
-\englishabstract {Angielskie streszczenie}
+\polishabstract {
+    Celem niniejszej pracy jest prezentacja języka Swift, nowego języka programowania na platformy firmy Apple, oraz porównanie go z jego poprzednikiem - Objective-C. 
+
+    Praca składa się z dwóch części. W pierwszej z nich skupiono się na przedstawieniu Swift i jego funkcji. W celu zaznajomienia czytelnika z omawianym językiem, zestawiono jego cechy z innymi popularnymi językami programowania. Następnie wskazano elementy wspólne Objective-C i Swift oraz wyszczególniono właściwości, które zostały dodane lub zmienione w nowym języku.
+
+    W drugiej części zaprezentowano wyniki autorskich testów porównujących wydajność Swift i Objective-C. Przedstawiono również szczegółową analizę poszczególnych testów oraz wskazano prawdopodobne przyczyny lepszej wydajności nowszego języka.
+}
+\englishabstract {
+    The goal of this master thesis is to present Swift language, a new programming language for Apple platforms, and to compare it with its predecessor - Objective-C.
+
+    The master thesis consists of two parts. First part presents Swift and its functions. It starts with a comparison of Swift and other popular programming languages and continues to describe common features of Swift and Objective-C along with the properties of newer languages, which are changed or added comparing to the older ones.
+
+    The second part of the paper shows results of performance tests of Swift and Objective-C. It also contains a detailed analysis of each test and suggests possible reasons for better performance of newer language.
+}
 
 % Dane do~oświadczenia o~autorskim wykonaniu
-%\transcriptnum {}                     % Numer indeksu
-%\advisorgen    {dr. Jana Kowalskiego} % Nazwisko promotora w~dopełniaczu
+\transcriptnum {248091}                     % Numer indeksu
+\advisorgen    {dr. Wiktora Zychli} % Nazwisko promotora w~dopełniaczu
 %%%%%
 
 %%%%% WLASNE DODATKOWE PAKIETY
@@ -929,7 +941,7 @@ Ostatnim dużym problemem Swift jest~słaba współpraca z~innymi językami prog
 
 \chapter{Podsumowanie i~dalsze kierunki}
 
-Głównym celem tej pracy było porównanie wydajności języka Swift z~Objective-C. Na podstawie przeprowadzonych testów można stwierdzić, że~w~większości przypadków Swift jest~bardziej wydajnym językiem. Wyniki przedstawione we wpisie z~blogu \cite{yalantis} oraz pracy \cite{ijeast}, choć mocno okrojone, potwierdzają rezultaty otrzymane w~tej pracy. Wyniki z~wpisu \cite{gunzel} sugerują podobną wydajność, badania zostały jednak przeprowadzone w~2015 roku, czyli przy użyciu Swift w~wersji nie~wyższej niż 2.0, który od tamtej pory został zoptymalizowany.
+Głównym celem tej pracy było porównanie wydajności języka Swift z~Objective-C. Na podstawie przeprowadzonych testów można stwierdzić, że~w~większości przypadków Swift jest~bardziej wydajnym językiem. Wyniki przedstawione we wpisie z~blogu \cite{yalantis} oraz pracy \cite{ijeast}, choć mocno okrojone, potwierdzają rezultaty otrzymane w~tej pracy. Wyniki z~wpisu \cite{guenzel} sugerują podobną wydajność, badania zostały jednak przeprowadzone w~2015 roku, czyli przy użyciu Swift w~wersji nie~wyższej niż 2.0, który od tamtej pory został zoptymalizowany.
 
 Najważniejsze powody lepszej wydajności Swift to zastosowanie wywoływania statycznego i~dynamicznego metod zamiast wywoływania przez wiadomości, zoptymalizowane struktury danych i~obsługa ARC oraz lepsze wsparcie dla programowania obiektowego. Na korzyść Objective-C przemawia szybsza implementacja ciągów znakowych oraz stuprocentowa kompatybilność z~C. Nie istnieją prace, które porównywałyby te dwa języki w~równie szczegółowy sposób co niniejsza praca, z~tego też względu nie~ma możliwości skonfrontowania opisanych w~tym akapicie wniosków. 
 
@@ -940,9 +952,28 @@ Swift jest~językiem podlegającym ciągłemu i~szybkiemu rozwojowi. Z tego powo
 %%%%% BIBLIOGRAFIA
 
 \begin{thebibliography}{1}
-\bibitem{yalantis} "Is Swift Faster Than Objective-C?", \url{https://yalantis.com/blog/is-swift-faster-than-objective-c/}
-\bibitem{ijeast} \url{http://www.ijeast.com/papers/185-189,Tesma110,IJEAST.pdf}
-\bibitem{gunzel} \url{https://thomasguenzel.com/blog/2015/12/01/a-small-speed-comparison-objective-c-and-swift/}
+    \bibitem{swiftbook} \emph{The Swift Programming Language}, \url{https://docs.swift.org/swift-book/}. Dostęp: 13-07-2019.
+    \bibitem{eidhof} Eidhof C., Kugler F., Swiersta W., \emph{Functional Swift}, Kugler \& Eidhof GbR, 2017.
+    \bibitem{learning_objc} Clair R, \emph{Learning Objective-C 2.0}, Addison-Wesley, 2011.
+    \bibitem{cormen} Cormen T. H., Leiserson C. E., Rivest R. L., Stein C, \emph{Wprowadzenie do algorytmów}, Warszawa, Wydawnictwo Naukowe PWN 2012, s. 671-678.
+
+    \bibitem{wwdc_2014_keynote} \emph{WWDC 2014 - Keynote}, \url{https://www.youtube.com/watch?v=w87fOAG8fjk}. Dostęp: 13-07-2019.
+    \bibitem{wwdc_2016_performance} \emph{WWDC 2016 - Understanding Swift Performance}, \url{https://developer.apple.com/videos/play/wwdc2016/416/}. Dostęp: 13-07-2019.
+    \bibitem{wwdc_2011_arc} \emph{WWDC 2011 - Introducing Automatic Reference Counting}, \url{https://developer.apple.com/videos/play/wwdc2011/323/}. Dostęp: 13-07-2019.
+    \bibitem{wwdc_2015_performance} \emph{WWDC 2015 - Optimizing Swift Performance}, \url{https://developer.apple.com/videos/play/wwdc2015/409/}. Dostęp: 13-07-2019.
+
+    \bibitem{github} \emph{Repozytorium kodu języka Swift}, \url{https://github.com/apple/swift}. Dostęp: 13-07-2019.
+    \bibitem{objective_c_messaging} \emph{Objective-C Runtime Programming Guide}, \url{https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html}. Dostęp: 13-07-2019.
+    \bibitem{objective_c_objects} \emph{Working with Objects in Objective-C}, \url{https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/WorkingwithObjects/WorkingwithObjects.html}. Dostęp: 13-07-2019.
+    \bibitem{section_five_blog} \emph{Wpis na blogu ,,SectionFive'' o ARC}, \url{https://sectionfive.net/blog/2015/03/31/arc-in-depth-part-i/}. Dostęp: 13-07-2019.
+    \bibitem{rc4} \emph{Opis szyfru RC4}, \url{https://en.wikipedia.org/wiki/RC4}. Dostęp: 13-07-2019.
+    \bibitem{lattner_presentation} Lattner C., \emph{Swift: Challenges and Opportunity for Language and Compiler Research}, \url{https://researcher.watson.ibm.com/researcher/files/us-lmandel/lattner.pdf}. Dostęp: 13-07-2019.
+    \bibitem{pang} Pang A., \emph{Objective-C Internals}, \url{http://algorithm.com.au/downloads/talks/objective-c-internals/objective-c-internals.pdf}. Dostęp: 13-07-2019.
+
+    \bibitem{yalantis} Kirichok, S, \emph{Is Swift Faster Than Objective-C?}, \url{https://yalantis.com/blog/is-swift-faster-than-objective-c/}. Dostęp: 13-07-2019.
+    \bibitem{ijeast} Singh H., \emph{Speed performance between Swift and Objective-C}, \url{http://www.ijeast.com/papers/185-189,Tesma110,IJEAST.pdf} "International Journal of Engineering Applied Sciences and Technology", Vol. 1, Issue 10, 2016. Dostęp: 13-07-2019.
+    \bibitem{guenzel} Guenzel T, \emph{A small speed comparison - Objective-C and Swift}, \url{https://thomasguenzel.com/blog/2015/12/01/a-small-speed-comparison-objective-c-and-swift/}. Dostęp: 13-07-2019.
+
 \end{thebibliography}                                                                                                                                                          
 
 \end{document}
